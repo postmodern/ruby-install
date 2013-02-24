@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 RUBY_ARCHIVE="rubinius-$RUBY_VERSION.tar.gz"
 RUBY_SRC_DIR="rubinius-release-$RUBY_VERSION"

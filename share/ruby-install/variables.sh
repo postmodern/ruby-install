@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if [[ $UID -eq 0 ]]; then
 	[[ -z "$SRC_DIR"     ]] && SRC_DIR="/usr/local/src"
