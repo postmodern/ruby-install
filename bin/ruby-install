@@ -1,0 +1,61 @@
+#!/bin/bash
+
+set -e
+
+RUBY_INSTALL_VERSION="0.1.0"
+SHARE_DIR="$(dirname $(dirname $0))/share/ruby-install"
+
+case "$1" in
+	-h|--help)
+		echo "usage: ruby-install RUBY [VERSION] -- CONFIGURE_OPTS"
+		exit
+		;;
+	-v|--version)
+		echo "ruby-install $RUBY_INSTALL_VERSION"
+		exit
+		;;
+esac
+
+declare -A RUBIES
+RUBIES=(
+  [ruby]=1.9.3-p395
+  [jruby]=1.7.2
+  [rubinius]=2.0.0-rc1
+)
+
+case $# in
+	0)
+		echo "Supported Rubies:"
+		for ruby in ${!RUBIES[@]}; do
+			echo "  $ruby-${RUBIES[$ruby]}"
+		done
+		exit
+		;;
+	1)
+		RUBY="$1"
+		RUBY_VERSION="${RUBIES[$1]}"
+		;;
+	2)
+		RUBY="$1"
+		RUBY_VERSION="$2"
+		;;
+esac
+
+if [[ ! -f "$SHARE_DIR/rubies/$RUBY.sh" ]]; then
+	echo "ruby-install: unsupported ruby: $RUBY" 2>&1
+	exit -1
+fi
+
+source "$SHARE_DIR/helpers.sh"
+source "$SHARE_DIR/rubies/$RUBY.sh"
+
+pre_install
+install_dependencies
+download_ruby
+extract_ruby
+cd "$SRC_DIR/$RUBY_SRC_DIR"
+apply_patches
+configure_ruby
+compile_ruby
+install_ruby
+post_install

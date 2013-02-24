@@ -1,0 +1,39 @@
+# ruby-install
+
+Installs Ruby, JRuby or Rubinius.
+
+## Features
+
+* Allows installing arbitrary versions.
+* Allows installing into arbitrary directories.
+* Allows apply arbitrary patches.
+* Allows specifying arbitrary `./configure` options.
+* Automatically installs dependencies needed to compile the Ruby.
+
+## Anti-Features
+
+* Does not require updating every time a new Ruby version comes out.
+* Does not require recipes for each individual Ruby version or configuration.
+
+## Requirements
+
+* [bash]
+
+## Examples
+
+Install the current stable version of Ruby:
+
+    $ ruby-install ruby
+
+Install a specific version of Ruby:
+
+    $ ruby-install ruby 1.9.3-p395
+
+## Alternatives
+
+* [RVM]
+* [ruby-build]
+
+[bash]: http://www.gnu.org/software/bash/
+[RVM]: https://rvm.io/
+[ruby-build]: https://github.com/sstephenson/ruby-build#readme
