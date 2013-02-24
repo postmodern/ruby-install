@@ -46,7 +46,8 @@ if [[ ! -f "$SHARE_DIR/rubies/$RUBY.sh" ]]; then
 	exit -1
 fi
 
-source "$SHARE_DIR/helpers.sh"
+source "$SHARE_DIR/functions.sh"
+source "$SHARE_DIR/variables.sh"
 source "$SHARE_DIR/rubies/$RUBY.sh"
 
 pre_install
