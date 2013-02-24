@@ -8,7 +8,7 @@ Installs Ruby, JRuby or Rubinius.
 * Allows installing into arbitrary directories.
 * Allows apply arbitrary patches.
 * Allows specifying arbitrary `./configure` options.
-* Automatically installs dependencies needed to compile the Ruby.
+* Automatically installs dependencies via the package manager.
 
 ## Anti-Features
 
