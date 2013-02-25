@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 RUBY_ARCHIVE="ruby-$RUBY_VERSION.tar.gz"
 RUBY_SRC_DIR="ruby-$RUBY_VERSION"

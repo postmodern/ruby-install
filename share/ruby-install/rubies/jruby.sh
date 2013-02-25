@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 RUBY_ARCHIVE="jruby-bin-$RUBY_VERSION.tar.gz"
 RUBY_SRC_DIR="jruby-$RUBY_VERSION"
