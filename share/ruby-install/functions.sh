@@ -15,9 +15,9 @@ function log()
 }
 
 #
-# Prints a warning message.
+# Prints a warn message.
 #
-function warning()
+function warn()
 {
 	if [[ -t 1 ]]; then
 		echo -e "\x1b[1m\x1b[33m***\x1b[0m \x1b[1m\x1b[37m$1\x1b[0m" >&2
@@ -121,7 +121,7 @@ function verify_ruby()
 			return 1
 		fi
 	else
-		warning "No checksum for $RUBY_ARCHIVE. Proceeding anyways"
+		warn "No checksum for $RUBY_ARCHIVE. Proceeding anyways"
 	fi
 }
 

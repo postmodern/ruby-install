@@ -22,7 +22,7 @@ function post_install()
 	ln -fs jruby "$INSTALL_DIR/bin/ruby"
 
 	if [[ "$PACKAGE_MANAGER" == "brew" ]]; then
-		warning "In order to use JRuby you must install OracleJDK:"
-		warning "  http://www.oracle.com/technetwork/java/javase/downloads/index.html"
+		warn "In order to use JRuby you must install OracleJDK:"
+		warn "  http://www.oracle.com/technetwork/java/javase/downloads/index.html"
 	fi
 }
