@@ -111,8 +111,15 @@ function verify_ruby()
 	local checksum=$(fetch checksums "$RUBY_ARCHIVE")
 
 	if [[ -n "$checksum" ]]; then
+		local manifest="$checksum  $SRC_DIR/$RUBY_ARCHIVE"
+
 		log "Verifying $RUBY_ARCHIVE ..."
-		echo "$checksum  $SRC_DIR/$RUBY_ARCHIVE" | md5sum -c -
+		if [[ `echo "$manifest" | md5sum -c -` == *OK* ]]; then
+			log "$RUBY_ARCHIVE is valid"
+		else
+			error "$RUBY_ARCHIVE is invalid!"
+			return 1
+		fi
 	else
 		warning "No checksum for $RUBY_ARCHIVE. Proceeding anyways"
 	fi
