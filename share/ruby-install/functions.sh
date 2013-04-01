@@ -108,7 +108,7 @@ function download_ruby()
 #
 function verify_ruby()
 {
-	local checksum=$(fetch checksums "$RUBY_ARCHIVE")
+	local checksum=$(fetch md5 "$RUBY_ARCHIVE")
 
 	if [[ -n "$checksum" ]]; then
 		local manifest="$checksum  $SRC_DIR/$RUBY_ARCHIVE"
