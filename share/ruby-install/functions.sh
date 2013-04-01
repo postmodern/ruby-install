@@ -49,7 +49,7 @@ function fetch()
 #
 function pre_install()
 {
-	install -d "$SRC_DIR"
+	mkdir -p "$SRC_DIR"
 
 	log "Synching Package Manager"
 	case "$PACKAGE_MANAGER" in
