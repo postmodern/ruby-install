@@ -26,7 +26,7 @@ case $# in
 		echo "Supported Rubies:"
 		for ruby in ${RUBIES[@]}; do
 			echo "  $ruby:"
-			cat "$SHARE_DIR/$ruby/aliases.txt" | sed -e 's/^/    /'
+			cat "$SHARE_DIR/$ruby/versions.txt" | sed -e 's/^/    /'
 		done
 		exit
 		;;
@@ -47,7 +47,7 @@ if [[ ! -d "$RUBY_DIR" ]]; then
 	exit -1
 fi
 
-RUBY_VERSION=$(search aliases "$RUBY_VERSION" "$RUBY_VERSION")
+RUBY_VERSION=$(search versions "$RUBY_VERSION" "$RUBY_VERSION")
 
 source "$RUBY_DIR/functions.sh"
 
