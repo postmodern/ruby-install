@@ -17,6 +17,7 @@ declare -a CONFIGURE_OPTS
 if   [[ $(type -t apt-get) == "file" ]]; then PACKAGE_MANAGER="apt"
 elif [[ $(type -t yum)     == "file" ]]; then PACKAGE_MANAGER="yum"
 elif [[ $(type -t brew)    == "file" ]]; then PACKAGE_MANAGER="brew"
+elif [[ $(type -t pacman)  == "file" ]]; then PACKAGE_MANAGER="pacman"
 else
 	warning "Could not determine Package Manager. Proceeding anyways."
 fi

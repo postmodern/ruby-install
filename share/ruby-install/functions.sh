@@ -56,6 +56,7 @@ function pre_install()
 		apt)	apt-get update ;;
 		yum)	yum updateinfo ;;
 		brew)	brew update ;;
+		pacman) pacman -Sy ;;
 	esac
 }
 
@@ -70,9 +71,10 @@ function install_dependencies()
 		log "Installing dependencies for $RUBY $RUBY_VERSION ..."
 
 		case "$PACKAGE_MANAGER" in
-			apt)  sudo apt-get install -y $dependencies ;;
-			yum)  sudo yum install -y $dependencies ;;
-			brew) brew install $dependencies || true ;;
+			apt)    sudo apt-get install -y $dependencies ;;
+			yum)    sudo yum install -y $dependencies ;;
+			brew)   brew install $dependencies || true ;;
+			pacman) if [[ -n "$(pacman -T $dependencies)" ]]; then pacman -S $(pacman -T $dependencies); fi ;;
 		esac
 	fi
 }
