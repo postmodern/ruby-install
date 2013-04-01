@@ -8,7 +8,6 @@ else
 	[[ -z "$INSTALL_DIR" ]] && INSTALL_DIR="$HOME/.local"
 fi
 
-declare -A DEPENDENCIES
 declare -a PATCHES
 declare -a CONFIGURE_OPTS
 
