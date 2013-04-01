@@ -100,7 +100,7 @@ function install_dependencies()
 function download_ruby()
 {
 	log "Downloading $RUBY_URL into $SRC_DIR ..."
-	wget -O "$SRC_DIR/$RUBY_ARCHIVE" "$RUBY_URL"
+	wget -c -O "$SRC_DIR/$RUBY_ARCHIVE" "$RUBY_URL"
 }
 
 #
