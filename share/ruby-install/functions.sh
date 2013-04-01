@@ -58,10 +58,10 @@ function pre_install()
 
 	log "Synching Package Manager"
 	case "$PACKAGE_MANAGER" in
-		apt)	apt-get update ;;
-		yum)	yum updateinfo ;;
+		apt)	sudo apt-get update ;;
+		yum)	sudo yum updateinfo ;;
 		brew)	brew update ;;
-		pacman) pacman -Sy ;;
+		pacman) sudo pacman -Sy ;;
 	esac
 }
 
@@ -82,7 +82,7 @@ function install_dependencies()
 			pacman)
 				packages=$(pacman -T $packages)
 
-				[[ -n "$packages" ]] && pacman -S $packages
+				[[ -n "$packages" ]] && sudo pacman -S $packages
 				;;
 		esac
 	fi
