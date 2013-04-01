@@ -12,6 +12,7 @@ Installs Ruby, JRuby or Rubinius.
 * Auto-detects the package manager:
   * [apt]
   * [yum]
+  * [pacman]
   * [brew]
 
 ## Anti-Features
@@ -40,6 +41,7 @@ Install a specific version of Ruby:
 
 [apt]: http://wiki.debian.org/Apt
 [yum]: http://yum.baseurl.org/
+[pacman]: https://wiki.archlinux.org/index.php/Pacman
 [brew]: http://mxcl.github.com/homebrew/
 
 [bash]: http://www.gnu.org/software/bash/
