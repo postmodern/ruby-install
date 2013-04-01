@@ -31,7 +31,7 @@ function warning() {
 # Searches a file for a key and echos the value.
 # If the key cannot be found, the third argument will be echoed.
 #
-function search() {
+function fetch() {
 	local pair=$(grep -E "^$2: " "$RUBY_DIR/$1.txt")
 	local value=${pair#$2:}
 
@@ -58,7 +58,7 @@ function pre_install() {
 # Install Ruby Dependencies
 #
 function install_dependencies() {
-	local dependencies=$(search dependencies "$PACKAGE_MANAGER")
+	local dependencies=$(fetch dependencies "$PACKAGE_MANAGER")
 
 	if [[ -n "$dependencies" ]]; then
 		log "Installing dependencies for $RUBY $RUBY_VERSION ..."

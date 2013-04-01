@@ -47,7 +47,7 @@ if [[ ! -d "$RUBY_DIR" ]]; then
 	exit -1
 fi
 
-RUBY_VERSION=$(search versions "$RUBY_VERSION" "$RUBY_VERSION")
+RUBY_VERSION=$(fetch versions "$RUBY_VERSION" "$RUBY_VERSION")
 
 source "$RUBY_DIR/functions.sh"
 
