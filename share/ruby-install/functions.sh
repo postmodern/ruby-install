@@ -115,7 +115,7 @@ function verify_ruby()
 
 		log "Verifying $RUBY_ARCHIVE ..."
 		if [[ `echo "$manifest" | md5sum -c -` == *OK* ]]; then
-			log "$RUBY_ARCHIVE is valid"
+			log "Verified $RUBY_ARCHIVE"
 		else
 			error "$RUBY_ARCHIVE is invalid!"
 			return 1
