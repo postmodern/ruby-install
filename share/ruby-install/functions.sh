@@ -104,6 +104,21 @@ function download_ruby()
 }
 
 #
+# Verifies the Ruby archive matches a checksum.
+#
+function verify_ruby()
+{
+	local checksum=$(fetch checksums "$RUBY_ARCHIVE")
+
+	if [[ -n "$checksum" ]]; then
+		log "Verifying $RUBY_ARCHIVE ..."
+		echo "$checksum  $SRC_DIR/$RUBY_ARCHIVE" | md5sum -c -
+	else
+		warning "No checksum for $RUBY_ARCHIVE. Proceeding anyways"
+	fi
+}
+
+#
 # Extract the Ruby archive
 #
 function extract_ruby()

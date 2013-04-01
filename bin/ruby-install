@@ -54,6 +54,7 @@ source "$RUBY_DIR/functions.sh"
 pre_install
 install_dependencies
 download_ruby
+verify_ruby
 extract_ruby
 cd "$SRC_DIR/$RUBY_SRC_DIR"
 apply_patches
