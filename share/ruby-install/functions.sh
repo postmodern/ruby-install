@@ -79,7 +79,11 @@ function install_dependencies()
 			apt)    sudo apt-get install -y $dependencies ;;
 			yum)    sudo yum install -y $dependencies ;;
 			brew)   brew install $dependencies || true ;;
-			pacman) if [[ -n "$(pacman -T $dependencies)" ]]; then pacman -S $(pacman -T $dependencies); fi ;;
+			pacman)
+				if [[ -n "$(pacman -T $dependencies)" ]]; then
+					pacman -S $(pacman -T $dependencies)
+				fi
+				;;
 		esac
 	fi
 }
