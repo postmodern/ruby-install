@@ -13,17 +13,17 @@ function install_dependencies()
 
 	case "$PACKAGE_MANAGER" in
 		apt)
-			apt-get install -y gcc g++ automake flex bison ruby-dev rake \
-				           zlib1g-dev libyaml-dev libssl-dev \
-					   libgdbm-dev libreadline-dev libncurses5-dev
+			sudo apt-get install -y gcc g++ automake flex bison ruby-dev rake \
+				                zlib1g-dev libyaml-dev libssl-dev \
+					        libgdbm-dev libreadline-dev libncurses5-dev
 
-			(apt-get install -y llvm-3.0-dev && update-alternatives --install /usr/bin/llvm-config llvm-config /usr/bin/llvm-config-3.0 30) || true
+			(sudo apt-get install -y llvm-3.0-dev && update-alternatives --install /usr/bin/llvm-config llvm-config /usr/bin/llvm-config-3.0 30) || true
 			;;
 		yum)
-			yum install -y gcc gcc-c++ automake flex bison ruby-devel \
-			               rubygems rubygem-rake llvm-devel zlib-devel \
-				       libyaml-devel openssl-devel gdbm-devel \
-				       readline-devel ncurses-devel
+			sudo yum install -y gcc gcc-c++ automake flex bison ruby-devel \
+			                    rubygems rubygem-rake llvm-devel zlib-devel \
+				            libyaml-devel openssl-devel gdbm-devel \
+				            readline-devel ncurses-devel
 			;;
 		brew)	brew install libyaml gdbm || true ;;
 	esac
