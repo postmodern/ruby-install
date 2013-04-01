@@ -96,6 +96,9 @@ function extract_ruby()
 		*.tar.gz)  tar -xzvf "$SRC_DIR/$RUBY_ARCHIVE" -C "$SRC_DIR" ;;
 		*.tar.bz2) tar -xjvf "$SRC_DIR/$RUBY_ARCHIVE" -C "$SRC_DIR" ;;
 		*.zip)     unzip "$SRC_DIR/$RUBY_ARCHIVE" -d "$SRC_DIR" ;;
+		*)
+			error "Unknown archive format: $RUBY_ARCHIVE"
+			return 1
 	esac
 }
 
