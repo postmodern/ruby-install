@@ -7,7 +7,8 @@ RUBY_URL="http://ftp.ruby-lang.org/pub/ruby/1.9/$RUBY_ARCHIVE"
 #
 # Configures Ruby.
 #
-function configure_ruby() {
+function configure_ruby()
+{
 	log "Configuring ruby $RUBY_VERSION ..."
 
 	if [[ "$PACKAGE_MANAGER" == "brew" ]]; then
@@ -26,7 +27,8 @@ function configure_ruby() {
 #
 # Compiles Ruby.
 #
-function compile_ruby() {
+function compile_ruby()
+{
 	log "Compiling ruby $RUBY_VERSION ..."
 	make
 }
@@ -34,7 +36,8 @@ function compile_ruby() {
 #
 # Installs Ruby into $INSTALL_DIR
 #
-function install_ruby() {
+function install_ruby()
+{
 	log "Installing ruby $RUBY_VERSION ..."
 	make install
 }

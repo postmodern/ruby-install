@@ -3,7 +3,8 @@
 #
 # Functions
 #
-function log() {
+function log()
+{
 	if [[ -t 1 ]]; then
 		echo -e "\x1b[1m\x1b[32m>>>\x1b[0m \x1b[1m\x1b[37m$1\x1b[0m"
 	else
@@ -11,7 +12,8 @@ function log() {
 	fi
 }
 
-function error() {
+function error()
+{
 	if [[ -t 1 ]]; then
 		echo -e "\x1b[1m\x1b[31m!!!\x1b[0m \x1b[1m\x1b[37m$1\x1b[0m" >&2
 	else
@@ -19,7 +21,8 @@ function error() {
 	fi
 }
 
-function warning() {
+function warning()
+{
 	if [[ -t 1 ]]; then
 		echo -e "\x1b[1m\x1b[33m***\x1b[0m \x1b[1m\x1b[37m$1\x1b[0m" >&2
 	else
@@ -31,7 +34,8 @@ function warning() {
 # Searches a file for a key and echos the value.
 # If the key cannot be found, the third argument will be echoed.
 #
-function fetch() {
+function fetch()
+{
 	local pair=$(grep -E "^$2: " "$RUBY_DIR/$1.txt")
 	local value=${pair#$2:}
 
@@ -43,7 +47,8 @@ function fetch() {
 #
 # Pre-install tasks
 #
-function pre_install() {
+function pre_install()
+{
 	install -d "$SRC_DIR"
 
 	log "Synching Package Manager"
@@ -57,7 +62,8 @@ function pre_install() {
 #
 # Install Ruby Dependencies
 #
-function install_dependencies() {
+function install_dependencies()
+{
 	local dependencies=$(fetch dependencies "$PACKAGE_MANAGER")
 
 	if [[ -n "$dependencies" ]]; then
@@ -80,7 +86,8 @@ function install_dependencies() {
 #
 # Download the Ruby archive
 #
-function download_ruby() {
+function download_ruby()
+{
 	log "Downloading $RUBY_URL into $SRC_DIR ..."
 	wget -O "$SRC_DIR/$RUBY_ARCHIVE" "$RUBY_URL"
 }
@@ -88,7 +95,8 @@ function download_ruby() {
 #
 # Extract the Ruby archive
 #
-function extract_ruby() {
+function extract_ruby()
+{
 	log "Installing $RUBY $RUBY_VERSION ..."
 	case "$RUBY_ARCHIVE" in
 		*.tar.gz)
@@ -106,7 +114,8 @@ function extract_ruby() {
 #
 # Apply any additional patches
 #
-function apply_patches() {
+function apply_patches()
+{
 	for path in ${PATCHES[*]}; do
 		log "Applying patch $path ..."
 		patch -p1 < $path
@@ -116,27 +125,31 @@ function apply_patches() {
 #
 # Place holder function for configuring Ruby.
 #
-function configure_ruby() {
+function configure_ruby()
+{
 	return 0
 }
 
 #
 # Place holder function for compiling Ruby.
 #
-function compile_ruby() {
+function compile_ruby()
+{
 	return 0
 }
 
 #
 # Place holder function for installing Ruby.
 #
-function install_ruby() {
+function install_ruby()
+{
 	return 0
 }
 
 #
 # Place holder function for post-install tasks.
 #
-function post_install() {
+function post_install()
+{
 	return 0
 }

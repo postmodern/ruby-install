@@ -7,7 +7,8 @@ RUBY_URL="http://jruby.org.s3.amazonaws.com/downloads/$RUBY_VERSION/$RUBY_ARCHIV
 #
 # Install JRuby into $INSTALL_DIR.
 #
-function install_ruby() {
+function install_ruby()
+{
 	log "Installing jruby $RUBY_VERSION ..."
 	cp -r "$SRC_DIR/$RUBY_SRC_DIR/*" "$INSTALL_DIR"
 }
@@ -15,7 +16,8 @@ function install_ruby() {
 #
 # Post-install tasks.
 #
-function post_install() {
+function post_install()
+{
 	log "Symlinking bin/ruby to bin/jruby ..."
 	ln -fs jruby "$INSTALL_DIR/bin/ruby"
 

@@ -7,7 +7,8 @@ RUBY_URL="https://github.com/rubinius/rubinius/archive/release-$RUBY_VERSION.tar
 #
 # Install build dependencies for Rubinius.
 #
-function install_dependencies() {
+function install_dependencies()
+{
 	log "Installing build dependencies ..."
 
 	case "$PACKAGE_MANAGER" in
@@ -31,7 +32,8 @@ function install_dependencies() {
 #
 # Configures Rubinius.
 #
-function configure_ruby() {
+function configure_ruby()
+{
 	log "Configuring rubinius $RUBY_VERSION ..."
 	./configure --prefix="$INSTALL_DIR" $CONFIGURE_OPTS
 }
@@ -39,7 +41,8 @@ function configure_ruby() {
 #
 # Compiles Rubinius.
 #
-function compile_ruby() {
+function compile_ruby()
+{
 	log "Compiling rubinius $RUBY_VERSION ..."
 	rake build
 }
@@ -47,7 +50,8 @@ function compile_ruby() {
 #
 # Installs Rubinius into $INSTALL_DIR.
 #
-function install_ruby() {
+function install_ruby()
+{
 	log "Installing rubinius $RUBY_VERSION ..."
 	rake install
 }
