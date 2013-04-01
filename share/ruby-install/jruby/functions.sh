@@ -4,11 +4,6 @@ RUBY_ARCHIVE="jruby-bin-$RUBY_VERSION.tar.gz"
 RUBY_SRC_DIR="jruby-$RUBY_VERSION"
 RUBY_URL="http://jruby.org.s3.amazonaws.com/downloads/$RUBY_VERSION/$RUBY_ARCHIVE"
 
-DEPENDENCIES=(
-  [apt]="openjdk-7-jdk"
-  [yum]="java-1.7.0-openjdk"
-)
-
 #
 # Install JRuby into $INSTALL_DIR.
 #

@@ -5,10 +5,10 @@ RUBY_SRC_DIR="rubinius-release-$RUBY_VERSION"
 RUBY_URL="https://github.com/rubinius/rubinius/archive/release-$RUBY_VERSION.tar.gz"
 
 #
-# Install dependencies for Rubinius.
+# Install build dependencies for Rubinius.
 #
 function install_dependencies() {
-	log "Installing rubinius $RUBY_VERSION ..."
+	log "Installing build dependencies ..."
 
 	case "$PACKAGE_MANAGER" in
 		apt)

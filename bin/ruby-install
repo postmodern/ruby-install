@@ -16,18 +16,14 @@ case "$1" in
 		;;
 esac
 
-declare -A RUBIES
-RUBIES=(
-  [ruby]=1.9.3-p395
-  [jruby]=1.7.2
-  [rubinius]=2.0.0-rc1
-)
+RUBIES=(ruby jruby rubinius)
 
 case $# in
 	0)
 		echo "Supported Rubies:"
-		for ruby in ${!RUBIES[@]}; do
-			echo "  $ruby-${RUBIES[$ruby]}"
+		for ruby in ${RUBIES[@]}; do
+			echo "  $ruby:"
+			cat "$SHARE_DIR/$ruby/aliases.txt" | sed -e 's/^/    /'
 		done
 		exit
 		;;
@@ -41,14 +37,14 @@ case $# in
 		;;
 esac
 
-if [[ ! -f "$SHARE_DIR/rubies/$RUBY.sh" ]]; then
+if [[ ! -d "$SHARE_DIR/$RUBY/" ]]; then
 	echo "ruby-install: unsupported ruby: $RUBY" 2>&1
 	exit -1
 fi
 
 source "$SHARE_DIR/functions.sh"
 source "$SHARE_DIR/variables.sh"
-source "$SHARE_DIR/rubies/$RUBY.sh"
+source "$SHARE_DIR/$RUBY/functions.sh"
 
 pre_install
 install_dependencies

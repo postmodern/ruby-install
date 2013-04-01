@@ -4,12 +4,6 @@ RUBY_ARCHIVE="ruby-$RUBY_VERSION.tar.gz"
 RUBY_SRC_DIR="ruby-$RUBY_VERSION"
 RUBY_URL="http://ftp.ruby-lang.org/pub/ruby/1.9/$RUBY_ARCHIVE"
 
-DEPENDENCIES=(
-	[apt]="build-essential zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libreadline-dev libncurses5-dev libffi-dev"
-	[yum]="gcc automake zlib-devel libyaml-devel openssl-devel gdbm-devel readline-devel ncurses-devel libffi-devel"
-	[brew]="openssl readline libyaml gdbm libffi"
-)
-
 #
 # Configures Ruby.
 #
