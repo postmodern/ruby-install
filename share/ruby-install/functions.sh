@@ -39,8 +39,11 @@ function fetch()
 	local pair=$(grep -E "^$2: " "$RUBY_DIR/$1.txt")
 	local value=${pair#$2:}
 
-	if [[ -n "${value%% }" ]]; then echo "$value"
-	else                            echo "$3"
+	value=${value%% }
+	value=${value## }
+
+	if [[ -n "$value" ]]; then echo "$value"
+	else                       echo "$3"
 	fi
 }
 
