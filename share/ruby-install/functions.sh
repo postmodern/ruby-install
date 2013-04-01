@@ -28,6 +28,19 @@ function warning() {
 }
 
 #
+# Searches a file for a key and echos the value.
+# If the key cannot be found, the third argument will be echoed.
+#
+function search() {
+	local pair=$(grep -E "^$2: " "$RUBY_DIR/$1.txt")
+	local value=${pair#$2:}
+
+	if [[ -n "$value" ]]; then echo "$value"
+	else                       echo "$3"
+	fi
+}
+
+#
 # Pre-install tasks
 #
 function pre_install() {
@@ -45,7 +58,7 @@ function pre_install() {
 # Install Ruby Dependencies
 #
 function install_dependencies() {
-	local dependencies=$DEPENDENCIES[$PACKAGE_MANAGER]
+	local dependencies=$(search dependencies "$PACKAGE_MANAGER")
 
 	if [[ -n "$dependencies" ]]; then
 		log "Installing dependencies for $RUBY $RUBY_VERSION ..."
@@ -104,22 +117,26 @@ function apply_patches() {
 # Place holder function for configuring Ruby.
 #
 function configure_ruby() {
+	return 0
 }
 
 #
 # Place holder function for compiling Ruby.
 #
 function compile_ruby() {
+	return 0
 }
 
 #
 # Place holder function for installing Ruby.
 #
 function install_ruby() {
+	return 0
 }
 
 #
 # Place holder function for post-install tasks.
 #
 function post_install() {
+	return 0
 }
