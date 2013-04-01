@@ -3,7 +3,7 @@
 shopt -s extglob
 
 #
-# Functions
+# Prints a log message.
 #
 function log()
 {
@@ -14,21 +14,27 @@ function log()
 	fi
 }
 
-function error()
-{
-	if [[ -t 1 ]]; then
-		echo -e "\x1b[1m\x1b[31m!!!\x1b[0m \x1b[1m\x1b[37m$1\x1b[0m" >&2
-	else
-		echo "!!! $1" >&2
-	fi
-}
-
+#
+# Prints a warning message.
+#
 function warning()
 {
 	if [[ -t 1 ]]; then
 		echo -e "\x1b[1m\x1b[33m***\x1b[0m \x1b[1m\x1b[37m$1\x1b[0m" >&2
 	else
 		echo "*** $1" >&2
+	fi
+}
+
+#
+# Prints an error message.
+#
+function error()
+{
+	if [[ -t 1 ]]; then
+		echo -e "\x1b[1m\x1b[31m!!!\x1b[0m \x1b[1m\x1b[37m$1\x1b[0m" >&2
+	else
+		echo "!!! $1" >&2
 	fi
 }
 
