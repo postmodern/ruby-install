@@ -70,19 +70,19 @@ function pre_install()
 #
 function install_dependencies()
 {
-	local dependencies=$(fetch dependencies "$PACKAGE_MANAGER")
+	local packages=$(fetch dependencies "$PACKAGE_MANAGER")
 
-	if [[ -n "$dependencies" ]]; then
+	if [[ -n "$packages" ]]; then
 		log "Installing dependencies for $RUBY $RUBY_VERSION ..."
 
 		case "$PACKAGE_MANAGER" in
-			apt)    sudo apt-get install -y $dependencies ;;
-			yum)    sudo yum install -y $dependencies ;;
-			brew)   brew install $dependencies || true ;;
+			apt)    sudo apt-get install -y $packages ;;
+			yum)    sudo yum install -y $packages ;;
+			brew)   brew install $packages || true ;;
 			pacman)
-				if [[ -n "$(pacman -T $dependencies)" ]]; then
-					pacman -S $(pacman -T $dependencies)
-				fi
+				packages=$(pacman -T $packages)
+
+				[[ -n "$packages" ]] && pacman -S $packages
 				;;
 		esac
 	fi
