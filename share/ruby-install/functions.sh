@@ -70,15 +70,9 @@ function install_dependencies()
 		log "Installing dependencies for $RUBY $RUBY_VERSION ..."
 
 		case "$PACKAGE_MANAGER" in
-			apt)
-				sudo apt-get install -y $dependencies
-				;;
-			yum)
-				sudo yum install -y $dependencies
-				;;
-			brew)
-				brew install $dependencies || true
-				;;
+			apt)  sudo apt-get install -y $dependencies ;;
+			yum)  sudo yum install -y $dependencies ;;
+			brew) brew install $dependencies || true ;;
 		esac
 	fi
 }
@@ -99,15 +93,9 @@ function extract_ruby()
 {
 	log "Installing $RUBY $RUBY_VERSION ..."
 	case "$RUBY_ARCHIVE" in
-		*.tar.gz)
-			tar -xzvf "$SRC_DIR/$RUBY_ARCHIVE" -C "$SRC_DIR"
-			;;
-		*.tar.bz2)
-			tar -xjvf "$SRC_DIR/$RUBY_ARCHIVE" -C "$SRC_DIR"
-			;;
-		*.zip)
-			unzip "$SRC_DIR/$RUBY_ARCHIVE" -d "$SRC_DIR"
-			;;
+		*.tar.gz)  tar -xzvf "$SRC_DIR/$RUBY_ARCHIVE" -C "$SRC_DIR" ;;
+		*.tar.bz2) tar -xjvf "$SRC_DIR/$RUBY_ARCHIVE" -C "$SRC_DIR" ;;
+		*.zip)     unzip "$SRC_DIR/$RUBY_ARCHIVE" -d "$SRC_DIR" ;;
 	esac
 }
 
