@@ -8,9 +8,6 @@ else
 	[[ -z "$INSTALL_DIR" ]] && INSTALL_DIR="$HOME/.local"
 fi
 
-declare -a PATCHES
-declare -a CONFIGURE_OPTS
-
 #
 # Detect the Package Manager
 #

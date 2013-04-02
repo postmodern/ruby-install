@@ -2,6 +2,9 @@
 
 shopt -s extglob
 
+declare -a PATCHES
+declare -a CONFIGURE_OPTS
+
 #
 # Prints a log message.
 #

@@ -6,7 +6,7 @@ RUBY_INSTALL_VERSION="0.1.0"
 SHARE_DIR="$(dirname $(dirname $0))/share/ruby-install"
 
 source "$SHARE_DIR/functions.sh"
-source "$SHARE_DIR/variables.sh"
+source "$SHARE_DIR/defaults.sh"
 
 case "$1" in
 	-h|--help)
