@@ -43,8 +43,7 @@ esac
 RUBY_DIR="$SHARE_DIR/$RUBY"
 
 if [[ ! -d "$RUBY_DIR" ]]; then
-	echo "ruby-install: unsupported ruby: $RUBY" 2>&1
-	exit -1
+	fail "ruby-install: unsupported ruby: $RUBY"
 fi
 
 RUBY_VERSION=$(fetch versions "$RUBY_VERSION" "$RUBY_VERSION")
