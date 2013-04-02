@@ -7,7 +7,7 @@ RUBY_URL="https://github.com/rubinius/rubinius/archive/release-$RUBY_VERSION.tar
 #
 # Install build dependencies for Rubinius.
 #
-function install_dependencies()
+function install_deps()
 {
 	log "Installing build dependencies ..."
 

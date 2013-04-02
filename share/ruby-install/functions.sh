@@ -83,7 +83,7 @@ function pre_install()
 #
 # Install Ruby Dependencies
 #
-function install_dependencies()
+function install_deps()
 {
 	local packages=$(fetch dependencies "$PACKAGE_MANAGER")
 
