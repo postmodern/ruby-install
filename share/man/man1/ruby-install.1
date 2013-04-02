@@ -1,0 +1,83 @@
+.TH 
+.BR ruby-install (1) 
+\-\- Installs Ruby, JRuby or Rubinius.
+.SH SYNOPSIS
+.PP
+\fB\fCruby-install\fR RUBY [VERSION] \-\- CONFIGURE_OPTS
+.SH ARGUMENTS
+.PP
+\fIRUBY\fP
+    Install Ruby by name.
+.PP
+\fIVERSION\fP
+    Optionally select the version of selected Ruby.
+.PP
+\fICONFIGURE_OPTS\fP
+    Additional optional configure arguements.
+.SH OPTIONS
+.PP
+\fB\fC-h\fR, \fB\fC--help\fR
+    Prints a synopsis of ruby\-install usage.
+.PP
+\fB\fC-v\fR, \fB\fC--version\fR
+    Prints the current ruby\-install version.
+.PP
+\fB\fC--src-dir DIR\fR
+    Specifies the directory for downloading and unpacking Ruby source.
+.PP
+\fB\fC--install-dir DIR\fR
+    Specifies the dirctory where Ruby will be installed.
+.PP
+\fB\fC--patch FILE\fR
+    Specifies any additional patches to apply.
+.PP
+\fB\fC--skip-sync\fR
+    Skips syncing of package manager updates.
+.PP
+\fB\fC--skip-dependencies\fR
+    Skips installation of Ruby dependencies (implies \fB\fC--skip-sync\fR).
+.PP
+\fB\fC--skip-verify\fR
+    Skips verification of downloaded Ruby MD5 sums.
+.SH DESCRIPTION
+.PP
+Installs Ruby, JRuby or Rubinius.
+.PP
+https://github.com/postmodern/ruby\-install#readme
+.UR https://github.com/postmodern/ruby-install#readme
+.UE
+.SH EXAMPLES
+.PP
+Install the current stable version of Ruby:
+    $ ruby\-install ruby
+.PP
+Install a specific version of Ruby:
+    $ ruby\-install ruby 1.9.3\-p395
+.SH FILES
+.PP
+\fI/usr/local/src\fP
+    Default root user source directory.
+.PP
+\fI~/src\fP
+    Default non\-root user source directory.
+.PP
+\fI/usr/local\fP
+    Default root user installation directory.
+.PP
+\fI~/.local\fP
+    Default non\-root user installation directory.
+.SH ENVIRONMENT
+.PP
+\fIRUBY\fIINSTALL\fPVERSION\fP
+    Curennt version of ruby\-install.
+.SH AUTHOR
+.PP
+Postmodern postmodern.mod3\@gmail.com
+.MT postmodern.mod3@gmail.com
+.ME .
+.SH SEE ALSO
+.PP
+.BR ruby (1), 
+.BR gem (1), 
+.BR chruby (1), 
+.BR chruby-exec (1)
