@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 if [[ $UID -eq 0 ]]; then
-	[[ -z "$SRC_DIR"     ]] && SRC_DIR="/usr/local/src"
-	[[ -z "$INSTALL_DIR" ]] && INSTALL_DIR="/usr/local"
+	[[ -n "$SRC_DIR"     ]] || SRC_DIR="/usr/local/src"
+	[[ -n "$INSTALL_DIR" ]] || INSTALL_DIR="/usr/local"
 else
-	[[ -z "$SRC_DIR"     ]] && SRC_DIR="$HOME/src"
-	[[ -z "$INSTALL_DIR" ]] && INSTALL_DIR="$HOME/.local"
+	[[ -n "$SRC_DIR"     ]] || SRC_DIR="$HOME/src"
+	[[ -n "$INSTALL_DIR" ]] || INSTALL_DIR="$HOME/.local"
 fi
 
 #
