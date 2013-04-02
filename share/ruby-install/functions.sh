@@ -104,6 +104,16 @@ function install_deps()
 				;;
 		esac
 	fi
+
+	install_optional_deps
+}
+
+#
+# Install any optional dependencies.
+#
+function install_optional_deps()
+{
+	return 0
 }
 
 #
