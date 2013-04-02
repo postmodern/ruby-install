@@ -39,6 +39,15 @@ function error()
 }
 
 #
+# Prints an error message and exists with -1.
+#
+function fail()
+{
+	error $1
+	exit -1
+}
+
+#
 # Searches a file for a key and echos the value.
 # If the key cannot be found, the third argument will be echoed.
 #

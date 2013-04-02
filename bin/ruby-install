@@ -51,14 +51,16 @@ RUBY_VERSION=$(fetch versions "$RUBY_VERSION" "$RUBY_VERSION")
 
 source "$RUBY_DIR/functions.sh"
 
-pre_install
-install_dependencies
-download_ruby
-verify_ruby
-extract_ruby
+pre_install          || fail "Pre-install tasks failed!"
+install_dependencies || fail "Installing dependencies failed!"
+download_ruby        || fail "Download of $RUBY_URL failed!"
+verify_ruby          || fail "Verification of of $SRC_DIR/$RUBY_ARCHIVE failed!"
+extract_ruby         || fail "Unpacking of $SRC_DIR/$RUBY_ARCHIVE failed!"
 cd "$SRC_DIR/$RUBY_SRC_DIR"
-apply_patches
-configure_ruby
-compile_ruby
-install_ruby
-post_install
+apply_patches        || fail "Patching $SRC_DIR/$RUBY_SRC_DIR failed!"
+configure_ruby       || fail "Configuration of $SRC_DIR/$RUBY_SRC_DIR failed!"
+compile_ruby         || fail "Compiling $SRC_DIR/$RUBY_SRC_DIR failed!"
+install_ruby         || fail "Installation of $SRC_DIR/$RUBY_SRC_DIR failed!"
+post_install         || fail "Post-install tasks failed!"
+
+log "Successfully installed $RUBY $RUBY_VERSION into $INSTALL_DIR"
