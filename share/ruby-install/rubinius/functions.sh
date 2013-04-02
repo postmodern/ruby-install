@@ -11,7 +11,7 @@ function install_optional_deps()
 {
 	if [[ "$PACKAGE_MANAGER" == "apt" ]]; then
 		# attempt to install llvm-3.0-dev
-		(sudo apt-get install -y llvm-3.0-dev && update-alternatives --install /usr/bin/llvm-config llvm-config /usr/bin/llvm-config-3.0 30) || true
+		(sudo apt-get install -y llvm-3.0-dev && sudo update-alternatives --install /usr/bin/llvm-config llvm-config /usr/bin/llvm-config-3.0 30) || true
 	fi
 }
 
