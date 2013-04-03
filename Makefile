@@ -1,5 +1,5 @@
 NAME=ruby-install
-VERSION=0.1.0
+VERSION=0.0.0
 AUTHOR=postmodern
 URL=https://github.com/$(AUTHOR)/$(NAME)
 
