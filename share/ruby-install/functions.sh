@@ -111,10 +111,7 @@ function install_deps()
 #
 # Install any optional dependencies.
 #
-function install_optional_deps()
-{
-	return 0
-}
+function install_optional_deps() { return; }
 
 #
 # Download the Ruby archive
@@ -177,31 +174,19 @@ function apply_patches()
 #
 # Place holder function for configuring Ruby.
 #
-function configure_ruby()
-{
-	return 0
-}
+function configure_ruby() { return; }
 
 #
 # Place holder function for compiling Ruby.
 #
-function compile_ruby()
-{
-	return 0
-}
+function compile_ruby() { return; }
 
 #
 # Place holder function for installing Ruby.
 #
-function install_ruby()
-{
-	return 0
-}
+function install_ruby() { return; }
 
 #
 # Place holder function for post-install tasks.
 #
-function post_install()
-{
-	return 0
-}
+function post_install() { return; }
