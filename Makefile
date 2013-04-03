@@ -46,8 +46,7 @@ clean:
 all: $(PKG) $(SIG)
 
 test:
-	SHELL=`which bash` ./test/runner
-	SHELL=`which zsh`  ./test/runner
+	./test/runner
 
 tag:
 	git push
