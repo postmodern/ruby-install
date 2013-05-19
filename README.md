@@ -9,7 +9,9 @@ Installs Ruby, JRuby or Rubinius.
 * Allows apply arbitrary patches.
 * Allows specifying arbitrary `./configure` options.
 * Automatically installs dependencies via the package manager.
-* Auto-detects the package manager:
+* Supports `md5sum` and `md5`.
+* Supports `wget` and `curl`.
+* Supports multiple package managers:
   * [apt]
   * [yum]
   * [pacman]
