@@ -26,7 +26,7 @@ RUBY_VERSION=$(fetch versions "$RUBY_VERSION" "$RUBY_VERSION")
 source "$SHARE_DIR/functions.sh"
 source "$RUBY_DIR/functions.sh"
 
-auto_detect
+auto_detect    || fail "Auto-detection of software failed!"
 pre_install    || fail "Pre-install tasks failed!"
 install_deps   || fail "Installing dependencies failed!"
 download_ruby  || fail "Download of $RUBY_URL failed!"

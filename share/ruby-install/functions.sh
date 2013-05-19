@@ -7,6 +7,14 @@ shopt -s extglob
 #
 function auto_detect()
 {
+	# Detect the md5 checksum utility
+	if   [[ $(type -t md5sum) ]]; then MD5SUM="md5sum"
+	elif [[ $(type -t md5) ]];    then MD5SUM="md5"
+	else
+		error "Unable to find the md5 checksum utility"
+		return 1
+	fi
+
 	# Detect the Package Manager
 	if   [[ $(type -t apt-get) == "file" ]]; then PACKAGE_MANAGER="apt"
 	elif [[ $(type -t yum)     == "file" ]]; then PACKAGE_MANAGER="yum"
@@ -83,7 +91,7 @@ function verify_ruby()
 		local manifest="$checksum  $SRC_DIR/$RUBY_ARCHIVE"
 
 		log "Verifying $RUBY_ARCHIVE ..."
-		if [[ `echo "$manifest" | md5sum -c -` == *OK* ]]; then
+		if [[ `echo "$manifest" | $MD5SUM -c -` == *OK* ]]; then
 			log "Verified $RUBY_ARCHIVE"
 		else
 			error "$RUBY_ARCHIVE is invalid!"
