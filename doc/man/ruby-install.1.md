@@ -17,13 +17,13 @@
 
 ## OPTIONS
 
-`-s`, `--src-dir` **DIR**
+`-s`, `--src-dir` *DIR*
 	Specifies the directory for downloading and unpacking Ruby source.
 
-`-i`, `--install-dir` **DIR**
+`-i`, `--install-dir` *DIR*
 	Specifies the dirctory where Ruby will be installed.
 
-`-p`, `--patch` **FILE**
+`-p`, `--patch` *FILE*
 	Specifies any additional patches to apply.
 
 `--skip-sync`
