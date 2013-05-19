@@ -36,6 +36,18 @@ Install a specific version of Ruby:
 
     $ ruby-install ruby 1.9.3-p395
 
+Install a Ruby into a specific directory:
+
+    $ ruby-install -i /opt/rubies/ruby-1.9.3-p395 ruby 1.9.3-p395
+
+Install a Ruby with a specific patch:
+
+    $ ruby-install -p https://raw.github.com/gist/4136373/falcon-gc.diff ruby 1.9.3-p395
+
+Install a Ruby with specific configuration:
+
+    $ ruby-install ruby 2.0.0 -- --enable-shared --enable-dtrace
+
 ## Alternatives
 
 * [RVM]
