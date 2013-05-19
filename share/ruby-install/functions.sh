@@ -101,13 +101,11 @@ function download_ruby()
 #
 function verify_ruby()
 {
-	local checksum=$(fetch md5 "$RUBY_ARCHIVE")
+	local md5=$(fetch md5 "$RUBY_ARCHIVE")
 
 	if [[ -n "$checksum" ]]; then
-		local manifest="$checksum  $SRC_DIR/$RUBY_ARCHIVE"
-
 		log "Verifying $RUBY_ARCHIVE ..."
-		if [[ `echo "$manifest" | $MD5SUM -c -` == *OK* ]]; then
+		if [[ $($MD5SUM "$SRC_DIR/$RUBY_ARCHIVE") == *$md5* ]]; then
 			log "Verified $RUBY_ARCHIVE"
 		else
 			error "$RUBY_ARCHIVE is invalid!"
