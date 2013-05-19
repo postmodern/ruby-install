@@ -80,10 +80,8 @@ function verify_ruby()
 	local checksum=$(fetch md5 "$RUBY_ARCHIVE")
 
 	if [[ -n "$checksum" ]]; then
-		local manifest="$checksum  $SRC_DIR/$RUBY_ARCHIVE"
-
 		log "Verifying $RUBY_ARCHIVE ..."
-		if [[ `echo "$manifest" | md5sum -c -` == *OK* ]]; then
+		if [[ `md5sum $SRC_DIR/$RUBY_ARCHIVE || md5 -r $SRC_DIR/$RUBY_ARCHIVE` == $checksum* ]]; then
 			log "Verified $RUBY_ARCHIVE"
 		else
 			error "$RUBY_ARCHIVE is invalid!"
