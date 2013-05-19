@@ -2,68 +2,18 @@
 
 shopt -s extglob
 
-declare -a PATCHES
-declare -a CONFIGURE_OPTS
-
 #
-# Prints a log message.
+# Auto-detect system details.
 #
-function log()
+function auto_detect()
 {
-	if [[ -t 1 ]]; then
-		echo -e "\x1b[1m\x1b[32m>>>\x1b[0m \x1b[1m\x1b[37m$1\x1b[0m"
+	# Detect the Package Manager
+	if   [[ $(type -t apt-get) == "file" ]]; then PACKAGE_MANAGER="apt"
+	elif [[ $(type -t yum)     == "file" ]]; then PACKAGE_MANAGER="yum"
+	elif [[ $(type -t brew)    == "file" ]]; then PACKAGE_MANAGER="brew"
+	elif [[ $(type -t pacman)  == "file" ]]; then PACKAGE_MANAGER="pacman"
 	else
-		echo ">>> $1"
-	fi
-}
-
-#
-# Prints a warn message.
-#
-function warn()
-{
-	if [[ -t 1 ]]; then
-		echo -e "\x1b[1m\x1b[33m***\x1b[0m \x1b[1m\x1b[37m$1\x1b[0m" >&2
-	else
-		echo "*** $1" >&2
-	fi
-}
-
-#
-# Prints an error message.
-#
-function error()
-{
-	if [[ -t 1 ]]; then
-		echo -e "\x1b[1m\x1b[31m!!!\x1b[0m \x1b[1m\x1b[37m$1\x1b[0m" >&2
-	else
-		echo "!!! $1" >&2
-	fi
-}
-
-#
-# Prints an error message and exists with -1.
-#
-function fail()
-{
-	error $1
-	exit -1
-}
-
-#
-# Searches a file for a key and echos the value.
-# If the key cannot be found, the third argument will be echoed.
-#
-function fetch()
-{
-	local pair=$(grep -E "^$2: " "$RUBY_DIR/$1.txt")
-	local value=${pair#$2:}
-
-	value=${value%%*( )}
-	value=${value##*( )}
-
-	if [[ -n "$value" ]]; then echo "$value"
-	else                       echo "$3"
+		warn "Could not determine Package Manager. Proceeding anyways."
 	fi
 }
 

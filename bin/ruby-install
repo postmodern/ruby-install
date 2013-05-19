@@ -2,54 +2,31 @@
 
 set -e
 
-RUBY_INSTALL_VERSION="0.1.0"
 SHARE_DIR="$(dirname $(dirname $0))/share/ruby-install"
 
-source "$SHARE_DIR/functions.sh"
-source "$SHARE_DIR/defaults.sh"
+source "$SHARE_DIR/ruby-install.sh"
+source "$SHARE_DIR/variables.sh"
 
-case "$1" in
-	-h|--help)
-		echo "usage: ruby-install RUBY [VERSION] -- CONFIGURE_OPTS"
-		exit
-		;;
-	-v|--version)
-		echo "ruby-install $RUBY_INSTALL_VERSION"
-		exit
-		;;
-esac
+if [[ $# -eq 0 ]]; then
+	supported_rubies
+	exit
+fi
 
-RUBIES=(ruby jruby rubinius)
-
-case $# in
-	0)
-		echo "Supported Rubies:"
-		for ruby in ${RUBIES[@]}; do
-			echo "  $ruby:"
-			cat "$SHARE_DIR/$ruby/versions.txt" | sed -e 's/^/    /'
-		done
-		exit
-		;;
-	1)
-		RUBY="$1"
-		RUBY_VERSION="stable"
-		;;
-	2)
-		RUBY="$1"
-		RUBY_VERSION="$2"
-		;;
-esac
+parse_options $* || exit $?
 
 RUBY_DIR="$SHARE_DIR/$RUBY"
 
 if [[ ! -d "$RUBY_DIR" ]]; then
-	fail "ruby-install: unsupported ruby: $RUBY"
+	echo "ruby-install: unsupported ruby: $RUBY" >&2
+	exit -1
 fi
 
 RUBY_VERSION=$(fetch versions "$RUBY_VERSION" "$RUBY_VERSION")
 
+source "$SHARE_DIR/functions.sh"
 source "$RUBY_DIR/functions.sh"
 
+auto_detect
 pre_install    || fail "Pre-install tasks failed!"
 install_deps   || fail "Installing dependencies failed!"
 download_ruby  || fail "Download of $RUBY_URL failed!"
