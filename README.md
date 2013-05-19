@@ -26,7 +26,7 @@ Installs Ruby, JRuby or Rubinius.
 
 * [bash]
 
-## Examples
+## Synopsis
 
 Install the current stable version of Ruby:
 
