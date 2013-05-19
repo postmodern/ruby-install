@@ -103,10 +103,10 @@ usage: ruby-install [OPTIONS] [RUBY [VERSION]] [-- CONFIGURE_OPTS ...]
 
 Options:
 
-	-S,--src-dir DIR	Directory to download source-code into
-	-I, --install-dir DIR	Directory to install Ruby into
-	-P, --patch FILE	Patch to apply to the Ruby source-code
-	-C, --cflags FLAGS	Additional flags for the compiler
+	-s, --src-dir DIR	Directory to download source-code into
+	-i, --install-dir DIR	Directory to install Ruby into
+	-p, --patch FILE	Patch to apply to the Ruby source-code
+	-c, --cflags FLAGS	Additional flags for the compiler
 	-V, --version		Prints the version
 	-h, --help		Prints this message
 
@@ -134,19 +134,19 @@ function parse_options()
 
 	while [[ $# -gt 0 ]]; do
 		case $1 in
-			-I|--install-dir)
+			-i|--install-dir)
 				INSTALL_DIR="$2"
 				shift 2
 				;;
-			-S|--src-dir)
+			-s|--src-dir)
 				SRC_DIR="$2"
 				shift 2
 				;;
-			-P|--patch)
+			-p|--patch)
 				PATCHES+=($2)
 				shift 2
 				;;
-			-C|--cflags)
+			-c|--cflags)
 				CFLAGS="$2"
 				shift 2
 				;;
