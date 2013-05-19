@@ -76,8 +76,15 @@ function install_optional_deps() { return; }
 #
 function download_ruby()
 {
+	local output="$SRC_DIR/$RUBY_ARCHIVE"
+
 	log "Downloading $RUBY_URL into $SRC_DIR ..."
-	wget -c -O "$SRC_DIR/$RUBY_ARCHIVE" "$RUBY_URL"
+	if   [[ $(type -t wget) ]]; then wget -c -O "$output" "$RUBY_URL"
+	elif [[ $(type -t curl) ]]; then curl -C -o "$output" "$RUBY_URL"
+	else
+		error "Could not find wget or curl"
+		return 1
+	fi
 }
 
 #
