@@ -46,7 +46,7 @@ Install a Ruby with a specific patch:
 
 Install a Ruby with specific configuration:
 
-    $ ruby-install ruby 2.0.0 -- --enable-shared --enable-dtrace
+    $ ruby-install ruby 2.0.0 -- --enable-shared --enable-dtrace CFLAGS="-O3"
 
 ## Alternatives
 
