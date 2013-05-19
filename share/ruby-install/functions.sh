@@ -15,6 +15,22 @@ function auto_detect()
 		return 1
 	fi
 
+	# Detect wget or curl
+	if [[ $(type -t wget) ]]; then
+		function download()
+		{
+			wget -c -O "$2" "$1"
+		}
+	elif [[ $(type -t curl) ]]; then
+		function download()
+		{
+			curl -C -o "$2" "$1"
+		}
+	else
+		error "Could not find wget or curl"
+		return 1
+	fi
+
 	# Detect the Package Manager
 	if   [[ $(type -t apt-get) == "file" ]]; then PACKAGE_MANAGER="apt"
 	elif [[ $(type -t yum)     == "file" ]]; then PACKAGE_MANAGER="yum"
@@ -76,15 +92,8 @@ function install_optional_deps() { return; }
 #
 function download_ruby()
 {
-	local output="$SRC_DIR/$RUBY_ARCHIVE"
-
 	log "Downloading $RUBY_URL into $SRC_DIR ..."
-	if   [[ $(type -t wget) ]]; then wget -c -O "$output" "$RUBY_URL"
-	elif [[ $(type -t curl) ]]; then curl -C -o "$output" "$RUBY_URL"
-	else
-		error "Could not find wget or curl"
-		return 1
-	fi
+	download "$RUBY_URL" "$SRC_DIR/$RUBY_ARCHIVE"
 }
 
 #
