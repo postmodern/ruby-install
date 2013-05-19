@@ -20,7 +20,7 @@ pkg:
 	mkdir $(PKG_DIR)
 
 share/man/man1/ruby-install.1: doc/man/ruby-install.1.md
-	md2man doc/man/ruby-install.1.md > share/man/man1/ruby-install.1
+	kramdown-man doc/man/ruby-install.1.md > share/man/man1/ruby-install.1
 
 man: share/man/man1/ruby-install.1
 	git commit -m "Updated the man pages" doc/man/ruby-install.1.md share/man/man1/ruby-install.1
