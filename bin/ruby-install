@@ -5,7 +5,6 @@ set -e
 SHARE_DIR="$(dirname $(dirname $0))/share/ruby-install"
 
 source "$SHARE_DIR/ruby-install.sh"
-source "$SHARE_DIR/variables.sh"
 
 if [[ $# -eq 0 ]]; then
 	supported_rubies
