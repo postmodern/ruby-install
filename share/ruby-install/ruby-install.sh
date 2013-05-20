@@ -182,7 +182,7 @@ function verify_ruby()
 {
 	local md5=$(fetch md5 "$RUBY_ARCHIVE")
 
-	if [[ -n "$checksum" ]]; then
+	if [[ -n "$md5" ]]; then
 		log "Verifying $RUBY_ARCHIVE ..."
 		if [[ $($MD5SUM "$SRC_DIR/$RUBY_ARCHIVE") == *$md5* ]]; then
 			log "Verified $RUBY_ARCHIVE"
