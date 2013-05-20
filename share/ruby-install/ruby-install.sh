@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+shopt -s extglob
+
 RUBY_INSTALL_VERSION="0.1.0"
 
 #
@@ -78,6 +80,167 @@ function fetch()
 	else                       echo "$3"
 	fi
 }
+
+#
+# Auto-detect system details.
+#
+function auto_detect()
+{
+	# Detect the md5 checksum utility
+	if   [[ $(type -t md5sum) ]]; then MD5SUM="md5sum"
+	elif [[ $(type -t md5) ]];    then MD5SUM="md5"
+	else
+		error "Unable to find the md5 checksum utility"
+		return 1
+	fi
+
+	# Detect wget or curl
+	if [[ $(type -t wget) ]]; then
+		function download()
+		{
+			wget -c -O "$2" "$1"
+		}
+	elif [[ $(type -t curl) ]]; then
+		function download()
+		{
+			curl -C -o "$2" "$1"
+		}
+	else
+		error "Could not find wget or curl"
+		return 1
+	fi
+
+	# Detect the Package Manager
+	if   [[ $(type -t apt-get) == "file" ]]; then PACKAGE_MANAGER="apt"
+	elif [[ $(type -t yum)     == "file" ]]; then PACKAGE_MANAGER="yum"
+	elif [[ $(type -t brew)    == "file" ]]; then PACKAGE_MANAGER="brew"
+	elif [[ $(type -t pacman)  == "file" ]]; then PACKAGE_MANAGER="pacman"
+	else
+		warn "Could not determine Package Manager. Proceeding anyways."
+	fi
+}
+
+#
+# Pre-install tasks
+#
+function pre_install()
+{
+	mkdir -p "$SRC_DIR"
+
+	log "Synching Package Manager"
+	case "$PACKAGE_MANAGER" in
+		apt)	sudo apt-get update ;;
+		yum)	sudo yum updateinfo ;;
+		brew)	brew update ;;
+		pacman) sudo pacman -Sy ;;
+	esac
+}
+
+#
+# Install Ruby Dependencies
+#
+function install_deps()
+{
+	local packages=$(fetch dependencies "$PACKAGE_MANAGER")
+
+	if [[ -n "$packages" ]]; then
+		log "Installing dependencies for $RUBY $RUBY_VERSION ..."
+
+		case "$PACKAGE_MANAGER" in
+			apt)    sudo apt-get install -y $packages ;;
+			yum)    sudo yum install -y $packages ;;
+			brew)   brew install $packages || true ;;
+			pacman)
+				packages=$(pacman -T $packages)
+
+				[[ -n "$packages" ]] && sudo pacman -S $packages
+				;;
+		esac
+	fi
+
+	install_optional_deps
+}
+
+#
+# Install any optional dependencies.
+#
+function install_optional_deps() { return; }
+
+#
+# Download the Ruby archive
+#
+function download_ruby()
+{
+	log "Downloading $RUBY_URL into $SRC_DIR ..."
+	download "$RUBY_URL" "$SRC_DIR/$RUBY_ARCHIVE"
+}
+
+#
+# Verifies the Ruby archive matches a checksum.
+#
+function verify_ruby()
+{
+	local md5=$(fetch md5 "$RUBY_ARCHIVE")
+
+	if [[ -n "$checksum" ]]; then
+		log "Verifying $RUBY_ARCHIVE ..."
+		if [[ $($MD5SUM "$SRC_DIR/$RUBY_ARCHIVE") == *$md5* ]]; then
+			log "Verified $RUBY_ARCHIVE"
+		else
+			error "$RUBY_ARCHIVE is invalid!"
+			return 1
+		fi
+	else
+		warn "No checksum for $RUBY_ARCHIVE. Proceeding anyways"
+	fi
+}
+
+#
+# Extract the Ruby archive
+#
+function extract_ruby()
+{
+	log "Installing $RUBY $RUBY_VERSION ..."
+	case "$RUBY_ARCHIVE" in
+		*.tar.gz)  tar -xzf "$SRC_DIR/$RUBY_ARCHIVE" -C "$SRC_DIR" ;;
+		*.tar.bz2) tar -xjf "$SRC_DIR/$RUBY_ARCHIVE" -C "$SRC_DIR" ;;
+		*.zip)     unzip "$SRC_DIR/$RUBY_ARCHIVE" -d "$SRC_DIR" ;;
+		*)
+			error "Unknown archive format: $RUBY_ARCHIVE"
+			return 1
+	esac
+}
+
+#
+# Apply any additional patches
+#
+function apply_patches()
+{
+	for path in ${PATCHES[*]}; do
+		log "Applying patch $path ..."
+		patch -p1 < $path
+	done
+}
+
+#
+# Place holder function for configuring Ruby.
+#
+function configure_ruby() { return; }
+
+#
+# Place holder function for compiling Ruby.
+#
+function compile_ruby() { return; }
+
+#
+# Place holder function for installing Ruby.
+#
+function install_ruby() { return; }
+
+#
+# Place holder function for post-install tasks.
+#
+function post_install() { return; }
 
 #
 # Prints Rubies supported by ruby-install.

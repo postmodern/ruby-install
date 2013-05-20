@@ -22,7 +22,6 @@ fi
 
 RUBY_VERSION=$(fetch versions "$RUBY_VERSION" "$RUBY_VERSION")
 
-source "$SHARE_DIR/functions.sh"
 source "$RUBY_DIR/functions.sh"
 
 auto_detect    || fail "Auto-detection of software failed!"
