@@ -124,11 +124,6 @@ USAGE
 #
 function parse_options()
 {
-	if [[ $# -lt 1 ]]; then
-		usage
-		return 1
-	fi
-
 	local argv=()
 
 	while [[ $# -gt 0 ]]; do
