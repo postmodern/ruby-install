@@ -1,5 +1,13 @@
 . ./test/helper.sh
 
+setUp()
+{
+	unset RUBY
+	unset RUBY_VERSION
+	unset SRC_DIR
+	unset INSTALL_DIR
+}
+
 test_parse_options_with_no_arguments()
 {
 	parse_options >/dev/null 2>&1
