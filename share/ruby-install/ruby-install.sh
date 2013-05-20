@@ -14,9 +14,8 @@ else
 fi
 
 RUBIES=(ruby jruby rubinius)
-
-declare -a PATCHES
-declare -a CONFIGURE_OPTS
+PATCHES=()
+CONFIGURE_OPTS=()
 
 #
 # Prints a log message.
