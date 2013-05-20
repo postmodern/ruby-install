@@ -11,7 +11,7 @@ test_fetch()
 	local expected="1.8.7-p371"
 	local value=$(fetch versions $key)
 
-	assertEquals "did not fetch the correct value" $expected $value
+	assertEquals "did not fetch the correct value" "$expected" "$value"
 }
 
 test_fetch_with_excess_whitespace()
@@ -20,7 +20,7 @@ test_fetch_with_excess_whitespace()
 	local expected="c27526b298659a186bdb5107fcec2341"
 	local value=$(fetch md5 $key)
 
-	assertEquals "did not fetch the correct value" $expected $value
+	assertEquals "did not fetch the correct value" "$expected" "$value"
 }
 
 test_fetch_with_unknown_key()
