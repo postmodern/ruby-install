@@ -1,5 +1,4 @@
 . ./test/helper.sh
-. ./share/ruby-install/ruby-install.sh
 
 test_parse_options_with_no_arguments()
 {
