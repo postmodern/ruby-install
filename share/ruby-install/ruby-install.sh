@@ -88,7 +88,7 @@ function auto_detect()
 {
 	# Detect the md5 checksum utility
 	if   [[ $(type -t md5sum) ]]; then MD5SUM="md5sum"
-	elif [[ $(type -t md5) ]];    then MD5SUM="md5"
+	elif [[ $(type -t md5)    ]]; then MD5SUM="md5"
 	else
 		error "Unable to find the md5 checksum utility"
 		return 1
