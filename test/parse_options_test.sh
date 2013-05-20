@@ -9,7 +9,7 @@ test_parse_options_with_no_arguments()
 
 test_parse_options_with_invalid_options()
 {
-	parse_options "--foo" "ruby"
+	parse_options "--foo" "ruby" >/dev/null 2>&1
 
 	assertEquals "did not return 1" 1 $?
 }
