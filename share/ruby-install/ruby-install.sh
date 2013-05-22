@@ -287,7 +287,6 @@ Options:
 	-s, --src-dir DIR	Directory to download source-code into
 	-i, --install-dir DIR	Directory to install Ruby into
 	-p, --patch FILE	Patch to apply to the Ruby source-code
-	    --skip-update	Skip updating the Package Manager
 	-V, --version		Prints the version
 	-h, --help		Prints this message
 
