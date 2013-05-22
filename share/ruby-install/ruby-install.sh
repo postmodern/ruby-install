@@ -255,6 +255,8 @@ function load_ruby()
 	fi
 
 	RUBY_VERSION=$(fetch versions "$RUBY_VERSION" "$RUBY_VERSION")
+	RUBY_ARCHIVE="$RUBY-$RUBY_VERSION.tar.gz"
+	RUBY_SRC_DIR="$RUBY-$RUBY_VERSION"
 
 	source "$RUBY_DIR/functions.sh"
 }

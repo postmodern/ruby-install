@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-RUBY_ARCHIVE="rubinius-$RUBY_VERSION.tar.gz"
-RUBY_SRC_DIR="rubinius-$RUBY_VERSION"
 RUBY_URL="https://github.com/rubinius/rubinius/archive/release-$RUBY_VERSION.tar.gz"
 
 #
