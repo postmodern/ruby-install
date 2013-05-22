@@ -127,7 +127,7 @@ function pre_install()
 {
 	mkdir -p "$SRC_DIR"
 
-	log "Synching Package Manager"
+	log "Updating Package Manager"
 	case "$PACKAGE_MANAGER" in
 		apt)	sudo apt-get update ;;
 		yum)	sudo yum updateinfo ;;
@@ -243,6 +243,23 @@ function install_ruby() { return; }
 function post_install() { return; }
 
 #
+# Loads function.sh for the given Ruby.
+#
+function load_ruby()
+{
+	RUBY_DIR="$SHARE_DIR/$RUBY"
+
+	if [[ ! -d "$RUBY_DIR" ]]; then
+		echo "ruby-install: unsupported ruby: $RUBY" >&2
+		return 1
+	fi
+
+	RUBY_VERSION=$(fetch versions "$RUBY_VERSION" "$RUBY_VERSION")
+
+	source "$RUBY_DIR/functions.sh"
+}
+
+#
 # Prints Rubies supported by ruby-install.
 #
 function supported_rubies()
@@ -268,6 +285,7 @@ Options:
 	-s, --src-dir DIR	Directory to download source-code into
 	-i, --install-dir DIR	Directory to install Ruby into
 	-p, --patch FILE	Patch to apply to the Ruby source-code
+	    --skip-update	Skip updating the Package Manager
 	-V, --version		Prints the version
 	-h, --help		Prints this message
 

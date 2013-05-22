@@ -12,17 +12,7 @@ if [[ $# -eq 0 ]]; then
 fi
 
 parse_options $* || exit $?
-
-RUBY_DIR="$SHARE_DIR/$RUBY"
-
-if [[ ! -d "$RUBY_DIR" ]]; then
-	echo "ruby-install: unsupported ruby: $RUBY" >&2
-	exit -1
-fi
-
-RUBY_VERSION=$(fetch versions "$RUBY_VERSION" "$RUBY_VERSION")
-
-source "$RUBY_DIR/functions.sh"
+load_ruby        || exit $?
 
 log "Installing $RUBY $RUBY_VERSION into $INSTALL_DIR ..."
 
