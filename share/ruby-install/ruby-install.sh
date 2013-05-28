@@ -149,7 +149,7 @@ function load_ruby()
 {
 	RUBY_DIR="$SHARE_DIR/$RUBY"
 
-	if [[ "${RUBIES[@]}" == *$RUBY* ]]; then
+	if [[ ! -d "$RUBY_DIR" ]]; then
 		echo "ruby-install: unsupported ruby: $RUBY" >&2
 		return 1
 	fi
