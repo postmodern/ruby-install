@@ -4,6 +4,12 @@
 
 `ruby-install` [RUBY [VERSION]] [-- CONFIGURE_OPTS...]
 
+## DESCRIPTION
+
+Installs Ruby, JRuby or Rubinius.
+
+https://github.com/postmodern/ruby-install#readme
+
 ## ARGUMENTS
 
 *RUBY*
@@ -31,12 +37,6 @@
 
 `-h`, `--help`
 	Prints a synopsis of ruby-install usage.
-
-## DESCRIPTION
-
-Installs Ruby, JRuby or Rubinius.
-
-https://github.com/postmodern/ruby-install#readme
 
 ## EXAMPLES
 
