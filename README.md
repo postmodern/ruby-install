@@ -51,6 +51,22 @@ Install a Ruby with specific configuration:
 
     $ ruby-install ruby 2.0.0 -- --enable-shared --enable-dtrace CFLAGS="-O3"
 
+## Install
+
+    wget -O ruby-install-0.1.0.tar.gz https://github.com/postmodern/ruby-install/archive/v0.1.0.tar.gz
+    tar -xzvf ruby-install-0.1.0.tar.gz
+    cd ruby-install-0.1.0/
+    make install
+
+### PGP
+
+All releases are [PGP] signed for security. Instructions on how to import my
+PGP key can be found on my [blog][1]. To verify that a release was not tampered 
+with:
+
+    wget https://raw.github.com/postmodern/ruby-install/master/pkg/ruby-install-0.1.0.tar.gz.asc
+    gpg --verify ruby-install-0.1.0.tar.gz.asc ruby-install-0.1.0.tar.gz
+
 ## Alternatives
 
 * [RVM]
@@ -71,3 +87,5 @@ Install a Ruby with specific configuration:
 
 [RVM]: https://rvm.io/
 [ruby-build]: https://github.com/sstephenson/ruby-build#readme
+
+[1]: http://postmodern.github.com/contact.html#pgp
