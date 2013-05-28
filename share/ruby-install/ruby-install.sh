@@ -60,10 +60,7 @@ function fail()
 function fetch()
 {
 	local pair=$(grep -E "^$2: " "$SHARE_DIR/$1.txt")
-	local value=${pair#$2: }
-
-	value=${value%%*( )}
-	value=${value##*( )}
+	local value=${pair##$2:*( )}
 
 	echo "$value"
 }
