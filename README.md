@@ -4,11 +4,12 @@ Installs [Ruby], [JRuby] or [Rubinius].
 
 ## Features
 
-* Allows installing arbitrary versions.
-* Allows installing into arbitrary directories.
-* Allows apply arbitrary patches.
-* Allows specifying arbitrary `./configure` options.
-* Automatically installs dependencies via the package manager.
+* Supports installing arbitrary versions.
+* Supports installing into `/opt/rubies/` for root and `~/.rubies/` for users
+  by default.
+* Supports installing into arbitrary directories.
+* Supports applying arbitrary patches.
+* Supports specifying arbitrary `./configure` options.
 * Supports downloading archives using `wget` or `curl`.
 * Supports verifying downloaded archives using `md5sum` or `md5`.
 * Supports installing build dependencies via the package manager:
