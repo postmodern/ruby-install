@@ -8,11 +8,11 @@ RUBY_INSTALL_VERSION="0.1.0"
 # Set SRC_DIR and INSTALL_DIR based on the priviledges of the user.
 #
 if [[ $UID -eq 0 ]]; then
-	[[ -n "$SRC_DIR"     ]] || SRC_DIR="/usr/local/src"
-	[[ -n "$INSTALL_DIR" ]] || INSTALL_DIR="/usr/local"
+	SRC_DIR="/usr/local/src}"
+	INSTALL_DIR="/usr/local"
 else
-	[[ -n "$SRC_DIR"     ]] || SRC_DIR="$HOME/src"
-	[[ -n "$INSTALL_DIR" ]] || INSTALL_DIR="$HOME/.local"
+	SRC_DIR="$HOME/src"
+	INSTALL_DIR="$HOME/.local"
 fi
 
 RUBIES=(ruby jruby rubinius)
