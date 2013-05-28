@@ -2,6 +2,7 @@
 
 * Fixed multiple bugs where code was still using the old `$PACKAGE_MANAGER`
   variable instead of checking for specific package managers.
+* Added `pacman` dependencies for building Rubinius on Arch Linux.
 
 ### 0.1.0 / 2013-05-28
 
