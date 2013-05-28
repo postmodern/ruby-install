@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-RUBY_URL="http://jruby.org.s3.amazonaws.com/downloads/$RUBY_VERSION/$RUBY_ARCHIVE"
+RUBY_ARCHIVE="jruby-bin-$RUBY_VERSION.tar.gz"
+RUBY_URL="http://jruby.org.s3.amazonaws.com/downloads/$RUBY_VERSION/$JRUBY_ARCHIVE"
 
 #
 # Install JRuby into $INSTALL_DIR.
