@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+RUBY_ARCHIVE="ruby-$RUBY_VERSION.tar.bz2"
 RUBY_URL="http://ftp.ruby-lang.org/pub/ruby/${RUBY_VERSION:0:3}/$RUBY_ARCHIVE"
 
 #
