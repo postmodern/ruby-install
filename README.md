@@ -25,6 +25,9 @@ Installs [Ruby], [JRuby] or [Rubinius].
 ## Requirements
 
 * [bash]
+* [wget] or [curl]
+* `md5sum` or `md5`
+* `tar`
 
 ## Synopsis
 
@@ -63,6 +66,8 @@ Install a Ruby with specific configuration:
 [brew]: http://mxcl.github.com/homebrew/
 
 [bash]: http://www.gnu.org/software/bash/
+[wget]: http://www.gnu.org/software/wget/
+[curl]: http://curl.haxx.se/
 
 [RVM]: https://rvm.io/
 [ruby-build]: https://github.com/sstephenson/ruby-build#readme
