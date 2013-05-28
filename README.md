@@ -68,6 +68,12 @@ with:
     wget https://raw.github.com/postmodern/ruby-install/master/pkg/ruby-install-0.1.0.tar.gz.asc
     gpg --verify ruby-install-0.1.0.tar.gz.asc ruby-install-0.1.0.tar.gz
 
+### Homebrew
+
+chruby can also be installed with [homebrew]:
+
+    brew install https://raw.github.com/postmodern/ruby-install/master/homebrew/ruby-install.rb
+
 ## Alternatives
 
 * [RVM]
@@ -99,3 +105,5 @@ of [rbenv]
 
 [PGP]: http://en.wikipedia.org/wiki/Pretty_Good_Privacy
 [1]: http://postmodern.github.com/contact.html#pgp
+
+[homebrew]: http://mxcl.github.com/homebrew/
