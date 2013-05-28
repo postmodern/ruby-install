@@ -4,17 +4,6 @@ shopt -s extglob
 
 RUBY_INSTALL_VERSION="0.1.0"
 
-#
-# Set SRC_DIR and INSTALL_DIR based on the priviledges of the user.
-#
-if [[ $UID -eq 0 ]]; then
-	SRC_DIR="/opt/rubies"
-	INSTALL_DIR="/usr/local"
-else
-	SRC_DIR="$HOME/src"
-	INSTALL_DIR="$HOME/.local"
-fi
-
 RUBIES=(ruby jruby rubinius)
 PATCHES=()
 CONFIGURE_OPTS=()
@@ -168,6 +157,14 @@ function load_ruby()
 	if [[ ! -d "$RUBY_DIR" ]]; then
 		echo "ruby-install: unsupported ruby: $RUBY" >&2
 		return 1
+	fi
+
+	if [[ $UID -eq 0 ]]; then
+		SRC_DIR="${SRC_DIR:-/usr/local/src}"
+		INSTALL_DIR="${INSTALL_DIR:-/opt/rubies/$RUBY-$RUBY_VERSION}"
+	else
+		SRC_DIR="${SRC_DIR:-$HOME/src}"
+		INSTALL_DIR="${INSTALL_DIR:-$HOME/.rubies/$RUBY-$RUBY_VERSION}"
 	fi
 
 	RUBY_VERSION=$(fetch versions "$RUBY_VERSION" "$RUBY_VERSION")
