@@ -97,4 +97,5 @@ of [rbenv]
 [rbenv]: https://github.com/sstephenson/rbenv#readme
 [ruby-build]: https://github.com/sstephenson/ruby-build#readme
 
+[PGP]: http://en.wikipedia.org/wiki/Pretty_Good_Privacy
 [1]: http://postmodern.github.com/contact.html#pgp
