@@ -38,7 +38,7 @@ Install a specific version of Ruby:
 
 Install a Ruby into a specific directory:
 
-    $ ruby-install -i /opt/rubies/ruby-1.9.3-p395 ruby 1.9.3-p395
+    $ ruby-install -i /usr/local/ ruby 1.9.3-p395
 
 Install a Ruby with a specific patch:
 
