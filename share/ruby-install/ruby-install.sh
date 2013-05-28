@@ -59,7 +59,7 @@ function fail()
 #
 function fetch()
 {
-	local pair=$(grep -E "^$2: " "$RUBY_DIR/$1.txt")
+	local pair=$(grep -E "^$2: " "$SHARE_DIR/$1.txt")
 	local value=${pair#$2: }
 
 	value=${value%%*( )}
@@ -167,7 +167,7 @@ function load_ruby()
 		INSTALL_DIR="${INSTALL_DIR:-$HOME/.rubies/$RUBY-$RUBY_VERSION}"
 	fi
 
-	RUBY_VERSION=$(fetch versions "$RUBY_VERSION" "$RUBY_VERSION")
+	RUBY_VERSION=$(fetch "$RUBY/versions" "$RUBY_VERSION" "$RUBY_VERSION")
 	RUBY_ARCHIVE="$RUBY-$RUBY_VERSION.tar.gz"
 	RUBY_SRC_DIR="$RUBY-$RUBY_VERSION"
 

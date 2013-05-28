@@ -14,7 +14,7 @@ function pre_install()
 #
 function install_deps()
 {
-	local packages=$(fetch dependencies "$PACKAGE_MANAGER")
+	local packages=$(fetch "$RUBY/dependencies" "$PACKAGE_MANAGER")
 
 	if [[ -n "$packages" ]]; then
 		log "Installing dependencies for $RUBY $RUBY_VERSION ..."
@@ -43,7 +43,7 @@ function download_ruby()
 #
 function verify_ruby()
 {
-	local md5=$(fetch md5 "$RUBY_ARCHIVE")
+	local md5=$(fetch "$RUBY/md5" "$RUBY_ARCHIVE")
 
 	if [[ -n "$md5" ]]; then
 		log "Verifying $RUBY_ARCHIVE ..."
