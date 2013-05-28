@@ -26,15 +26,6 @@
 `-p`, `--patch` *FILE*
 	Specifies any additional patches to apply.
 
-`--skip-sync`
-	Skips syncing of package manager updates.
-
-`--skip-dependencies`
-	Skips installation of Ruby dependencies (implies `--skip-sync`).
-
-`--skip-verify`
-	Skips verification of downloaded Ruby MD5 sums.
-
 `-v`, `--version`
 	Prints the current ruby-install version.
 
@@ -65,16 +56,11 @@ Install a specific version of Ruby:
 *~/src*
 	Default non-root user source directory.
 
-*/usr/local*
+*/opt/rubies/$ruby-$version*
 	Default root user installation directory.
 
-*~/.local*
+*~/.rubies/$ruby-$version*
 	Default non-root user installation directory.
-
-## ENVIRONMENT
-
-*RUBY_INSTALL_VERSION*
-	Curennt version of ruby-install.
 
 ## AUTHOR
 
