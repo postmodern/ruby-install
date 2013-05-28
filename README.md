@@ -36,6 +36,10 @@ Install the current stable version of Ruby:
 
     $ ruby-install ruby
 
+Install a latest version of Ruby:
+
+    $ ruby-install ruby 1.9
+
 Install a specific version of Ruby:
 
     $ ruby-install ruby 1.9.3-p395
