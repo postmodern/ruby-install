@@ -14,7 +14,15 @@ function pre_install()
 #
 function install_deps()
 {
-	local packages="$(fetch "$RUBY/dependencies" "$PACKAGE_MANAGER")"
+	local package_manager
+
+	if   [[ $(type -t apt-get) ]]; then package_manager="apt"
+	elif [[ $(type -t yum)     ]]; then package_manager="yum"
+	elif [[ $(type -t brew)    ]]; then package_manager="brew"
+	elif [[ $(type -t pacman)  ]]; then package_manager="pacman"
+	fi
+
+	local packages="$(fetch "$RUBY/dependencies" "$package_manager")"
 
 	if [[ -n "$packages" ]]; then
 		log "Installing dependencies for $RUBY $RUBY_VERSION ..."
