@@ -83,13 +83,10 @@ function fetch()
 
 function update_package_manager()
 {
-	if   [[ $(type -t apt-get) ]]; then sudo apt-get install -y $*
-	elif [[ $(type -t yum)     ]]; then sudo yum install -y $*
-	elif [[ $(type -t brew)    ]]; then brew install $*
-	elif [[ $(type -t pacman)  ]]; then
-		local missing_pkgs=$(pacman -T $*)
-
-		[[ -n "$missing_pkgs" ]] && sudo pacman -S $missing_pkgs
+	if   [[ $(type -t apt-get) ]]; then sudo apt-get update
+	elif [[ $(type -t yum)     ]]; then sudo yum updateinfo
+	elif [[ $(type -t brew)    ]]; then brew update
+	elif [[ $(type -t pacman)  ]]; then sudo pacman -Sy
 	else
 		warn "Could not determine Package Manager. Proceeding anyways."
 	fi
@@ -97,10 +94,13 @@ function update_package_manager()
 
 function install_packages()
 {
-	if   [[ $(type -t apt-get) ]]; then sudo apt-get update
-	elif [[ $(type -t yum)     ]]; then sudo yum updateinfo
-	elif [[ $(type -t brew)    ]]; then brew update
-	elif [[ $(type -t pacman)  ]]; then sudo pacman -Sy
+	if   [[ $(type -t apt-get) ]]; then sudo apt-get install -y $*
+	elif [[ $(type -t yum)     ]]; then sudo yum install -y $*
+	elif [[ $(type -t brew)    ]]; then brew install $*
+	elif [[ $(type -t pacman)  ]]; then
+		local missing_pkgs=$(pacman -T $*)
+
+		[[ -n "$missing_pkgs" ]] && sudo pacman -S $missing_pkgs
 	else
 		warn "Could not determine Package Manager. Proceeding anyways."
 	fi
