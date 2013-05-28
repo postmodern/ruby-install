@@ -16,7 +16,6 @@ load_ruby        || exit $?
 
 log "Installing $RUBY $RUBY_VERSION into $INSTALL_DIR ..."
 
-auto_detect    || fail "Auto-detection of software failed!"
 pre_install    || fail "Pre-install tasks failed!"
 install_deps   || fail "Installing dependencies failed!"
 download_ruby  || fail "Download of $RUBY_URL failed!"

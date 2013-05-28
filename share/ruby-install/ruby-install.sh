@@ -81,43 +81,81 @@ function fetch()
 	fi
 }
 
-#
-# Auto-detect system details.
-#
-function auto_detect()
+function update_package_manager()
 {
+	if   [[ $(type -t apt-get) ]]; then sudo apt-get install -y $*
+	elif [[ $(type -t yum)     ]]; then sudo yum install -y $*
+	elif [[ $(type -t brew)    ]]; then brew install $*
+	elif [[ $(type -t pacman)  ]]; then
+		local missing_pkgs=$(pacman -T $*)
+
+		[[ -n "$missing_pkgs" ]] && sudo pacman -S $missing_pkgs
+	else
+		warn "Could not determine Package Manager. Proceeding anyways."
+	fi
+}
+
+function install_packages()
+{
+	if   [[ $(type -t apt-get) ]]; then sudo apt-get update
+	elif [[ $(type -t yum)     ]]; then sudo yum updateinfo
+	elif [[ $(type -t brew)    ]]; then brew update
+	elif [[ $(type -t pacman)  ]]; then sudo pacman -Sy
+	else
+		warn "Could not determine Package Manager. Proceeding anyways."
+	fi
+}
+
+#
+# Downloads a URL.
+#
+function download()
+{
+	if   [[ $(type -t wget) ]]; then wget -c -O "$2" "$1"
+	elif [[ $(type -t curl) ]]; then curl -C -o "$2" "$1"
+	else
+		error "Could not find wget or curl"
+		return 1
+	fi
+}
+
+#
+# Verifies a file against a MD5 checksum.
+#
+function verify()
+{
+	local md5sum
+
 	# Detect the md5 checksum utility
-	if   [[ $(type -t md5sum) ]]; then MD5SUM="md5sum"
-	elif [[ $(type -t md5)    ]]; then MD5SUM="md5"
+	if   [[ $(type -t md5sum) ]]; then md5sum="md5sum"
+	elif [[ $(type -t md5)    ]]; then md5sum="md5"
 	else
 		error "Unable to find the md5 checksum utility"
 		return 1
 	fi
 
-	# Detect wget or curl
-	if [[ $(type -t wget) ]]; then
-		function download()
-		{
-			wget -c -O "$2" "$1"
-		}
-	elif [[ $(type -t curl) ]]; then
-		function download()
-		{
-			curl -C -o "$2" "$1"
-		}
+	if [[ $($md5sum "$1") == *$2* ]]; then
+		log "Verified $1"
 	else
-		error "Could not find wget or curl"
+		error "$1 is invalid!"
 		return 1
 	fi
+}
 
-	# Detect the Package Manager
-	if   [[ $(type -t apt-get) == "file" ]]; then PACKAGE_MANAGER="apt"
-	elif [[ $(type -t yum)     == "file" ]]; then PACKAGE_MANAGER="yum"
-	elif [[ $(type -t brew)    == "file" ]]; then PACKAGE_MANAGER="brew"
-	elif [[ $(type -t pacman)  == "file" ]]; then PACKAGE_MANAGER="pacman"
-	else
-		warn "Could not determine Package Manager. Proceeding anyways."
-	fi
+#
+# Extracts an archive.
+#
+function extract()
+{
+	case "$1" in
+		*.tar.gz)	tar -xzf "$1" -C "$2" ;;
+		*.tar.bz2)	tar -xjf "$1" -C "$2" ;;
+		*.zip)		unzip "$1" -d "$2" ;;
+		*)
+			error "Unknown archive format: $1"
+			return 1
+			;;
+	esac
 }
 
 #
@@ -128,12 +166,7 @@ function pre_install()
 	mkdir -p "$SRC_DIR"
 
 	log "Updating Package Manager"
-	case "$PACKAGE_MANAGER" in
-		apt)	sudo apt-get update ;;
-		yum)	sudo yum updateinfo ;;
-		brew)	brew update ;;
-		pacman) sudo pacman -Sy ;;
-	esac
+	update_package_manager
 }
 
 #
@@ -145,17 +178,7 @@ function install_deps()
 
 	if [[ -n "$packages" ]]; then
 		log "Installing dependencies for $RUBY $RUBY_VERSION ..."
-
-		case "$PACKAGE_MANAGER" in
-			apt)    sudo apt-get install -y $packages ;;
-			yum)    sudo yum install -y $packages ;;
-			brew)   brew install $packages || true ;;
-			pacman)
-				packages=$(pacman -T $packages)
-
-				[[ -n "$packages" ]] && sudo pacman -S $packages
-				;;
-		esac
+		install_packages $packages
 	fi
 
 	install_optional_deps
@@ -184,12 +207,7 @@ function verify_ruby()
 
 	if [[ -n "$md5" ]]; then
 		log "Verifying $RUBY_ARCHIVE ..."
-		if [[ $($MD5SUM "$SRC_DIR/$RUBY_ARCHIVE") == *$md5* ]]; then
-			log "Verified $RUBY_ARCHIVE"
-		else
-			error "$RUBY_ARCHIVE is invalid!"
-			return 1
-		fi
+		verify "$SRC_DIR/$RUBY_ARCHIVE" "$md5"
 	else
 		warn "No checksum for $RUBY_ARCHIVE. Proceeding anyways"
 	fi
@@ -200,15 +218,8 @@ function verify_ruby()
 #
 function extract_ruby()
 {
-	log "Installing $RUBY $RUBY_VERSION ..."
-	case "$RUBY_ARCHIVE" in
-		*.tar.gz)  tar -xzf "$SRC_DIR/$RUBY_ARCHIVE" -C "$SRC_DIR" ;;
-		*.tar.bz2) tar -xjf "$SRC_DIR/$RUBY_ARCHIVE" -C "$SRC_DIR" ;;
-		*.zip)     unzip "$SRC_DIR/$RUBY_ARCHIVE" -d "$SRC_DIR" ;;
-		*)
-			error "Unknown archive format: $RUBY_ARCHIVE"
-			return 1
-	esac
+	log "Extracting $RUBY_ARCHIVE ..."
+	extract "$SRC_DIR/$RUBY_ARCHIVE" "$SRC_DIR"
 }
 
 #
