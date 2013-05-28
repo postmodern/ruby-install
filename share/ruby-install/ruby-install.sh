@@ -273,12 +273,12 @@ function parse_options()
 			;;
 		0)
 			echo "ruby-install: too few arguments" >&2
-			usage 2>&1
+			usage 1>&2
 			return 1
 			;;
 		*)
 			echo "ruby-install: too many arguments: ${argv[*]}" >&2
-			usage 2>&1
+			usage 1>&2
 			return 1
 			;;
 	esac
