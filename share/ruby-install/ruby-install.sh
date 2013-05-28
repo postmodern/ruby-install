@@ -65,9 +65,7 @@ function fetch()
 	value=${value%%*( )}
 	value=${value##*( )}
 
-	if [[ -n "$value" ]]; then echo "$value"
-	else                       echo "$3"
-	fi
+	echo "$value"
 }
 
 function update_package_manager()
@@ -167,7 +165,9 @@ function load_ruby()
 		INSTALL_DIR="${INSTALL_DIR:-$HOME/.rubies/$RUBY-$RUBY_VERSION}"
 	fi
 
-	RUBY_VERSION=$(fetch "$RUBY/versions" "$RUBY_VERSION" "$RUBY_VERSION")
+	local expanded_version="$(fetch "$RUBY/versions" "$RUBY_VERSION")"
+
+	RUBY_VERSION="${expanded_version:-$RUBY_VERSION}"
 	RUBY_ARCHIVE="$RUBY-$RUBY_VERSION.tar.gz"
 	RUBY_SRC_DIR="$RUBY-$RUBY_VERSION"
 

@@ -32,14 +32,4 @@ test_fetch_with_unknown_key()
 	assertEquals "returned the wrong value" "$expected" "$value"
 }
 
-test_fetch_with_default_value()
-{
-	local key="foo"
-	local default="bar"
-	local expected="$default"
-	local value=$(fetch "$RUBY/versions" "$key" "$default")
-
-	assertEquals "did not return the default value" "$expected" "$value"
-}
-
 SHUNIT_PARENT=$0 . $SHUNIT2
