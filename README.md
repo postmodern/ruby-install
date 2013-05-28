@@ -72,6 +72,13 @@ with:
 * [RVM]
 * [ruby-build]
 
+## Endorsements
+
+> I like the approach you're taking. Curious to see how it plays out.
+
+-- [Sam Stephenson](https://twitter.com/sstephenson/status/334461494668443649)
+of [rbenv]
+
 [Ruby]: http://www.ruby-lang.org/
 [JRuby]: http://jruby.org/
 [Rubinius]: http://rubini.us/
@@ -86,6 +93,7 @@ with:
 [curl]: http://curl.haxx.se/
 
 [RVM]: https://rvm.io/
+[rbenv]: https://github.com/sstephenson/rbenv#readme
 [ruby-build]: https://github.com/sstephenson/ruby-build#readme
 
 [1]: http://postmodern.github.com/contact.html#pgp
