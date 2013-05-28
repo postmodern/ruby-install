@@ -154,6 +154,12 @@ function load_ruby()
 		return 1
 	fi
 
+	local expanded_version="$(fetch "$RUBY/versions" "$RUBY_VERSION")"
+
+	RUBY_VERSION="${expanded_version:-$RUBY_VERSION}"
+	RUBY_ARCHIVE="$RUBY-$RUBY_VERSION.tar.gz"
+	RUBY_SRC_DIR="$RUBY-$RUBY_VERSION"
+
 	if [[ $UID -eq 0 ]]; then
 		SRC_DIR="${SRC_DIR:-/usr/local/src}"
 		INSTALL_DIR="${INSTALL_DIR:-/opt/rubies/$RUBY-$RUBY_VERSION}"
@@ -161,12 +167,6 @@ function load_ruby()
 		SRC_DIR="${SRC_DIR:-$HOME/src}"
 		INSTALL_DIR="${INSTALL_DIR:-$HOME/.rubies/$RUBY-$RUBY_VERSION}"
 	fi
-
-	local expanded_version="$(fetch "$RUBY/versions" "$RUBY_VERSION")"
-
-	RUBY_VERSION="${expanded_version:-$RUBY_VERSION}"
-	RUBY_ARCHIVE="$RUBY-$RUBY_VERSION.tar.gz"
-	RUBY_SRC_DIR="$RUBY-$RUBY_VERSION"
 
 	source "$SHARE_DIR/functions.sh"
 	source "$RUBY_DIR/functions.sh"
