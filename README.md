@@ -1,6 +1,6 @@
 # ruby-install
 
-Installs Ruby, JRuby or Rubinius.
+Installs [Ruby], [JRuby] or [Rubinius].
 
 ## Features
 
@@ -9,9 +9,9 @@ Installs Ruby, JRuby or Rubinius.
 * Allows apply arbitrary patches.
 * Allows specifying arbitrary `./configure` options.
 * Automatically installs dependencies via the package manager.
-* Supports `md5sum` and `md5`.
-* Supports `wget` and `curl`.
-* Supports multiple package managers:
+* Supports downloading archives using `wget` or `curl`.
+* Supports verifying downloaded archives using `md5sum` or `md5`.
+* Supports installing build dependencies via the package manager:
   * [apt]
   * [yum]
   * [pacman]
@@ -52,6 +52,10 @@ Install a Ruby with specific configuration:
 
 * [RVM]
 * [ruby-build]
+
+[Ruby]: http://www.ruby-lang.org/
+[JRuby]: http://jruby.org/
+[Rubinius]: http://rubini.us/
 
 [apt]: http://wiki.debian.org/Apt
 [yum]: http://yum.baseurl.org/
