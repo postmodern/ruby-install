@@ -3,13 +3,17 @@
 RUBY_ARCHIVE="jruby-bin-$RUBY_VERSION.tar.gz"
 RUBY_URL="http://jruby.org.s3.amazonaws.com/downloads/$RUBY_VERSION/$RUBY_ARCHIVE"
 
+function extract_ruby() { return; }
+
 #
 # Install JRuby into $INSTALL_DIR.
 #
 function install_ruby()
 {
 	log "Installing jruby $RUBY_VERSION ..."
-	cp -r "$SRC_DIR/$RUBY_SRC_DIR/*" "$INSTALL_DIR"
+	mkdir "$INSTALL_DIR"
+	tar -xzf "$SRC_DIR/$RUBY_ARCHIVE" -C "$INSTALL_DIR" \
+		                          --strip-components=1
 }
 
 #
