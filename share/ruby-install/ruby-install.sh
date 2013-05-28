@@ -8,7 +8,7 @@ RUBY_INSTALL_VERSION="0.1.0"
 # Set SRC_DIR and INSTALL_DIR based on the priviledges of the user.
 #
 if [[ $UID -eq 0 ]]; then
-	SRC_DIR="/usr/local/src"
+	SRC_DIR="/opt/rubies"
 	INSTALL_DIR="/usr/local"
 else
 	SRC_DIR="$HOME/src"
@@ -196,7 +196,7 @@ function supported_rubies()
 #
 function usage()
 {
-	cat <<USAGE >&2
+	cat <<USAGE
 usage: ruby-install [OPTIONS] [RUBY [VERSION]] [-- CONFIGURE_OPTS ...]
 
 Options:
@@ -273,12 +273,12 @@ function parse_options()
 			;;
 		0)
 			echo "ruby-install: too few arguments" >&2
-			usage
+			usage 2>&1
 			return 1
 			;;
 		*)
 			echo "ruby-install: too many arguments: ${argv[*]}" >&2
-			usage
+			usage 2>&1
 			return 1
 			;;
 	esac
