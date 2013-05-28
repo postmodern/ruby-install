@@ -36,7 +36,7 @@
 
 Installs Ruby, JRuby or Rubinius.
 
-[https://github.com/postmodern/ruby-install#readme](https://github.com/postmodern/ruby-install#readme)
+https://github.com/postmodern/ruby-install#readme
 
 ## EXAMPLES
 
