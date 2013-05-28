@@ -59,8 +59,8 @@ function fail()
 #
 function fetch()
 {
-	local pair=$(grep -E "^$2: " "$SHARE_DIR/$1.txt")
-	local value=${pair##$2:*( )}
+	local pair="$(grep -E "^$2: " "$SHARE_DIR/$1.txt")"
+	local value="${pair##$2:*( )}"
 
 	echo "$value"
 }
@@ -118,7 +118,7 @@ function verify()
 		return 1
 	fi
 
-	if [[ $($md5sum "$1") == *$2* ]]; then
+	if [[ "$($md5sum "$1")" == *$2* ]]; then
 		log "Verified $1"
 	else
 		error "$1 is invalid!"
@@ -229,7 +229,7 @@ function parse_options()
 				shift 2
 				;;
 			-p|--patch)
-				PATCHES+=($2)
+				PATCHES+=("$2")
 				shift 2
 				;;
 			-V|--version)
