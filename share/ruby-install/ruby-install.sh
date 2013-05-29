@@ -96,7 +96,7 @@ function install_packages()
 function download()
 {
 	if   [[ $(type -t wget) ]]; then wget -c -O "$2" "$1"
-	elif [[ $(type -t curl) ]]; then curl -C -o "$2" "$1"
+	elif [[ $(type -t curl) ]]; then curl -C - -o "$2" "$1"
 	else
 		error "Could not find wget or curl"
 		return 1
