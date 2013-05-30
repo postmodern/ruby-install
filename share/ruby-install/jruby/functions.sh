@@ -5,6 +5,10 @@ RUBY_URL="http://jruby.org.s3.amazonaws.com/downloads/$RUBY_VERSION/$RUBY_ARCHIV
 
 function extract_ruby() { return; }
 
+function configure_ruby() { return; }
+
+function compile_ruby() { return; }
+
 #
 # Install JRuby into $INSTALL_DIR.
 #
