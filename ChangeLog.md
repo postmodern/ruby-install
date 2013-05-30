@@ -1,3 +1,7 @@
+### 0.1.2 / 2013-05-30
+
+* Fixed the `curl` command within the `download` function.
+
 ### 0.1.1 / 2013-05-28
 
 * Fixed multiple bugs where code was still using the old `$PACKAGE_MANAGER`
