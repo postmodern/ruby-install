@@ -27,7 +27,7 @@ test_verify_using_md5sum()
 
 test_verify_using_md5()
 {
-	if [[ ! $(type -t md5) ]] || return
+	[[ $(type -t md5) ]] || return
 
 	MD5SUM="md5" verify "$FILE" "$MD5" >/dev/null
 
