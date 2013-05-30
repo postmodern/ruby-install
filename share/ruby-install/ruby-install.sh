@@ -2,7 +2,7 @@
 
 shopt -s extglob
 
-RUBY_INSTALL_VERSION="0.1.1"
+RUBY_INSTALL_VERSION="0.1.2"
 
 RUBIES=(ruby jruby rubinius)
 PATCHES=()
