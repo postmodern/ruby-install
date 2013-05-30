@@ -1,11 +1,16 @@
 ### 0.1.2 / 2013-05-30
 
+#### functions.sh
+
 * Fixed the `curl` command within the `download` function (Greg Karékinian).
 
 ### 0.1.1 / 2013-05-28
 
 * Fixed multiple bugs where code was still using the old `$PACKAGE_MANAGER`
   variable instead of checking for specific package managers.
+
+#### rubinius/functions.sh
+
 * Added `pacman` dependencies for building Rubinius on Arch Linux.
 
 ### 0.1.0 / 2013-05-28
