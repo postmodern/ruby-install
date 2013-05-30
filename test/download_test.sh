@@ -3,6 +3,13 @@
 URL="https://raw.github.com/postmodern/ruby-install/master/README.md"
 OUTPUT="./test/download.txt"
 
+test_download()
+{
+	download "$URL" "$OUTPUT" 2>/dev/null
+
+	assertTrue "did not download the file" '[[ -f "$OUTPUT" ]]'
+}
+
 test_download_using_wget()
 {
 	[[ ! $(type -t wget) ]] && return
