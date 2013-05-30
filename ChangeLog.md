@@ -1,6 +1,6 @@
 ### 0.1.2 / 2013-05-30
 
-* Fixed the `curl` command within the `download` function.
+* Fixed the `curl` command within the `download` function (Greg Karékinian).
 
 ### 0.1.1 / 2013-05-28
 
