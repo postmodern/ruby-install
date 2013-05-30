@@ -13,7 +13,7 @@ CONFIGURE_OPTS=()
 #
 if   [[ $(type -t apt-get) ]]; then PACKAGE_MANAGER="apt"
 elif [[ $(type -t yum)     ]]; then PACKAGE_MANAGER="yum"
-elif [[ $(type -t brew)    ]]; then PACKAGE_MANAGER="bew"
+elif [[ $(type -t brew)    ]]; then PACKAGE_MANAGER="brew"
 elif [[ $(type -t pacman)  ]]; then PACKAGE_MANAGER="pacman"
 fi
 
