@@ -10,7 +10,7 @@ function configure_ruby()
 {
 	log "Configuring ruby $RUBY_VERSION ..."
 
-	if [[ $(type -t brew) ]]; then
+	if [[ "$PACKAGE_MANAGER" == "brew" ]]; then
 		./configure --prefix="$INSTALL_DIR" \
 			    --with-openssl-dir=`brew --prefix openssl` \
 			    --with-readline-dir=`brew --prefix readline` \
