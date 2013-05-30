@@ -12,11 +12,7 @@ function configure_ruby()
 
 	if [[ "$PACKAGE_MANAGER" == "brew" ]]; then
 		./configure --prefix="$INSTALL_DIR" \
-			    --with-openssl-dir=`brew --prefix openssl` \
-			    --with-readline-dir=`brew --prefix readline` \
-			    --with-yaml-dir=`brew --prefix libyaml` \
-			    --with-gdbm-dir=`brew --prefix gdbm` \
-			    --with-libffi-dir=`brew --prefix libffi` \
+			    --with-opt-dir="$(brew --prefix openssl):$(brew --prefix readline):$(brew --prefix libyaml):$(brew --prefix gdbm):$(brew --prefix libffi)" \
 			    $CONFIGURE_OPTS
 	else
 		./configure --prefix="$INSTALL_DIR" $CONFIGURE_OPTS
