@@ -9,6 +9,29 @@ PATCHES=()
 CONFIGURE_OPTS=()
 
 #
+# Auto-detection the package manager.
+#
+if   [[ $(type -t apt-get) ]]; then PACKAGE_MANAGER="apt"
+elif [[ $(type -t yum)     ]]; then PACKAGE_MANAGER="yum"
+elif [[ $(type -t brew)    ]]; then PACKAGE_MANAGER="bew"
+elif [[ $(type -t pacman)  ]]; then PACKAGE_MANAGER="pacman"
+fi
+
+#
+# Auto-detect the downloader.
+#
+if   [[ $(type -t wget) ]]; then DOWNLOADER="wget"
+elif [[ $(type -t curl) ]]; then DOWNLOADER="curl"
+fi
+
+#
+# Auto-detect the md5 utility.
+#
+if   [[ $(type -t md5sum) ]]; then MD5SUM="md5sum"
+elif [[ $(type -t md5)    ]]; then MD5SUM="md5"
+fi
+
+#
 # Prints a log message.
 #
 function log()
@@ -67,27 +90,28 @@ function fetch()
 
 function update_package_manager()
 {
-	if   [[ $(type -t apt-get) ]]; then sudo apt-get update
-	elif [[ $(type -t yum)     ]]; then sudo yum updateinfo
-	elif [[ $(type -t brew)    ]]; then brew update
-	elif [[ $(type -t pacman)  ]]; then sudo pacman -Sy
-	else
-		warn "Could not determine Package Manager. Proceeding anyways."
-	fi
+	case "$PACKAGE_MANAGER" in
+		apt)	sudo apt-get update ;;
+		yum)	sudo yum updateinfo ;;
+		brew)	brew update         ;;
+		pacman)	sudo pacman -Sy     ;;
+	esac
 }
 
 function install_packages()
 {
-	if   [[ $(type -t apt-get) ]]; then sudo apt-get install -y $*
-	elif [[ $(type -t yum)     ]]; then sudo yum install -y $*
-	elif [[ $(type -t brew)    ]]; then brew install $*
-	elif [[ $(type -t pacman)  ]]; then
-		local missing_pkgs=$(pacman -T $*)
+	case "$PACKAGE_MANAGER" in
+		apt)	sudo apt-get install -y $* ;;
+		yum)	sudo yum install -y $*     ;;
+		brew)	brew install $*            ;;
+		pacman)
+			local missing_pkgs=$(pacman -T $*)
 
-		[[ -n "$missing_pkgs" ]] && sudo pacman -S $missing_pkgs
-	else
-		warn "Could not determine Package Manager. Proceeding anyways."
-	fi
+			if [[ -n "$missing_pkgs" ]]; then
+				sudo pacman -S $missing_pkgs
+			fi
+		"")	warn "Could not determine Package Manager. Proceeding anyways."
+	esac
 }
 
 #
@@ -95,12 +119,14 @@ function install_packages()
 #
 function download()
 {
-	if   [[ $(type -t wget) ]]; then wget -c -O "$2" "$1"
-	elif [[ $(type -t curl) ]]; then curl -C - -o "$2" "$1"
-	else
-		error "Could not find wget or curl"
-		return 1
-	fi
+	case "$DOWNLOADER" in
+		wget) wget -c -O "$2" "$1"   ;;
+		curl) curl -C - -o "$2" "$1" ;;
+		"")
+			error "Could not find wget or curl"
+			return 1
+			;;
+	esac
 }
 
 #
@@ -108,17 +134,12 @@ function download()
 #
 function verify()
 {
-	local md5sum
-
-	# Detect the md5 checksum utility
-	if   [[ $(type -t md5sum) ]]; then md5sum="md5sum"
-	elif [[ $(type -t md5)    ]]; then md5sum="md5"
-	else
+	if [[ -z "$MD5SUM" ]]; then
 		error "Unable to find the md5 checksum utility"
 		return 1
 	fi
 
-	if [[ "$($md5sum "$1")" == *$2* ]]; then
+	if [[ "$($MD5SUM "$1")" == *$2* ]]; then
 		log "Verified $1"
 	else
 		error "$1 is invalid!"
