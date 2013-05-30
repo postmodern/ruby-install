@@ -14,7 +14,7 @@ function configure_ruby()
 		./configure --prefix="$INSTALL_DIR" \
 			    --with-openssl-dir=`brew --prefix openssl` \
 			    --with-readline-dir=`brew --prefix readline` \
-			    --with-yaml-dir=`brew --prefix yaml` \
+			    --with-yaml-dir=`brew --prefix libyaml` \
 			    --with-gdbm-dir=`brew --prefix gdbm` \
 			    --with-libffi-dir=`brew --prefix libffi` \
 			    $CONFIGURE_OPTS
