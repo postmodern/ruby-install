@@ -110,7 +110,8 @@ function install_packages()
 			if [[ -n "$missing_pkgs" ]]; then
 				sudo pacman -S $missing_pkgs
 			fi
-		"")	warn "Could not determine Package Manager. Proceeding anyways."
+			;;
+		"")	warn "Could not determine Package Manager. Proceeding anyways." ;;
 	esac
 }
 
