@@ -1,5 +1,8 @@
 ### 0.1.2 / 2013-05-30
 
+* Added a `setup.sh` script which installs `ruby-install`, then installs
+  Ruby, JRuby and Rubinius.
+
 #### functions.sh
 
 * Fixed the `curl` command within the `download` function (Greg Karékinian).
