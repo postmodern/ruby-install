@@ -12,7 +12,7 @@ test_download()
 
 test_download_using_wget()
 {
-	[[ ! $(type -t wget) ]] && return
+	[[ $(type -t wget) ]] || return
 
 	DOWNLOADER="wget" download "$URL" "$OUTPUT" 2>/dev/null
 
@@ -21,7 +21,7 @@ test_download_using_wget()
 
 test_download_using_curl()
 {
-	[[ ! $(type -t curl ) ]] && return
+	[[ $(type -t curl ) ]] || return
 
 	DOWNLOADER="curl" download "$URL" "$OUTPUT" 2>/dev/null
 
