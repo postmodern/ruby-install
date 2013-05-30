@@ -1,3 +1,9 @@
+### 0.1.3 / 2013-05-30
+
+* `cd` into the extracted Ruby directory at the end of the `extract_ruby`
+  function. This allows the JRuby build script to override `extract_ruby` and
+  entirely skip the extract, configure and compile steps.
+
 ### 0.1.2 / 2013-05-30
 
 * Added a `setup.sh` script which installs `ruby-install`, then installs
