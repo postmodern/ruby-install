@@ -1,5 +1,9 @@
 ### 0.1.3 / 2013-05-30
 
+* Fixed typo in auto-detection of homebrew (Jack Nagel).
+
+#### functions.sh
+
 * `cd` into the extracted Ruby directory at the end of the `extract_ruby`
   function. This allows the JRuby build script to override `extract_ruby` and
   entirely skip the extract, configure and compile steps.
