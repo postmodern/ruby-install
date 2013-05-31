@@ -2,13 +2,13 @@
 
 #### ruby/functions.sh
 
-* When using homebrew use the `--with-opt-dir` option to `./configure` listing
-  the homebrew packaes.
+* Pass the paths to homebrew packages to `./configure` using the
+  `--with-opt-dir` option.
 
 #### rubinius/functions.sh
 
-* When using homebrew use the `--with-opt-dir` option to `./configure` listing
-  the homebrew packaes.
+* Pass the paths to homebrew packages to `./configure` using the
+  `--with-opt-dir` option.
 
 ### 0.1.3 / 2013-05-30
 
