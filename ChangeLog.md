@@ -1,3 +1,13 @@
+### 0.1.4 / 2013-05-30
+
+#### ruby/functions.sh
+
+* When using homebrew use the `--with-opt-dir` option with `./configure`.
+
+#### rubinius/functions.sh
+
+* When using homebrew use the `--with-opt-dir` option with `./configure`.
+
 ### 0.1.3 / 2013-05-30
 
 * Fixed typo in auto-detection of homebrew (Jack Nagel).
