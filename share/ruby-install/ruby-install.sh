@@ -94,7 +94,6 @@ function update_package_manager()
 		apt)	sudo apt-get update ;;
 		yum)	sudo yum updateinfo ;;
 		brew)	brew update         ;;
-		pacman)	sudo pacman -Sy     ;;
 	esac
 }
 
