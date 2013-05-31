@@ -2,11 +2,13 @@
 
 #### ruby/functions.sh
 
-* When using homebrew use the `--with-opt-dir` option with `./configure`.
+* When using homebrew use the `--with-opt-dir` option to `./configure` listing
+  the homebrew packaes.
 
 #### rubinius/functions.sh
 
-* When using homebrew use the `--with-opt-dir` option with `./configure`.
+* When using homebrew use the `--with-opt-dir` option to `./configure` listing
+  the homebrew packaes.
 
 ### 0.1.3 / 2013-05-30
 
