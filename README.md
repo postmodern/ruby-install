@@ -17,6 +17,7 @@ Installs [Ruby], [JRuby] or [Rubinius].
   * [yum]
   * [pacman]
   * [brew]
+* Has tests.
 
 ## Anti-Features
 
