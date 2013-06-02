@@ -1,6 +1,6 @@
 # ruby-install
 
-Installs [Ruby], [JRuby], [Rubinius] or [MagLev].
+Installs [Ruby], [JRuby], [Rubinius] or [MagLev](https://github.com/MagLev/maglev).
 
 ## Features
 
