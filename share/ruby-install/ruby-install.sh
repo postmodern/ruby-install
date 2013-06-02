@@ -2,7 +2,7 @@
 
 shopt -s extglob
 
-RUBY_INSTALL_VERSION="0.1.4"
+RUBY_INSTALL_VERSION="0.2.0"
 
 RUBIES=(ruby jruby rubinius maglev)
 PATCHES=()
