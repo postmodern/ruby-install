@@ -4,7 +4,7 @@ shopt -s extglob
 
 RUBY_INSTALL_VERSION="0.1.4"
 
-RUBIES=(ruby jruby rubinius)
+RUBIES=(ruby jruby rubinius maglev)
 PATCHES=()
 CONFIGURE_OPTS=()
 
