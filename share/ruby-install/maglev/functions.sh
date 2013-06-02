@@ -22,10 +22,8 @@ function install_ruby()
 	gs_ver=$(grep GEMSTONE "$SRC_DIR/$RUBY_SRC_DIR/version.txt" | cut -f2 -d-)
 	gemstone="GemStone-$gs_ver.$PLATFORM"
 
-	# Move the Gemstone from $SRC_DIR to $RUBY_SRC_DIR and symlink gemstone.
 	mv "$SRC_DIR/$gemstone" "$SRC_DIR/$RUBY_SRC_DIR"
 	ln -fs "$gemstone" "$SRC_DIR/$RUBY_SRC_DIR/gemstone"
-
 	mv "$SRC_DIR/$RUBY_SRC_DIR" "$(dirname $INSTALL_DIR)"
 }
 
