@@ -1,0 +1,2 @@
+MagLev-1.0.0.tar.gz:           e02cb8ee04438451eb78df14f91a68a9
+MagLev-1.1RC1.tar.gz:          41f4a0994daf1e5271cbd0ebe57816f4
