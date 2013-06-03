@@ -3,6 +3,7 @@
 shopt -s extglob
 
 RUBY_INSTALL_VERSION="0.2.0"
+RUBY_INSTALL_DIR=$(dirname ${BASH_SOURCE[0]})
 
 RUBIES=(ruby jruby rubinius maglev)
 PATCHES=()
@@ -82,7 +83,7 @@ function fail()
 #
 function fetch()
 {
-	local pair="$(grep -E "^$2: " "$SHARE_DIR/$1.txt")"
+	local pair="$(grep -E "^$2: " "$RUBY_INSTALL_DIR/$1.txt")"
 	local value="${pair##$2:*( )}"
 
 	echo "$value"
@@ -188,7 +189,7 @@ function defaults()
 #
 function load_ruby()
 {
-	RUBY_DIR="$SHARE_DIR/$RUBY"
+	RUBY_DIR="$RUBY_INSTALL_DIR/$RUBY"
 
 	if [[ ! -d "$RUBY_DIR" ]]; then
 		echo "ruby-install: unsupported ruby: $RUBY" >&2
@@ -197,7 +198,7 @@ function load_ruby()
 
 	defaults
 
-	source "$SHARE_DIR/functions.sh"
+	source "$RUBY_INSTALL_DIR/functions.sh"
 	source "$RUBY_DIR/functions.sh"
 }
 
@@ -210,7 +211,7 @@ function supported_rubies()
 
 	for ruby in ${RUBIES[@]}; do
 		echo "  $ruby:"
-		cat "$SHARE_DIR/$ruby/versions.txt" | sed -e 's/^/    /'
+		cat "$RUBY_INSTALL_DIR/$ruby/versions.txt" | sed -e 's/^/    /'
 	done
 }
 

@@ -4,8 +4,6 @@
 . ./share/ruby-install/ruby-install.sh
 export PATH="$PWD/bin:$PATH"
 
-SHARE_DIR="./share/ruby-install"
-
 setUp() { return; }
 tearDown() { return; }
 oneTimeTearDown() { return; }
