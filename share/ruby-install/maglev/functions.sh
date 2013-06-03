@@ -13,8 +13,6 @@ function configure_ruby()
 	"$SRC_DIR/$RUBY_SRC_DIR/install.sh"
 }
 
-function compile_ruby() { return; }
-
 #
 # Install Maglev into $INSTALL_DIR.
 #
