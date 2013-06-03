@@ -7,6 +7,9 @@ RUBY_SRC_DIR="MagLev-$RUBY_VERSION"
 RUBY_ARCHIVE="MagLev-$RUBY_VERSION.tar.gz"
 RUBY_URL="http://glass-downloads.gemstone.com/maglev/$RUBY_ARCHIVE"
 
+#
+# Configures MagLev by running ./install.sh.
+#
 function configure_ruby()
 {
 	log "Configuring maglev $RUBY_VERSION ..."
