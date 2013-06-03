@@ -7,7 +7,11 @@ RUBY_SRC_DIR="MagLev-$RUBY_VERSION"
 RUBY_ARCHIVE="MagLev-$RUBY_VERSION.tar.gz"
 RUBY_URL="http://glass-downloads.gemstone.com/maglev/$RUBY_ARCHIVE"
 
-function configure_ruby() { return; }
+function configure_ruby()
+{
+	log "Configuring maglev $RUBY_VERSION ..."
+	"$SRC_DIR/$RUBY_SRC_DIR/install.sh"
+}
 
 function compile_ruby() { return; }
 
@@ -17,7 +21,6 @@ function compile_ruby() { return; }
 function install_ruby()
 {
 	log "Installing maglev $RUBY_VERSION ..."
-	"$SRC_DIR/$RUBY_SRC_DIR/install.sh"
 
 	# Determine what Maglev named the Gemstone.
 	local gs_ver=$(grep GEMSTONE "$SRC_DIR/$RUBY_SRC_DIR/version.txt")
