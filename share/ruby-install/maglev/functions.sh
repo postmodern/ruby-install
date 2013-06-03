@@ -24,7 +24,7 @@ function install_ruby()
 	local gemstone="GemStone-${gs_ver: -5}.${PLATFORM/ /-}"
 
 	log "Installing Gemstone into $SRC_DIR/$gemstone ..."
-	ln -fs "$gemstone" "$SRC_DIR/gemstone"
+	ln -fs "$SRC_DIR/$gemstone" "$SRC_DIR/$RUBY_SRC_DIR/gemstone"
 	mv "$SRC_DIR/$RUBY_SRC_DIR" "$INSTALL_DIR"
 }
 
