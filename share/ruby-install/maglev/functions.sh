@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-PLATFORM="$(uname -sm | tr ' ' '-')"
-[ $PLATFORM="Darwin-x86_64" ] && PLATFORM="Darwin-i386"
+PLATFORM="$(uname -sm)"
+[ $PLATFORM="Darwin x86_64" ] && PLATFORM="Darwin i386"
 
 RUBY_ARCHIVE="MagLev-$RUBY_VERSION.tar.gz"
 RUBY_URL="http://glass-downloads.gemstone.com/maglev/$RUBY_ARCHIVE"
@@ -18,12 +18,12 @@ function install_ruby()
 	log "Installing maglev $RUBY_VERSION ..."
 	"$SRC_DIR/$RUBY_SRC_DIR/install.sh"
 
-	# Determine the Gemstone name with code adapted from Maglev's update.sh.
-	gs_ver=$(grep GEMSTONE "$SRC_DIR/$RUBY_SRC_DIR/version.txt" | cut -f2 -d-)
-	gemstone="GemStone-$gs_ver.$PLATFORM"
+	# Determine what Maglev named the Gemstone.
+	gs_ver=$(grep GEMSTONE "$SRC_DIR/$RUBY_SRC_DIR/version.txt")
+	gemstone="GemStone-${gs_ver: -5}.${PLATFORM/ /-}"
 
-	mv "$SRC_DIR/$gemstone" "$SRC_DIR/$RUBY_SRC_DIR"
-	ln -fs "$gemstone" "$SRC_DIR/$RUBY_SRC_DIR/gemstone"
+	log "Installing Gemstone into $SRC_DIR/$gemstone ..."
+	ln -fs "$gemstone" "$SRC_DIR/gemstone"
 	mv "$SRC_DIR/$RUBY_SRC_DIR" "$(dirname $INSTALL_DIR)"
 }
 
