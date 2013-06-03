@@ -25,7 +25,7 @@ function install_ruby()
 
 	log "Installing Gemstone into $SRC_DIR/$gemstone ..."
 	ln -fs "$gemstone" "$SRC_DIR/gemstone"
-	mv "$SRC_DIR/$RUBY_SRC_DIR" "$(dirname $INSTALL_DIR)"
+	mv "$SRC_DIR/$RUBY_SRC_DIR" "$INSTALL_DIR"
 }
 
 #
