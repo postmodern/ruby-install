@@ -93,7 +93,7 @@ function update_package_manager()
 {
 	case "$PACKAGE_MANAGER" in
 		apt)	sudo apt-get update ;;
-		yum)	sudo yum updateinfo ;;
+		yum)	:                   ;;
 		brew)	brew update         ;;
 	esac
 }
