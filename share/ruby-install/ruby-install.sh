@@ -228,6 +228,7 @@ Options:
 	-s, --src-dir DIR	Directory to download source-code into
 	-i, --install-dir DIR	Directory to install Ruby into
 	-p, --patch FILE	Patch to apply to the Ruby source-code
+	-o, --skip-override	Skip installation if install dir already present
 	-V, --version		Prints the version
 	-h, --help		Prints this message
 
@@ -262,6 +263,10 @@ function parse_options()
 				PATCHES+=("$2")
 				shift 2
 				;;
+      -o|--skip-override)
+        SKIP_OVERRIDE=1
+        shift
+        ;;
 			-V|--version)
 				echo "ruby-install: $RUBY_INSTALL_VERSION"
 				exit

@@ -77,6 +77,13 @@ test_parse_options_with_patches()
 	assertEquals "did not set \$PATCHES" $expected $PATCHES
 }
 
+test_parse_options_with_skip_override()
+{
+  parse_options "--skip-override" "ruby"
+
+  assertEquals "did not set to \$SKIP_OVERRIDE" 1 $SKIP_OVERRIDE
+}
+
 test_parse_options_with_additional_options()
 {
 	local expected=(--enable-shared CFLAGS="-03")

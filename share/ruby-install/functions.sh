@@ -1,4 +1,18 @@
 #
+# Checks if overriding another installation
+#
+function check_overriding()
+{
+  if [[ $SKIP_OVERRIDE && -d "$INSTALL_DIR" ]]; then
+    log "Directory $INSTALL_DIR already exists and you specified to not
+    override it, exiting."
+    return 1
+  else
+    return 0
+  fi
+}
+
+#
 # Pre-install tasks
 #
 function pre_install()
