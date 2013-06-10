@@ -1,11 +1,16 @@
 #
-# Checks if overriding another installation
+# Check if we're reinstalling the same ruby with the same version in the same
+# location
 #
-function check_overriding()
+function check_reinstall()
 {
-  if [[ $NO_REINSTALL && -d "$INSTALL_DIR" ]]; then
-    log "Directory $INSTALL_DIR already exists and you specified to not
-    override it, exiting."
+  if [[
+    $NO_REINSTALL && \
+    -x "$INSTALL_DIR/bin/ruby" && \
+    `$INSTALL_DIR/bin/ruby -v | grep ${RUBY_VERSION/-/}` \
+  ]]; then
+    log "Ruby $RUBY_VERSION is already installed in $INSTALL_DIR and you specified
+    to not reinstall it, exiting."
     return 1
   else
     return 0

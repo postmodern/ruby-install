@@ -11,7 +11,7 @@ fi
 
 parse_options $* || exit $?
 load_ruby        || exit $?
-check_overriding || exit $?
+check_reinstall  || exit $?
 
 log "Installing $RUBY $RUBY_VERSION into $INSTALL_DIR ..."
 
