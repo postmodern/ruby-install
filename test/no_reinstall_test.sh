@@ -14,7 +14,7 @@ tearDown()
 
 test_skip_override_with_existing_install_dir()
 {
-  SKIP_OVERRIDE=1 
+  NO_REINSTALL=1 
   check_overriding >/dev/null 2>&1
 
   assertEquals "did not return 1" 1 $?
@@ -24,7 +24,7 @@ test_skip_override_with_nonexisting_install_dir()
 {
   INSTALL_DIR="/tmp/foo/bar/baz"
 
-  SKIP_OVERRIDE=1
+  NO_REINSTALL=1
   check_overriding >/dev/null 2>&1
 
   assertEquals "did not return 0" 0 $?
@@ -32,7 +32,7 @@ test_skip_override_with_nonexisting_install_dir()
 
 test_do_not_skip_override()
 {
-  unset SKIP_OVERRIDE
+  unset NO_REINSTALL
   check_overriding >/dev/null 2>&1
 
   assertEquals "did not return 0" 0 $?

@@ -3,7 +3,7 @@
 #
 function check_overriding()
 {
-  if [[ $SKIP_OVERRIDE && -d "$INSTALL_DIR" ]]; then
+  if [[ $NO_REINSTALL && -d "$INSTALL_DIR" ]]; then
     log "Directory $INSTALL_DIR already exists and you specified to not
     override it, exiting."
     return 1
