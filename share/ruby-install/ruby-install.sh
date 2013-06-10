@@ -122,7 +122,7 @@ function download()
 {
 	case "$DOWNLOADER" in
 		wget) wget -c -O "$2" "$1"   ;;
-		curl) curl -C - -o "$2" "$1" ;;
+		curl) curl -L -C - -o "$2" "$1" ;;
 		"")
 			error "Could not find wget or curl"
 			return 1
