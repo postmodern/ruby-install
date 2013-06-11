@@ -5,9 +5,6 @@ function pre_install()
 {
 	mkdir -p "$SRC_DIR"
 	mkdir -p $(dirname "$INSTALL_DIR")
-
-	log "Updating Package Manager"
-	update_package_manager
 }
 
 #
@@ -15,6 +12,11 @@ function pre_install()
 #
 function install_deps()
 {
+  if [[ -z "$NO_UPDATE" ]]; then return; fi
+
+	log "Updating Package Manager"
+  update_package_manager
+
 	local package_manager
 
 	if   [[ $(type -t apt-get) ]]; then package_manager="apt"

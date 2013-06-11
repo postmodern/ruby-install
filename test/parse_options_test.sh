@@ -77,6 +77,13 @@ test_parse_options_with_patches()
 	assertEquals "did not set \$PATCHES" $expected $PATCHES
 }
 
+test_parse_options_with_no_update()
+{
+    parse_options "--no-update" "ruby"
+
+    assertEquals "did not set \$NO_UPDATE" 1 $NO_UPDATE
+}
+
 test_parse_options_with_additional_options()
 {
 	local expected=(--enable-shared CFLAGS="-03")
