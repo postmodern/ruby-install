@@ -228,7 +228,7 @@ Options:
 	-s, --src-dir DIR	Directory to download source-code into
 	-i, --install-dir DIR	Directory to install Ruby into
 	-p, --patch FILE	Patch to apply to the Ruby source-code
-	--no-reinstall  	Skip installation if specified ruby already installed
+	--no-reinstall  	Skip installation if another Ruby is detected in same location
 	-V, --version		Prints the version
 	-h, --help		Prints this message
 

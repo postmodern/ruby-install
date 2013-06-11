@@ -1,15 +1,13 @@
 #
-# Check if we're reinstalling the same ruby with the same version in the same
-# location
+# Check if we're reinstalling a ruby where another one is already installed
 #
 function check_reinstall()
 {
   if [[
     $NO_REINSTALL && \
-    -x "$INSTALL_DIR/bin/ruby" && \
-    `$INSTALL_DIR/bin/ruby -v | grep ${RUBY_VERSION/-/}` \
+    -x "$INSTALL_DIR/bin/ruby"
   ]]; then
-    log "Ruby $RUBY_VERSION is already installed in $INSTALL_DIR and you specified
+    log "Some Ruby is already installed in $INSTALL_DIR and you specified
     to not reinstall it, exiting."
     return 1
   else

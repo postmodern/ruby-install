@@ -17,7 +17,7 @@ setUp()
   # Let's pretend there's a working ruby interpreter in the fake installation
   # directory and let it stub the version information
   echo "#!/bin/bash" > "$fake_ruby"
-  echo "echo '$RUBY $echoed_ruby_version (2013-05-14 revision 40734) [x86_64-darwin12.3.0]'" >> "$fake_ruby"
+  echo "exit 0" >> "$fake_ruby"
 
   chmod +x "$fake_ruby"
 }
