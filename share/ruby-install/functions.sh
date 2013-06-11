@@ -5,9 +5,6 @@ function pre_install()
 {
 	mkdir -p "$SRC_DIR"
 	mkdir -p $(dirname "$INSTALL_DIR")
-
-	log "Updating Package Manager"
-	update_package_manager
 }
 
 #
