@@ -2,6 +2,8 @@
 [[ -n "$ZSH_VERSION" ]] && setopt shwordsplit
 
 . ./share/ruby-install/ruby-install.sh
+. ./share/ruby-install/functions.sh
+
 export PATH="$PWD/bin:$PATH"
 
 setUp() { return; }
