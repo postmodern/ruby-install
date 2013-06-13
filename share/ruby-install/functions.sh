@@ -7,8 +7,6 @@ function check_reinstall()
 		log "Some Ruby is already installed in $INSTALL_DIR and you specified
 		to not reinstall it, exiting."
 		return 1
-	else
-		return 0
 	fi
 }
 
