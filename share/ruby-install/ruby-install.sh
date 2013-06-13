@@ -89,15 +89,6 @@ function fetch()
 	echo "$value"
 }
 
-function update_package_manager()
-{
-	case "$PACKAGE_MANAGER" in
-		apt)	sudo apt-get update ;;
-		yum)	sudo yum updateinfo ;;
-		brew)	brew update         ;;
-	esac
-}
-
 function install_packages()
 {
 	case "$PACKAGE_MANAGER" in
