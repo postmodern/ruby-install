@@ -254,10 +254,10 @@ function parse_options()
 				PATCHES+=("$2")
 				shift 2
 				;;
-      --no-reinstall)
-        NO_REINSTALL=1
-        shift
-        ;;
+			--no-reinstall)
+				NO_REINSTALL=1
+				shift
+				;;
 			-V|--version)
 				echo "ruby-install: $RUBY_INSTALL_VERSION"
 				exit

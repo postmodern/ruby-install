@@ -79,9 +79,9 @@ test_parse_options_with_patches()
 
 test_parse_options_with_no_reinstall()
 {
-  parse_options "--no-reinstall" "ruby"
+	parse_options "--no-reinstall" "ruby"
 
-  assertEquals "did not set to \$NO_REINSTALL" 1 $NO_REINSTALL
+	assertEquals "did not set to \$NO_REINSTALL" 1 $NO_REINSTALL
 }
 
 test_parse_options_with_additional_options()
