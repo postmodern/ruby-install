@@ -7,18 +7,16 @@ setUp()
 	RUBY="ruby"
 	RUBY_VERSION="1.9.3-p429"
 
-	fake_ruby="$INSTALL_DIR/bin/ruby"
-	# `ruby -v` doesn't output a dash between version and patchlevel, so we need
-	# to remove it from expanded $RUBY_VERSION
-	echoed_ruby_version="${RUBY_VERSION/-/}"
+	local fake_ruby="$INSTALL_DIR/bin/ruby"
 
 	mkdir "$(dirname $fake_ruby)"
 
 	# Let's pretend there's a working ruby interpreter in the fake installation
 	# directory and let it stub the version information
-	echo "#!/bin/bash" > "$fake_ruby"
-	echo "exit 0" >> "$fake_ruby"
-
+	echo <<EOF > "$fake_ruby"
+#!/usr/bin/env bash
+exit 0
+EOF
 	chmod +x "$fake_ruby"
 }
 
