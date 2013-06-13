@@ -77,6 +77,13 @@ test_parse_options_with_patches()
 	assertEquals "did not set \$PATCHES" $expected $PATCHES
 }
 
+test_parse_options_with_no_reinstall()
+{
+  parse_options "--no-reinstall" "ruby"
+
+  assertEquals "did not set to \$NO_REINSTALL" 1 $NO_REINSTALL
+}
+
 test_parse_options_with_additional_options()
 {
 	local expected=(--enable-shared CFLAGS="-03")
