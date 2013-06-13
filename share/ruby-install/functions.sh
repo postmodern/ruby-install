@@ -4,8 +4,7 @@
 function check_reinstall()
 {
 	if [[ $NO_REINSTALL && -x "$INSTALL_DIR/bin/ruby" ]]; then
-		log "Some Ruby is already installed in $INSTALL_DIR and you specified
-		to not reinstall it, exiting."
+		log "Ruby is already installed into $INSTALL_DIR"
 		return 1
 	fi
 }
