@@ -1,4 +1,15 @@
 #
+# Check if we're reinstalling a ruby where another one is already installed
+#
+function check_reinstall()
+{
+	if [[ $NO_REINSTALL && -x "$INSTALL_DIR/bin/ruby" ]]; then
+		log "Ruby is already installed into $INSTALL_DIR"
+		return 1
+	fi
+}
+
+#
 # Pre-install tasks
 #
 function pre_install()

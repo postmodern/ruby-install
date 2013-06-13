@@ -220,6 +220,7 @@ Options:
 	-i, --install-dir DIR	Directory to install Ruby into
 	-p, --patch FILE	Patch to apply to the Ruby source-code
 	--skip-install-deps	Do not install build dependencies before installing Ruby
+	--no-reinstall  	Skip installation if another Ruby is detected in same location
 	-V, --version		Prints the version
 	-h, --help		Prints this message
 
@@ -258,6 +259,10 @@ function parse_options()
         SKIP_DEPS=1
         shift
         ;;
+			--no-reinstall)
+				NO_REINSTALL=1
+				shift
+				;;
 			-V|--version)
 				echo "ruby-install: $RUBY_INSTALL_VERSION"
 				exit
