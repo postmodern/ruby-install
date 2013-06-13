@@ -32,6 +32,9 @@ https://github.com/postmodern/ruby-install#readme
 `-p`, `--patch` *FILE*
 	Specifies any additional patches to apply.
 
+`--no-reinstall` *DIR*
+	Skip installation if another Ruby is detected in same location
+
 `-v`, `--version`
 	Prints the current ruby-install version.
 
