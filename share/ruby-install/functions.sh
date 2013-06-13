@@ -12,10 +12,7 @@ function pre_install()
 #
 function install_deps()
 {
-  if [[ -z "$NO_UPDATE" ]]; then return; fi
-
-	log "Updating Package Manager"
-  update_package_manager
+  if [[ -z "$SKIP_DEPS" ]]; then return; fi
 
 	local package_manager
 

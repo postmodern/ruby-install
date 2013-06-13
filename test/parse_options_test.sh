@@ -77,11 +77,11 @@ test_parse_options_with_patches()
 	assertEquals "did not set \$PATCHES" $expected $PATCHES
 }
 
-test_parse_options_with_no_update()
+test_parse_options_with_skip_install_deps()
 {
-    parse_options "--no-update" "ruby"
+    parse_options "--skip-install-deps" "ruby"
 
-    assertEquals "did not set \$NO_UPDATE" 1 $NO_UPDATE
+    assertEquals "did not set \$SKIP_DEPS" 1 $SKIP_DEPS
 }
 
 test_parse_options_with_additional_options()
