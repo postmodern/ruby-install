@@ -62,7 +62,7 @@ function download_ruby()
 #
 function verify_ruby()
 {
-	local md5="$(fetch "$RUBY/md5" "$RUBY_ARCHIVE")"
+	local md5="${RUBY_MD5:-$(fetch "$RUBY/md5" "$RUBY_ARCHIVE")}"
 
 	if [[ -n "$md5" ]]; then
 		log "Verifying $RUBY_ARCHIVE ..."

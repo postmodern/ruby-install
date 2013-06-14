@@ -77,6 +77,15 @@ test_parse_options_with_patches()
 	assertEquals "did not set \$PATCHES" $expected $PATCHES
 }
 
+test_parse_options_with_md5()
+{
+	local md5="5d41402abc4b2a76b9719d911017c592"
+
+	parse_options "--md5" "$md5"
+
+	assertEquals "did not set \$RUBY_MD5" "$md5" "$RUBY_MD5"
+}
+
 test_parse_options_with_skip_install_deps()
 {
 	parse_options "--skip-install-deps" "ruby"

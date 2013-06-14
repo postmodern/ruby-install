@@ -219,6 +219,7 @@ Options:
 	-s, --src-dir DIR	Directory to download source-code into
 	-i, --install-dir DIR	Directory to install Ruby into
 	-p, --patch FILE	Patch to apply to the Ruby source-code
+	-m, --md5 MD5		MD5 checksum of the ruby archive
 	--skip-install-deps	Do not install build dependencies before installing Ruby
 	--no-reinstall  	Skip installation if another Ruby is detected in same location
 	-V, --version		Prints the version
@@ -253,6 +254,10 @@ function parse_options()
 				;;
 			-p|--patch)
 				PATCHES+=("$2")
+				shift 2
+				;;
+			-m|--md5)
+				RUBY_MD5="$2"
 				shift 2
 				;;
 			--skip-install-deps)
