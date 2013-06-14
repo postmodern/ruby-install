@@ -81,7 +81,7 @@ test_parse_options_with_skip_install_deps()
 {
 	parse_options "--skip-install-deps" "ruby"
 
- 	assertEquals "did not set \$SKIP_DEPS" 1 $SKIP_DEPS
+ 	assertEquals "did not set \$SKIP_INSTALL_DEPS" 1 $SKIP_INSTALL_DEPS
 }
 
 test_parse_options_with_no_reinstall()

@@ -23,7 +23,7 @@ function pre_install()
 #
 function install_deps()
 {
-	if [[ -z "$SKIP_DEPS" ]]; then return; fi
+	if [[ -z "$SKIP_INSTALL_DEPS" ]]; then return; fi
 
 	local package_manager
 

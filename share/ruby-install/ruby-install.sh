@@ -256,7 +256,7 @@ function parse_options()
 				shift 2
 				;;
       --skip-install-deps)
-        SKIP_DEPS=1
+        SKIP_INSTALL_DEPS=1
         shift
         ;;
 			--no-reinstall)
