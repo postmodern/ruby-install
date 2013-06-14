@@ -10,7 +10,7 @@
 .SH DESCRIPTION
 .LP
 .PP
-Installs Ruby, JRuby or Rubinius\.
+Installs Ruby, JRuby, Rubinius or MagLev\.
 .LP
 .PP
 https:\[sl]\[sl]github\.com\[sl]postmodern\[sl]ruby\-install\[sh]readme
@@ -42,6 +42,14 @@ Specifies the dirctory where Ruby will be installed\.
 .TP
 \fB-p\fR, \fB--patch\fR \fIFILE\fP
 Specifies any additional patches to apply\.
+.LP
+.TP
+\fB-m\fR, \fB--md5\fR \fIMD5\fP
+Specifies the MD5 checksum for the Ruby archive\.
+.LP
+.TP
+\fB--no-reinstall\fR \fIDIR\fP
+Skip installation if another Ruby is detected in same location\.
 .LP
 .TP
 \fB-v\fR, \fB--version\fR
