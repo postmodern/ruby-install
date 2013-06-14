@@ -23,6 +23,8 @@ function pre_install()
 #
 function install_deps()
 {
+	if [[ -z "$SKIP_DEPS" ]]; then return; fi
+
 	local package_manager
 
 	if   [[ $(type -t apt-get) ]]; then package_manager="apt"
