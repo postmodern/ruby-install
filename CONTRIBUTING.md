@@ -35,6 +35,11 @@
 
 ### What Will Not Be Accepted
 
+* Options for Ruby specific `./configure` options. You can pass additional
+  configuration options like so:
+
+        ruby-install ruby 2.0 -- --foo --bar
+
 * Excessive OS specific workarounds. We should strive to fix any Ruby build
   issues or OS environment issues.
 * Building Rubies from HEAD. This is risky and may result in a buggy/broken
