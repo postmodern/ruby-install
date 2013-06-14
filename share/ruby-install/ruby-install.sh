@@ -198,7 +198,7 @@ function load_ruby()
 #
 function known_rubies()
 {
-	echo "Known Rubies:"
+	echo "Known ruby versions:"
 
 	for ruby in ${RUBIES[@]}; do
 		echo "  $ruby:"
