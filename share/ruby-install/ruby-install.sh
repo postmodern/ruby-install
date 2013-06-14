@@ -255,10 +255,10 @@ function parse_options()
 				PATCHES+=("$2")
 				shift 2
 				;;
-      --skip-install-deps)
-        SKIP_INSTALL_DEPS=1
-        shift
-        ;;
+			--skip-install-deps)
+				SKIP_INSTALL_DEPS=1
+				shift
+				;;
 			--no-reinstall)
 				NO_REINSTALL=1
 				shift
