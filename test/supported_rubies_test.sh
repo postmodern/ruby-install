@@ -1,8 +1,8 @@
 . ./test/helper.sh
 
-test_supported_rubies()
+test_known_rubies()
 {
-	local output="$(supported_rubies)"
+	local output="$(known_rubies)"
 
 	assertTrue "did not include ruby" '[[ "$output" == *ruby* ]]'
 	assertTrue "did not include jruby" '[[ "$output" == *jruby* ]]'

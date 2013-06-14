@@ -196,9 +196,9 @@ function load_ruby()
 #
 # Prints Rubies supported by ruby-install.
 #
-function supported_rubies()
+function known_rubies()
 {
-	echo "Supported Rubies:"
+	echo "Known Rubies:"
 
 	for ruby in ${RUBIES[@]}; do
 		echo "  $ruby:"
