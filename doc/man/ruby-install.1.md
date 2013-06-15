@@ -19,7 +19,7 @@ https://github.com/postmodern/ruby-install#readme
 	Optionally select the version of selected Ruby.
 
 *CONFIGURE_OPTS*
-	Additional optional configure arguements.
+	Additional optional configure arguments.
 
 ## OPTIONS
 
@@ -35,7 +35,10 @@ https://github.com/postmodern/ruby-install#readme
 `-m`, `--md5` *MD5*
 	Specifies the MD5 checksum for the Ruby archive.
 
-`--no-reinstall` *DIR*
+`--skip-install-deps`
+	Do not install build dependencies before installing Ruby.
+
+`--no-reinstall`
 	Skip installation if another Ruby is detected in same location.
 
 `-v`, `--version`
