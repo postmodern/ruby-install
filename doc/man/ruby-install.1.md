@@ -27,7 +27,7 @@ https://github.com/postmodern/ruby-install#readme
 	Specifies the directory for downloading and unpacking Ruby source.
 
 `-i`, `--install-dir` *DIR*
-	Specifies the dirctory where Ruby will be installed.
+	Specifies the directory where Ruby will be installed.
 
 `-p`, `--patch` *FILE*
 	Specifies any additional patches to apply.
