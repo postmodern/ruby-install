@@ -5,6 +5,7 @@ install:
   - sudo apt-get install shunit2 wget curl
 
 before_script:
-  - rvm reset
+  - echo yes | rvm implode
+  - __rvm_unload
 
 script: make test
