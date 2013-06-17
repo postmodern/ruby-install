@@ -2,6 +2,8 @@
 
 Installs [Ruby], [JRuby], [Rubinius] or [MagLev].
 
+[![Build Status](https://travis-ci.org/postmodern/ruby-install.png?branch=master)](https://travis-ci.org/postmodern/ruby-install)
+
 ## Features
 
 * Supports installing arbitrary versions.
