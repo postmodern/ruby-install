@@ -45,15 +45,15 @@ Install a latest version of Ruby:
 
 Install a specific version of Ruby:
 
-    $ ruby-install ruby 1.9.3-p395
+    $ ruby-install ruby 1.9.3-p429
 
 Install a Ruby into a specific directory:
 
-    $ ruby-install -i /usr/local/ ruby 1.9.3-p395
+    $ ruby-install -i /usr/local/ ruby 1.9.3-p429
 
 Install a Ruby with a specific patch:
 
-    $ ruby-install -p https://raw.github.com/gist/4136373/falcon-gc.diff ruby 1.9.3-p395
+    $ ruby-install -p https://raw.github.com/gist/4136373/falcon-gc.diff ruby 1.9.3-p429
 
 Install a Ruby with specific configuration:
 
