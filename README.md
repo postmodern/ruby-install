@@ -79,7 +79,7 @@ with:
 
 ruby-install can also be installed with [homebrew]:
 
-    brew install https://raw.github.com/postmodern/ruby-install/master/homebrew/ruby-install.rb
+    brew install ruby-install
 
 ## Alternatives
 
