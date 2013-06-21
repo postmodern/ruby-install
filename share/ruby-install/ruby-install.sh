@@ -202,6 +202,7 @@ Options:
 	-s, --src-dir DIR	Directory to download source-code into
 	-i, --install-dir DIR	Directory to install Ruby into
 	-p, --patch FILE	Patch to apply to the Ruby source-code
+	-u, --url URL		Alternate URL to download the Ruby archive from
 	-m, --md5 MD5		MD5 checksum of the ruby archive
 	--no-verify		Do not verify the downloaded Ruby archive
 	--no-install-deps	Do not install build dependencies before installing Ruby
@@ -238,6 +239,10 @@ function parse_options()
 				;;
 			-p|--patch)
 				PATCHES+=("$2")
+				shift 2
+				;;
+			-u|--url)
+				RUBY_URL="$2"
 				shift 2
 				;;
 			-m|--md5)

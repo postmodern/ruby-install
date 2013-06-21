@@ -32,6 +32,16 @@ test_RUBY_VERSION()
 		     "$RUBY_VERSION"
 }
 
+test_load_ruby_with_RUBY_URL()
+{
+	local url="http://mirror.s3.amazonaws.com/downloads/ruby-1.2.3.tar.gz"
+
+	RUBY_URL="$url"
+	load_ruby
+
+	assertEquals "did not preserve RUBY_URL" "$url" "$RUBY_URL"
+}
+
 test_load_ruby_RUBY_MD5()
 {
 	load_ruby

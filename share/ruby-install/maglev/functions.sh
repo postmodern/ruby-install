@@ -5,7 +5,7 @@ PLATFORM="$(uname -sm)"
 
 RUBY_ARCHIVE="MagLev-$RUBY_VERSION.tar.gz"
 RUBY_SRC_DIR="MagLev-$RUBY_VERSION"
-RUBY_URL="http://glass-downloads.gemstone.com/maglev/$RUBY_ARCHIVE"
+RUBY_URL="${RUBY_URL:-http://glass-downloads.gemstone.com/maglev/$RUBY_ARCHIVE}"
 
 #
 # Configures MagLev by running ./install.sh.

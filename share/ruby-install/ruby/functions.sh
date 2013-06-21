@@ -2,7 +2,7 @@
 
 RUBY_ARCHIVE="ruby-$RUBY_VERSION.tar.bz2"
 RUBY_SRC_DIR="ruby-$RUBY_VERSION"
-RUBY_URL="http://ftp.ruby-lang.org/pub/ruby/${RUBY_VERSION:0:3}/$RUBY_ARCHIVE"
+RUBY_URL="${RUBY_URL:-http://ftp.ruby-lang.org/pub/ruby/${RUBY_VERSION:0:3}/$RUBY_ARCHIVE}"
 
 #
 # Configures Ruby.

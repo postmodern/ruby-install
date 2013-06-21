@@ -32,6 +32,9 @@ https://github.com/postmodern/ruby-install#readme
 `-p`, `--patch` *FILE*
 	Specifies any additional patches to apply.
 
+`-u`, `--url` *URL*
+	Alternate URL to download the Ruby archive from.
+
 `-m`, `--md5` *MD5*
 	Specifies the MD5 checksum for the Ruby archive.
 

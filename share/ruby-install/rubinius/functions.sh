@@ -2,7 +2,7 @@
 
 RUBY_ARCHIVE="rubinius-$RUBY_VERSION.tar.gz"
 RUBY_SRC_DIR="rubinius-release-$RUBY_VERSION"
-RUBY_URL="https://github.com/rubinius/rubinius/archive/release-$RUBY_VERSION.tar.gz"
+RUBY_URL="${RUBY_URL:-https://github.com/rubinius/rubinius/archive/release-$RUBY_VERSION.tar.gz}"
 
 #
 # Install optional dependencies for Rubinius.

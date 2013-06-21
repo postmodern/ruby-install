@@ -2,7 +2,7 @@
 
 RUBY_ARCHIVE="jruby-bin-$RUBY_VERSION.tar.gz"
 RUBY_SRC_DIR="jruby-$RUBY_VERSION"
-RUBY_URL="http://jruby.org.s3.amazonaws.com/downloads/$RUBY_VERSION/$RUBY_ARCHIVE"
+RUBY_URL="${RUBY_URL:-http://jruby.org.s3.amazonaws.com/downloads/$RUBY_VERSION/$RUBY_ARCHIVE}"
 
 #
 # Install JRuby into $INSTALL_DIR.
