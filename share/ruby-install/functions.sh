@@ -1,3 +1,14 @@
+RUBY_ARCHIVE="$RUBY-$RUBY_VERSION.tar.gz"
+RUBY_SRC_DIR="$RUBY-$RUBY_VERSION"
+
+if [[ $UID -eq 0 ]]; then
+	SRC_DIR="${SRC_DIR:-/usr/local/src}"
+	INSTALL_DIR="${INSTALL_DIR:-/opt/rubies/$RUBY-$RUBY_VERSION}"
+else
+	SRC_DIR="${SRC_DIR:-$HOME/src}"
+	INSTALL_DIR="${INSTALL_DIR:-$HOME/.rubies/$RUBY-$RUBY_VERSION}"
+fi
+
 #
 # Check if we're reinstalling a ruby where another one is already installed
 #

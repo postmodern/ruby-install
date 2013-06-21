@@ -156,26 +156,6 @@ function extract()
 }
 
 #
-# Sets variables to default values.
-#
-function defaults()
-{
-	local expanded_version="$(fetch "$RUBY/versions" "$RUBY_VERSION")"
-
-	RUBY_VERSION="${expanded_version:-$RUBY_VERSION}"
-	RUBY_ARCHIVE="$RUBY-$RUBY_VERSION.tar.gz"
-	RUBY_SRC_DIR="$RUBY-$RUBY_VERSION"
-
-	if [[ $UID -eq 0 ]]; then
-		SRC_DIR="${SRC_DIR:-/usr/local/src}"
-		INSTALL_DIR="${INSTALL_DIR:-/opt/rubies/$RUBY-$RUBY_VERSION}"
-	else
-		SRC_DIR="${SRC_DIR:-$HOME/src}"
-		INSTALL_DIR="${INSTALL_DIR:-$HOME/.rubies/$RUBY-$RUBY_VERSION}"
-	fi
-}
-
-#
 # Loads function.sh for the given Ruby.
 #
 function load_ruby()
@@ -187,7 +167,9 @@ function load_ruby()
 		return 1
 	fi
 
-	defaults
+	local expanded_version="$(fetch "$RUBY/versions" "$RUBY_VERSION")"
+
+	RUBY_VERSION="${expanded_version:-$RUBY_VERSION}"
 
 	source "$RUBY_INSTALL_DIR/functions.sh"
 	source "$RUBY_DIR/functions.sh"
