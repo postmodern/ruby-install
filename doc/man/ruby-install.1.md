@@ -35,7 +35,7 @@ https://github.com/postmodern/ruby-install#readme
 `-m`, `--md5` *MD5*
 	Specifies the MD5 checksum for the Ruby archive.
 
-`--skip-install-deps`
+`--no-install-deps`
 	Do not install build dependencies before installing Ruby.
 
 `--no-reinstall`

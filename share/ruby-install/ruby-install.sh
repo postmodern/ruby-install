@@ -220,7 +220,7 @@ Options:
 	-i, --install-dir DIR	Directory to install Ruby into
 	-p, --patch FILE	Patch to apply to the Ruby source-code
 	-m, --md5 MD5		MD5 checksum of the ruby archive
-	--skip-install-deps	Do not install build dependencies before installing Ruby
+	--no-install-deps	Do not install build dependencies before installing Ruby
 	--no-reinstall  	Skip installation if another Ruby is detected in same location
 	-V, --version		Prints the version
 	-h, --help		Prints this message
@@ -260,8 +260,8 @@ function parse_options()
 				RUBY_MD5="$2"
 				shift 2
 				;;
-			--skip-install-deps)
-				SKIP_INSTALL_DEPS=1
+			--no-install-deps)
+				NO_INSTALL_DEPS=1
 				shift
 				;;
 			--no-reinstall)

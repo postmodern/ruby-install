@@ -88,9 +88,9 @@ test_parse_options_with_md5()
 
 test_parse_options_with_skip_install_deps()
 {
-	parse_options "--skip-install-deps" "ruby"
+	parse_options "--no-install-deps" "ruby"
 
- 	assertEquals "did not set \$SKIP_INSTALL_DEPS" 1 $SKIP_INSTALL_DEPS
+ 	assertEquals "did not set \$NO_INSTALL_DEPS" 1 $NO_INSTALL_DEPS
 }
 
 test_parse_options_with_no_reinstall()
