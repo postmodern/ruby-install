@@ -11,7 +11,7 @@ fi
 #
 function check_reinstall()
 {
-	if [[ "$NO_REINSTALL" ]] && [[ -x "$INSTALL_DIR/bin/ruby" ]]; then
+	if [[ 1 -eq $NO_REINSTALL ]] && [[ -x "$INSTALL_DIR/bin/ruby" ]]; then
 		log "Ruby is already installed into $INSTALL_DIR"
 		return 1
 	fi
@@ -31,7 +31,7 @@ function pre_install()
 #
 function install_deps()
 {
-	[[ ! "$NO_INSTALL_DEPS" ]] && return
+	[[ 1 -eq $NO_INSTALL_DEPS ]] && return
 
 	local package_manager
 
@@ -61,7 +61,7 @@ function install_optional_deps() { return; }
 #
 function download_ruby()
 {
-	[[ ! "$NO_DOWNLOAD" ]] && return
+	[[ 1 -eq $NO_DOWNLOAD ]] && return
 
 	log "Downloading $RUBY_URL into $SRC_DIR ..."
 	download "$RUBY_URL" "$SRC_DIR/$RUBY_ARCHIVE"
@@ -72,7 +72,7 @@ function download_ruby()
 #
 function verify_ruby()
 {
-	[[ ! "$NO_VERIFY" ]] && return
+	[[ 1 -eq $NO_VERIFY ]] && return
 
 	if [[ -n "$1" ]]; then
 		log "Verifying $RUBY_ARCHIVE ..."
