@@ -204,6 +204,7 @@ Options:
 	-p, --patch FILE	Patch to apply to the Ruby source-code
 	-u, --url URL		Alternate URL to download the Ruby archive from
 	-m, --md5 MD5		MD5 checksum of the Ruby archive
+	--no-download		Use the previously downloaded Ruby archive
 	--no-verify		Do not verify the downloaded Ruby archive
 	--no-install-deps	Do not install build dependencies before installing Ruby
 	--no-reinstall  	Skip installation if another Ruby is detected in same location
@@ -248,6 +249,10 @@ function parse_options()
 			-m|--md5)
 				RUBY_MD5="$2"
 				shift 2
+				;;
+			--no-download)
+				NO_DOWNLOAD=1
+				shift
 				;;
 			--no-verify)
 				NO_VERIFY=1

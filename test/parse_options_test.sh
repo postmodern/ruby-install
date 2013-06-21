@@ -95,6 +95,13 @@ test_parse_options_with_md5()
 	assertEquals "did not set \$RUBY_MD5" "$md5" "$RUBY_MD5"
 }
 
+test_parse_options_with_no_download()
+{
+	parse_options "--no-download"
+
+ 	assertEquals "did not set \$NO_DOWNLOAD" 1 $NO_DOWNLOAD
+}
+
 test_parse_options_with_no_verify()
 {
 	parse_options "--no-verify" "ruby"

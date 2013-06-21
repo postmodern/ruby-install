@@ -61,6 +61,8 @@ function install_optional_deps() { return; }
 #
 function download_ruby()
 {
+	[[ ! "$NO_DOWNLOAD" ]] && return
+
 	log "Downloading $RUBY_URL into $SRC_DIR ..."
 	download "$RUBY_URL" "$SRC_DIR/$RUBY_ARCHIVE"
 }
