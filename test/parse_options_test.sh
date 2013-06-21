@@ -86,7 +86,7 @@ test_parse_options_with_md5()
 	assertEquals "did not set \$RUBY_MD5" "$md5" "$RUBY_MD5"
 }
 
-test_parse_options_with_skip_install_deps()
+test_parse_options_with_no_install_deps()
 {
 	parse_options "--no-install-deps" "ruby"
 
