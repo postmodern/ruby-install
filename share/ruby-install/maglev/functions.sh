@@ -3,8 +3,8 @@
 PLATFORM="$(uname -sm)"
 [[ "$PLATFORM" == "Darwin x86_64" ]] && PLATFORM="Darwin i386"
 
-RUBY_SRC_DIR="MagLev-$RUBY_VERSION"
 RUBY_ARCHIVE="MagLev-$RUBY_VERSION.tar.gz"
+RUBY_SRC_DIR="MagLev-$RUBY_VERSION"
 RUBY_URL="http://glass-downloads.gemstone.com/maglev/$RUBY_ARCHIVE"
 
 #

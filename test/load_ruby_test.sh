@@ -32,24 +32,6 @@ test_RUBY_VERSION()
 		     "$RUBY_VERSION"
 }
 
-test_RUBY_ARCHIVE()
-{
-	load_ruby
-
-	assertEquals "did not set RUBY_ARCHIVE" \
-		     "$RUBY-$EXPANDED_RUBY_VERSION.tar.bz2" \
-		     "$RUBY_ARCHIVE"
-}
-
-test_RUBY_SRC_DIR()
-{
-	load_ruby
-
-	assertEquals "did not set RUBY_SRC_DIR" \
-		     "$RUBY-$EXPANDED_RUBY_VERSION" \
-		     "$RUBY_SRC_DIR"
-}
-
 test_SRC_DIR()
 {
 	load_ruby
