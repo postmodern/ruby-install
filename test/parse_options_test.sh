@@ -86,6 +86,13 @@ test_parse_options_with_md5()
 	assertEquals "did not set \$RUBY_MD5" "$md5" "$RUBY_MD5"
 }
 
+test_parse_options_with_no_verify()
+{
+	parse_options "--no-verify" "ruby"
+
+ 	assertEquals "did not set \$NO_VERIFY" 1 $NO_VERIFY
+}
+
 test_parse_options_with_no_install_deps()
 {
 	parse_options "--no-install-deps" "ruby"

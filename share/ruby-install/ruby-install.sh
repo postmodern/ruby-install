@@ -260,6 +260,10 @@ function parse_options()
 				RUBY_MD5="$2"
 				shift 2
 				;;
+			--no-verify)
+				NO_VERIFY=1
+				shift
+				;;
 			--no-install-deps)
 				NO_INSTALL_DEPS=1
 				shift

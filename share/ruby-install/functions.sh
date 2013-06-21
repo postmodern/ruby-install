@@ -62,6 +62,8 @@ function download_ruby()
 #
 function verify_ruby()
 {
+	[[ ! "$NO_VERIFY" ]] && return
+
 	local md5="${RUBY_MD5:-$(fetch "$RUBY/md5" "$RUBY_ARCHIVE")}"
 
 	if [[ -n "$md5" ]]; then
