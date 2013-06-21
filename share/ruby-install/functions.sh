@@ -72,11 +72,9 @@ function verify_ruby()
 {
 	[[ ! "$NO_VERIFY" ]] && return
 
-	local md5="${RUBY_MD5:-$(fetch "$RUBY/md5" "$RUBY_ARCHIVE")}"
-
-	if [[ -n "$md5" ]]; then
+	if [[ -n "$1" ]]; then
 		log "Verifying $RUBY_ARCHIVE ..."
-		verify "$SRC_DIR/$RUBY_ARCHIVE" "$md5"
+		verify "$SRC_DIR/$RUBY_ARCHIVE" "$1"
 	else
 		warn "No checksum for $RUBY_ARCHIVE. Proceeding anyways"
 	fi

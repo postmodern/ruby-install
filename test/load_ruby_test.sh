@@ -32,6 +32,23 @@ test_RUBY_VERSION()
 		     "$RUBY_VERSION"
 }
 
+test_load_ruby_RUBY_MD5()
+{
+	load_ruby
+
+	assertNotNull "did not set RUBY_MD5" $RUBY_MD5
+}
+
+test_load_ruby_with_RUBY_MD5()
+{
+	local md5="b1946ac92492d2347c6235b4d2611184"
+
+	RUBY_MD5="$md5"
+	load_ruby
+
+	assertEquals "did not preserve RUBY_MD5" "$md5" "$RUBY_MD5"
+}
+
 test_SRC_DIR()
 {
 	load_ruby
@@ -64,7 +81,8 @@ test_INSTALL_DIR()
 
 tearDown()
 {
-	unset RUBY RUBY_VERSION RUBY_ARCHIVE RUBY_SRC_DIR SRC_DIR INSTALL_DIR
+	unset SRC_DIR INSTALL_DIR
+	unset RUBY RUBY_VERSION RUBY_MD5 RUBY_ARCHIVE RUBY_SRC_DIR RUBY_URL
 }
 
 SHUNIT_PARENT=$0 . $SHUNIT2

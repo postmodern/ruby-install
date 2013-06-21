@@ -170,6 +170,7 @@ function load_ruby()
 	local expanded_version="$(fetch "$RUBY/versions" "$RUBY_VERSION")"
 
 	RUBY_VERSION="${expanded_version:-$RUBY_VERSION}"
+	RUBY_MD5="${RUBY_MD5:-$(fetch "$RUBY/md5" "$RUBY_ARCHIVE")}"
 
 	source "$RUBY_INSTALL_DIR/functions.sh"
 	source "$RUBY_DIR/functions.sh"
