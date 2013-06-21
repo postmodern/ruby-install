@@ -3,7 +3,7 @@
 #
 function check_reinstall()
 {
-	if [[ "$NO_REINSTALL" && -x "$INSTALL_DIR/bin/ruby" ]]; then
+	if [[ "$NO_REINSTALL" ]] && [[ -x "$INSTALL_DIR/bin/ruby" ]]; then
 		log "Ruby is already installed into $INSTALL_DIR"
 		return 1
 	fi
