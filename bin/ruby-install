@@ -11,7 +11,10 @@ fi
 
 parse_options $* || exit $?
 load_ruby        || exit $?
-check_reinstall  || exit $?
+
+if [[ $NO_REINSTALL -eq 1 ]] && [[ -x "$INSTALL_DIR/bin/ruby" ]]; then
+	fail "Ruby is already installed into $INSTALL_DIR"
+fi
 
 log "Installing $RUBY $RUBY_VERSION into $INSTALL_DIR ..."
 
