@@ -20,8 +20,6 @@ function pre_install()
 #
 function install_deps()
 {
-	[[ $NO_INSTALL_DEPS -eq 1 ]] && return
-
 	local package_manager
 
 	if   [[ $(type -t apt-get) ]]; then package_manager="apt"
@@ -50,8 +48,6 @@ function install_optional_deps() { return; }
 #
 function download_ruby()
 {
-	[[ $NO_DOWNLOAD -eq 1 ]] && return
-
 	log "Downloading $RUBY_URL into $SRC_DIR ..."
 	download "$RUBY_URL" "$SRC_DIR/$RUBY_ARCHIVE"
 }
@@ -61,8 +57,6 @@ function download_ruby()
 #
 function verify_ruby()
 {
-	[[ $NO_VERIFY -eq 1 ]] && return
-
 	if [[ -n "$1" ]]; then
 		log "Verifying $RUBY_ARCHIVE ..."
 		verify "$SRC_DIR/$RUBY_ARCHIVE" "$1"
