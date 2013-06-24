@@ -57,9 +57,9 @@ function download_ruby()
 #
 function verify_ruby()
 {
-	if [[ -n "$1" ]]; then
+	if [[ -n "$RUBY_MD5" ]]; then
 		log "Verifying $RUBY_ARCHIVE ..."
-		verify "$SRC_DIR/$RUBY_ARCHIVE" "$1"
+		verify "$SRC_DIR/$RUBY_ARCHIVE" "$RUBY_MD5"
 	else
 		warn "No checksum for $RUBY_ARCHIVE. Proceeding anyways"
 	fi
