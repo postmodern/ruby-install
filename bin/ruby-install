@@ -20,15 +20,15 @@ log "Installing $RUBY $RUBY_VERSION into $INSTALL_DIR ..."
 
 pre_install || fail "Pre-install tasks failed!"
 
-if [[ $NO_INSTALL_DEPS -eq 1 ]]; then
+if [[ ! $NO_INSTALL_DEPS -eq 1 ]]; then
 	install_deps || fail "Installing dependencies failed!"
 fi
 
-if [[ $NO_DOWNLOAD -eq 1 ]]; then
+if [[ ! $NO_DOWNLOAD -eq 1 ]]; then
 	download_ruby || fail "Download of $RUBY_URL failed!"
 fi
 
-if [[ $NO_VERIFY -eq 1 ]]; then
+if [[ ! $NO_VERIFY -eq 1 ]]; then
 	verify_ruby || fail "Verification of of $RUBY_ARCHIVE failed!"
 fi
 
