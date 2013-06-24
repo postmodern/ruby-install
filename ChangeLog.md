@@ -1,3 +1,26 @@
+### 0.2.0 / 2013-06-23
+
+* Added support for installing [MagLev] (@havenwood).
+* Added the `--url` option to specify an alternate URL for the Ruby archive.
+* Added the `--md5` option to specify an alternate MD5 checksum for the Ruby
+  archive.
+* Added the `--no-download` option to use the previously downloaded Ruby
+  archive.
+* Added the `--no-verify` option to disable verifying the downloaded Ruby
+  archive.
+* Added the `--no-install-deps` option to bypass using the package manager.
+  (Stefano Zanella)
+* Added the `--no-reinstall` option to prevent overwriting existing Ruby
+  installs. (Stefano Zanella)
+* Allow `curl` to follow redirects. (Stefano Zanella)
+* No longer sync the package manager.
+* Ensure that the parent of the installation directory exists (@havenwood).
+
+#### rubinius
+
+* Fixed homebrew dependencies (thanks Jack Nagel).
+* No longer install libffi, since Rubinius vendors their own version.
+
 ### 0.1.4 / 2013-05-31
 
 #### ruby/functions.sh
