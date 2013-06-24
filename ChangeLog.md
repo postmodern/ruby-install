@@ -86,3 +86,8 @@
 [yum]: http://yum.baseurl.org/
 [pacman]: https://wiki.archlinux.org/index.php/Pacman
 [brew]: http://mxcl.github.com/homebrew/
+
+[Ruby]: http://www.ruby-lang.org/
+[JRuby]: http://jruby.org/
+[Rubinius]: http://rubini.us/
+[MagLev]: http://maglev.github.io/
