@@ -131,9 +131,7 @@ function verify()
 		return 1
 	fi
 
-	if [[ "$($MD5SUM "$1")" == *$2* ]]; then
-		log "Verified $1"
-	else
+	if [[ "$($MD5SUM "$1")" != *$2* ]]; then
 		error "$1 is invalid!"
 		return 1
 	fi
