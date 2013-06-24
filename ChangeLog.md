@@ -16,6 +16,10 @@
 * No longer sync the package manager.
 * Ensure that the parent of the installation directory exists (@havenwood).
 
+#### ruby
+
+* Set the default version to 2.0.0-p195.
+
 #### rubinius
 
 * Fixed homebrew dependencies (thanks Jack Nagel).
