@@ -1,6 +1,6 @@
 ### 0.2.0 / 2013-06-23
 
-* Added support for installing [MagLev] (@havenwood).
+* Added support for installing [MagLev]. (@havenwood)
 * Added the `--url` option to specify an alternate URL for the Ruby archive.
 * Added the `--md5` option to specify an alternate MD5 checksum for the Ruby
   archive.
