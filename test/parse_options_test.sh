@@ -81,7 +81,7 @@ test_parse_options_with_url()
 {
 	local url="http://mirror.s3.amazonaws.com/downloads/ruby-1.2.3.tar.gz"
 
-	parse_options "--url" "$url"
+	parse_options "--url" "$url" "ruby"
 
 	assertEquals "did not set \$RUBY_URL" "$url" "$RUBY_URL"
 }
@@ -90,14 +90,14 @@ test_parse_options_with_md5()
 {
 	local md5="5d41402abc4b2a76b9719d911017c592"
 
-	parse_options "--md5" "$md5"
+	parse_options "--md5" "$md5" "ruby"
 
 	assertEquals "did not set \$RUBY_MD5" "$md5" "$RUBY_MD5"
 }
 
 test_parse_options_with_no_download()
 {
-	parse_options "--no-download"
+	parse_options "--no-download" "ruby"
 
  	assertEquals "did not set \$NO_DOWNLOAD" 1 $NO_DOWNLOAD
 }
