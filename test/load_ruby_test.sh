@@ -4,7 +4,7 @@ setUp()
 {
 	RUBY="ruby"
 	RUBY_VERSION="1.8"
-	EXPANDED_RUBY_VERSION="1.8.7-p371"
+	EXPANDED_RUBY_VERSION="1.8.7-p374"
 }
 
 test_load_ruby()
