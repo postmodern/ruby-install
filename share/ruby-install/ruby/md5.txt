@@ -43,6 +43,7 @@ ruby-1.9.3-p374.tar.bz2:      944e73eba9ee9e1f2647ff32ec0b14b2
 ruby-1.9.3-p385.tar.bz2:      5ec9aff670f4912b0f6f0e11e855ef6c
 ruby-1.9.3-p392.tar.bz2:      a810d64e2255179d2f334eb61fb8519c
 ruby-1.9.3-p429.tar.bz2:      c2b2de5ef15ea9b1aaa3152f9112af1b
+ruby-1.9.3-p448.tar.bz2:      aa710d386e5903f78f0231868255e6af
 ruby-1.9.3-preview1.tar.bz2:  7d93dc773c5824f05c6e6630d8c4bf9b
 ruby-1.9.3-rc1.tar.bz2:       26f0dc51ad981e12c58b48380112fa4d
 ruby-2.0.0-p0.tar.bz2:        895c1c581f8d28e8b3bb02472b2ccf6a
