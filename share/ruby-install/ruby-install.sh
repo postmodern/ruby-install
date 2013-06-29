@@ -83,10 +83,11 @@ function fail()
 #
 function fetch()
 {
-	local pair="$(grep -E "^$2: " "$RUBY_INSTALL_DIR/$1.txt")"
-	local value="${pair##$2:*( )}"
+	local file="$RUBY_INSTALL_DIR/$1.txt"
+	local key="$2"
+	local pair="$(grep -E "^$key: " "$file")"
 
-	echo "$value"
+	echo "${pair##$key:*( )}"
 }
 
 function install_packages()
@@ -133,13 +134,16 @@ function download()
 #
 function verify()
 {
+	local path="$1"
+	local md5="$2"
+
 	if [[ -z "$MD5SUM" ]]; then
 		error "Unable to find the md5 checksum utility"
 		return 1
 	fi
 
-	if [[ "$($MD5SUM "$1")" != *$2* ]]; then
-		error "$1 is invalid!"
+	if [[ "$($MD5SUM "$path")" != *$md5* ]]; then
+		error "$path is invalid!"
 		return 1
 	fi
 }
@@ -149,12 +153,15 @@ function verify()
 #
 function extract()
 {
-	case "$1" in
-		*.tar.gz)	tar -xzf "$1" -C "$2" ;;
-		*.tar.bz2)	tar -xjf "$1" -C "$2" ;;
-		*.zip)		unzip "$1" -d "$2" ;;
+	local archive="$1"
+	local dest="$2"
+
+	case "$archive" in
+		*.tar.gz)	tar -xzf "$archive" -C "$dest" ;;
+		*.tar.bz2)	tar -xjf "$archive" -C "$dest" ;;
+		*.zip)		unzip "$archive" -d "$dest" ;;
 		*)
-			error "Unknown archive format: $1"
+			error "Unknown archive format: $archive"
 			return 1
 			;;
 	esac
