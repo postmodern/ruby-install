@@ -10,6 +10,19 @@ test_download()
 	assertTrue "did not download the file" '[[ -f "$OUTPUT" ]]'
 }
 
+test_download_with_a_directory()
+{
+	local dir="test/subdir"
+	mkdir -p "$dir"
+
+	download "$URL" "$dir" 2>/dev/null
+
+	assertTrue "did not download the file to the directory" \
+	           '[[ -f "$dir/README.md" ]]'
+
+	rm -r "$dir"
+}
+
 test_download_using_wget()
 {
 	[[ $(type -t wget) ]] || return
@@ -30,7 +43,7 @@ test_download_using_curl()
 
 tearDown()
 {
-	rm "$OUTPUT"
+	rm -f "$OUTPUT"
 }
 
 SHUNIT_PARENT=$0 . $SHUNIT2
