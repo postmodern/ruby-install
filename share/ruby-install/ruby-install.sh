@@ -154,12 +154,12 @@ function verify()
 function extract()
 {
 	local archive="$1"
-	local dest="$2"
+	local dest="${2:-$(dirname "$archive")}"
 
 	case "$archive" in
-		*.tar.gz)	tar -xzf "$archive" -C "$dest" ;;
-		*.tar.bz2)	tar -xjf "$archive" -C "$dest" ;;
-		*.zip)		unzip "$archive" -d "$dest" ;;
+		*.tgz|*.tar.gz)		tar -xzf "$archive" -C "$dest" ;;
+		*.tbz|*.tbz2|*.tar.bz2)	tar -xjf "$archive" -C "$dest" ;;
+		*.zip)			unzip "$archive" -d "$dest" ;;
 		*)
 			error "Unknown archive format: $archive"
 			return 1
