@@ -12,7 +12,7 @@ RUBYGEMS_URL="http://production.cf.rubygems.org/rubygems/$RUBYGEMS_ARCHIVE"
 RUBYGEMS_MD5=`fetch "md5" "$RUBYGEMS_ARCHIVE"`
 
 if [[ "$RUBY_VERSION_FAMILY" == "1.8" ]]; then
-	PATCHES+=("$RUBY_DIR/patches/1.8-stdout-rouge-fix.patch")
+	PATCHES+=("$RUBY_DIR"/patches/1.8/*.patch)
 fi
 
 #
