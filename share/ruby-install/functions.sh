@@ -80,7 +80,7 @@ function extract_ruby()
 function apply_patches()
 {
 	for path in ${PATCHES[*]}; do
-		log "Applying patch $path ..."
+		log "Applying patch $(basename $path) ..."
 		patch -p1 -d "$SRC_DIR/$RUBY_SRC_DIR" < "$path"
 	done
 }
