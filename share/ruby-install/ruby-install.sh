@@ -85,7 +85,7 @@ function fetch()
 {
 	local file="$RUBY_INSTALL_DIR/$1.txt"
 	local key="$2"
-	local pair="$(grep -E "^$key: " "$file")"
+	local pair=`grep -E "^$key: " "$file"`
 
 	echo "${pair##$key:*( )}"
 }
@@ -142,7 +142,7 @@ function verify()
 		return 1
 	fi
 
-	if [[ "$($MD5SUM "$path")" != *$md5* ]]; then
+	if [[ `$MD5SUM "$path"` != *$md5* ]]; then
 		error "$path is invalid!"
 		return 1
 	fi
@@ -179,7 +179,7 @@ function load_ruby()
 		return 1
 	fi
 
-	local expanded_version="$(fetch "$RUBY/versions" "$RUBY_VERSION")"
+	local expanded_version=`fetch "$RUBY/versions" "$RUBY_VERSION"`
 	RUBY_VERSION="${expanded_version:-$RUBY_VERSION}"
 
 	source "$RUBY_INSTALL_DIR/functions.sh"
