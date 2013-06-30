@@ -72,7 +72,6 @@ function extract_ruby()
 {
 	log "Extracting $RUBY_ARCHIVE ..."
 	extract "$SRC_DIR/$RUBY_ARCHIVE" "$SRC_DIR"
-	cd "$SRC_DIR/$RUBY_SRC_DIR"
 }
 
 #
@@ -82,7 +81,7 @@ function apply_patches()
 {
 	for path in ${PATCHES[*]}; do
 		log "Applying patch $path ..."
-		patch -p1 < "$path"
+		patch -p1 -d "$SRC_DIR/$RUBY_SRC_DIR" < "$path"
 	done
 }
 

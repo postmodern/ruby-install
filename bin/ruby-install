@@ -34,6 +34,7 @@ fi
 
 extract_ruby   || fail "Unpacking of $RUBY_ARCHIVE failed!"
 apply_patches  || fail "Patching $RUBY $RUBY_VERSION failed!"
+cd "$SRC_DIR/$RUBY_SRC_DIR"
 configure_ruby || fail "Configuration of $RUBY $RUBY_VERSION failed!"
 compile_ruby   || fail "Compiling $RUBY $RUBY_VERSION failed!"
 install_ruby   || fail "Installation of $RUBY $RUBY_VERSION failed!"
