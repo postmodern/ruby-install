@@ -2,7 +2,7 @@
 
 shopt -s extglob
 
-RUBY_INSTALL_VERSION="0.2.0"
+RUBY_INSTALL_VERSION="0.2.1"
 RUBY_INSTALL_DIR=$(dirname ${BASH_SOURCE[0]})
 
 RUBIES=(ruby jruby rubinius maglev)
