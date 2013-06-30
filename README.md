@@ -61,9 +61,9 @@ Install a Ruby with specific configuration:
 
 ## Install
 
-    wget -O ruby-install-0.2.0.tar.gz https://github.com/postmodern/ruby-install/archive/v0.2.0.tar.gz
-    tar -xzvf ruby-install-0.2.0.tar.gz
-    cd ruby-install-0.2.0/
+    wget -O ruby-install-0.2.1.tar.gz https://github.com/postmodern/ruby-install/archive/v0.2.1.tar.gz
+    tar -xzvf ruby-install-0.2.1.tar.gz
+    cd ruby-install-0.2.1/
     sudo make install
 
 ### PGP
@@ -72,8 +72,8 @@ All releases are [PGP] signed for security. Instructions on how to import my
 PGP key can be found on my [blog][1]. To verify that a release was not tampered 
 with:
 
-    wget https://raw.github.com/postmodern/ruby-install/master/pkg/ruby-install-0.2.0.tar.gz.asc
-    gpg --verify ruby-install-0.2.0.tar.gz.asc ruby-install-0.2.0.tar.gz
+    wget https://raw.github.com/postmodern/ruby-install/master/pkg/ruby-install-0.2.1.tar.gz.asc
+    gpg --verify ruby-install-0.2.1.tar.gz.asc ruby-install-0.2.1.tar.gz
 
 ### Homebrew
 
