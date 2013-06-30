@@ -51,7 +51,6 @@ function install_ruby()
 function post_install()
 {
 	if [[ "$RUBY_VERSION_FAMILY" == "1.8" ]]; then
-		cd "$SRC_DIR"
 		log "Installing rubygems"
 		download "$RUBYGEMS_URL" "$SRC_DIR"
 		extract "$SRC_DIR/$RUBYGEMS_ARCHIVE"
