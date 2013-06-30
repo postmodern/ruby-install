@@ -1,5 +1,5 @@
 %define name ruby-install
-%define version 0.2.0
+%define version 0.2.1
 %define release 1
 
 %define buildroot %{_topdir}/BUILDROOT
