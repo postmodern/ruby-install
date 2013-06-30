@@ -1,3 +1,19 @@
+### 0.2.1 / 2013-06-29
+
+* Second argument for `download` may be a directory.
+* Second argument for `extract` can be omitted.
+* `extract` now recognizes `.tgz`, `.tbz` and `.tbz2` extensions.
+* `apply_patches` now uses `patch -d` to switch to the Ruby source directory
+  before applying the patch. Allows `--patch` to be given relative paths.
+
+#### ruby
+
+* Bumped `1.8.7` version to `1.8.7-p374`.
+* Bumped `1.9.3` version to `1.9.3-p448`.
+* Bumped `2.0.0` version to `2.0.0-p247`.
+* Apply the `stdout-rouge-fix.patch` patch to Ruby 1.8.x.
+* Install RubyGems into Ruby 1.8.x.
+
 ### 0.2.0 / 2013-06-23
 
 * Added support for installing [MagLev]. (@havenwood)
