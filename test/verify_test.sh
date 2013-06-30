@@ -16,6 +16,13 @@ test_verify()
 	assertEquals "did not return the correct MD5" 0 $?
 }
 
+test_verify_without_md5()
+{
+	verify "$FILE" "" 2>/dev/null
+
+	assertEquals "did not return 1" 1 $?
+}
+
 test_verify_using_md5sum()
 {
 	[[ $(type -t md5sum) ]] || return

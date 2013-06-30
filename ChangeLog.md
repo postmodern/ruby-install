@@ -2,6 +2,7 @@
 
 * Second argument for `download` may be a directory.
 * Second argument for `extract` can be omitted.
+* Return an error if no md5 checksum is given to `verify`.
 * `extract` now recognizes `.tgz`, `.tbz` and `.tbz2` extensions.
 * `apply_patches` now uses `patch -d` to switch to the Ruby source directory
   before applying the patch. Allows `--patch` to be given relative paths.

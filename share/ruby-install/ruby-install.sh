@@ -142,6 +142,11 @@ function verify()
 		return 1
 	fi
 
+	if [[ -z "$md5" ]]; then
+		error "No md5 checksum given"
+		return 1
+	fi
+
 	if [[ `$MD5SUM "$path"` != *$md5* ]]; then
 		error "$path is invalid!"
 		return 1
