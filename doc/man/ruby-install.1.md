@@ -28,6 +28,8 @@ https://github.com/postmodern/ruby-install#readme
 
 `-i`, `--install-dir` *DIR*
 	Specifies the directory where Ruby will be installed.
+	Defaults to */opt/rubies/$ruby-$version* for root and
+	*~/.rubies/$ruby-$version* for normal users.
 
 `-p`, `--patch` *FILE*
 	Specifies any additional patches to apply.
