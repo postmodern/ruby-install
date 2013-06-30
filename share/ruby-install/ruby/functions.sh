@@ -9,6 +9,7 @@ RUBYGEMS_VERSION="2.0.3"
 RUBYGEMS_ARCHIVE="rubygems-$RUBYGEMS_VERSION.tgz"
 RUBYGEMS_SRC_DIR="rubygems-$RUBYGEMS_VERSION"
 RUBYGEMS_URL="http://production.cf.rubygems.org/rubygems/$RUBYGEMS_ARCHIVE"
+RUBYGEMS_MD5="854691f145cea98b4100e5b0831b73ed"
 
 if [[ "$RUBY_VERSION_FAMILY" == "1.8" ]]; then
 	PATCHES+=("$RUBY_DIR/patches/1.8-stdout-rouge-fix.patch")
@@ -53,6 +54,7 @@ function post_install()
 	if [[ "$RUBY_VERSION_FAMILY" == "1.8" ]]; then
 		log "Installing rubygems $RUBYGEMS_VERSION"
 		download "$RUBYGEMS_URL" "$SRC_DIR"
+		verify "$SRC_DIR/$RUBYGEMS_ARCHIVE" "$RUBYGEMS_MD5"
 		extract "$SRC_DIR/$RUBYGEMS_ARCHIVE"
 		"$INSTALL_DIR"/bin/ruby "$SRC_DIR/$RUBYGEMS_SRC_DIR/setup.rb"
 	fi
