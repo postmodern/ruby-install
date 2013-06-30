@@ -52,10 +52,16 @@ function install_ruby()
 function post_install()
 {
 	if [[ "$RUBY_VERSION_FAMILY" == "1.8" ]]; then
-		log "Installing rubygems $RUBYGEMS_VERSION"
+		log "Downloading $RUBYGEMS_URL into $SRC_DIR ..."
 		download "$RUBYGEMS_URL" "$SRC_DIR"
+
+		log "Verifying $RUBYGEMS_ARCHIVE ..."
 		verify "$SRC_DIR/$RUBYGEMS_ARCHIVE" "$RUBYGEMS_MD5"
+
+		log "Extracting $RUBYGEMS_ARCHIVE ..."
 		extract "$SRC_DIR/$RUBYGEMS_ARCHIVE"
+
+		log "Installing rubygems $RUBYGEMS_VERSION ..."
 		"$INSTALL_DIR"/bin/ruby "$SRC_DIR/$RUBYGEMS_SRC_DIR/setup.rb"
 	fi
 }
