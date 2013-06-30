@@ -62,6 +62,7 @@ function post_install()
 		extract "$SRC_DIR/$RUBYGEMS_ARCHIVE"
 
 		log "Installing rubygems $RUBYGEMS_VERSION ..."
-		"$INSTALL_DIR"/bin/ruby "$SRC_DIR/$RUBYGEMS_SRC_DIR/setup.rb"
+		cd "$SRC_DIR/$RUBYGEMS_SRC_DIR"
+		"$INSTALL_DIR/bin/ruby" setup.rb
 	fi
 }
