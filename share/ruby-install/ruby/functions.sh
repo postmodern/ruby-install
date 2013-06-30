@@ -10,6 +10,10 @@ RUBYGEMS_ARCHIVE="rubygems-$RUBYGEMS_VERSION.tgz"
 RUBYGEMS_SRC_DIR="rubygems-$RUBYGEMS_VERSION"
 RUBYGEMS_URL="http://production.cf.rubygems.org/rubygems/$RUBYGEMS_ARCHIVE"
 
+if [[ "$RUBY_VERSION_FAMILY" == "1.8" ]]; then
+	PATCHES+=("$RUBY_DIR/patches/1.8-stdout-rouge-fix.patch")
+fi
+
 #
 # Configures Ruby.
 #
