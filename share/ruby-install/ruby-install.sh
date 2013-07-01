@@ -35,7 +35,7 @@ fi
 #
 # Only use sudo unless already root
 #
-if [[ $UID -eq 0 ]]; then SUDO=""
+if [[ $UID -eq "0" ]]; then SUDO=""
 else SUDO="sudo"
 fi
 
@@ -101,7 +101,7 @@ function install_packages()
 {
 	case "$PACKAGE_MANAGER" in
 		apt)	$SUDO apt-get install -y $* ;;
-		yum)	$SUDO sudo yum install -y $*     ;;
+		yum)	$SUDO yum install -y $*     ;;
 		brew)	brew install $*            ;;
 		pacman)
 			local missing_pkgs=$(pacman -T $*)
