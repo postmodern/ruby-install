@@ -33,6 +33,13 @@ elif [[ $(type -t md5)    ]]; then MD5SUM="md5"
 fi
 
 #
+# Only use sudo unless already root
+#
+if [[ $UID -eq 0 ]]; then SUDO=""
+else SUDO="sudo"
+fi
+
+#
 # Prints a log message.
 #
 function log()
@@ -93,14 +100,14 @@ function fetch()
 function install_packages()
 {
 	case "$PACKAGE_MANAGER" in
-		apt)	sudo apt-get install -y $* ;;
-		yum)	sudo yum install -y $*     ;;
+		apt)	$SUDO apt-get install -y $* ;;
+		yum)	$SUDO sudo yum install -y $*     ;;
 		brew)	brew install $*            ;;
 		pacman)
 			local missing_pkgs=$(pacman -T $*)
 
 			if [[ -n "$missing_pkgs" ]]; then
-				sudo pacman -S $missing_pkgs
+				$SUDO pacman -S $missing_pkgs
 			fi
 			;;
 		"")	warn "Could not determine Package Manager. Proceeding anyways." ;;
