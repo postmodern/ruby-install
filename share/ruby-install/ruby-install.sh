@@ -36,7 +36,7 @@ fi
 # Only use sudo unless already root
 #
 if [[ $UID -eq "0" ]]; then SUDO=""
-else SUDO="sudo"
+else                        SUDO="sudo"
 fi
 
 #
