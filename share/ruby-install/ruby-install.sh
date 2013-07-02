@@ -10,7 +10,7 @@ PATCHES=()
 CONFIGURE_OPTS=()
 
 #
-# Auto-detection the package manager.
+# Auto-detect the package manager.
 #
 if   [[ $(type -t apt-get) ]]; then PACKAGE_MANAGER="apt"
 elif [[ $(type -t yum)     ]]; then PACKAGE_MANAGER="yum"
@@ -33,7 +33,7 @@ elif [[ $(type -t md5)    ]]; then MD5SUM="md5"
 fi
 
 #
-# Only use sudo unless already root
+# Only use sudo if already root.
 #
 if [[ $UID -eq "0" ]]; then SUDO=""
 else                        SUDO="sudo"
@@ -140,7 +140,7 @@ function download()
 }
 
 #
-# Verifies a file against a MD5 checksum.
+# Verifies a file against a md5 checksum.
 #
 function verify()
 {
