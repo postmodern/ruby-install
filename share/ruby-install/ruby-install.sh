@@ -103,11 +103,11 @@ function install_packages()
 		apt)	$SUDO apt-get install -y $* ;;
 		yum)	$SUDO yum install -y $*     ;;
 		brew)
-			local brew_owner=$(stat -f %Su /usr/local/bin/brew)
-			sudo -u $brew_owner brew install $*
+			local brew_owner=`stat -f %Su /usr/local/bin/brew`
+			sudo -u "$brew_owner" brew install $*
 			;;
 		pacman)
-			local missing_pkgs=$(pacman -T $*)
+			local missing_pkgs=`pacman -T $*`
 
 			if [[ -n "$missing_pkgs" ]]; then
 				$SUDO pacman -S $missing_pkgs
