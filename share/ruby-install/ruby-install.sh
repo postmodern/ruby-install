@@ -102,7 +102,10 @@ function install_packages()
 	case "$PACKAGE_MANAGER" in
 		apt)	$SUDO apt-get install -y $* ;;
 		yum)	$SUDO yum install -y $*     ;;
-		brew)	brew install $*            ;;
+		brew)
+			local brew_owner=$(stat -f %Su /usr/local/bin/brew)
+			sudo -u $brew_owner brew install $*
+			;;
 		pacman)
 			local missing_pkgs=$(pacman -T $*)
 
