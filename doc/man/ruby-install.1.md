@@ -52,7 +52,7 @@ https://github.com/postmodern/ruby-install#readme
 `--no-reinstall`
 	Skip installation if another Ruby is detected in same location.
 
-`-v`, `--version`
+`-V`, `--version`
 	Prints the current ruby-install version.
 
 `-h`, `--help`
