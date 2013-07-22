@@ -25,7 +25,7 @@ test_verify_without_md5()
 
 test_verify_using_md5sum()
 {
-	[[ $(type -t md5sum) ]] || return
+	[[ $(command -v md5sum) ]] || return
 
 	MD5SUM="md5sum" verify "$FILE" "$MD5" >/dev/null
 
@@ -34,7 +34,7 @@ test_verify_using_md5sum()
 
 test_verify_using_md5()
 {
-	[[ $(type -t md5) ]] || return
+	[[ $(command -v md5) ]] || return
 
 	MD5SUM="md5" verify "$FILE" "$MD5" >/dev/null
 

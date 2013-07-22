@@ -12,24 +12,24 @@ CONFIGURE_OPTS=()
 #
 # Auto-detect the package manager.
 #
-if   [[ $(type -t apt-get) ]]; then PACKAGE_MANAGER="apt"
-elif [[ $(type -t yum)     ]]; then PACKAGE_MANAGER="yum"
-elif [[ $(type -t brew)    ]]; then PACKAGE_MANAGER="brew"
-elif [[ $(type -t pacman)  ]]; then PACKAGE_MANAGER="pacman"
+if   [[ $(command -v apt-get) ]]; then PACKAGE_MANAGER="apt"
+elif [[ $(command -v yum)     ]]; then PACKAGE_MANAGER="yum"
+elif [[ $(command -v brew)    ]]; then PACKAGE_MANAGER="brew"
+elif [[ $(command -v pacman)  ]]; then PACKAGE_MANAGER="pacman"
 fi
 
 #
 # Auto-detect the downloader.
 #
-if   [[ $(type -t wget) ]]; then DOWNLOADER="wget"
-elif [[ $(type -t curl) ]]; then DOWNLOADER="curl"
+if   [[ $(command -v wget) ]]; then DOWNLOADER="wget"
+elif [[ $(command -v curl) ]]; then DOWNLOADER="curl"
 fi
 
 #
 # Auto-detect the md5 utility.
 #
-if   [[ $(type -t md5sum) ]]; then MD5SUM="md5sum"
-elif [[ $(type -t md5)    ]]; then MD5SUM="md5"
+if   [[ $(command -v md5sum) ]]; then MD5SUM="md5sum"
+elif [[ $(command -v md5)    ]]; then MD5SUM="md5"
 fi
 
 #
