@@ -67,12 +67,30 @@ function extract_ruby()
 }
 
 #
+# Download any additional patches
+#
+function download_patches()
+{
+	for path in ${PATCHES[*]}; do
+		if [[ $path == http:\/\/* || $path == https:\/\/* ]]; then
+			log "Downloading patch $path ..."
+			patch=$(basename $path)
+			download "$path" "$SRC_DIR/$patch"
+		fi
+	done
+}
+
+#
 # Apply any additional patches
 #
 function apply_patches()
 {
 	for path in ${PATCHES[*]}; do
 		log "Applying patch $(basename $path) ..."
+		if [[ $path == http:\/\/* || $path == https:\/\/* ]]; then
+			patch=$(basename $path)
+			path="$SRC_DIR/$patch"
+		fi
 		patch -p1 -d "$SRC_DIR/$RUBY_SRC_DIR" < "$path"
 	done
 }
