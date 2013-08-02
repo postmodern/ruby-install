@@ -71,11 +71,11 @@ function extract_ruby()
 #
 function download_patches()
 {
-	for path in "${PATCHES[@]}"; do
-		if [[ "$path" == http:\/\/* || "$path" == https:\/\/* ]]; then
-			log "Downloading patch $path ..."
-			patch=$(basename "$path")
-			download "$path" "$SRC_DIR/$patch"
+	for patch in "${PATCHES[@]}"; do
+		if [[ "$patch" == http:\/\/* || "$patch" == https:\/\/* ]]; then
+			log "Downloading patch $patch ..."
+			path=$(basename "$patch")
+			download "$patch" "$SRC_DIR/$path"
 		fi
 	done
 }
@@ -85,13 +85,13 @@ function download_patches()
 #
 function apply_patches()
 {
-	for path in "${PATCHES[@]}"; do
-		log "Applying patch $(basename $path) ..."
-		if [[ "$path" == http:\/\/* || "$path" == https:\/\/* ]]; then
-			patch=$(basename "$path")
-			path="$SRC_DIR/$patch"
+	for patch in "${PATCHES[@]}"; do
+		log "Applying patch $(basename $patch) ..."
+		if [[ "$patch" == http:\/\/* || "$patch" == https:\/\/* ]]; then
+			path=$(basename "$patch")
+			patch="$SRC_DIR/$path"
 		fi
-		patch -p1 -d "$SRC_DIR/$RUBY_SRC_DIR" < "$path"
+		patch -p1 -d "$SRC_DIR/$RUBY_SRC_DIR" < "$patch"
 	done
 }
 
