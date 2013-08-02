@@ -1,6 +1,6 @@
 . ./test/helper.sh
 
-PATCHES="https://raw.github.com/gist/4136373/falcon-gc.diff local.patch"
+PATCHES=("https://raw.github.com/gist/4136373/falcon-gc.diff" "local.patch")
 
 test_download_patches()
 {
