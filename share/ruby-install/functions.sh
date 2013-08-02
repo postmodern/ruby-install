@@ -71,7 +71,7 @@ function extract_ruby()
 #
 function download_patches()
 {
-	for path in ${PATCHES[*]}; do
+	for path in "${PATCHES[@]}"; do
 		if [[ $path == http:\/\/* || $path == https:\/\/* ]]; then
 			log "Downloading patch $path ..."
 			patch=$(basename $path)
@@ -85,7 +85,7 @@ function download_patches()
 #
 function apply_patches()
 {
-	for path in ${PATCHES[*]}; do
+	for path in "${PATCHES[@]}"; do
 		log "Applying patch $(basename $path) ..."
 		if [[ $path == http:\/\/* || $path == https:\/\/* ]]; then
 			patch=$(basename $path)
