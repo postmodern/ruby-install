@@ -2,41 +2,43 @@
 
 PATCHES=("https://raw.github.com/gist/4136373/falcon-gc.diff" "local.patch")
 
+setUp()
+{
+	SRC_DIR="$PWD/test/src"
+	RUBY_SRC_DIR="ruby-1.9.3-p448"
+
+	mkdir -p "$SRC_DIR/$RUBY_SRC_DIR"
+}
+
 test_download_patches()
 {
-	local dir="test/subdir"
-	local SRC_DIR=$dir
-
-	mkdir -p "$dir"
-
 	download_patches 2>/dev/null
 
 	assertTrue "did not download patches to the directory" \
-		'[[ -f "$dir/falcon-gc.diff" ]]'
-
-	rm -r "$dir"
+		   '[[ -f "$SRC_DIR/falcon-gc.diff" ]]'
 }
 
 test_apply_patches()
 {
-	local dir="test/subdir"
-	local SRC_DIR=$dir
-
-	mkdir -p "$dir"
 	echo "
-diff -Naur subdir.orig/test subdir/test
---- subdir.orig/test 1970-01-01 01:00:00.000000000 +0100
-+++ subdir/test  2013-08-02 20:57:08.055843749 +0200
+diff -Naur $RUBY_SRC_DIR.orig/test $RUBY_SRC_DIR/test
+--- $RUBY_SRC_DIR.orig/test 1970-01-01 01:00:00.000000000 +0100
++++ $RUBY_SRC_DIR/test  2013-08-02 20:57:08.055843749 +0200
 @@ -0,0 +1 @@
 +patch
-" 	> "$dir/falcon-gc.diff"
+" 	> "$SRC_DIR/falcon-gc.diff"
 
+	cd "$SRC_DIR/$RUBY_SRC_DIR"
 	apply_patches 2>/dev/null
+	cd $OLDPWD
 
 	assertTrue "did not apply downloaded patches" \
-		'[[ -f "$dir/test" ]]'
+		   '[[ -f "$SRC_DIR/$RUBY_SRC_DIR/test" ]]'
+}
 
-	rm -r "$dir"
+tearDown()
+{
+	rm -r "$SRC_DIR/$RUBY_SRC_DIR"
 }
 
 SHUNIT_PARENT=$0 . $SHUNIT2
