@@ -86,9 +86,11 @@ function apply_patches()
 {
 	for patch in "${PATCHES[@]}"; do
 		log "Applying patch $(basename $patch) ..."
+
 		if [[ "$patch" == http:\/\/* || "$patch" == https:\/\/* ]]; then
 			patch="$SRC_DIR/$(basename "$patch")"
 		fi
+
 		patch -p1 -d "$SRC_DIR/$RUBY_SRC_DIR" < "$patch"
 	done
 }
