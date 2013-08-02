@@ -74,8 +74,7 @@ function download_patches()
 	for patch in "${PATCHES[@]}"; do
 		if [[ "$patch" == http:\/\/* || "$patch" == https:\/\/* ]]; then
 			log "Downloading patch $patch ..."
-			path=$(basename "$patch")
-			download "$patch" "$SRC_DIR/$path"
+			download "$patch" "$SRC_DIR/$(basename "$patch")"
 		fi
 	done
 }
@@ -88,8 +87,7 @@ function apply_patches()
 	for patch in "${PATCHES[@]}"; do
 		log "Applying patch $(basename $patch) ..."
 		if [[ "$patch" == http:\/\/* || "$patch" == https:\/\/* ]]; then
-			path=$(basename "$patch")
-			patch="$SRC_DIR/$path"
+			patch="$SRC_DIR/$(basename "$patch")"
 		fi
 		patch -p1 -d "$SRC_DIR/$RUBY_SRC_DIR" < "$patch"
 	done
