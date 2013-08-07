@@ -34,6 +34,9 @@ https://github.com/postmodern/ruby-install#readme
 `-p`, `--patch` *FILE*
 	Specifies any additional patches to apply.
 
+`-M`, `--mirror` *URL*
+	Specifies an altnerate mirror to download the Ruby archive from.
+
 `-u`, `--url` *URL*
 	Alternate URL to download the Ruby archive from.
 
