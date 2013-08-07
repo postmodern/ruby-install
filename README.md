@@ -10,6 +10,8 @@ Installs [Ruby], [JRuby], [Rubinius] or [MagLev].
 * Supports installing into `/opt/rubies/` for root and `~/.rubies/` for users
   by default.
 * Supports installing into arbitrary directories.
+* Supports downloading from mirrors.
+* Supports downloading/applying patches.
 * Supports applying arbitrary patches.
 * Supports specifying arbitrary `./configure` options.
 * Supports downloading archives using `wget` or `curl`.
@@ -50,6 +52,10 @@ Install a specific version of Ruby:
 Install a Ruby into a specific directory:
 
     $ ruby-install -i /usr/local/ ruby 1.9.3-p429
+
+Install a Ruby from a mirror:
+
+    $ ruby-install -M http://www.mirrorservice.org/sites/ftp.ruby-lang.org/pub/ruby ruby 2.0.0-p247
 
 Install a Ruby with a specific patch:
 
