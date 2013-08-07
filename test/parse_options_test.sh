@@ -77,6 +77,15 @@ test_parse_options_with_patches()
 	assertEquals "did not set \$PATCHES" $expected $PATCHES
 }
 
+test_parse_options_with_mirror()
+{
+	local mirror="http://www.mirrorservice.org/sites/ftp.ruby-lang.org/pub/ruby"
+
+	parse_options "--mirror" "$mirror" "ruby"
+
+	assertEquals "did not set \$RUBY_MIRROR" "$mirror" "$RUBY_MIRROR"
+}
+
 test_parse_options_with_url()
 {
 	local url="http://mirror.s3.amazonaws.com/downloads/ruby-1.2.3.tar.gz"

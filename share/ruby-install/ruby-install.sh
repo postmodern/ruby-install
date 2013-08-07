@@ -269,6 +269,10 @@ function parse_options()
 				PATCHES+=("$2")
 				shift 2
 				;;
+			-M|--mirror)
+				RUBY_MIRROR="$2"
+				shift 2
+				;;
 			-u|--url)
 				RUBY_URL="$2"
 				shift 2
