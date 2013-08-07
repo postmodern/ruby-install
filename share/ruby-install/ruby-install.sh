@@ -229,6 +229,7 @@ Options:
 	-s, --src-dir DIR	Directory to download source-code into
 	-i, --install-dir DIR	Directory to install Ruby into
 	-p, --patch FILE	Patch to apply to the Ruby source-code
+	-M, --mirror URL	Alternate mirror to download the Ruby archive from
 	-u, --url URL		Alternate URL to download the Ruby archive from
 	-m, --md5 MD5		MD5 checksum of the Ruby archive
 	--no-download		Use the previously downloaded Ruby archive
