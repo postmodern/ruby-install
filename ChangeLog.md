@@ -1,3 +1,11 @@
+### 0.3.0 / 2013-07-06
+
+* Added the `-M`,`--mirror` to make it easier to use mirrors.
+* The `-p`,`--patch` option will not auto-download patch URLs.
+* The `-v` option was renamed to `-V`.
+* No longer use `sudo` if already running as root.
+* Run `brew` as the user that setup homebrew.
+
 ### 0.2.1 / 2013-06-29
 
 * Second argument for `download` may be a directory.
