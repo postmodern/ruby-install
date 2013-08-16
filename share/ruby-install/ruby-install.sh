@@ -103,7 +103,7 @@ function install_packages()
 		apt)	$SUDO apt-get install -y $* ;;
 		yum)	$SUDO yum install -y $*     ;;
 		brew)
-			local brew_owner=`stat -f %Su /usr/local/bin/brew`
+			local brew_owner=`/usr/bin/stat -f %Su /usr/local/bin/brew`
 			sudo -u "$brew_owner" brew install $*
 			;;
 		pacman)
