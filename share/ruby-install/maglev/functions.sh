@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PLATFORM=`uname -sm`
+PLATFORM="$(uname -sm)"
 [[ "$PLATFORM" == "Darwin x86_64" ]] && PLATFORM="Darwin i386"
 
 RUBY_ARCHIVE="MagLev-$RUBY_VERSION.tar.gz"

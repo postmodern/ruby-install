@@ -12,7 +12,7 @@ fi
 function pre_install()
 {
 	mkdir -p "$SRC_DIR"
-	mkdir -p `dirname "$INSTALL_DIR"`
+	mkdir -p "$(dirname "$INSTALL_DIR")"
 }
 
 #
@@ -20,7 +20,7 @@ function pre_install()
 #
 function install_deps()
 {
-	local packages=`fetch "$RUBY/dependencies" "$PACKAGE_MANAGER"`
+	local packages="$(fetch "$RUBY/dependencies" "$PACKAGE_MANAGER")"
 
 	if [[ -n "$packages" ]]; then
 		log "Installing dependencies for $RUBY $RUBY_VERSION ..."

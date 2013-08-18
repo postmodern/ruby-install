@@ -92,7 +92,7 @@ function fetch()
 {
 	local file="$RUBY_INSTALL_DIR/$1.txt"
 	local key="$2"
-	local pair=`grep -E "^$key: " "$file"`
+	local pair="$(grep -E "^$key: " "$file")"
 
 	echo "${pair##$key:*( )}"
 }
@@ -103,11 +103,11 @@ function install_packages()
 		apt)	$SUDO apt-get install -y $* ;;
 		yum)	$SUDO yum install -y $*     ;;
 		brew)
-			local brew_owner=`/usr/bin/stat -f %Su /usr/local/bin/brew`
+			local brew_owner="$(/usr/bin/stat -f %Su /usr/local/bin/brew)"
 			sudo -u "$brew_owner" brew install $*
 			;;
 		pacman)
-			local missing_pkgs=`pacman -T $*`
+			local missing_pkgs="$(pacman -T $*)"
 
 			if [[ -n "$missing_pkgs" ]]; then
 				$SUDO pacman -S $missing_pkgs
@@ -157,7 +157,7 @@ function verify()
 		return 1
 	fi
 
-	if [[ `$MD5SUM "$path"` != *$md5* ]]; then
+	if [[ "$($MD5SUM "$path")" != *$md5* ]]; then
 		error "$path is invalid!"
 		return 1
 	fi
@@ -194,7 +194,7 @@ function load_ruby()
 		return 1
 	fi
 
-	local expanded_version=`fetch "$RUBY/versions" "$RUBY_VERSION"`
+	local expanded_version="$(fetch "$RUBY/versions" "$RUBY_VERSION")"
 	RUBY_VERSION="${expanded_version:-$RUBY_VERSION}"
 
 	source "$RUBY_INSTALL_DIR/functions.sh"

@@ -10,7 +10,7 @@ RUBYGEMS_VERSION="2.0.3"
 RUBYGEMS_ARCHIVE="rubygems-$RUBYGEMS_VERSION.tgz"
 RUBYGEMS_SRC_DIR="rubygems-$RUBYGEMS_VERSION"
 RUBYGEMS_URL="http://production.cf.rubygems.org/rubygems/$RUBYGEMS_ARCHIVE"
-RUBYGEMS_MD5=`fetch "$RUBY/md5" "$RUBYGEMS_ARCHIVE"`
+RUBYGEMS_MD5="$(fetch "$RUBY/md5" "$RUBYGEMS_ARCHIVE")"
 
 if [[ "$RUBY_VERSION_FAMILY" == "1.8" ]]; then
 	PATCHES+=("$RUBY_DIR"/patches/1.8/*.patch)
