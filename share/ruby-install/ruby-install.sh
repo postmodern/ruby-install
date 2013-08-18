@@ -3,7 +3,7 @@
 shopt -s extglob
 
 RUBY_INSTALL_VERSION="0.3.0"
-RUBY_INSTALL_DIR=$(dirname ${BASH_SOURCE[0]})
+RUBY_INSTALL_DIR="${BASH_SOURCE[0]%/*}"
 
 RUBIES=(ruby jruby rubinius maglev)
 PATCHES=()
@@ -126,7 +126,7 @@ function download()
 	local dest="$2"
 
 	if [[ -d "$dest" ]]; then
-		dest="$dest/$(basename "$url")"
+		dest="$dest/${url##*/}"
 	fi
 
 	case "$DOWNLOADER" in
@@ -169,7 +169,7 @@ function verify()
 function extract()
 {
 	local archive="$1"
-	local dest="${2:-$(dirname "$archive")}"
+	local dest="${2:-${archive%/*}}"
 
 	case "$archive" in
 		*.tgz|*.tar.gz)		tar -xzf "$archive" -C "$dest" ;;

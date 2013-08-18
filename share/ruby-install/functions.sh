@@ -12,7 +12,7 @@ fi
 function pre_install()
 {
 	mkdir -p "$SRC_DIR"
-	mkdir -p "$(dirname "$INSTALL_DIR")"
+	mkdir -p "${INSTALL_DIR%/*}"
 }
 
 #
@@ -76,7 +76,7 @@ function download_patches()
 	for patch in "${PATCHES[@]}"; do
 		if [[ "$patch" == http:\/\/* || "$patch" == https:\/\/* ]]; then
 			log "Downloading patch $patch ..."
-			dest="$SRC_DIR/$RUBY_SRC_DIR/$(basename "$patch")"
+			dest="$SRC_DIR/$RUBY_SRC_DIR/${patch##*/}"
 			download "$patch" "$dest"
 		fi
 	done
@@ -87,11 +87,14 @@ function download_patches()
 #
 function apply_patches()
 {
+	local name
+
 	for patch in "${PATCHES[@]}"; do
-		log "Applying patch $(basename $patch) ..."
+		name="${patch##*/}"
+		log "Applying patch $name ..."
 
 		if [[ "$patch" == http:\/\/* || "$patch" == https:\/\/* ]]; then
-			patch="$SRC_DIR/$RUBY_SRC_DIR/$(basename "$patch")"
+			patch="$SRC_DIR/$RUBY_SRC_DIR/$name"
 		fi
 
 		patch -p1 -d "$SRC_DIR/$RUBY_SRC_DIR" < "$patch"

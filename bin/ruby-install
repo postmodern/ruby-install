@@ -2,7 +2,7 @@
 
 set -e
 
-source "$(dirname $(dirname $0))/share/ruby-install/ruby-install.sh"
+source "${0%/*}/../share/ruby-install/ruby-install.sh"
 
 if [[ $# -eq 0 ]]; then
 	known_rubies
