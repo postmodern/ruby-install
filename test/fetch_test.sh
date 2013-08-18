@@ -1,11 +1,11 @@
 . ./test/helper.sh
 
-setUp()
+function setUp()
 {
 	RUBY=ruby
 }
 
-test_fetch()
+function test_fetch()
 {
 	local key="1.8.7"
 	local expected="1.8.7-p374"
@@ -14,7 +14,7 @@ test_fetch()
 	assertEquals "did not fetch the correct value" "$expected" "$value"
 }
 
-test_fetch_with_excess_whitespace()
+function test_fetch_with_excess_whitespace()
 {
 	local key="ruby-1.8.7-p374.tar.bz2"
 	local expected="83c92e2b57ea08f31187060098b2200b"
@@ -23,7 +23,7 @@ test_fetch_with_excess_whitespace()
 	assertEquals "did not fetch the correct value" "$expected" "$value"
 }
 
-test_fetch_with_unknown_key()
+function test_fetch_with_unknown_key()
 {
 	local key="foo"
 	local expected=""

@@ -1,6 +1,6 @@
 . ./test/helper.sh
 
-setUp()
+function setUp()
 {
 	unset RUBY
 	unset RUBY_VERSION
@@ -8,21 +8,21 @@ setUp()
 	unset INSTALL_DIR
 }
 
-test_parse_options_with_no_arguments()
+function test_parse_options_with_no_arguments()
 {
 	parse_options >/dev/null 2>&1
 
 	assertEquals "did not return 1" 1 $?
 }
 
-test_parse_options_with_invalid_options()
+function test_parse_options_with_invalid_options()
 {
 	parse_options "--foo" "ruby" >/dev/null 2>&1
 
 	assertEquals "did not return 1" 1 $?
 }
 
-test_parse_options_with_one_argument()
+function test_parse_options_with_one_argument()
 {
 	local expected="jruby"
 
@@ -31,7 +31,7 @@ test_parse_options_with_one_argument()
 	assertEquals "did not set \$RUBY" $expected $RUBY
 }
 
-test_parse_options_with_two_arguments()
+function test_parse_options_with_two_arguments()
 {
 	local expected_ruby="jruby"
 	local expected_version="1.7.4"
@@ -43,14 +43,14 @@ test_parse_options_with_two_arguments()
 		     				  $RUBY_VERSION
 }
 
-test_parse_options_with_more_than_two_arguments()
+function test_parse_options_with_more_than_two_arguments()
 {
 	parse_options "jruby" "1.7.4" "foo" >/dev/null 2>&1
 
 	assertEquals "did not return 1" 1 $?
 }
 
-test_parse_options_with_install_dir()
+function test_parse_options_with_install_dir()
 {
 	local expected="/usr/local/"
 
@@ -59,7 +59,7 @@ test_parse_options_with_install_dir()
 	assertEquals "did not set \$INSTALL_DIR" $expected $INSTALL_DIR
 }
 
-test_parse_options_with_src_dir()
+function test_parse_options_with_src_dir()
 {
 	local expected="~/src/"
 
@@ -68,7 +68,7 @@ test_parse_options_with_src_dir()
 	assertEquals "did not set \$SRC_DIR" $expected $SRC_DIR
 }
 
-test_parse_options_with_patches()
+function test_parse_options_with_patches()
 {
 	local expected=(patch1.diff patch2.diff)
 
@@ -77,7 +77,7 @@ test_parse_options_with_patches()
 	assertEquals "did not set \$PATCHES" $expected $PATCHES
 }
 
-test_parse_options_with_mirror()
+function test_parse_options_with_mirror()
 {
 	local mirror="http://www.mirrorservice.org/sites/ftp.ruby-lang.org/pub/ruby"
 
@@ -86,7 +86,7 @@ test_parse_options_with_mirror()
 	assertEquals "did not set \$RUBY_MIRROR" "$mirror" "$RUBY_MIRROR"
 }
 
-test_parse_options_with_url()
+function test_parse_options_with_url()
 {
 	local url="http://mirror.s3.amazonaws.com/downloads/ruby-1.2.3.tar.gz"
 
@@ -95,7 +95,7 @@ test_parse_options_with_url()
 	assertEquals "did not set \$RUBY_URL" "$url" "$RUBY_URL"
 }
 
-test_parse_options_with_md5()
+function test_parse_options_with_md5()
 {
 	local md5="5d41402abc4b2a76b9719d911017c592"
 
@@ -104,35 +104,35 @@ test_parse_options_with_md5()
 	assertEquals "did not set \$RUBY_MD5" "$md5" "$RUBY_MD5"
 }
 
-test_parse_options_with_no_download()
+function test_parse_options_with_no_download()
 {
 	parse_options "--no-download" "ruby"
 
  	assertEquals "did not set \$NO_DOWNLOAD" 1 $NO_DOWNLOAD
 }
 
-test_parse_options_with_no_verify()
+function test_parse_options_with_no_verify()
 {
 	parse_options "--no-verify" "ruby"
 
  	assertEquals "did not set \$NO_VERIFY" 1 $NO_VERIFY
 }
 
-test_parse_options_with_no_install_deps()
+function test_parse_options_with_no_install_deps()
 {
 	parse_options "--no-install-deps" "ruby"
 
  	assertEquals "did not set \$NO_INSTALL_DEPS" 1 $NO_INSTALL_DEPS
 }
 
-test_parse_options_with_no_reinstall()
+function test_parse_options_with_no_reinstall()
 {
 	parse_options "--no-reinstall" "ruby"
 
 	assertEquals "did not set to \$NO_REINSTALL" 1 $NO_REINSTALL
 }
 
-test_parse_options_with_additional_options()
+function test_parse_options_with_additional_options()
 {
 	local expected=(--enable-shared CFLAGS="-03")
 

@@ -6,6 +6,6 @@
 
 export PATH="$PWD/bin:$PATH"
 
-setUp() { return; }
-tearDown() { return; }
-oneTimeTearDown() { return; }
+function setUp() { return; }
+function tearDown() { return; }
+function oneTimeTearDown() { return; }

@@ -1,6 +1,6 @@
 . ./test/helper.sh
 
-test_known_rubies()
+function test_known_rubies()
 {
 	local output=`known_rubies`
 

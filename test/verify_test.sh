@@ -4,26 +4,26 @@ DATA="hello world"
 MD5="6f5902ac237024bdd0c176cb93063dc4"
 FILE="./test/file.txt"
 
-setUp()
+function setUp()
 {
 	echo "$DATA" > "$FILE"
 }
 
-test_verify()
+function test_verify()
 {
 	verify "$FILE" "$MD5" >/dev/null
 
 	assertEquals "did not return the correct MD5" 0 $?
 }
 
-test_verify_without_md5()
+function test_verify_without_md5()
 {
 	verify "$FILE" "" 2>/dev/null
 
 	assertEquals "did not return 1" 1 $?
 }
 
-test_verify_using_md5sum()
+function test_verify_using_md5sum()
 {
 	command -v md5sum >/dev/null || return
 
@@ -32,7 +32,7 @@ test_verify_using_md5sum()
 	assertEquals "did not return the correct MD5" 0 $?
 }
 
-test_verify_using_md5()
+function test_verify_using_md5()
 {
 	command -v md5 >/dev/null || return
 
@@ -41,14 +41,14 @@ test_verify_using_md5()
 	assertEquals "did not return the correct MD5" 0 $?
 }
 
-test_verify_with_bad_md5()
+function test_verify_with_bad_md5()
 {
 	verify "$FILE" "4101bef8794fed986e95dfb54850c68b" >/dev/null 2>/dev/null
 
 	assertEquals "did not reject the incorrect MD5" 1 $?
 }
 
-tearDown()
+function tearDown()
 {
 	rm "$FILE"
 }

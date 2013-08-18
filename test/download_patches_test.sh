@@ -2,7 +2,7 @@
 
 PATCHES=("https://raw.github.com/gist/4136373/falcon-gc.diff" "local.patch")
 
-setUp()
+function setUp()
 {
 	SRC_DIR="$PWD/test/src"
 	RUBY_SRC_DIR="ruby-1.9.3-p448"
@@ -10,7 +10,7 @@ setUp()
 	mkdir -p "$SRC_DIR/$RUBY_SRC_DIR"
 }
 
-test_download_patches()
+function test_download_patches()
 {
 	download_patches 2>/dev/null
 
@@ -18,7 +18,7 @@ test_download_patches()
 		   '[[ -f "$SRC_DIR/$RUBY_SRC_DIR/falcon-gc.diff" ]]'
 }
 
-tearDown()
+function tearDown()
 {
 	rm -r "$SRC_DIR/$RUBY_SRC_DIR"
 }

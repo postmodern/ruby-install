@@ -1,6 +1,6 @@
 . ./test/helper.sh
 
-setUp()
+function setUp()
 {
 	defaults
 }

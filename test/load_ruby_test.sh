@@ -1,20 +1,20 @@
 . ./test/helper.sh
 
-setUp()
+function setUp()
 {
 	RUBY="ruby"
 	RUBY_VERSION="1.8"
 	EXPANDED_RUBY_VERSION="1.8.7-p374"
 }
 
-test_load_ruby()
+function test_load_ruby()
 {
 	load_ruby
 
 	assertEquals "did not return 0" 0 $?
 }
 
-test_load_ruby_with_invalid_RUBY()
+function test_load_ruby_with_invalid_RUBY()
 {
 	RUBY="foo"
 
@@ -23,7 +23,7 @@ test_load_ruby_with_invalid_RUBY()
 	assertEquals "did not return 1" 1 $?
 }
 
-test_RUBY_VERSION()
+function test_RUBY_VERSION()
 {
 	load_ruby
 
@@ -32,7 +32,7 @@ test_RUBY_VERSION()
 		     "$RUBY_VERSION"
 }
 
-test_load_ruby_with_RUBY_URL()
+function test_load_ruby_with_RUBY_URL()
 {
 	local url="http://mirror.s3.amazonaws.com/downloads/ruby-1.2.3.tar.gz"
 
@@ -42,14 +42,14 @@ test_load_ruby_with_RUBY_URL()
 	assertEquals "did not preserve RUBY_URL" "$url" "$RUBY_URL"
 }
 
-test_load_ruby_RUBY_MD5()
+function test_load_ruby_RUBY_MD5()
 {
 	load_ruby
 
 	assertNotNull "did not set RUBY_MD5" $RUBY_MD5
 }
 
-test_load_ruby_with_RUBY_MD5()
+function test_load_ruby_with_RUBY_MD5()
 {
 	local md5="b1946ac92492d2347c6235b4d2611184"
 
@@ -59,7 +59,7 @@ test_load_ruby_with_RUBY_MD5()
 	assertEquals "did not preserve RUBY_MD5" "$md5" "$RUBY_MD5"
 }
 
-test_SRC_DIR()
+function test_SRC_DIR()
 {
 	load_ruby
 
@@ -74,7 +74,7 @@ test_SRC_DIR()
 	fi
 }
 
-test_INSTALL_DIR()
+function test_INSTALL_DIR()
 {
 	load_ruby
 
@@ -89,7 +89,7 @@ test_INSTALL_DIR()
 	fi
 }
 
-tearDown()
+function tearDown()
 {
 	unset SRC_DIR INSTALL_DIR
 	unset RUBY RUBY_VERSION RUBY_MD5 RUBY_ARCHIVE RUBY_SRC_DIR RUBY_URL
