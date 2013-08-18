@@ -1,6 +1,6 @@
 . ./test/helper.sh
 
-PATCHES=("https://raw.github.com/gist/4136373/falcon-gc.diff" "local.patch")
+PATCHES=("https://raw.github.com/gist/4136373/falcon-gc.diff")
 
 setUp()
 {
@@ -21,7 +21,7 @@ diff -Naur $RUBY_SRC_DIR.orig/test $RUBY_SRC_DIR/test
 " 	> "$SRC_DIR/$RUBY_SRC_DIR/falcon-gc.diff"
 
 	cd "$SRC_DIR/$RUBY_SRC_DIR"
-	apply_patches 2>/dev/null
+	apply_patches >/dev/null
 	cd $OLDPWD
 
 	assertTrue "did not apply downloaded patches" \
