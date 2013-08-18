@@ -25,7 +25,7 @@ test_download_with_a_directory()
 
 test_download_using_wget()
 {
-	[[ $(command -v wget) ]] || return
+	command -v wget >/dev/null || return
 
 	DOWNLOADER="wget" download "$URL" "$OUTPUT" 2>/dev/null
 
@@ -34,7 +34,7 @@ test_download_using_wget()
 
 test_download_using_curl()
 {
-	[[ $(command -v curl ) ]] || return
+	command -v curl >/dev/null || return
 
 	DOWNLOADER="curl" download "$URL" "$OUTPUT" 2>/dev/null
 
