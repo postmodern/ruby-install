@@ -63,7 +63,7 @@ function test_SRC_DIR()
 {
 	load_ruby
 
-	if [[ $UID -eq 0 ]]; then
+	if (( $UID == 0 )); then
 		assertEquals "did not correctly default SRC_DIR" \
 			     "/usr/local/src" \
 			     "$SRC_DIR"
@@ -78,7 +78,7 @@ function test_INSTALL_DIR()
 {
 	load_ruby
 
-	if [[ $UID -eq 0 ]]; then
+	if (( $UID == 0 )); then
 		assertEquals "did not correctly default INSTALL_DIR" \
 			     "/opt/rubies/$RUBY-$EXPANDED_RUBY_VERSION" \
 			     "$INSTALL_DIR"

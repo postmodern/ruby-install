@@ -1,4 +1,4 @@
-if [[ $UID -eq 0 ]]; then
+if (( $UID == 0 )); then
 	SRC_DIR="${SRC_DIR:-/usr/local/src}"
 	INSTALL_DIR="${INSTALL_DIR:-/opt/rubies/$RUBY-$RUBY_VERSION}"
 else
