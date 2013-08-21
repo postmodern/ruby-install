@@ -141,4 +141,12 @@ function test_parse_options_with_additional_options()
 	assertEquals "did not set \$CONFIGURE_OPTS" $expected $CONFIGURE_OPTS
 }
 
+function test_parse_options_with_additional_options_with_spaces()
+{
+	parse_options "ruby" "--" --enable-shared CFLAGS="-march=auto -O2"
+
+	assertEquals "did not word-split \$CONFIGURE_OPTS correctly" \
+          'CFLAGS=-march=auto -O2' "${CONFIGURE_OPTS[1]}"
+}
+
 SHUNIT_PARENT=$0 . $SHUNIT2
