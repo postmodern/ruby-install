@@ -310,7 +310,7 @@ function parse_options()
 				;;
 			--)
 				shift
-				CONFIGURE_OPTS=$*
+				CONFIGURE_OPTS=("$@")
 				break
 				;;
 			-*)
