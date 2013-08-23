@@ -9,8 +9,8 @@ if [[ $# -eq 0 ]]; then
 	exit
 fi
 
-parse_options $* || exit $?
-load_ruby        || exit $?
+parse_options "$@" || exit $?
+load_ruby          || exit $?
 
 if [[ $NO_REINSTALL -eq 1 ]] && [[ -x "$INSTALL_DIR/bin/ruby" ]]; then
 	fail "Ruby is already installed into $INSTALL_DIR"
