@@ -245,6 +245,7 @@ Examples:
 	$ ruby-install ruby 2.0
 	$ ruby-install ruby 2.0.0-p0
 	$ ruby-install ruby -- --with-openssl-dir=...
+	$ ruby-install -M https://ftp.ruby-lang.org/pub/ruby ruby
 	$ ruby-install -M http://www.mirrorservice.org/sites/ftp.ruby-lang.org/pub/ruby ruby
 	$ ruby-install -p https://raw.github.com/gist/4136373/falcon-gc.diff ruby 1.9.3
 
