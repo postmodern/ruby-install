@@ -1,3 +1,18 @@
+### 0.3.1 / 2013-09-23
+
+* Always use the system's `stat` command on OSX (@paul).
+* Do not assume homebrew is installed at `/usr/local/bin/brew`.
+* Properly quote/expand `$CONFIGURE_OPTS` to prevent incorrect word-splitting
+  (@pbrisbin).
+* Style changes.
+
+#### ruby
+
+* Download from the new http://cache.ruby-lang.org/ CDN (@hsbt).
+* When installing ruby 1.8.x, rubygems-2.1.0 will now be installed.
+* Added the MD5 checksum for ruby-2.1.0-preview1.tar.bz2.
+* Added the `2.1` and `2.1.0` version aliases for 2.1.0-preview1.
+
 ### 0.3.0 / 2013-07-06
 
 * Added the `-M`,`--mirror` to make it easier to use mirrors.
