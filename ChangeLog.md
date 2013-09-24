@@ -9,7 +9,7 @@
 #### ruby
 
 * Download from the new http://cache.ruby-lang.org/ CDN (@hsbt).
-* When installing ruby 1.8.x, rubygems-2.1.0 will now be installed.
+* When installing ruby 1.8.x, rubygems-2.1.3 will now be installed.
 * Added the MD5 checksum for ruby-2.1.0-preview1.tar.bz2.
 * Added the `2.1` and `2.1.0` version aliases for 2.1.0-preview1.
 
