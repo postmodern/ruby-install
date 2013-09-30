@@ -236,6 +236,7 @@ Options:
 	--no-verify		Do not verify the downloaded Ruby archive
 	--no-install-deps	Do not install build dependencies before installing Ruby
 	--no-reinstall  	Skip installation if another Ruby is detected in same location
+	--disable-install-doc  	Do not generate documentation
 	-V, --version		Prints the version
 	-h, --help		Prints this message
 
