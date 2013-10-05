@@ -69,6 +69,10 @@ Install a Ruby with specific configuration:
 
     $ ruby-install ruby 2.0.0 -- --enable-shared --enable-dtrace CFLAGS="-O3"
 
+Using ruby-install with [rbenv]:
+
+    $ ruby-install -i ~/.rbenv/versions/jruby-1.7.5 jruby 1.7.5
+
 ## Install
 
     wget -O ruby-install-0.3.0.tar.gz https://github.com/postmodern/ruby-install/archive/v0.3.0.tar.gz
