@@ -69,9 +69,15 @@ Install a Ruby with specific configuration:
 
     $ ruby-install ruby 2.0.0 -- --enable-shared --enable-dtrace CFLAGS="-O3"
 
+### Integration
+
+Using ruby-install with [RVM]:
+
+    $ ruby-install -i ~/.rvm/rubies/ruby-2.0.0-p247 ruby 2.0.0-p247
+
 Using ruby-install with [rbenv]:
 
-    $ ruby-install -i ~/.rbenv/versions/jruby-1.7.5 jruby 1.7.5
+    $ ruby-install -i ~/.rbenv/versions/ruby-2.0.0-p247 ruby 2.0.0-p247
 
 ## Install
 
