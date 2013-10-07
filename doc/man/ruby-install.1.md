@@ -63,13 +63,49 @@ https://github.com/postmodern/ruby-install#readme
 
 ## EXAMPLES
 
+List supported Rubies and their major versions:
+
+    $ ruby-install
+
 Install the current stable version of Ruby:
 
     $ ruby-install ruby
 
+Install a latest version of Ruby:
+
+    $ ruby-install ruby 1.9
+
 Install a specific version of Ruby:
 
-    $ ruby-install ruby 1.9.3-p395
+    $ ruby-install ruby 1.9.3-p429
+
+Install a Ruby into a specific directory:
+
+    $ ruby-install -i /usr/local/ ruby 1.9.3-p429
+
+Install a Ruby from a official site with directly download:
+
+    $ ruby-install -M https://ftp.ruby-lang.org/pub/ruby ruby 2.0.0-p247
+
+Install a Ruby from a mirror:
+
+    $ ruby-install -M http://www.mirrorservice.org/sites/ftp.ruby-lang.org/pub/ruby ruby 2.0.0-p247
+
+Install a Ruby with a specific patch:
+
+    $ ruby-install -p https://raw.github.com/gist/4136373/falcon-gc.diff ruby 1.9.3-p429
+
+Install a Ruby with specific configuration:
+
+    $ ruby-install ruby 2.0.0 -- --enable-shared --enable-dtrace CFLAGS="-O3"
+
+Using ruby-install with [RVM]:
+
+    $ ruby-install -i ~/.rvm/rubies/ruby-2.0.0-p247 ruby 2.0.0-p247
+
+Using ruby-install with [rbenv]:
+
+    $ ruby-install -i ~/.rbenv/versions/ruby-2.0.0-p247 ruby 2.0.0-p247
 
 ## FILES
 
