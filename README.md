@@ -37,6 +37,10 @@ Installs [Ruby], [JRuby], [Rubinius] or [MagLev].
 
 ## Synopsis
 
+List supported Rubies and their major versions:
+
+    $ ruby-install
+
 Install the current stable version of Ruby:
 
     $ ruby-install ruby
