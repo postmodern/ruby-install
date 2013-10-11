@@ -1,10 +1,12 @@
 if (( $UID == 0 )); then
 	SRC_DIR="${SRC_DIR:-/usr/local/src}"
-	INSTALL_DIR="${INSTALL_DIR:-/opt/rubies/$RUBY-$RUBY_VERSION}"
+	INSTALL_DIR="${INSTALL_DIR:-/opt/rubies}"
 else
 	SRC_DIR="${SRC_DIR:-$HOME/src}"
-	INSTALL_DIR="${INSTALL_DIR:-$HOME/.rubies/$RUBY-$RUBY_VERSION}"
+	INSTALL_DIR="${INSTALL_DIR:-$HOME/.rubies}"
 fi
+
+[[ -d "$INSTALL_DIR" ]] && INSTALL_DIR="$INSTALL_DIR/$RUBY-$RUBY_VERSION"
 
 #
 # Pre-install tasks
