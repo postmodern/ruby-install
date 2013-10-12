@@ -235,6 +235,7 @@ usage: ruby-install [OPTIONS] [RUBY [VERSION] [-- CONFIGURE_OPTS ...]]
 Options:
 
 	-s, --src-dir DIR	Directory to download source-code into
+	-r, --rubies-dir DIR	Directory that contains other installed Rubies
 	-i, --install-dir DIR	Directory to install Ruby into
 	-p, --patch FILE	Patch to apply to the Ruby source-code
 	-M, --mirror URL	Alternate mirror to download the Ruby archive from
@@ -269,6 +270,10 @@ function parse_options()
 
 	while [[ $# -gt 0 ]]; do
 		case $1 in
+			-r|--rubies-dir)
+				RUBIES_DIR="$2"
+				shift 2
+				;;
 			-i|--install-dir)
 				INSTALL_DIR="$2"
 				shift 2

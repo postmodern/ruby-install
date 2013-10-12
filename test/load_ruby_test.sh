@@ -74,24 +74,39 @@ function test_SRC_DIR()
 	fi
 }
 
+function test_RUBIES_DIR()
+{
+	load_ruby
+
+	if (( $UID == 0 )); then
+		assertEquals "did not correctly default RUBIES_DIR" \
+			     "/opt/rubies" \
+			     "$RUBIES_DIR"
+	else
+		assertEquals "did not correctly default RUBIES_DIR" \
+			     "$HOME/.rubies" \
+			     "$RUBIES_DIR"
+	fi
+}
+
 function test_INSTALL_DIR()
 {
 	load_ruby
 
 	if (( $UID == 0 )); then
 		assertEquals "did not correctly default INSTALL_DIR" \
-			     "/opt/rubies/$RUBY-$EXPANDED_RUBY_VERSION" \
+			     "$RUBIES_DIR/$RUBY-$EXPANDED_RUBY_VERSION" \
 			     "$INSTALL_DIR"
 	else
 		assertEquals "did not correctly default INSTALL_DIR" \
-			     "$HOME/.rubies/$RUBY-$EXPANDED_RUBY_VERSION" \
+			     "$RUBIES_DIR/$RUBY-$EXPANDED_RUBY_VERSION" \
 			     "$INSTALL_DIR"
 	fi
 }
 
 function tearDown()
 {
-	unset SRC_DIR INSTALL_DIR
+	unset SRC_DIR RUBIES_DIR INSTALL_DIR
 	unset RUBY RUBY_VERSION RUBY_MD5 RUBY_ARCHIVE RUBY_SRC_DIR RUBY_URL
 }
 
