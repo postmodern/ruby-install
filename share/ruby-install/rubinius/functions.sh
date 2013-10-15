@@ -38,7 +38,7 @@ function configure_ruby()
 function compile_ruby()
 {
 	log "Compiling rubinius $RUBY_VERSION ..."
-	rake build
+	bundle exec rake build
 }
 
 #
@@ -47,5 +47,5 @@ function compile_ruby()
 function install_ruby()
 {
 	log "Installing rubinius $RUBY_VERSION ..."
-	rake install
+	bundle exec rake install
 }
