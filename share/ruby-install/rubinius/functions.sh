@@ -20,7 +20,7 @@ function install_optional_deps()
 function configure_ruby()
 {
 	log "Bundling rubinius $RUBY_VERSION ..."
-	$SUDO bundle install
+	bundle install --path vendor/gems
 
 	log "Configuring rubinius $RUBY_VERSION ..."
 	if [[ "$PACKAGE_MANAGER" == "brew" ]]; then
