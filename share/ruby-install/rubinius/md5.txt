@@ -1,2 +1,1 @@
-rubinius-1.2.4.tar.gz:     711dc2d94d7c1cb0f98daf18bceb7e35
-rubinius-2.0.0-rc1.tar.gz: d9726d9eb34c861b9f6596bf478a3116
+rubinius-2.0.0.tar.bz2: 62e379e044c822b81e7b20a27daf133e
