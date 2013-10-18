@@ -1,4 +1,4 @@
-apt: git gcc g++ automake flex bison ruby1.9.1-dev llvm-dev zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libreadline-dev libncurses5-dev
-yum: git gcc gcc-c++ automake flex bison ruby-devel rubygems llvm-devel zlib-devel libyaml-devel openssl-devel gdbm-devel readline-devel ncurses-devel
-brew: git openssl readline libyaml gdbm
-pacman: git gcc automake flex bison ruby llvm zlib libyaml openssl gdbm readline ncurses
+apt: gcc g++ automake flex bison ruby1.9.1-dev llvm-dev zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libreadline-dev libncurses5-dev
+yum: gcc gcc-c++ automake flex bison ruby-devel rubygems llvm-devel zlib-devel libyaml-devel openssl-devel gdbm-devel readline-devel ncurses-devel
+brew: openssl readline libyaml gdbm
+pacman: gcc automake flex bison ruby llvm zlib libyaml openssl gdbm readline ncurses
