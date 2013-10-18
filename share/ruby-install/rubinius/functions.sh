@@ -28,7 +28,8 @@ function configure_ruby()
 			    		--with-opt-dir="$(brew --prefix openssl):$(brew --prefix readline):$(brew --prefix libyaml):$(brew --prefix gdbm)" \
 			    		"${CONFIGURE_OPTS[@]}"
 	else
-		bundle exec ./configure --prefix="$INSTALL_DIR" "${CONFIGURE_OPTS[@]}"
+		bundle exec ./configure --prefix="$INSTALL_DIR" \
+					"${CONFIGURE_OPTS[@]}"
 	fi
 }
 
