@@ -13,6 +13,12 @@
 * Added the MD5 checksum for ruby-2.1.0-preview1.tar.bz2.
 * Added the `2.1` and `2.1.0` version aliases for 2.1.0-preview1.
 
+#### rubinius
+
+* Support the new 2.x installation process.
+* Added MD5s and versions for `2.1.0` and `2.0.0`.
+* Removed support for `2.0.0-rc1`.
+
 ### 0.3.0 / 2013-07-06
 
 * Added the `-M`,`--mirror` to make it easier to use mirrors.
