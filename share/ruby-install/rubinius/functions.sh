@@ -10,9 +10,9 @@ RUBY_URL="${RUBY_URL:-$RUBY_MIRROR/$RUBY_ARCHIVE}"
 #
 function install_optional_deps()
 {
-	if ! command -v bundle >/dev/null; then
-		log "Installing bundler ..."
-		$SUDO gem install bundler
+	log "Installing bundler ..."
+	if [[ -w "$(gem env gemdir)" ]]; then gem install bundler
+	else                                  sudo gem install bundler
 	fi
 }
 
