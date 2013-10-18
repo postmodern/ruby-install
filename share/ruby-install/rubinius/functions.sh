@@ -24,11 +24,11 @@ function configure_ruby()
 
 	log "Configuring rubinius $RUBY_VERSION ..."
 	if [[ "$PACKAGE_MANAGER" == "brew" ]]; then
-		./configure --prefix="$INSTALL_DIR" \
-			    --with-opt-dir="$(brew --prefix openssl):$(brew --prefix readline):$(brew --prefix libyaml):$(brew --prefix gdbm)" \
+		bundle exec ./configure --prefix="$INSTALL_DIR" \
+			    		--with-opt-dir="$(brew --prefix openssl):$(brew --prefix readline):$(brew --prefix libyaml):$(brew --prefix gdbm)" \
 			    "${CONFIGURE_OPTS[@]}"
 	else
-		./configure --prefix="$INSTALL_DIR" "${CONFIGURE_OPTS[@]}"
+		bundle exec ./configure --prefix="$INSTALL_DIR" "${CONFIGURE_OPTS[@]}"
 	fi
 }
 
