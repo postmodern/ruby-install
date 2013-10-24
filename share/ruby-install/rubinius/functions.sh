@@ -10,9 +10,11 @@ RUBY_URL="${RUBY_URL:-$RUBY_MIRROR/$RUBY_ARCHIVE}"
 #
 function install_optional_deps()
 {
-	log "Installing bundler ..."
-	if [[ -w "$(gem env gemdir)" ]]; then gem install bundler
-	else                                  sudo gem install bundler
+	if ! command -v bundle >/dev/null; then
+		log "Installing bundler ..."
+		if [[ -w "$(gem env gemdir)" ]]; then gem install bundler
+		else                                  sudo gem install bundler
+		fi
 	fi
 }
 
@@ -26,12 +28,11 @@ function configure_ruby()
 
 	log "Configuring rubinius $RUBY_VERSION ..."
 	if [[ "$PACKAGE_MANAGER" == "brew" ]]; then
-		bundle exec ./configure --prefix="$INSTALL_DIR" \
-			    		--with-opt-dir="$(brew --prefix openssl):$(brew --prefix readline):$(brew --prefix libyaml):$(brew --prefix gdbm)" \
-			    		"${CONFIGURE_OPTS[@]}"
+		./configure --prefix="$INSTALL_DIR" \
+			    --with-opt-dir="$(brew --prefix openssl):$(brew --prefix readline):$(brew --prefix libyaml):$(brew --prefix gdbm)" \
+			    "${CONFIGURE_OPTS[@]}"
 	else
-		bundle exec ./configure --prefix="$INSTALL_DIR" \
-					"${CONFIGURE_OPTS[@]}"
+		./configure --prefix="$INSTALL_DIR" "${CONFIGURE_OPTS[@]}"
 	fi
 }
 
