@@ -17,6 +17,20 @@ if [[ "$RUBY_VERSION_FAMILY" == "1.8" ]]; then
 fi
 
 #
+# Get number of cores.
+#
+cores() {
+  local num=""
+  if [[ "Darwin" = "$(uname -s)" ]]; then
+    num="$(sysctl -n hw.ncpu 2>/dev/null || true)"
+  elif [[ -r /proc/cpuinfo ]]; then
+    num="$(grep ^processor /proc/cpuinfo | wc -l)"
+    [ "$num" -gt 0 ] || num=""
+  fi
+  echo "${num:-2}"
+}
+
+#
 # Configures Ruby.
 #
 function configure_ruby()
@@ -38,7 +52,7 @@ function configure_ruby()
 function compile_ruby()
 {
 	log "Compiling ruby $RUBY_VERSION ..."
-	make
+  make --jobs $(cores)
 }
 
 #
