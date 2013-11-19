@@ -86,15 +86,13 @@ function fail()
 
 #
 # Searches a file for a key and echos the value.
-# If the key cannot be found, the third argument will be echoed.
 #
 function fetch()
 {
 	local file="$RUBY_INSTALL_DIR/$1.txt"
 	local key="$2"
-	local pair="$(grep -E "^$key: " "$file")"
 
-	echo "${pair##$key:*( )}"
+	sed -n -e "/^$key:/ { s/^$key:[ "$'\t'"]*//; p; }" "$file"
 }
 
 function install_packages()
