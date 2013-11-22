@@ -92,9 +92,9 @@ function fetch()
 {
 	local file="$RUBY_INSTALL_DIR/$1.txt"
 	local key="$2"
-	local pair="$(grep -E "^$key: " "$file")"
+	local pair="$(grep -E "^$key:" "$file")"
 
-	echo "${pair##$key:*( )}"
+	echo "${pair##$key:*[[:space:]]}"
 }
 
 function install_packages()

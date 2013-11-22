@@ -20,6 +20,18 @@ function test_fetch()
 	assertEquals "did not fetch the correct value" "$expected" "$value"
 }
 
+function test_fetch_with_tabs()
+{
+	local key="ruby-1.8.7-p374.tar.bz2"
+	local expected="83c92e2b57ea08f31187060098b2200b"
+
+	echo -e "$key:\t$expected" > "$FILE"
+
+	local value=$(fetch "db" "$key")
+
+	assertEquals "did not remove the trailing tabs" "$expected" "$value"
+}
+
 function test_fetch_with_excess_whitespace()
 {
 	local key="ruby-1.8.7-p374.tar.bz2"
