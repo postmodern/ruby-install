@@ -7,8 +7,7 @@
 #### ruby
 
 * Added version aliases for `2` and `1`.
-* Added versions 1.9.3-p484 and 2.0.0-p353 for CVE-2013-4164.
-* Added version 2.1.0-preview2.
+* Added versions 1.9.3-p484, 2.0.0-p353 and 2.1.0-preview2 for CVE-2013-4164.
 
 #### jruby
 
