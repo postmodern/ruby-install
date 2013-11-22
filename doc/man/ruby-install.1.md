@@ -105,7 +105,7 @@ Using ruby-install with [RVM]:
 
 Using ruby-install with [rbenv]:
 
-    $ ruby-install -i ~/.rbenv/versions/ruby-2.0.0-p247 ruby 2.0.0-p247
+    $ ruby-install -i ~/.rbenv/versions/2.0.0-p247 ruby 2.0.0-p247
 
 ## FILES
 
