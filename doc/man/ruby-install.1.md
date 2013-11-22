@@ -2,7 +2,7 @@
 
 ## SYNOPSIS
 
-`ruby-install` [RUBY [VERSION]] [-- CONFIGURE_OPTS...]
+`ruby-install` [RUBY [VERSION] [-- CONFIGURE_OPTS...]]
 
 ## DESCRIPTION
 

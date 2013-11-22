@@ -222,7 +222,7 @@ function known_rubies()
 function usage()
 {
 	cat <<USAGE
-usage: ruby-install [OPTIONS] [RUBY [VERSION]] [-- CONFIGURE_OPTS ...]
+usage: ruby-install [OPTIONS] [RUBY [VERSION] [-- CONFIGURE_OPTS ...]]
 
 Options:
 
