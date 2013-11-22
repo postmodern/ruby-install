@@ -1,3 +1,24 @@
+### 0.3.2 / 2013-11-22
+
+* Exit normally when `--no-reinstall` is specified and the ruby has already
+  been installed. (@cbandy)
+* `fetch()` can now strip trailing tabs as well as spaces.
+
+#### ruby
+
+* Added version aliases for `2` and `1`.
+* Added versions 1.9.3-p484 and 2.0.0-p353 for CVE-2013-4164.
+* Added version 2.1.0-preview2.
+
+#### jruby
+
+* Added versions 1.7.6, 1.7.7 and 1.7.8.
+
+#### rubinius
+
+* Drop support for installing 2.0.0, due to multiple bugs.
+* Added versions 2.1.1, 2.2.0 and 2.2.1.
+
 ### 0.3.1 / 2013-09-23
 
 * Always use the system's `stat` command on OSX (@paul).
