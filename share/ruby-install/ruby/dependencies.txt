@@ -1,4 +1,5 @@
 apt: build-essential zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libreadline-dev libncurses5-dev libffi-dev
 yum: gcc automake zlib-devel libyaml-devel openssl-devel gdbm-devel readline-devel ncurses-devel libffi-devel
+port: openssl readline libyaml gdbm libffi
 brew: openssl readline libyaml gdbm libffi
 pacman: gcc make zlib ncurses openssl readline libyaml gdbm libffi
