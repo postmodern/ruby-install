@@ -20,6 +20,7 @@ Installs [Ruby], [JRuby], [Rubinius] or [MagLev].
   * [apt]
   * [yum]
   * [pacman]
+  * [macports]
   * [brew]
 * Has tests.
 
@@ -125,6 +126,7 @@ of [rbenv]
 [apt]: http://wiki.debian.org/Apt
 [yum]: http://yum.baseurl.org/
 [pacman]: https://wiki.archlinux.org/index.php/Pacman
+[macports]: https://www.macports.org/
 [brew]: http://mxcl.github.com/homebrew/
 
 [bash]: http://www.gnu.org/software/bash/
