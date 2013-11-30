@@ -14,6 +14,13 @@ function test_PACKAGE_MANAGER_with_yum()
 	assertEquals "did not detect yum" "yum" "$PACKAGE_MANAGER" 
 }
 
+function test_PACKAGE_MANAGER_with_macports()
+{
+	command -v port >/dev/null || return
+
+	assertEquals "did not detect macports" "port" "$PACKAGE_MANAGER" 
+}
+
 function test_PACKAGE_MANAGER_with_homebrew()
 {
 	command -v brew >/dev/null || return
