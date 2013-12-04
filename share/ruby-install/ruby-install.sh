@@ -95,7 +95,7 @@ function fetch()
 	local key="$2"
 	local pair="$(grep -E "^$key:" "$file")"
 
-	echo "${pair##$key:*[[:space:]]}"
+	echo "${pair##$key:*([[:space:]])}"
 }
 
 function install_packages()
