@@ -1,3 +1,8 @@
+### 0.3.3 / 2013-12-04
+
+* Add support for the MacPorts package manager.
+* Fixed extglob pattern in `fetch`.
+
 ### 0.3.2 / 2013-11-22
 
 * Exit normally when `--no-reinstall` is specified and the ruby has already
