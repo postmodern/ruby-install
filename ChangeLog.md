@@ -1,6 +1,6 @@
 ### 0.3.3 / 2013-12-04
 
-* Add support for the MacPorts package manager.
+* Add support for the MacPorts package manager (@havenwood).
 * Fixed extglob pattern in `fetch`.
 
 ### 0.3.2 / 2013-11-22
