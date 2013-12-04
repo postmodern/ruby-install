@@ -86,9 +86,9 @@ Using ruby-install with [rbenv]:
 
 ## Install
 
-    wget -O ruby-install-0.3.2.tar.gz https://github.com/postmodern/ruby-install/archive/v0.3.2.tar.gz
-    tar -xzvf ruby-install-0.3.2.tar.gz
-    cd ruby-install-0.3.2/
+    wget -O ruby-install-0.3.3.tar.gz https://github.com/postmodern/ruby-install/archive/v0.3.3.tar.gz
+    tar -xzvf ruby-install-0.3.3.tar.gz
+    cd ruby-install-0.3.3/
     sudo make install
 
 ### PGP
@@ -97,8 +97,8 @@ All releases are [PGP] signed for security. Instructions on how to import my
 PGP key can be found on my [blog][1]. To verify that a release was not tampered 
 with:
 
-    wget https://raw.github.com/postmodern/ruby-install/master/pkg/ruby-install-0.3.2.tar.gz.asc
-    gpg --verify ruby-install-0.3.2.tar.gz.asc ruby-install-0.3.2.tar.gz
+    wget https://raw.github.com/postmodern/ruby-install/master/pkg/ruby-install-0.3.3.tar.gz.asc
+    gpg --verify ruby-install-0.3.3.tar.gz.asc ruby-install-0.3.3.tar.gz
 
 ### Homebrew
 
