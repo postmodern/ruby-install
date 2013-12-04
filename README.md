@@ -84,6 +84,9 @@ Using ruby-install with [rbenv]:
 
     $ ruby-install -i ~/.rbenv/versions/2.0.0-p247 ruby 2.0.0-p247
 
+ruby-install can even be used with
+[Chef](https://github.com/rosstimson/chef-ruby_install#readme).
+
 ## Install
 
     wget -O ruby-install-0.3.3.tar.gz https://github.com/postmodern/ruby-install/archive/v0.3.3.tar.gz
