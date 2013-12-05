@@ -133,7 +133,9 @@ function download()
 
 	case "$DOWNLOADER" in
 		wget) wget -c -O "$dest" "$url"      ;;
-		curl) curl -L -C - -o "$dest" "$url" ;;
+		curl) 
+			curl -L -C - -o "$dest" "$url" || { warn "Download failed. Retrying without resume." ; curl -L -o "$dest" "$url"; }
+			;;
 		"")
 			error "Could not find wget or curl"
 			return 1

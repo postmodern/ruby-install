@@ -41,6 +41,16 @@ function test_download_using_curl()
 	assertTrue "did not download the file" '[[ -f "$OUTPUT" ]]'
 }
 
+function test_download_using_curl_when_file_exists()
+{
+	command -v curl >/dev/null || return
+
+	DOWNLOADER="curl" download "$URL" "$OUTPUT" 2>/dev/null
+	DOWNLOADER="curl" download "$URL" "$OUTPUT" 2>/dev/null
+
+	assertTrue "did not download the file" '[[ -f "$OUTPUT" ]]'
+}
+
 function tearDown()
 {
 	rm -f "$OUTPUT"
