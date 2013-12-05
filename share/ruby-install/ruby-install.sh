@@ -131,14 +131,20 @@ function download()
 		dest="$dest/${url##*/}"
 	fi
 
+	if [[ -f "$dest" ]]; then
+		return
+	fi
+
 	case "$DOWNLOADER" in
-		wget) wget -c -O "$dest" "$url"      ;;
-		curl) curl -L -C - -o "$dest" "$url" ;;
+		wget) wget -c -O "$dest.part" "$url"      ;;
+		curl) curl -L -C - -o "$dest.part" "$url" ;;
 		"")
 			error "Could not find wget or curl"
 			return 1
 			;;
 	esac
+
+	mv "$dest.part" "$dest"
 }
 
 #
