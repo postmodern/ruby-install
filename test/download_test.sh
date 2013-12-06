@@ -7,6 +7,7 @@ function test_download()
 {
 	download "$URL" "$OUTPUT" 2>/dev/null
 
+	assertFalse "did not remove the .part file" '[[ -f "$OUTPUT.part" ]]'
 	assertTrue "did not download the file" '[[ -f "$OUTPUT" ]]'
 }
 
