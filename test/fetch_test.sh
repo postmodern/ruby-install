@@ -10,8 +10,8 @@ function setUp()
 
 function test_fetch()
 {
-	local key="1.8.7"
-	local expected="1.8.7-p374"
+	local key="1.9.3"
+	local expected="1.9.3-p484"
 
 	echo "$key: $expected" > "$FILE"
 
@@ -22,8 +22,8 @@ function test_fetch()
 
 function test_fetch_with_tabs()
 {
-	local key="ruby-1.8.7-p374.tar.bz2"
-	local expected="83c92e2b57ea08f31187060098b2200b"
+	local key="ruby-1.9.3-p484.tar.bz2"
+	local expected="03f5b08804927ceabe5122cb90f5d0a9"
 
 	echo -e "$key:\t$expected" > "$FILE"
 
@@ -34,8 +34,8 @@ function test_fetch_with_tabs()
 
 function test_fetch_with_excess_whitespace()
 {
-	local key="ruby-1.8.7-p374.tar.bz2"
-	local expected="83c92e2b57ea08f31187060098b2200b"
+	local key="ruby-1.9.3-p484.tar.bz2"
+	local expected="03f5b08804927ceabe5122cb90f5d0a9"
 
 	echo "$key:     $expected" > "$FILE"
 

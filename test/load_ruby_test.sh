@@ -3,8 +3,8 @@
 function setUp()
 {
 	RUBY="ruby"
-	RUBY_VERSION="1.8"
-	EXPANDED_RUBY_VERSION="1.8.7-p374"
+	RUBY_VERSION="1.9"
+	EXPANDED_RUBY_VERSION="1.9.3-p484"
 }
 
 function test_load_ruby()
