@@ -128,6 +128,16 @@ And run ruby-install again:
 
     ruby-install ruby 1.9.3-p125 -- CC=gcc-4.7
 
+### Rubinius
+
+[Rubinius] 2.0.x is not supported due to multiple bugs. Instead, use Rubinius
+>= 2.1.x.
+
+### JRuby
+
+Mac OS X users must manually download and install
+[OracleJDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
+
 ## Alternatives
 
 * [RVM]
