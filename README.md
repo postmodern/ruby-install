@@ -70,6 +70,10 @@ Install a Ruby with a specific patch:
 
     $ ruby-install -p https://raw.github.com/gist/4136373/falcon-gc.diff ruby 1.9.3-p429
 
+Install a Ruby with a specific C compiler:
+
+    $ ruby-install ruby 1.9.3-p125 -- CC=gcc-4.7
+
 Install a Ruby with specific configuration:
 
     $ ruby-install ruby 2.0.0 -- --enable-shared --enable-dtrace CFLAGS="-O3"
@@ -97,7 +101,7 @@ ruby-install can even be used with
 ### PGP
 
 All releases are [PGP] signed for security. Instructions on how to import my
-PGP key can be found on my [blog][1]. To verify that a release was not tampered 
+PGP key can be found on my [blog][1]. To verify that a release was not tampered
 with:
 
     wget https://raw.github.com/postmodern/ruby-install/master/pkg/ruby-install-0.3.3.tar.gz.asc
@@ -108,6 +112,22 @@ with:
 ruby-install can also be installed with [homebrew]:
 
     brew install ruby-install
+
+
+## Caveats
+### Mac OS X
+Rubies older than 1.9.3-p429 cannot be installed on OS X with the included llvm/clang C compiler.
+Older rubies can be installed by first installing gcc >= 4.2 and running ruby-install again
+with a `CC` option.
+
+You can install gcc with tools like [homebrew]:
+
+    brew tap homebrew/versions
+    brew install gcc47
+
+And run ruby-install again:
+
+    ruby-install ruby 1.9.3-p125 -- CC=gcc-4.7
 
 ## Alternatives
 
