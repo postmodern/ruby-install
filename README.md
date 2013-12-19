@@ -113,7 +113,7 @@ ruby-install can also be installed with [homebrew]:
 
     brew install ruby-install
 
-## Caveats
+## Known Issues
 
 ### Ruby
 
@@ -132,11 +132,6 @@ And run ruby-install again:
 
 [Rubinius] 1.x and 2.0.x is not supported due to multiple bugs.
 Instead, please use Rubinius >= 2.1.x.
-
-### JRuby
-
-Mac OS X users must manually download and install
-[OracleJDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
 
 ## Alternatives
 
