@@ -113,12 +113,13 @@ ruby-install can also be installed with [homebrew]:
 
     brew install ruby-install
 
-
 ## Caveats
+
 ### Mac OS X
-Rubies older than 1.9.3-p429 cannot be installed on OS X with the included llvm/clang C compiler.
-Older rubies can be installed by first installing gcc >= 4.2 and running ruby-install again
-with a `CC` option.
+
+Rubies older than 1.9.3-p429 cannot be installed on OS X with the included
+llvm/clang C compiler. Older rubies can be installed by first installing
+gcc >= 4.2 and running ruby-install again with a `CC` option.
 
 You can install gcc with tools like [homebrew]:
 
