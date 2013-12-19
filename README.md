@@ -117,8 +117,8 @@ ruby-install can also be installed with [homebrew]:
 
 ### Ruby
 
-Rubies older than 1.9.3-p429 will not compile with [Clang] and requires [GCC]
->= 4.2. Normally, Linux and BSD systems will already have GCC installed.
+Rubies older than 1.9.3-p429 will not compile with [Clang] and requires
+[GCC] >= 4.2. Normally, Linux and BSD systems will already have GCC installed.
 However, Mac OS X users must install GCC via [homebrew]:
 
     brew tap homebrew/versions
@@ -130,8 +130,8 @@ And run ruby-install again:
 
 ### Rubinius
 
-[Rubinius] 2.0.x is not supported due to multiple bugs. Instead, use Rubinius
->= 2.1.x.
+[Rubinius] 1.x and 2.0.x is not supported due to multiple bugs.
+Instead, please use Rubinius >= 2.1.x.
 
 ### JRuby
 
