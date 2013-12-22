@@ -113,6 +113,10 @@ ruby-install can also be installed with [homebrew]:
 
     brew install ruby-install
 
+or absolute latest ruby-install can be installed from source:
+
+    brew install ruby-install --HEAD
+
 ## Known Issues
 
 ### Ruby
