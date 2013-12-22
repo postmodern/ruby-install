@@ -117,16 +117,16 @@ ruby-install can also be installed with [homebrew]:
 
 ### Ruby
 
-Rubies older than 1.9.3-p429 will not compile with [Clang] and requires
+Rubies older than 1.9.3-p429 will not compile with [Clang] and require
 [GCC] >= 4.2. Normally, Linux and BSD systems will already have GCC installed.
-However, Mac OS X users must install GCC via [homebrew]:
+OS X users can install GCC via [homebrew]:
 
     brew tap homebrew/versions
-    brew install gcc47
+    brew install gcc48
 
 And run ruby-install again:
 
-    ruby-install ruby 1.9.3-p125 -- CC=gcc-4.7
+    ruby-install ruby 1.9.3-p125 -- CC=gcc-4.8
 
 ### Rubinius
 
