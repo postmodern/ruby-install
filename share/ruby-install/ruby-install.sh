@@ -17,6 +17,7 @@ elif command -v yum     >/dev/null; then PACKAGE_MANAGER="yum"
 elif command -v port    >/dev/null; then PACKAGE_MANAGER="port"
 elif command -v brew    >/dev/null; then PACKAGE_MANAGER="brew"
 elif command -v pacman  >/dev/null; then PACKAGE_MANAGER="pacman"
+elif command -v zypper  >/dev/null; then PACKAGE_MANAGER="zypper"
 fi
 
 #
@@ -115,6 +116,7 @@ function install_packages()
 				$SUDO pacman -S $missing_pkgs
 			fi
 			;;
+		zypper) $SUDO zypper -n in -l $*    ;;
 		"")	warn "Could not determine Package Manager. Proceeding anyways." ;;
 	esac
 }
