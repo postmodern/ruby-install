@@ -3,4 +3,4 @@ yum: gcc gcc-c++ automake flex bison ruby-devel rubygems llvm-devel zlib-devel l
 port: openssl readline libyaml gdbm
 brew: openssl readline libyaml gdbm
 pacman: gcc automake flex bison ruby llvm zlib libyaml openssl gdbm readline ncurses
-zypper: gcc gcc-c++ make automake flex bison ruby-devel llvm-devel zlib-devel libyaml-devel libopenssl-devel gdbm-devel readline-devel ncurses-devel
+zypper: gcc gcc-c++ make automake flex bison ruby-devel rubygem-bundler llvm-devel zlib-devel libyaml-devel libopenssl-devel gdbm-devel readline-devel ncurses-devel
