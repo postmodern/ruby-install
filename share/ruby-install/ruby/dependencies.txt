@@ -3,3 +3,4 @@ yum: gcc automake zlib-devel libyaml-devel openssl-devel gdbm-devel readline-dev
 port: openssl readline libyaml gdbm libffi
 brew: openssl readline libyaml gdbm libffi
 pacman: gcc make zlib ncurses openssl readline libyaml gdbm libffi
+zypper: gcc make automake zlib-devel libyaml-devel libopenssl-devel gdbm-devel readline-devel ncurses-devel libffi-devel

@@ -28,6 +28,13 @@ function test_PACKAGE_MANAGER_with_homebrew()
 	assertEquals "did not detect homebrew" "brew" "$PACKAGE_MANAGER" 
 }
 
+function test_PACKAGE_MANAGER_with_zypper()
+{
+	command -v zypper >/dev/null || return
+
+	assertEquals "did not detect zypper" "zypper" "$PACKAGE_MANAGER"
+}
+
 function test_DOWNLOADER_with_wget()
 {
 	command -v wget >/dev/null || return
