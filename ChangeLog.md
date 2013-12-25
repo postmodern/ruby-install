@@ -1,3 +1,20 @@
+### 0.3.4 / 2013-12-25
+
+* Use the `.part` file extension for files being downloaded, to distinguish
+  between already downloaded files.
+
+#### ruby
+
+* Added versions for 2.1.0-rc1 and 2.1.0.
+
+#### jruby
+
+* Added version for 1.7.9.
+
+#### rubinius
+
+* Added version for 2.2.2.
+
 ### 0.3.3 / 2013-12-04
 
 * Add support for the MacPorts package manager (@havenwood).
