@@ -5,19 +5,28 @@ RUBY_SRC_DIR="rubinius-$RUBY_VERSION"
 RUBY_MIRROR="${RUBY_MIRROR:-http://releases.rubini.us}"
 RUBY_URL="${RUBY_URL:-$RUBY_MIRROR/$RUBY_ARCHIVE}"
 
-RUBY_SUFFIX=`gem env \
-				| grep ' *- *RUBY EXECUTABLE: *.*' \
-				| sed 's/.*: *\(.*\)/\1/' \
-				| sed 's/.*ruby\(.*\)/\1/'`
-BUNDLERS=("bundle" "bundle$RUBY_SUFFIX")
+# the ruby executable's name without its full path
+RUBY_EXECUTABLE=`gem env \
+	| grep ' *- *RUBY EXECUTABLE: *.*' \
+	| grep -o '[^\/]*$'`
 
 #
-# Check if bundler is installed.
+# Check if bundler is installed. Set
+# BUNDLER to its executable's name if it
+# does and return 0.
+# Otherwise return 1.
 #
 function bundler_installed()
 {
-	for bundler in ${BUNDLERS[@]}; do
-		command -v "$bundler" >/dev/null && return 0
+	bundlers=("bundle")
+	bundler_formatted=`echo "$RUBY_EXECUTABLE" \
+		| sed 's/ruby/bundle/'`
+	bundlers+=("$bundler_formatted")
+	for bundler in ${bundlers[@]}; do
+		command -v "$bundler" >/dev/null && {
+			BUNDLER="$bundler"
+			return 0
+		}
 	done
 	return 1
 }
@@ -33,12 +42,7 @@ function install_optional_deps()
 		else                                  sudo gem install bundler
 		fi
 	fi
-	for bundler in ${BUNDLERS[@]}; do
-		command -v "$bundler" >/dev/null && {
-			BUNDLER="$bundler"
-			break
-		}
-	done
+	bundler_installed || fail "cannot find bundler"
 }
 
 #
