@@ -29,8 +29,9 @@ fi
 #
 # Auto-detect the md5 utility.
 #
-if   command -v md5sum >/dev/null; then MD5SUM="md5sum"
-elif command -v md5    >/dev/null; then MD5SUM="md5"
+if   command -v md5sum  >/dev/null; then MD5SUM="md5sum"
+elif command -v md5     >/dev/null; then MD5SUM="md5"
+elif command -v openssl >/dev/null; then MD5SUM="openssl md5"
 fi
 
 #
