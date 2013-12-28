@@ -105,10 +105,10 @@ ruby-install can even be used with
 
 ## Install
 ```bash
-$ wget -O ruby-install-0.3.4.tar.gz https://github.com/postmodern/ruby-install/archive/v0.3.4.tar.gz
-$ tar -xzvf ruby-install-0.3.4.tar.gz
-$ cd ruby-install-0.3.4/
-$ sudo make install
+wget -O ruby-install-0.3.4.tar.gz https://github.com/postmodern/ruby-install/archive/v0.3.4.tar.gz
+tar -xzvf ruby-install-0.3.4.tar.gz
+cd ruby-install-0.3.4/
+sudo make install
 ```
 
 ### PGP
@@ -118,20 +118,20 @@ PGP key can be found on my [blog][1]. To verify that a release was not tampered
 with:
 
 ```bash
-$ wget https://raw.github.com/postmodern/ruby-install/master/pkg/ruby-install-0.3.4.tar.gz.asc
-$ gpg --verify ruby-install-0.3.4.tar.gz.asc ruby-install-0.3.4.tar.gz
+wget https://raw.github.com/postmodern/ruby-install/master/pkg/ruby-install-0.3.4.tar.gz.asc
+gpg --verify ruby-install-0.3.4.tar.gz.asc ruby-install-0.3.4.tar.gz
 ```
 
 ### Homebrew
 
 ruby-install can also be installed with [homebrew]:
 ```bash
-$ brew install ruby-install
+brew install ruby-install
 ```
 
 Or the absolute latest ruby-install can be installed from source:
 ```bash
-$ brew install ruby-install --HEAD
+brew install ruby-install --HEAD
 ```
 
 ## Known Issues
@@ -142,13 +142,13 @@ Rubies older than 1.9.3-p429 will not compile with [Clang] and require
 [GCC] >= 4.2. Normally, Linux and BSD systems will already have GCC installed.
 OS X users can install GCC via [homebrew]:
 ```bash
-$ brew tap homebrew/versions
-$ brew install gcc48
+brew tap homebrew/versions
+brew install gcc48
 ```
 
 And run ruby-install again:
 ```bash
-$ ruby-install ruby 1.9.3-p125 -- CC=gcc-4.8
+ruby-install ruby 1.9.3-p125 -- CC=gcc-4.8
 ```
 
 ### Rubinius
