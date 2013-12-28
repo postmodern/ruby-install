@@ -237,6 +237,7 @@ Options:
 
 	-s, --src-dir DIR	Directory to download source-code into
 	-i, --install-dir DIR	Directory to install Ruby into
+	-j, --jobs JOBS		Number of jobs to run in parallel when compiling
 	-p, --patch FILE	Patch to apply to the Ruby source-code
 	-M, --mirror URL	Alternate mirror to download the Ruby archive from
 	-u, --url URL		Alternate URL to download the Ruby archive from
@@ -277,6 +278,12 @@ function parse_options()
 			-s|--src-dir)
 				SRC_DIR="$2"
 				shift 2
+				;;
+			-j|--jobs)
+				case "$2" in
+					"") JOBS_OPTION="--jobs"; shift ;;
+					*) JOBS_OPTION="--jobs $2"; shift 2 ;;
+				esac
 				;;
 			-p|--patch)
 				PATCHES+=("$2")
