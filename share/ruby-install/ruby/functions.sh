@@ -28,7 +28,7 @@ function configure_ruby()
 function compile_ruby()
 {
 	log "Compiling ruby $RUBY_VERSION ..."
-	make "$JOBS_OPTION"
+	make "${MAKE_OPTS[@]}"
 }
 
 #

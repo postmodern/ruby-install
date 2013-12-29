@@ -8,6 +8,7 @@ RUBY_INSTALL_DIR="${BASH_SOURCE[0]%/*}"
 RUBIES=(ruby jruby rubinius maglev)
 PATCHES=()
 CONFIGURE_OPTS=()
+MAKE_OPTS=()
 
 #
 # Auto-detect the package manager.
@@ -286,8 +287,8 @@ function parse_options()
 				;;
 			-j|--jobs)
 				case "$2" in
-					"") JOBS_OPTION="--jobs"; shift ;;
-					*) JOBS_OPTION="--jobs $2"; shift 2 ;;
+					"") MAKE_OPTS+=(--jobs); shift ;;
+					*) MAKE_OPTS+=(--jobs "$2"); shift 2 ;;
 				esac
 				;;
 			-p|--patch)
