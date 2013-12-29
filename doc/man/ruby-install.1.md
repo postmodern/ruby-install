@@ -1,4 +1,4 @@
-# ruby-install 1 "May 2013" ruby-install "User Manuals"
+# ruby-install 1 "Dec 2013" ruby-install "User Manuals"
 
 ## SYNOPSIS
 
@@ -35,6 +35,11 @@ https://github.com/postmodern/ruby-install#readme
 	Specifies the directory where Ruby will be installed.
 	Defaults to */opt/rubies/$ruby-$version* for root and
 	*~/.rubies/$ruby-$version* for normal users.
+
+`-j`, `--jobs` *JOBS*
+	Specifies the number of *make* jobs to run in parallel when compiling
+	Ruby. If the -j option is provided without an argument, *make* will
+	allow an unlimited number of simultaneous jobs.
 
 `-p`, `--patch` *FILE*
 	Specifies any additional patches to apply.

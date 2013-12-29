@@ -41,6 +41,15 @@ function test_verify_using_md5()
 	assertEquals "did not return the correct MD5" 0 $?
 }
 
+function test_verify_using_openssl()
+{
+	command -v openssl >/dev/null || return
+
+	MD5SUM="openssl md5" verify "$FILE" "$MD5" >/dev/null
+
+	assertEquals "did not return the correct MD5" 0 $?
+}
+
 function test_verify_with_bad_md5()
 {
 	verify "$FILE" "4101bef8794fed986e95dfb54850c68b" >/dev/null 2>/dev/null
