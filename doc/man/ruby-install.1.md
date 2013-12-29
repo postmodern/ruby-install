@@ -36,7 +36,7 @@ https://github.com/postmodern/ruby-install#readme
 	Defaults to */opt/rubies/$ruby-$version* for root and
 	*~/.rubies/$ruby-$version* for normal users.
 
-`-j`, `--jobs` *JOBS*
+`-j[`*JOBS*`]`, `--jobs[=`*JOBS*`]`
 	Specifies the number of *make* jobs to run in parallel when compiling
 	Ruby. If the -j option is provided without an argument, *make* will
 	allow an unlimited number of simultaneous jobs.

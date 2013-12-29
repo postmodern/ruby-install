@@ -285,11 +285,9 @@ function parse_options()
 				SRC_DIR="$2"
 				shift 2
 				;;
-			-j|--jobs)
-				case "$2" in
-					"") MAKE_OPTS+=(--jobs); shift ;;
-					*) MAKE_OPTS+=(--jobs "$2"); shift 2 ;;
-				esac
+			-j|--jobs|-j+([0-9])|--jobs=+([0-9]))
+				MAKE_OPTS+=("$1")
+				shift
 				;;
 			-p|--patch)
 				PATCHES+=("$2")

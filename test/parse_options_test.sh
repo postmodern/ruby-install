@@ -2,6 +2,10 @@
 
 function setUp()
 {
+	PATCHES=()
+	CONFIGURE_OPTS=()
+	MAKE_OPTS=()
+
 	unset RUBY
 	unset RUBY_VERSION
 	unset SRC_DIR
@@ -66,6 +70,24 @@ function test_parse_options_with_src_dir()
 	parse_options "--src-dir" $expected "ruby"
 
 	assertEquals "did not set \$SRC_DIR" $expected $SRC_DIR
+}
+
+function test_parse_options_with_jobs()
+{
+	local expected="--jobs"
+
+	parse_options $expected "ruby"
+
+	assertEquals "did not set \$MAKE_OPTS" $expected ${MAKE_OPTS[0]}
+}
+
+function test_parse_options_with_jobs_and_arguments()
+{
+	local expected="--jobs=4"
+
+	parse_options "$expected" "ruby"
+
+	assertEquals "did not set \$MAKE_OPTS" $expected ${MAKE_OPTS[0]}
 }
 
 function test_parse_options_with_patches()
