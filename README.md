@@ -40,77 +40,64 @@ Installs [Ruby], [JRuby], [Rubinius] or [MagLev].
 ## Synopsis
 
 List supported Rubies and their major versions:
-```bash
-$ ruby-install
-```
+
+    $ ruby-install
 
 Install the current stable version of Ruby:
-```bash
-$ ruby-install ruby
-```
+
+    $ ruby-install ruby
 
 Install a latest version of Ruby:
-```bash
-$ ruby-install ruby 1.9
-```
+
+    $ ruby-install ruby 1.9
 
 Install a specific version of Ruby:
-```bash
-$ ruby-install ruby 1.9.3-p429
-```
+
+    $ ruby-install ruby 1.9.3-p429
 
 Install a Ruby into a specific directory:
-```bash
-$ ruby-install -i /usr/local/ ruby 1.9.3-p429
-```
+
+    $ ruby-install -i /usr/local/ ruby 1.9.3-p429
 
 Install a Ruby from a official site with directly download:
-```bash
-$ ruby-install -M https://ftp.ruby-lang.org/pub/ruby ruby 2.0.0-p247
-```
+
+    $ ruby-install -M https://ftp.ruby-lang.org/pub/ruby ruby 2.0.0-p247
 
 Install a Ruby from a mirror:
-```bash
-$ ruby-install -M http://www.mirrorservice.org/sites/ftp.ruby-lang.org/pub/ruby ruby 2.0.0-p247
-```
+
+    $ ruby-install -M http://www.mirrorservice.org/sites/ftp.ruby-lang.org/pub/ruby ruby 2.0.0-p247
 
 Install a Ruby with a specific patch:
-```bash
-$ ruby-install -p https://raw.github.com/gist/4136373/falcon-gc.diff ruby 1.9.3-p429
-```
+
+    $ ruby-install -p https://raw.github.com/gist/4136373/falcon-gc.diff ruby 1.9.3-p429
 
 Install a Ruby with a specific C compiler:
-```bash
-$ ruby-install ruby 1.9.3-p125 -- CC=gcc-4.7
-```
+
+    $ ruby-install ruby 1.9.3-p125 -- CC=gcc-4.7
 
 Install a Ruby with specific configuration:
-```bash
-$ ruby-install ruby 2.0.0 -- --enable-shared --enable-dtrace CFLAGS="-O3"
-```
+
+    $ ruby-install ruby 2.0.0 -- --enable-shared --enable-dtrace CFLAGS="-O3"
 
 ### Integration
 
 Using ruby-install with [RVM]:
-```bash
-$ ruby-install -i ~/.rvm/rubies/ruby-2.0.0-p247 ruby 2.0.0-p247
-```
+
+    $ ruby-install -i ~/.rvm/rubies/ruby-2.0.0-p247 ruby 2.0.0-p247
 
 Using ruby-install with [rbenv]:
-```bash
-$ ruby-install -i ~/.rbenv/versions/2.0.0-p247 ruby 2.0.0-p247
-```
+
+    $ ruby-install -i ~/.rbenv/versions/2.0.0-p247 ruby 2.0.0-p247
 
 ruby-install can even be used with
 [Chef](https://github.com/rosstimson/chef-ruby_install#readme).
 
 ## Install
-```bash
-wget -O ruby-install-0.3.4.tar.gz https://github.com/postmodern/ruby-install/archive/v0.3.4.tar.gz
-tar -xzvf ruby-install-0.3.4.tar.gz
-cd ruby-install-0.3.4/
-sudo make install
-```
+
+    wget -O ruby-install-0.3.4.tar.gz https://github.com/postmodern/ruby-install/archive/v0.3.4.tar.gz
+    tar -xzvf ruby-install-0.3.4.tar.gz
+    cd ruby-install-0.3.4/
+    sudo make install
 
 ### PGP
 
@@ -118,22 +105,18 @@ All releases are [PGP] signed for security. Instructions on how to import my
 PGP key can be found on my [blog][1]. To verify that a release was not tampered
 with:
 
-```bash
-wget https://raw.github.com/postmodern/ruby-install/master/pkg/ruby-install-0.3.4.tar.gz.asc
-gpg --verify ruby-install-0.3.4.tar.gz.asc ruby-install-0.3.4.tar.gz
-```
+    wget https://raw.github.com/postmodern/ruby-install/master/pkg/ruby-install-0.3.4.tar.gz.asc
+    gpg --verify ruby-install-0.3.4.tar.gz.asc ruby-install-0.3.4.tar.gz
 
 ### Homebrew
 
 ruby-install can also be installed with [homebrew]:
-```bash
-brew install ruby-install
-```
+
+    brew install ruby-install
 
 Or the absolute latest ruby-install can be installed from source:
-```bash
-brew install ruby-install --HEAD
-```
+
+    brew install ruby-install --HEAD
 
 ## Known Issues
 
@@ -142,15 +125,13 @@ brew install ruby-install --HEAD
 Rubies older than 1.9.3-p429 will not compile with [Clang] and require
 [GCC] >= 4.2. Normally, Linux and BSD systems will already have GCC installed.
 OS X users can install GCC via [homebrew]:
-```bash
-brew tap homebrew/versions
-brew install gcc48
-```
+
+    brew tap homebrew/versions
+    brew install gcc48
 
 And run ruby-install again:
-```bash
-ruby-install ruby 1.9.3-p125 -- CC=gcc-4.8
-```
+
+    ruby-install ruby 1.9.3-p125 -- CC=gcc-4.8
 
 ### Rubinius
 
