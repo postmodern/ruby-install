@@ -47,7 +47,7 @@ fi
 function log()
 {
 	if [[ -t 1 ]]; then
-		echo -e "\x1b[1m\x1b[32m>>>\x1b[0m \x1b[1m\x1b[37m$1\x1b[0m"
+		echo -e "\x1b[1m\x1b[32m>>>\x1b[0m \x1b[1m\x1b[39m$1\x1b[0m"
 	else
 		echo ">>> $1"
 	fi
@@ -59,7 +59,7 @@ function log()
 function warn()
 {
 	if [[ -t 1 ]]; then
-		echo -e "\x1b[1m\x1b[33m***\x1b[0m \x1b[1m\x1b[37m$1\x1b[0m" >&2
+		echo -e "\x1b[1m\x1b[33m***\x1b[0m \x1b[1m\x1b[39m$1\x1b[0m" >&2
 	else
 		echo "*** $1" >&2
 	fi
@@ -71,7 +71,7 @@ function warn()
 function error()
 {
 	if [[ -t 1 ]]; then
-		echo -e "\x1b[1m\x1b[31m!!!\x1b[0m \x1b[1m\x1b[37m$1\x1b[0m" >&2
+		echo -e "\x1b[1m\x1b[31m!!!\x1b[0m \x1b[1m\x1b[39m$1\x1b[0m" >&2
 	else
 		echo "!!! $1" >&2
 	fi
