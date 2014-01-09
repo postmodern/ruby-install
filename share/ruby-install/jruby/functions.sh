@@ -22,7 +22,7 @@ function post_install()
 	log "Symlinking bin/ruby to bin/jruby ..."
 	ln -fs jruby "$INSTALL_DIR/bin/ruby"
 
-	if [[ "$PACKAGE_MANAGER" == "brew" ]] || [[ "$PACKAGE_MANAGER" == "port" ]]; then
+	if ! command -v java >/dev/null; then
 		warn "In order to use JRuby you must install OracleJDK:"
 		warn "  http://www.oracle.com/technetwork/java/javase/downloads/index.html"
 	fi
