@@ -138,7 +138,7 @@ function download()
 
 	case "$DOWNLOADER" in
 		wget) wget -c -O "$dest.part" "$url"      ;;
-		curl) curl -L -C - -o "$dest.part" "$url" ;;
+		curl) curl -f -L -C - -o "$dest.part" "$url" ;;
 		"")
 			error "Could not find wget or curl"
 			return 1
