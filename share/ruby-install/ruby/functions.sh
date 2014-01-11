@@ -26,9 +26,9 @@ function configure_ruby()
 	if [[ "$PACKAGE_MANAGER" == "brew" ]]; then
 		./configure --prefix="$INSTALL_DIR" \
 			    --with-opt-dir="$(brew --prefix openssl):$(brew --prefix readline):$(brew --prefix libyaml):$(brew --prefix gdbm):$(brew --prefix libffi)" \
-			    "${CONFIGURE_OPTS[@]}"
+			    "${CONFIGURE_OPTS[@]}" || return $?
 	else
-		./configure --prefix="$INSTALL_DIR" "${CONFIGURE_OPTS[@]}"
+		./configure --prefix="$INSTALL_DIR" "${CONFIGURE_OPTS[@]}" || return $?
 	fi
 }
 
@@ -38,7 +38,7 @@ function configure_ruby()
 function compile_ruby()
 {
 	log "Compiling ruby $RUBY_VERSION ..."
-	make
+	make || return $?
 }
 
 #
@@ -47,23 +47,23 @@ function compile_ruby()
 function install_ruby()
 {
 	log "Installing ruby $RUBY_VERSION ..."
-	make install
+	make install || return $?
 }
 
 function post_install()
 {
 	if [[ "$RUBY_VERSION_FAMILY" == "1.8" ]]; then
 		log "Downloading $RUBYGEMS_URL into $SRC_DIR ..."
-		download "$RUBYGEMS_URL" "$SRC_DIR"
+		download "$RUBYGEMS_URL" "$SRC_DIR" || return $?
 
 		log "Verifying $RUBYGEMS_ARCHIVE ..."
-		verify "$SRC_DIR/$RUBYGEMS_ARCHIVE" "$RUBYGEMS_MD5"
+		verify "$SRC_DIR/$RUBYGEMS_ARCHIVE" "$RUBYGEMS_MD5" || return $?
 
 		log "Extracting $RUBYGEMS_ARCHIVE ..."
-		extract "$SRC_DIR/$RUBYGEMS_ARCHIVE"
+		extract "$SRC_DIR/$RUBYGEMS_ARCHIVE" || return $?
 
 		log "Installing rubygems $RUBYGEMS_VERSION ..."
-		cd "$SRC_DIR/$RUBYGEMS_SRC_DIR"
-		"$INSTALL_DIR/bin/ruby" setup.rb
+		cd "$SRC_DIR/$RUBYGEMS_SRC_DIR" || return $?
+		"$INSTALL_DIR/bin/ruby" setup.rb || return $?
 	fi
 }

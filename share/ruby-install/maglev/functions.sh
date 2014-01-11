@@ -14,7 +14,7 @@ RUBY_URL="${RUBY_URL:-$RUBY_MIRROR/$RUBY_ARCHIVE}"
 function configure_ruby()
 {
 	log "Configuring maglev $RUBY_VERSION ..."
-	"$SRC_DIR/$RUBY_SRC_DIR/install.sh"
+	"$SRC_DIR/$RUBY_SRC_DIR/install.sh" || return $?
 }
 
 #
@@ -25,12 +25,12 @@ function install_ruby()
 	log "Installing maglev $RUBY_VERSION ..."
 
 	# Determine what Maglev named the Gemstone.
-	local gs_ver=$(grep GEMSTONE "$SRC_DIR/$RUBY_SRC_DIR/version.txt")
+	local gs_ver=$(grep GEMSTONE "$SRC_DIR/$RUBY_SRC_DIR/version.txt" || return $?)
 	local gemstone="GemStone-${gs_ver: -5}.${PLATFORM/ /-}"
 
 	log "Installing Gemstone into $SRC_DIR/$gemstone ..."
-	ln -fs "$SRC_DIR/$gemstone" "$SRC_DIR/$RUBY_SRC_DIR/gemstone"
-	mv "$SRC_DIR/$RUBY_SRC_DIR" "$INSTALL_DIR"
+	ln -fs "$SRC_DIR/$gemstone" "$SRC_DIR/$RUBY_SRC_DIR/gemstone" || return $?
+	mv "$SRC_DIR/$RUBY_SRC_DIR" "$INSTALL_DIR" || return $?
 }
 
 #
@@ -39,8 +39,8 @@ function install_ruby()
 function post_install()
 {	
 	log "Symlinking bin/ruby to bin/maglev-ruby ..."
-	ln -fs maglev-ruby "$INSTALL_DIR/bin/ruby"
+	ln -fs maglev-ruby "$INSTALL_DIR/bin/ruby" || return $?
 	
 	log "Symlinking bin/irb to bin/maglev-irb"
-	ln -fs maglev-irb "$INSTALL_DIR/bin/irb"
+	ln -fs maglev-irb "$INSTALL_DIR/bin/irb" || return $?
 }

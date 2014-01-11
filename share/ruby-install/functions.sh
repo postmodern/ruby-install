@@ -11,8 +11,8 @@ fi
 #
 function pre_install()
 {
-	mkdir -p "$SRC_DIR"
-	mkdir -p "${INSTALL_DIR%/*}"
+	mkdir -p "$SRC_DIR" || return $?
+	mkdir -p "${INSTALL_DIR%/*}" || return $?
 }
 
 #
@@ -20,14 +20,14 @@ function pre_install()
 #
 function install_deps()
 {
-	local packages="$(fetch "$RUBY/dependencies" "$PACKAGE_MANAGER")"
+	local packages="$(fetch "$RUBY/dependencies" "$PACKAGE_MANAGER" || return $?)"
 
 	if [[ -n "$packages" ]]; then
 		log "Installing dependencies for $RUBY $RUBY_VERSION ..."
-		install_packages $packages
+		install_packages $packages || return $?
 	fi
 
-	install_optional_deps
+	install_optional_deps || return $?
 }
 
 #
@@ -41,7 +41,7 @@ function install_optional_deps() { return; }
 function download_ruby()
 {
 	log "Downloading $RUBY_URL into $SRC_DIR ..."
-	download "$RUBY_URL" "$SRC_DIR/$RUBY_ARCHIVE"
+	download "$RUBY_URL" "$SRC_DIR/$RUBY_ARCHIVE" || return $?
 }
 
 #
@@ -51,7 +51,7 @@ function verify_ruby()
 {
 	if [[ -n "$RUBY_MD5" ]]; then
 		log "Verifying $RUBY_ARCHIVE ..."
-		verify "$SRC_DIR/$RUBY_ARCHIVE" "$RUBY_MD5"
+		verify "$SRC_DIR/$RUBY_ARCHIVE" "$RUBY_MD5" || return $?
 	else
 		warn "No checksum for $RUBY_ARCHIVE. Proceeding anyways"
 	fi
@@ -63,7 +63,7 @@ function verify_ruby()
 function extract_ruby()
 {
 	log "Extracting $RUBY_ARCHIVE ..."
-	extract "$SRC_DIR/$RUBY_ARCHIVE" "$SRC_DIR"
+	extract "$SRC_DIR/$RUBY_ARCHIVE" "$SRC_DIR" || return $?
 }
 
 #
@@ -77,7 +77,7 @@ function download_patches()
 		if [[ "$patch" == http:\/\/* || "$patch" == https:\/\/* ]]; then
 			log "Downloading patch $patch ..."
 			dest="$SRC_DIR/$RUBY_SRC_DIR/${patch##*/}"
-			download "$patch" "$dest"
+			download "$patch" "$dest" || return $?
 		fi
 	done
 }
@@ -97,7 +97,7 @@ function apply_patches()
 			patch="$SRC_DIR/$RUBY_SRC_DIR/$name"
 		fi
 
-		patch -p1 -d "$SRC_DIR/$RUBY_SRC_DIR" < "$patch"
+		patch -p1 -d "$SRC_DIR/$RUBY_SRC_DIR" < "$patch" || return $?
 	done
 }
 

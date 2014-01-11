@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -e
-
 source "${0%/*}/../share/ruby-install/ruby-install.sh"
 
 if [[ $# -eq 0 ]]; then

@@ -12,8 +12,8 @@ function install_optional_deps()
 {
 	if ! command -v bundle >/dev/null; then
 		log "Installing bundler ..."
-		if [[ -w "$(gem env gemdir)" ]]; then gem install bundler
-		else                                  sudo gem install bundler
+		if [[ -w "$(gem env gemdir)" ]]; then gem install bundler || return $?
+		else sudo gem install bundler || return $?
 		fi
 	fi
 }
@@ -24,15 +24,15 @@ function install_optional_deps()
 function configure_ruby()
 {
 	log "Bundling rubinius $RUBY_VERSION ..."
-	bundle install --path vendor/gems
+	bundle install --path vendor/gems || return $?
 
 	log "Configuring rubinius $RUBY_VERSION ..."
 	if [[ "$PACKAGE_MANAGER" == "brew" ]]; then
 		./configure --prefix="$INSTALL_DIR" \
 			    --with-opt-dir="$(brew --prefix openssl):$(brew --prefix readline):$(brew --prefix libyaml):$(brew --prefix gdbm)" \
-			    "${CONFIGURE_OPTS[@]}"
+			    "${CONFIGURE_OPTS[@]}" || return $?
 	else
-		./configure --prefix="$INSTALL_DIR" "${CONFIGURE_OPTS[@]}"
+		./configure --prefix="$INSTALL_DIR" "${CONFIGURE_OPTS[@]}" || return $?
 	fi
 }
 
@@ -42,7 +42,7 @@ function configure_ruby()
 function compile_ruby()
 {
 	log "Compiling rubinius $RUBY_VERSION ..."
-	bundle exec rake build
+	bundle exec rake build || return $?
 }
 
 #
@@ -51,5 +51,5 @@ function compile_ruby()
 function install_ruby()
 {
 	log "Installing rubinius $RUBY_VERSION ..."
-	bundle exec rake install
+	bundle exec rake install || return $?
 }
