@@ -1,6 +1,6 @@
 . ./test/helper.sh
 
-PATCHES=("https://raw.github.com/gist/4136373/falcon-gc.diff" "local.patch")
+PATCHES=("https://gist.github.com/funny-falcon/2981959/raw/ary-queue.diff" "local.patch")
 
 function setUp()
 {
@@ -15,7 +15,7 @@ function test_download_patches()
 	download_patches 2>/dev/null
 
 	assertTrue "did not download patches to the directory" \
-		   '[[ -f "$SRC_DIR/$RUBY_SRC_DIR/falcon-gc.diff" ]]'
+		   '[[ -f "$SRC_DIR/$RUBY_SRC_DIR/ary-queue.diff" ]]'
 }
 
 function tearDown()
