@@ -102,18 +102,18 @@ function fetch()
 function install_packages()
 {
 	case "$PACKAGE_MANAGER" in
-		apt)	$SUDO apt-get install -y $* ;;
-		yum)	$SUDO yum install -y $*     ;;
-		port)   $SUDO port install $*       ;;
+		apt)	$SUDO apt-get install -y $* || return $? ;;
+		yum)	$SUDO yum install -y $* || return $?     ;;
+		port)   $SUDO port install $* || return $?       ;;
 		brew)
 			local brew_owner="$(/usr/bin/stat -f %Su "$(command -v brew)")"
-			sudo -u "$brew_owner" brew install $*
+			sudo -u "$brew_owner" brew install $* || return $?
 			;;
 		pacman)
 			local missing_pkgs="$(pacman -T $*)"
 
 			if [[ -n "$missing_pkgs" ]]; then
-				$SUDO pacman -S $missing_pkgs
+				$SUDO pacman -S $missing_pkgs || return $?
 			fi
 			;;
 		"")	warn "Could not determine Package Manager. Proceeding anyways." ;;
@@ -137,15 +137,15 @@ function download()
 	fi
 
 	case "$DOWNLOADER" in
-		wget) wget -c -O "$dest.part" "$url"      ;;
-		curl) curl -f -L -C - -o "$dest.part" "$url" ;;
+		wget) wget -c -O "$dest.part" "$url" || return $?         ;;
+		curl) curl -f -L -C - -o "$dest.part" "$url" || return $? ;;
 		"")
 			error "Could not find wget or curl"
 			return 1
 			;;
 	esac
 
-	mv "$dest.part" "$dest"
+	mv "$dest.part" "$dest" || return $?
 }
 
 #
@@ -181,9 +181,9 @@ function extract()
 	local dest="${2:-${archive%/*}}"
 
 	case "$archive" in
-		*.tgz|*.tar.gz)		tar -xzf "$archive" -C "$dest" ;;
-		*.tbz|*.tbz2|*.tar.bz2)	tar -xjf "$archive" -C "$dest" ;;
-		*.zip)			unzip "$archive" -d "$dest" ;;
+		*.tgz|*.tar.gz) tar -xzf "$archive" -C "$dest" || return $? ;;
+		*.tbz|*.tbz2|*.tar.bz2)	tar -xjf "$archive" -C "$dest" || return $? ;;
+		*.zip) unzip "$archive" -d "$dest" || return $? ;;
 		*)
 			error "Unknown archive format: $archive"
 			return 1
@@ -206,8 +206,8 @@ function load_ruby()
 	local expanded_version="$(fetch "$RUBY/versions" "$RUBY_VERSION")"
 	RUBY_VERSION="${expanded_version:-$RUBY_VERSION}"
 
-	source "$RUBY_INSTALL_DIR/functions.sh"
-	source "$RUBY_DIR/functions.sh"
+	source "$RUBY_INSTALL_DIR/functions.sh" || return $?
+	source "$RUBY_DIR/functions.sh" || return $?
 
 	RUBY_MD5="${RUBY_MD5:-$(fetch "$RUBY/md5" "$RUBY_ARCHIVE")}"
 }
@@ -221,7 +221,7 @@ function known_rubies()
 
 	for ruby in ${RUBIES[@]}; do
 		echo "  $ruby:"
-		cat "$RUBY_INSTALL_DIR/$ruby/versions.txt" | sed -e 's/^/    /'
+		cat "$RUBY_INSTALL_DIR/$ruby/versions.txt" | sed -e 's/^/    /' || return $?
 	done
 }
 

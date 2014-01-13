@@ -11,7 +11,7 @@ RUBY_URL="${RUBY_URL:-$RUBY_MIRROR/$RUBY_VERSION/$RUBY_ARCHIVE}"
 function install_ruby()
 {
 	log "Installing jruby $RUBY_VERSION ..."
-	mv "$SRC_DIR/$RUBY_SRC_DIR" "$INSTALL_DIR"
+	mv "$SRC_DIR/$RUBY_SRC_DIR" "$INSTALL_DIR" || return $?
 }
 
 #
@@ -20,7 +20,7 @@ function install_ruby()
 function post_install()
 {
 	log "Symlinking bin/ruby to bin/jruby ..."
-	ln -fs jruby "$INSTALL_DIR/bin/ruby"
+	ln -fs jruby "$INSTALL_DIR/bin/ruby" || return $?
 
 	if ! command -v java >/dev/null; then
 		warn "In order to use JRuby you must install OracleJDK:"
