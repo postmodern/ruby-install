@@ -27,17 +27,22 @@ function configure_ruby()
 	bundle install --path vendor/gems || return $?
 
 	log "Configuring rubinius $RUBY_VERSION ..."
-	if [[ "$PACKAGE_MANAGER" == "brew" ]]; then
-		./configure --prefix="$INSTALL_DIR" \
-			    --with-opt-dir="$(brew --prefix openssl):$(brew --prefix readline):$(brew --prefix libyaml):$(brew --prefix gdbm)" \
-			    "${CONFIGURE_OPTS[@]}" || return $?
-	elif [[ "$PACKAGE_MANAGER" == "port" ]]; then
-		./configure --prefix="$INSTALL_DIR" \
-			    --with-opt-dir=/opt/local \
-			    "${CONFIGURE_OPTS[@]}" || return $?
-	else
-		./configure --prefix="$INSTALL_DIR" "${CONFIGURE_OPTS[@]}" || return $?
-	fi
+	case "$PACKAGE_MANAGER" in
+		brew)
+			./configure --prefix="$INSTALL_DIR" \
+				    --with-opt-dir="$(brew --prefix openssl):$(brew --prefix readline):$(brew --prefix libyaml):$(brew --prefix gdbm)" \
+				    "${CONFIGURE_OPTS[@]}" || return $?
+			;;
+		port)
+			./configure --prefix="$INSTALL_DIR" \
+				    --with-opt-dir=/opt/local \
+				    "${CONFIGURE_OPTS[@]}" || return $?
+			;;
+		*)
+			./configure --prefix="$INSTALL_DIR" \
+				    "${CONFIGURE_OPTS[@]}" || return $?
+			;;
+	esac
 }
 
 #
