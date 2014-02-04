@@ -32,7 +32,7 @@ Installs [Ruby], [JRuby], [Rubinius] or [MagLev].
 
 ## Requirements
 
-* [bash]
+* [bash] >= 3.x
 * [wget] or [curl]
 * `md5sum`, `md5` or `openssl md5`.
 * `tar`
