@@ -10,6 +10,7 @@ Installs [Ruby], [JRuby], [Rubinius] or [MagLev].
 * Supports installing into `/opt/rubies/` for root and `~/.rubies/` for users
   by default.
 * Supports installing into arbitrary directories.
+* Supports downloading from arbitrary URLs.
 * Supports downloading from mirrors.
 * Supports downloading/applying patches.
 * Supports specifying arbitrary `./configure` options.
