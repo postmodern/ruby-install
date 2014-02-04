@@ -37,6 +37,7 @@ Installs [Ruby], [JRuby], [Rubinius] or [MagLev].
 * `md5sum`, `md5`, `openssl md5`.
 * `tar`
 * `patch` (if `--patch` is specified)
+* [gcc] >= 4.2 or [clang]
 
 ## Synopsis
 
@@ -123,9 +124,9 @@ Or the absolute latest ruby-install can be installed from source:
 
 ### Ruby
 
-Rubies older than 1.9.3-p429 will not compile with [Clang] and require
-[GCC] >= 4.2. Normally, Linux and BSD systems will already have GCC installed.
-OS X users can install GCC via [homebrew]:
+Rubies older than 1.9.3-p429 will not compile with [Clang][clang] and require
+[GCC][gcc] >= 4.2. Normally, Linux and BSD systems will already have GCC
+installed. OS X users can install GCC via [homebrew]:
 
     brew tap homebrew/versions
     brew install gcc48
@@ -166,8 +167,8 @@ of [rbenv]
 [wget]: http://www.gnu.org/software/wget/
 [curl]: http://curl.haxx.se/
 
-[GCC]: http://gcc.gnu.org/
-[Clang]: http://clang.llvm.org/
+[gcc]: http://gcc.gnu.org/
+[clang]: http://clang.llvm.org/
 
 [RVM]: https://rvm.io/
 [rbenv]: https://github.com/sstephenson/rbenv#readme
