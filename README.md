@@ -34,7 +34,7 @@ Installs [Ruby], [JRuby], [Rubinius] or [MagLev].
 
 * [bash]
 * [wget] or [curl]
-* `md5sum`, `md5`, `openssl md5`.
+* `md5sum`, `md5` or `openssl md5`.
 * `tar`
 * `patch` (if `--patch` is specified)
 * [gcc] >= 4.2 or [clang]
