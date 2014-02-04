@@ -15,7 +15,7 @@ Installs [Ruby], [JRuby], [Rubinius] or [MagLev].
 * Supports downloading/applying patches.
 * Supports specifying arbitrary `./configure` options.
 * Supports downloading archives using `wget` or `curl`.
-* Supports verifying downloaded archives using `md5sum` or `md5`.
+* Supports verifying downloaded archives using `md5sum`, `md5` or `openssl md5`.
 * Supports installing build dependencies via the package manager:
   * [apt]
   * [yum]
@@ -34,7 +34,7 @@ Installs [Ruby], [JRuby], [Rubinius] or [MagLev].
 
 * [bash]
 * [wget] or [curl]
-* `md5sum` or `md5`
+* `md5sum`, `md5`, `openssl md5`.
 * `tar`
 
 ## Synopsis
