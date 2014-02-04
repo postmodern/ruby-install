@@ -12,7 +12,6 @@ Installs [Ruby], [JRuby], [Rubinius] or [MagLev].
 * Supports installing into arbitrary directories.
 * Supports downloading from mirrors.
 * Supports downloading/applying patches.
-* Supports applying arbitrary patches.
 * Supports specifying arbitrary `./configure` options.
 * Supports downloading archives using `wget` or `curl`.
 * Supports verifying downloaded archives using `md5sum` or `md5`.
