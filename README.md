@@ -90,7 +90,7 @@ Using ruby-install with [rbenv]:
     $ ruby-install -i ~/.rbenv/versions/2.0.0-p247 ruby 2.0.0-p247
 
 ruby-install can even be used with
-[Chef](https://github.com/rosstimson/chef-ruby_install#readme).
+[Chef].
 
 ## Install
 
@@ -110,7 +110,7 @@ with:
 
 ### Homebrew
 
-ruby-install can also be installed with [homebrew](http://brew.sh/):
+ruby-install can also be installed with [homebrew]:
 
     brew install ruby-install
 
@@ -171,6 +171,7 @@ of [rbenv]
 [RVM]: https://rvm.io/
 [rbenv]: https://github.com/sstephenson/rbenv#readme
 [ruby-build]: https://github.com/sstephenson/ruby-build#readme
+[Chef]: https://github.com/rosstimson/chef-ruby_install#readme
 
 [PGP]: http://en.wikipedia.org/wiki/Pretty_Good_Privacy
 [1]: http://postmodern.github.com/contact.html#pgp
