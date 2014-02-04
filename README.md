@@ -110,7 +110,7 @@ with:
 
 ### Homebrew
 
-ruby-install can also be installed with [homebrew]:
+ruby-install can also be installed with [homebrew](http://brew.sh/):
 
     brew install ruby-install
 
@@ -175,4 +175,4 @@ of [rbenv]
 [PGP]: http://en.wikipedia.org/wiki/Pretty_Good_Privacy
 [1]: http://postmodern.github.com/contact.html#pgp
 
-[homebrew]: http://mxcl.github.com/homebrew/
+[homebrew]: http://brew.sh/
