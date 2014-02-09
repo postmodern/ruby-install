@@ -8,6 +8,7 @@ function test_known_rubies()
 	assertTrue "did not include jruby" '[[ "$output" == *jruby* ]]'
 	assertTrue "did not include rubinius" '[[ "$output" == *rubinius* ]]'
 	assertTrue "did not include maglev" '[[ "$output" == *maglev* ]]'
+	assertTrue "did not include mruby" '[[ "$output" == *mruby* ]]'
 }
 
 SHUNIT_PARENT=$0 . $SHUNIT2

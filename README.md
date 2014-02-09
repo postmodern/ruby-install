@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/postmodern/ruby-install.png?branch=master)](https://travis-ci.org/postmodern/ruby-install)
 
-Installs [Ruby], [JRuby], [Rubinius] or [MagLev].
+Installs [Ruby], [JRuby], [Rubinius], [MagLev] or [mruby].
 
 ## Features
 
@@ -156,6 +156,7 @@ of [rbenv]
 [JRuby]: http://jruby.org/
 [Rubinius]: http://rubini.us/
 [MagLev]: http://maglev.github.io/
+[mruby]: https://github.com/mruby/mruby#readme
 
 [apt]: http://wiki.debian.org/Apt
 [yum]: http://yum.baseurl.org/

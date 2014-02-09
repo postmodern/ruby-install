@@ -1,0 +1,5 @@
+apt: build-essential bison
+yum: gcc make bison
+port: bison
+brew: bison
+pacman: gcc make bison
