@@ -2,12 +2,13 @@
 
 shopt -s extglob
 
-RUBY_INSTALL_VERSION="0.3.4"
+RUBY_INSTALL_VERSION="0.4.0"
 RUBY_INSTALL_DIR="${BASH_SOURCE[0]%/*}"
 
-RUBIES=(ruby jruby rubinius maglev mruby)
+RUBIES=(ruby jruby rbx maglev mruby)
 PATCHES=()
 CONFIGURE_OPTS=()
+MAKE_OPTS=()
 
 #
 # Auto-detect the package manager.
@@ -236,7 +237,9 @@ usage: ruby-install [OPTIONS] [RUBY [VERSION] [-- CONFIGURE_OPTS ...]]
 Options:
 
 	-s, --src-dir DIR	Directory to download source-code into
+	-r, --rubies-dir DIR	Directory that contains other installed Rubies
 	-i, --install-dir DIR	Directory to install Ruby into
+	-j, --jobs JOBS		Number of jobs to run in parallel when compiling
 	-p, --patch FILE	Patch to apply to the Ruby source-code
 	-M, --mirror URL	Alternate mirror to download the Ruby archive from
 	-u, --url URL		Alternate URL to download the Ruby archive from
@@ -270,6 +273,10 @@ function parse_options()
 
 	while [[ $# -gt 0 ]]; do
 		case $1 in
+			-r|--rubies-dir)
+				RUBIES_DIR="$2"
+				shift 2
+				;;
 			-i|--install-dir)
 				INSTALL_DIR="$2"
 				shift 2
@@ -277,6 +284,10 @@ function parse_options()
 			-s|--src-dir)
 				SRC_DIR="$2"
 				shift 2
+				;;
+			-j|--jobs|-j+([0-9])|--jobs=+([0-9]))
+				MAKE_OPTS+=("$1")
+				shift
 				;;
 			-p|--patch)
 				PATCHES+=("$2")

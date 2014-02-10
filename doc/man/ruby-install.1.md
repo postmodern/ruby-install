@@ -1,4 +1,4 @@
-# ruby-install 1 "May 2013" ruby-install "User Manuals"
+# ruby-install 1 "Dec 2013" ruby-install "User Manuals"
 
 ## SYNOPSIS
 
@@ -26,10 +26,20 @@ https://github.com/postmodern/ruby-install#readme
 `-s`, `--src-dir` *DIR*
 	Specifies the directory for downloading and unpacking Ruby source.
 
+`-r`, `--rubies-dir` *DIR*
+	Specifies the alternate directory where other Ruby directories are
+	installed, such as *~/.rvm/rubies* or *~/.rbenv/versions*.
+	Defaults to */opt/rubies* for root and *~/.rubies* for normal users.
+
 `-i`, `--install-dir` *DIR*
 	Specifies the directory where Ruby will be installed.
 	Defaults to */opt/rubies/$ruby-$version* for root and
 	*~/.rubies/$ruby-$version* for normal users.
+
+`-j[`*JOBS*`]`, `--jobs[=`*JOBS*`]`
+	Specifies the number of *make* jobs to run in parallel when compiling
+	Ruby. If the -j option is provided without an argument, *make* will
+	allow an unlimited number of simultaneous jobs.
 
 `-p`, `--patch` *FILE*
 	Specifies any additional patches to apply.
