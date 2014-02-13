@@ -130,13 +130,8 @@ function download()
 	local url="$1"
 	local dest="$2"
 
-	if [[ -d "$dest" ]]; then
-		dest="$dest/${url##*/}"
-	fi
-
-	if [[ -f "$dest" ]]; then
-		return
-	fi
+	[[ -d "$dest" ]] && dest="$dest/${url##*/}"
+	[[ -f "$dest" ]] && return
 
 	case "$DOWNLOADER" in
 		wget) wget -c -O "$dest.part" "$url" || return $?         ;;
