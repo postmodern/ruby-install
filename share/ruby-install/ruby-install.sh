@@ -108,7 +108,8 @@ function install_packages()
 		port)   $SUDO port install $* || return $?       ;;
 		brew)
 			local brew_owner="$(/usr/bin/stat -f %Su "$(command -v brew)")"
-			sudo -u "$brew_owner" brew install $* || brew upgrade $* || return $?
+			sudo -u "$brew_owner" brew install $* ||
+			sudo -u "$brew_owner" brew upgrade $* || return $?
 			;;
 		pacman)
 			local missing_pkgs="$(pacman -T $*)"
