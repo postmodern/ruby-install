@@ -14,8 +14,10 @@ function test_download_patches()
 {
 	download_patches 2>/dev/null
 
-	assertTrue "did not download patches to the directory" \
+	assertTrue "did not download patches to \$SRC_DIR/\$RUBY_SRC_DIR" \
 		   '[[ -f "$SRC_DIR/$RUBY_SRC_DIR/ary-queue.diff" ]]'
+	assertEquals "did not update \$PATCHES" \
+		     "${PATCHES[0]}" "$SRC_DIR/$RUBY_SRC_DIR/ary-queue.diff" 
 }
 
 function tearDown()
