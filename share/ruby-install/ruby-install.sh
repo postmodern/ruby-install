@@ -2,44 +2,44 @@
 
 shopt -s extglob
 
-RUBY_INSTALL_VERSION="0.4.0"
-RUBY_INSTALL_DIR="${BASH_SOURCE[0]%/*}"
+ruby_install_version="0.4.0"
+ruby_install_dir="${BASH_SOURCE[0]%/*}"
 
-RUBIES=(ruby jruby rbx maglev mruby)
-PATCHES=()
-CONFIGURE_OPTS=()
-MAKE_OPTS=()
+rubies=(ruby jruby rbx maglev mruby)
+patches=()
+configure_opts=()
+make_opts=()
 
 #
 # Auto-detect the package manager.
 #
-if   command -v apt-get >/dev/null; then PACKAGE_MANAGER="apt"
-elif command -v yum     >/dev/null; then PACKAGE_MANAGER="yum"
-elif command -v port    >/dev/null; then PACKAGE_MANAGER="port"
-elif command -v brew    >/dev/null; then PACKAGE_MANAGER="brew"
-elif command -v pacman  >/dev/null; then PACKAGE_MANAGER="pacman"
+if   command -v apt-get >/dev/null; then package_manager="apt"
+elif command -v yum     >/dev/null; then package_manager="yum"
+elif command -v port    >/dev/null; then package_manager="port"
+elif command -v brew    >/dev/null; then package_manager="brew"
+elif command -v pacman  >/dev/null; then package_manager="pacman"
 fi
 
 #
 # Auto-detect the downloader.
 #
-if   command -v wget >/dev/null; then DOWNLOADER="wget"
-elif command -v curl >/dev/null; then DOWNLOADER="curl"
+if   command -v wget >/dev/null; then downloader="wget"
+elif command -v curl >/dev/null; then downloader="curl"
 fi
 
 #
 # Auto-detect the md5 utility.
 #
-if   command -v md5sum  >/dev/null; then MD5SUM="md5sum"
-elif command -v md5     >/dev/null; then MD5SUM="md5"
-elif command -v openssl >/dev/null; then MD5SUM="openssl md5"
+if   command -v md5sum  >/dev/null; then md5sum="md5sum"
+elif command -v md5     >/dev/null; then md5sum="md5"
+elif command -v openssl >/dev/null; then md5sum="openssl md5"
 fi
 
 #
 # Only use sudo if already root.
 #
-if (( $UID == 0 )); then SUDO=""
-else                     SUDO="sudo"
+if (( $UID == 0 )); then sudo=""
+else                     sudo="sudo"
 fi
 
 #
@@ -93,7 +93,7 @@ function fail()
 #
 function fetch()
 {
-	local file="$RUBY_INSTALL_DIR/$1.txt"
+	local file="$ruby_install_dir/$1.txt"
 	local key="$2"
 	local pair="$(grep -E "^$key:" "$file")"
 
@@ -102,10 +102,10 @@ function fetch()
 
 function install_packages()
 {
-	case "$PACKAGE_MANAGER" in
-		apt)	$SUDO apt-get install -y $* || return $? ;;
-		yum)	$SUDO yum install -y $* || return $?     ;;
-		port)   $SUDO port install $* || return $?       ;;
+	case "$package_manager" in
+		apt)	$sudo apt-get install -y $* || return $? ;;
+		yum)	$sudo yum install -y $* || return $?     ;;
+		port)   $sudo port install $* || return $?       ;;
 		brew)
 			local brew_owner="$(/usr/bin/stat -f %Su "$(command -v brew)")"
 			sudo -u "$brew_owner" brew install $* ||
@@ -115,7 +115,7 @@ function install_packages()
 			local missing_pkgs="$(pacman -T $*)"
 
 			if [[ -n "$missing_pkgs" ]]; then
-				$SUDO pacman -S $missing_pkgs || return $?
+				$sudo pacman -S $missing_pkgs || return $?
 			fi
 			;;
 		"")	warn "Could not determine Package Manager. Proceeding anyways." ;;
@@ -133,7 +133,7 @@ function download()
 	[[ -d "$dest" ]] && dest="$dest/${url##*/}"
 	[[ -f "$dest" ]] && return
 
-	case "$DOWNLOADER" in
+	case "$downloader" in
 		wget) wget -c -O "$dest.part" "$url" || return $?         ;;
 		curl) curl -f -L -C - -o "$dest.part" "$url" || return $? ;;
 		"")
@@ -153,7 +153,7 @@ function verify()
 	local path="$1"
 	local md5="$2"
 
-	if [[ -z "$MD5SUM" ]]; then
+	if [[ -z "$md5sum" ]]; then
 		error "Unable to find the md5 checksum utility"
 		return 1
 	fi
@@ -163,7 +163,7 @@ function verify()
 		return 1
 	fi
 
-	if [[ "$($MD5SUM "$path")" != *$md5* ]]; then
+	if [[ "$($md5sum "$path")" != *$md5* ]]; then
 		error "$path is invalid!"
 		return 1
 	fi
@@ -193,20 +193,20 @@ function extract()
 #
 function load_ruby()
 {
-	RUBY_DIR="$RUBY_INSTALL_DIR/$RUBY"
+	ruby_dir="$ruby_install_dir/$ruby"
 
-	if [[ ! -d "$RUBY_DIR" ]]; then
-		echo "ruby-install: unsupported ruby: $RUBY" >&2
+	if [[ ! -d "$ruby_dir" ]]; then
+		echo "ruby-install: unsupported ruby: $ruby" >&2
 		return 1
 	fi
 
-	local expanded_version="$(fetch "$RUBY/versions" "$RUBY_VERSION")"
-	RUBY_VERSION="${expanded_version:-$RUBY_VERSION}"
+	local expanded_version="$(fetch "$ruby/versions" "$ruby_version")"
+	ruby_version="${expanded_version:-$ruby_version}"
 
-	source "$RUBY_INSTALL_DIR/functions.sh" || return $?
-	source "$RUBY_DIR/functions.sh" || return $?
+	source "$ruby_install_dir/functions.sh" || return $?
+	source "$ruby_dir/functions.sh" || return $?
 
-	RUBY_MD5="${RUBY_MD5:-$(fetch "$RUBY/md5" "$RUBY_ARCHIVE")}"
+	ruby_md5="${ruby_md5:-$(fetch "$ruby/md5" "$ruby_archive")}"
 }
 
 #
@@ -216,9 +216,9 @@ function known_rubies()
 {
 	echo "Known ruby versions:"
 
-	for ruby in ${RUBIES[@]}; do
+	for ruby in ${rubies[@]}; do
 		echo "  $ruby:"
-		cat "$RUBY_INSTALL_DIR/$ruby/versions.txt" | sed -e 's/^/    /' || return $?
+		cat "$ruby_install_dir/$ruby/versions.txt" | sed -e 's/^/    /' || return $?
 	done
 }
 
@@ -270,55 +270,55 @@ function parse_options()
 	while [[ $# -gt 0 ]]; do
 		case $1 in
 			-r|--rubies-dir)
-				RUBIES_DIR="$2"
+				rubies_dir="$2"
 				shift 2
 				;;
 			-i|--install-dir)
-				INSTALL_DIR="$2"
+				install_dir="$2"
 				shift 2
 				;;
 			-s|--src-dir)
-				SRC_DIR="$2"
+				src_dir="$2"
 				shift 2
 				;;
 			-j|--jobs|-j+([0-9])|--jobs=+([0-9]))
-				MAKE_OPTS+=("$1")
+				make_opts+=("$1")
 				shift
 				;;
 			-p|--patch)
-				PATCHES+=("$2")
+				patches+=("$2")
 				shift 2
 				;;
 			-M|--mirror)
-				RUBY_MIRROR="$2"
+				ruby_mirror="$2"
 				shift 2
 				;;
 			-u|--url)
-				RUBY_URL="$2"
+				ruby_url="$2"
 				shift 2
 				;;
 			-m|--md5)
-				RUBY_MD5="$2"
+				ruby_md5="$2"
 				shift 2
 				;;
 			--no-download)
-				NO_DOWNLOAD=1
+				no_download=1
 				shift
 				;;
 			--no-verify)
-				NO_VERIFY=1
+				no_verify=1
 				shift
 				;;
 			--no-install-deps)
-				NO_INSTALL_DEPS=1
+				no_install_deps=1
 				shift
 				;;
 			--no-reinstall)
-				NO_REINSTALL=1
+				no_reinstall=1
 				shift
 				;;
 			-V|--version)
-				echo "ruby-install: $RUBY_INSTALL_VERSION"
+				echo "ruby-install: $ruby_install_version"
 				exit
 				;;
 			-h|--help)
@@ -327,7 +327,7 @@ function parse_options()
 				;;
 			--)
 				shift
-				CONFIGURE_OPTS=("$@")
+				configure_opts=("$@")
 				break
 				;;
 			-*)
@@ -343,12 +343,12 @@ function parse_options()
 
 	case ${#argv[*]} in
 		2)
-			RUBY="${argv[0]}"
-			RUBY_VERSION="${argv[1]}"
+			ruby="${argv[0]}"
+			ruby_version="${argv[1]}"
 			;;
 		1)
-			RUBY="${argv[0]}"
-			RUBY_VERSION="stable"
+			ruby="${argv[0]}"
+			ruby_version="stable"
 			;;
 		0)
 			echo "ruby-install: too few arguments" >&2

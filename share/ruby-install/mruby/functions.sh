@@ -1,26 +1,26 @@
 #!/usr/bin/env bash
 
-RUBY_ARCHIVE="mruby-$RUBY_VERSION.tar.gz"
-RUBY_SRC_DIR="mruby-$RUBY_VERSION"
-RUBY_MIRROR="${RUBY_MIRROR:-https://github.com/mruby/mruby/archive}"
-RUBY_URL="${RUBY_URL:-$RUBY_MIRROR/$RUBY_VERSION/$RUBY_ARCHIVE}"
+ruby_archive="mruby-$ruby_version.tar.gz"
+ruby_src_dir="mruby-$ruby_version"
+ruby_mirror="${ruby_mirror:-https://github.com/mruby/mruby/archive}"
+ruby_url="${ruby_url:-$ruby_mirror/$ruby_version/$ruby_archive}"
 
 #
 # Compile mruby.
 #
 function compile_ruby()
 {
-	log "Compiling mruby $RUBY_VERSION ..."
+	log "Compiling mruby $ruby_version ..."
 	make || return $?
 }
 
 #
-# Install mruby into $INSTALL_DIR.
+# Install mruby into $install_dir.
 #
 function install_ruby()
 {
-	log "Installing mruby $RUBY_VERSION ..."
-	mv "$SRC_DIR/$RUBY_SRC_DIR" "$INSTALL_DIR" || return $?
+	log "Installing mruby $ruby_version ..."
+	mv "$src_dir/$ruby_src_dir" "$install_dir" || return $?
 }
 
 #
@@ -29,8 +29,8 @@ function install_ruby()
 function post_install()
 {
 	log "Symlinking bin/ruby to bin/mruby ..."
-	ln -fs mruby "$INSTALL_DIR/bin/ruby" || return $?
+	ln -fs mruby "$install_dir/bin/ruby" || return $?
 
 	log "Symlinking bin/irb to bin/mirb ..."
-	ln -fs mirb "$INSTALL_DIR/bin/irb" || return $?
+	ln -fs mirb "$install_dir/bin/irb" || return $?
 }

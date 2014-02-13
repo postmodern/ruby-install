@@ -1,36 +1,36 @@
 #!/usr/bin/env bash
 
-PLATFORM="$(uname -sm)"
-[[ "$PLATFORM" == "Darwin x86_64" ]] && PLATFORM="Darwin i386"
+platform="$(uname -sm)"
+[[ "$platform" == "Darwin x86_64" ]] && platform="Darwin i386"
 
-RUBY_ARCHIVE="MagLev-$RUBY_VERSION.tar.gz"
-RUBY_SRC_DIR="MagLev-$RUBY_VERSION"
-RUBY_MIRROR="${RUBY_MIRROR:-http://glass-downloads.gemstone.com/maglev}"
-RUBY_URL="${RUBY_URL:-$RUBY_MIRROR/$RUBY_ARCHIVE}"
+ruby_archive="MagLev-$ruby_version.tar.gz"
+ruby_src_dir="MagLev-$ruby_version"
+ruby_mirror="${ruby_mirror:-http://glass-downloads.gemstone.com/maglev}"
+ruby_url="${ruby_url:-$ruby_mirror/$ruby_archive}"
 
 #
 # Configures MagLev by running ./install.sh.
 #
 function configure_ruby()
 {
-	log "Configuring maglev $RUBY_VERSION ..."
-	"$SRC_DIR/$RUBY_SRC_DIR/install.sh" || return $?
+	log "Configuring maglev $ruby_version ..."
+	"$src_dir/$ruby_src_dir/install.sh" || return $?
 }
 
 #
-# Install Maglev into $INSTALL_DIR.
+# Install Maglev into $install_dir.
 #
 function install_ruby()
 {
-	log "Installing maglev $RUBY_VERSION ..."
+	log "Installing maglev $ruby_version ..."
 
 	# Determine what Maglev named the Gemstone.
-	local gs_ver=$(grep GEMSTONE "$SRC_DIR/$RUBY_SRC_DIR/version.txt" || return $?)
-	local gemstone="GemStone-${gs_ver: -5}.${PLATFORM/ /-}"
+	local gs_ver=$(grep GEMSTONE "$src_dir/$ruby_src_dir/version.txt" || return $?)
+	local gemstone="GemStone-${gs_ver: -5}.${platform/ /-}"
 
-	log "Installing Gemstone into $SRC_DIR/$gemstone ..."
-	ln -fs "$SRC_DIR/$gemstone" "$SRC_DIR/$RUBY_SRC_DIR/gemstone" || return $?
-	mv "$SRC_DIR/$RUBY_SRC_DIR" "$INSTALL_DIR" || return $?
+	log "Installing Gemstone into $src_dir/$gemstone ..."
+	ln -fs "$src_dir/$gemstone" "$src_dir/$ruby_src_dir/gemstone" || return $?
+	mv "$src_dir/$ruby_src_dir" "$install_dir" || return $?
 }
 
 #
@@ -39,8 +39,8 @@ function install_ruby()
 function post_install()
 {	
 	log "Symlinking bin/ruby to bin/maglev-ruby ..."
-	ln -fs maglev-ruby "$INSTALL_DIR/bin/ruby" || return $?
+	ln -fs maglev-ruby "$install_dir/bin/ruby" || return $?
 	
 	log "Symlinking bin/irb to bin/maglev-irb"
-	ln -fs maglev-irb "$INSTALL_DIR/bin/irb" || return $?
+	ln -fs maglev-irb "$install_dir/bin/irb" || return $?
 }

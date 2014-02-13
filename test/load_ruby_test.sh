@@ -2,9 +2,9 @@
 
 function setUp()
 {
-	RUBY="ruby"
-	RUBY_VERSION="1.9"
-	EXPANDED_RUBY_VERSION="1.9.3-p484"
+	ruby="ruby"
+	ruby_version="1.9"
+	expanded_ruby_version="1.9.3-p484"
 }
 
 function test_load_ruby()
@@ -14,100 +14,100 @@ function test_load_ruby()
 	assertEquals "did not return 0" 0 $?
 }
 
-function test_load_ruby_with_invalid_RUBY()
+function test_load_ruby_with_invalid_ruby()
 {
-	RUBY="foo"
+	ruby="foo"
 
 	load_ruby 2>/dev/null
 
 	assertEquals "did not return 1" 1 $?
 }
 
-function test_RUBY_VERSION()
+function test_ruby_version()
 {
 	load_ruby
 
-	assertEquals "did not expand RUBY_VERSION" \
-		     "$EXPANDED_RUBY_VERSION" \
-		     "$RUBY_VERSION"
+	assertEquals "did not expand ruby_version" \
+		     "$expanded_ruby_version" \
+		     "$ruby_version"
 }
 
-function test_load_ruby_with_RUBY_URL()
+function test_load_ruby_with_ruby_url()
 {
 	local url="http://mirror.s3.amazonaws.com/downloads/ruby-1.2.3.tar.gz"
 
-	RUBY_URL="$url"
+	ruby_url="$url"
 	load_ruby
 
-	assertEquals "did not preserve RUBY_URL" "$url" "$RUBY_URL"
+	assertEquals "did not preserve ruby_url" "$url" "$ruby_url"
 }
 
-function test_load_ruby_RUBY_MD5()
+function test_load_ruby_ruby_md5()
 {
 	load_ruby
 
-	assertNotNull "did not set RUBY_MD5" $RUBY_MD5
+	assertNotNull "did not set ruby_md5" $ruby_md5
 }
 
-function test_load_ruby_with_RUBY_MD5()
+function test_load_ruby_with_ruby_md5()
 {
 	local md5="b1946ac92492d2347c6235b4d2611184"
 
-	RUBY_MD5="$md5"
+	ruby_md5="$md5"
 	load_ruby
 
-	assertEquals "did not preserve RUBY_MD5" "$md5" "$RUBY_MD5"
+	assertEquals "did not preserve ruby_md5" "$md5" "$ruby_md5"
 }
 
-function test_SRC_DIR()
+function test_src_dir()
 {
 	load_ruby
 
 	if (( $UID == 0 )); then
-		assertEquals "did not correctly default SRC_DIR" \
+		assertEquals "did not correctly default src_dir" \
 			     "/usr/local/src" \
-			     "$SRC_DIR"
+			     "$src_dir"
 	else
-		assertEquals "did not correctly default SRC_DIR" \
+		assertEquals "did not correctly default src_dir" \
 			     "$HOME/src" \
-			     "$SRC_DIR"
+			     "$src_dir"
 	fi
 }
 
-function test_RUBIES_DIR()
+function test_rubies_dir()
 {
 	load_ruby
 
 	if (( $UID == 0 )); then
-		assertEquals "did not correctly default RUBIES_DIR" \
+		assertEquals "did not correctly default rubies_dir" \
 			     "/opt/rubies" \
-			     "$RUBIES_DIR"
+			     "$rubies_dir"
 	else
-		assertEquals "did not correctly default RUBIES_DIR" \
+		assertEquals "did not correctly default rubies_dir" \
 			     "$HOME/.rubies" \
-			     "$RUBIES_DIR"
+			     "$rubies_dir"
 	fi
 }
 
-function test_INSTALL_DIR()
+function test_install_dir()
 {
 	load_ruby
 
 	if (( $UID == 0 )); then
-		assertEquals "did not correctly default INSTALL_DIR" \
-			     "$RUBIES_DIR/$RUBY-$EXPANDED_RUBY_VERSION" \
-			     "$INSTALL_DIR"
+		assertEquals "did not correctly default install_dir" \
+			     "$rubies_dir/$ruby-$expanded_ruby_version" \
+			     "$install_dir"
 	else
-		assertEquals "did not correctly default INSTALL_DIR" \
-			     "$RUBIES_DIR/$RUBY-$EXPANDED_RUBY_VERSION" \
-			     "$INSTALL_DIR"
+		assertEquals "did not correctly default install_dir" \
+			     "$rubies_dir/$ruby-$expanded_ruby_version" \
+			     "$install_dir"
 	fi
 }
 
 function tearDown()
 {
-	unset SRC_DIR RUBIES_DIR INSTALL_DIR
-	unset RUBY RUBY_VERSION RUBY_MD5 RUBY_ARCHIVE RUBY_SRC_DIR RUBY_URL
+	unset src_dir rubies_dir install_dir
+	unset ruby ruby_version ruby_md5 ruby_archive ruby_src_dir ruby_url
 }
 
 SHUNIT_PARENT=$0 . $SHUNIT2

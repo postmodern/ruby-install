@@ -1,20 +1,20 @@
 if (( $UID == 0 )); then
-	SRC_DIR="${SRC_DIR:-/usr/local/src}"
-	RUBIES_DIR="${RUBIES_DIR:-/opt/rubies}"
+	src_dir="${src_dir:-/usr/local/src}"
+	rubies_dir="${rubies_dir:-/opt/rubies}"
 else
-	SRC_DIR="${SRC_DIR:-$HOME/src}"
-	RUBIES_DIR="${RUBIES_DIR:-$HOME/.rubies}"
+	src_dir="${src_dir:-$HOME/src}"
+	rubies_dir="${rubies_dir:-$HOME/.rubies}"
 fi
 
-INSTALL_DIR="${INSTALL_DIR:-$RUBIES_DIR/$RUBY-$RUBY_VERSION}"
+install_dir="${install_dir:-$rubies_dir/$ruby-$ruby_version}"
 
 #
 # Pre-install tasks
 #
 function pre_install()
 {
-	mkdir -p "$SRC_DIR" || return $?
-	mkdir -p "${INSTALL_DIR%/*}" || return $?
+	mkdir -p "$src_dir" || return $?
+	mkdir -p "${install_dir%/*}" || return $?
 }
 
 #
@@ -22,10 +22,10 @@ function pre_install()
 #
 function install_deps()
 {
-	local packages="$(fetch "$RUBY/dependencies" "$PACKAGE_MANAGER" || return $?)"
+	local packages="$(fetch "$ruby/dependencies" "$package_manager" || return $?)"
 
 	if [[ -n "$packages" ]]; then
-		log "Installing dependencies for $RUBY $RUBY_VERSION ..."
+		log "Installing dependencies for $ruby $ruby_version ..."
 		install_packages $packages || return $?
 	fi
 
@@ -42,8 +42,8 @@ function install_optional_deps() { return; }
 #
 function download_ruby()
 {
-	log "Downloading $RUBY_URL into $SRC_DIR ..."
-	download "$RUBY_URL" "$SRC_DIR/$RUBY_ARCHIVE" || return $?
+	log "Downloading $ruby_url into $src_dir ..."
+	download "$ruby_url" "$src_dir/$ruby_archive" || return $?
 }
 
 #
@@ -51,11 +51,11 @@ function download_ruby()
 #
 function verify_ruby()
 {
-	if [[ -n "$RUBY_MD5" ]]; then
-		log "Verifying $RUBY_ARCHIVE ..."
-		verify "$SRC_DIR/$RUBY_ARCHIVE" "$RUBY_MD5" || return $?
+	if [[ -n "$ruby_md5" ]]; then
+		log "Verifying $ruby_archive ..."
+		verify "$src_dir/$ruby_archive" "$ruby_md5" || return $?
 	else
-		warn "No checksum for $RUBY_ARCHIVE. Proceeding anyways"
+		warn "No checksum for $ruby_archive. Proceeding anyways"
 	fi
 }
 
@@ -64,8 +64,8 @@ function verify_ruby()
 #
 function extract_ruby()
 {
-	log "Extracting $RUBY_ARCHIVE ..."
-	extract "$SRC_DIR/$RUBY_ARCHIVE" "$SRC_DIR" || return $?
+	log "Extracting $ruby_archive ..."
+	extract "$src_dir/$ruby_archive" "$src_dir" || return $?
 }
 
 #
@@ -75,15 +75,15 @@ function download_patches()
 {
 	local dest patch
 
-	for (( i=0; i<${#PATCHES[@]}; i++ )) do
-		patch="${PATCHES[$i]}"
+	for (( i=0; i<${#patches[@]}; i++ )) do
+		patch="${patches[$i]}"
 
 		if [[ "$patch" == http:\/\/* || "$patch" == https:\/\/* ]]; then
-			dest="$SRC_DIR/$RUBY_SRC_DIR/${patch##*/}"
+			dest="$src_dir/$ruby_src_dir/${patch##*/}"
 
 			log "Downloading patch $patch ..."
 			download "$patch" "$dest" || return $?
-			PATCHES[$i]="$dest"
+			patches[$i]="$dest"
 		fi
 	done
 }
@@ -95,11 +95,11 @@ function apply_patches()
 {
 	local name
 
-	for patch in "${PATCHES[@]}"; do
+	for patch in "${patches[@]}"; do
 		name="${patch##*/}"
 
 		log "Applying patch $name ..."
-		patch -p1 -d "$SRC_DIR/$RUBY_SRC_DIR" < "$patch" || return $?
+		patch -p1 -d "$src_dir/$ruby_src_dir" < "$patch" || return $?
 	done
 }
 

@@ -28,7 +28,7 @@ function test_download_using_wget()
 {
 	command -v wget >/dev/null || return
 
-	DOWNLOADER="wget" download "$URL" "$OUTPUT" 2>/dev/null
+	downloader="wget" download "$URL" "$OUTPUT" 2>/dev/null
 
 	assertTrue "did not download the file" '[[ -f "$OUTPUT" ]]'
 }
@@ -37,7 +37,7 @@ function test_download_using_curl()
 {
 	command -v curl >/dev/null || return
 
-	DOWNLOADER="curl" download "$URL" "$OUTPUT" 2>/dev/null
+	downloader="curl" download "$URL" "$OUTPUT" 2>/dev/null
 
 	assertTrue "did not download the file" '[[ -f "$OUTPUT" ]]'
 }

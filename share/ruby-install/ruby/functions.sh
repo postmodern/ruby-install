@@ -1,31 +1,31 @@
 #!/usr/bin/env bash
 
-RUBY_VERSION_FAMILY="${RUBY_VERSION:0:3}"
-RUBY_ARCHIVE="ruby-$RUBY_VERSION.tar.bz2"
-RUBY_SRC_DIR="ruby-$RUBY_VERSION"
-RUBY_MIRROR="${RUBY_MIRROR:-http://cache.ruby-lang.org/pub/ruby}"
-RUBY_URL="${RUBY_URL:-$RUBY_MIRROR/$RUBY_VERSION_FAMILY/$RUBY_ARCHIVE}"
+ruby_version_family="${ruby_version:0:3}"
+ruby_archive="ruby-$ruby_version.tar.bz2"
+ruby_src_dir="ruby-$ruby_version"
+ruby_mirror="${ruby_mirror:-http://cache.ruby-lang.org/pub/ruby}"
+ruby_url="${ruby_url:-$ruby_mirror/$ruby_version_family/$ruby_archive}"
 
 #
 # Configures Ruby.
 #
 function configure_ruby()
 {
-	log "Configuring ruby $RUBY_VERSION ..."
-	case "$PACKAGE_MANAGER" in
+	log "Configuring ruby $ruby_version ..."
+	case "$package_manager" in
 		brew)
-			./configure --prefix="$INSTALL_DIR" \
+			./configure --prefix="$install_dir" \
 				    --with-opt-dir="$(brew --prefix openssl):$(brew --prefix readline):$(brew --prefix libyaml):$(brew --prefix gdbm):$(brew --prefix libffi)" \
-				    "${CONFIGURE_OPTS[@]}" || return $?
+				    "${configure_opts[@]}" || return $?
 			;;
 		port)
-			./configure --prefix="$INSTALL_DIR" \
+			./configure --prefix="$install_dir" \
 				    --with-opt-dir=/opt/local \
-				    "${CONFIGURE_OPTS[@]}" || return $?
+				    "${configure_opts[@]}" || return $?
 			;;
 		*)
-			./configure --prefix="$INSTALL_DIR" \
-				    "${CONFIGURE_OPTS[@]}" || return $?
+			./configure --prefix="$install_dir" \
+				    "${configure_opts[@]}" || return $?
 			;;
 	esac
 }
@@ -35,15 +35,15 @@ function configure_ruby()
 #
 function compile_ruby()
 {
-	log "Compiling ruby $RUBY_VERSION ..."
-	make "${MAKE_OPTS[@]}" || return $?
+	log "Compiling ruby $ruby_version ..."
+	make "${make_opts[@]}" || return $?
 }
 
 #
-# Installs Ruby into $INSTALL_DIR
+# Installs Ruby into $install_dir
 #
 function install_ruby()
 {
-	log "Installing ruby $RUBY_VERSION ..."
+	log "Installing ruby $ruby_version ..."
 	make install || return $?
 }

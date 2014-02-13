@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-RUBY_ARCHIVE="rubinius-$RUBY_VERSION.tar.bz2"
-RUBY_SRC_DIR="rubinius-$RUBY_VERSION"
-RUBY_MIRROR="${RUBY_MIRROR:-http://releases.rubini.us}"
-RUBY_URL="${RUBY_URL:-$RUBY_MIRROR/$RUBY_ARCHIVE}"
+ruby_archive="rubinius-$ruby_version.tar.bz2"
+ruby_src_dir="rubinius-$ruby_version"
+ruby_mirror="${ruby_mirror:-http://releases.rubini.us}"
+ruby_url="${ruby_url:-$ruby_mirror/$ruby_archive}"
 
 #
 # Install optional dependencies for Rubinius.
@@ -23,24 +23,24 @@ function install_optional_deps()
 #
 function configure_ruby()
 {
-	log "Bundling rubinius $RUBY_VERSION ..."
+	log "Bundling rubinius $ruby_version ..."
 	bundle install --path vendor/gems || return $?
 
-	log "Configuring rubinius $RUBY_VERSION ..."
-	case "$PACKAGE_MANAGER" in
+	log "Configuring rubinius $ruby_version ..."
+	case "$package_manager" in
 		brew)
-			./configure --prefix="$INSTALL_DIR" \
+			./configure --prefix="$install_dir" \
 				    --with-opt-dir="$(brew --prefix openssl):$(brew --prefix readline):$(brew --prefix libyaml):$(brew --prefix gdbm)" \
-				    "${CONFIGURE_OPTS[@]}" || return $?
+				    "${configure_opts[@]}" || return $?
 			;;
 		port)
-			./configure --prefix="$INSTALL_DIR" \
+			./configure --prefix="$install_dir" \
 				    --with-opt-dir=/opt/local \
-				    "${CONFIGURE_OPTS[@]}" || return $?
+				    "${configure_opts[@]}" || return $?
 			;;
 		*)
-			./configure --prefix="$INSTALL_DIR" \
-				    "${CONFIGURE_OPTS[@]}" || return $?
+			./configure --prefix="$install_dir" \
+				    "${configure_opts[@]}" || return $?
 			;;
 	esac
 }
@@ -50,15 +50,15 @@ function configure_ruby()
 #
 function compile_ruby()
 {
-	log "Compiling rubinius $RUBY_VERSION ..."
+	log "Compiling rubinius $ruby_version ..."
 	bundle exec rake build || return $?
 }
 
 #
-# Installs Rubinius into $INSTALL_DIR.
+# Installs Rubinius into $install_dir.
 #
 function install_ruby()
 {
-	log "Installing rubinius $RUBY_VERSION ..."
+	log "Installing rubinius $ruby_version ..."
 	bundle exec rake install || return $?
 }

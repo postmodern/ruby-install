@@ -1,11 +1,11 @@
 . ./test/helper.sh
 
-RUBY_INSTALL_DIR="./test/tmp"
-FILE="$RUBY_INSTALL_DIR/db.txt"
+ruby_install_dir="./test/tmp"
+FILE="$ruby_install_dir/db.txt"
 
 function setUp()
 {
-	mkdir "$RUBY_INSTALL_DIR"
+	mkdir "$ruby_install_dir"
 }
 
 function test_fetch()
@@ -58,7 +58,7 @@ function test_fetch_with_unknown_key()
 
 function tearDown()
 {
-	rm -r "$RUBY_INSTALL_DIR"
+	rm -r "$ruby_install_dir"
 }
 
 SHUNIT_PARENT=$0 . $SHUNIT2
