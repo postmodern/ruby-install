@@ -24,7 +24,7 @@
 
 #### rbx
 
-* Added versions for 2.2.3 and 2.2.4.
+* Added versions for 2.2.3, 2.2.4 and 2.2.5.
 
 ### 0.3.4 / 2013-12-25
 
