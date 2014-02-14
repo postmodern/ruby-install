@@ -1,3 +1,31 @@
+### 0.4.0 / 2014-02-13
+
+* Add support for installing [MRuby] 1.0.0!
+* Add the `--rubies-dir` option.
+* Add the `--jobs` flag, similar to `make -j4` (@havenwood).
+* Support for using the `openssl md5` command (@keiththomps).
+* Use the default ANSI foreground colour, for terminals which white backgrounds
+  (@cscorley).
+* Improved error handling by explicitly returning error codes instead of
+  relying on `set -e` (@havenwood).
+* Attempt to upgrade previously installed homebrew dependencies.
+* Renamed rubinius to rbx for consistency.
+
+#### ruby
+
+* Add version aliases for 1.9.1 and 1.9.2.
+* Remove 1.8.x specific workarounds/patches.
+* Pass in `--with-opt-dir=/opt/local` when macports is detected.
+
+#### jruby
+
+* Added version for 1.7.10.
+* Check for the existence of java, before recommending users install OracleJDK.
+
+#### rbx
+
+* Added versions for 2.2.3 and 2.2.4.
+
 ### 0.3.4 / 2013-12-25
 
 * Use the `.part` file extension for files being downloaded, to distinguish
@@ -179,3 +207,4 @@
 [JRuby]: http://jruby.org/
 [Rubinius]: http://rubini.us/
 [MagLev]: http://maglev.github.io/
+[MRuby]: https://github.com/mruby/mruby#readme
