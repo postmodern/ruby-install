@@ -55,6 +55,11 @@ tag:
 
 release: tag download sign
 
+rpm:
+	rpmdev-setuptree
+	spectool -g -R rpm/ruby-install.spec
+	rpmbuild -ba rpm/ruby-install.spec
+
 install:
 	for dir in $(INSTALL_DIRS); do mkdir -p $(PREFIX)/$$dir; done
 	for file in $(INSTALL_FILES); do cp $$file $(PREFIX)/$$file; done
@@ -65,4 +70,4 @@ uninstall:
 	for file in $(INSTALL_FILES); do rm -f $(PREFIX)/$$file; done
 	rm -rf $(DOC_DIR)
 
-.PHONY: build man download sign verify clean test tag release install uninstall all
+.PHONY: build man download sign verify clean test tag release rpm install uninstall all
