@@ -122,3 +122,14 @@ function install_ruby() { return; }
 # Place holder function for post-install tasks.
 #
 function post_install() { return; }
+
+#
+# Remove downloaded archive and unpacked source.
+#
+function cleanup_source() {
+	log "Removing $src_dir/$ruby_archive ..."
+	rm "$src_dir/$ruby_archive" || return $?
+
+	log "Removing $src_dir/$ruby_src_dir ..."
+	rm -rf "$src_dir/$ruby_src_dir" || return $?
+}

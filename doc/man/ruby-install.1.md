@@ -23,9 +23,6 @@ https://github.com/postmodern/ruby-install#readme
 
 ## OPTIONS
 
-`-s`, `--src-dir` *DIR*
-	Specifies the directory for downloading and unpacking Ruby source.
-
 `-r`, `--rubies-dir` *DIR*
 	Specifies the alternate directory where other Ruby directories are
 	installed, such as *~/.rvm/rubies* or *~/.rbenv/versions*.
@@ -35,6 +32,13 @@ https://github.com/postmodern/ruby-install#readme
 	Specifies the directory where Ruby will be installed.
 	Defaults to */opt/rubies/$ruby-$version* for root and
 	*~/.rubies/$ruby-$version* for normal users.
+
+`-s`, `--src-dir` *DIR*
+	Specifies the directory for downloading and unpacking Ruby source.
+
+`-c`, `--cleanup`
+	Remove the downloaded Ruby archive and unpacked source-code after
+	installation.
 
 `-j[`*JOBS*`]`, `--jobs[=`*JOBS*`]`
 	Specifies the number of *make* jobs to run in parallel when compiling
