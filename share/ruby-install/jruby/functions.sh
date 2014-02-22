@@ -11,7 +11,7 @@ ruby_url="${ruby_url:-$ruby_mirror/$ruby_version/$ruby_archive}"
 function install_ruby()
 {
 	log "Installing jruby $ruby_version ..."
-	mv "$src_dir/$ruby_src_dir" "$install_dir" || return $?
+	cp -R "$src_dir/$ruby_src_dir" "$install_dir" || return $?
 }
 
 #

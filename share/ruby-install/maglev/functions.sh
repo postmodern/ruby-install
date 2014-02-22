@@ -30,7 +30,7 @@ function install_ruby()
 
 	log "Installing Gemstone into $src_dir/$gemstone ..."
 	ln -fs "$src_dir/$gemstone" "$src_dir/$ruby_src_dir/gemstone" || return $?
-	mv "$src_dir/$ruby_src_dir" "$install_dir" || return $?
+	cp -R "$src_dir/$ruby_src_dir" "$install_dir" || return $?
 }
 
 #
