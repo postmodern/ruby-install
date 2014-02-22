@@ -11,7 +11,7 @@ ruby_url="${ruby_url:-$ruby_mirror/$ruby_version/$ruby_archive}"
 function compile_ruby()
 {
 	log "Compiling mruby $ruby_version ..."
-	make || return $?
+	make "${make_opts[@]}" || return $?
 }
 
 #
