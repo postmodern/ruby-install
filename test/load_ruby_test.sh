@@ -4,7 +4,7 @@ function setUp()
 {
 	ruby="ruby"
 	ruby_version="1.9"
-	expanded_ruby_version="1.9.3-p484"
+	expanded_ruby_version="1.9.3-p545"
 }
 
 function test_load_ruby()
