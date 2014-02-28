@@ -28,6 +28,9 @@ function configure_ruby()
 				    "${configure_opts[@]}" || return $?
 			;;
 	esac
+
+	log "Cleaning ruby $ruby_version ..."
+	make clean || return $?
 }
 
 #
