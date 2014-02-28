@@ -43,6 +43,9 @@ function configure_ruby()
 				    "${configure_opts[@]}" || return $?
 			;;
 	esac
+
+	log "Cleaning rubinius $ruby_version ..."
+	bundle exec rake distclean || return $?
 }
 
 #
