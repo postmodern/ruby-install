@@ -46,13 +46,19 @@ function configure_ruby()
 }
 
 #
+# Cleans Rubinius.
+#
+function clean_ruby()
+{
+	log "Cleaning rubinius $ruby_version ..."
+	bundle exec rake distclean || return $?
+}
+
+#
 # Compiles Rubinius.
 #
 function compile_ruby()
 {
-	log "Cleaning rubinius $ruby_version ..."
-	bundle exec rake distclean || return $?
-
 	log "Compiling rubinius $ruby_version ..."
 	bundle exec rake build || return $?
 }

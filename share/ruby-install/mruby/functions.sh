@@ -6,13 +6,19 @@ ruby_mirror="${ruby_mirror:-https://github.com/mruby/mruby/archive}"
 ruby_url="${ruby_url:-$ruby_mirror/$ruby_version/$ruby_archive}"
 
 #
+# Cleans mruby.
+#
+function clean_ruby()
+{
+	log "Cleaning mruby $ruby_version ..."
+	make clean || return $?
+}
+
+#
 # Compile mruby.
 #
 function compile_ruby()
 {
-	log "Cleaning mruby $ruby_version ..."
-	make clean || return $?
-
 	log "Compiling mruby $ruby_version ..."
 	make "${make_opts[@]}" || return $?
 }

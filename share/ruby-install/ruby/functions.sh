@@ -31,13 +31,19 @@ function configure_ruby()
 }
 
 #
+# Cleans Ruby.
+#
+function clean_ruby()
+{
+	log "Cleaning ruby $ruby_version ..."
+	make clean || return $?
+}
+
+#
 # Compiles Ruby.
 #
 function compile_ruby()
 {
-	log "Cleaning ruby $ruby_version ..."
-	make clean || return $?
-
 	log "Compiling ruby $ruby_version ..."
 	make "${make_opts[@]}" || return $?
 }

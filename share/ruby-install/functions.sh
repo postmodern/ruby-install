@@ -109,6 +109,11 @@ function apply_patches()
 function configure_ruby() { return; }
 
 #
+# Place holder function for cleaning Ruby.
+#
+function clean_ruby() { return; }
+
+#
 # Place holder function for compiling Ruby.
 #
 function compile_ruby() { return; }
