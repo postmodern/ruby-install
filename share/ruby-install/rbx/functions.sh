@@ -43,9 +43,6 @@ function configure_ruby()
 				    "${configure_opts[@]}" || return $?
 			;;
 	esac
-
-	log "Cleaning rubinius $ruby_version ..."
-	bundle exec rake distclean || return $?
 }
 
 #
@@ -53,6 +50,9 @@ function configure_ruby()
 #
 function compile_ruby()
 {
+	log "Cleaning rubinius $ruby_version ..."
+	bundle exec rake distclean || return $?
+
 	log "Compiling rubinius $ruby_version ..."
 	bundle exec rake build || return $?
 }

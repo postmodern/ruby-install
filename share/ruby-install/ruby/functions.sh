@@ -28,9 +28,6 @@ function configure_ruby()
 				    "${configure_opts[@]}" || return $?
 			;;
 	esac
-
-	log "Cleaning ruby $ruby_version ..."
-	make clean || return $?
 }
 
 #
@@ -38,6 +35,9 @@ function configure_ruby()
 #
 function compile_ruby()
 {
+	log "Cleaning ruby $ruby_version ..."
+	make clean || return $?
+
 	log "Compiling ruby $ruby_version ..."
 	make "${make_opts[@]}" || return $?
 }
