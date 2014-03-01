@@ -51,7 +51,7 @@ function configure_ruby()
 function clean_ruby()
 {
 	log "Cleaning rubinius $ruby_version ..."
-	bundle exec rake distclean || return $?
+	bundle exec rake clean || return $?
 }
 
 #
