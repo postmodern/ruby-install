@@ -1,4 +1,4 @@
-### 0.4.1 / 2014-02-28
+### 0.4.1 / 2014-03-03
 
 * Always clean the source directory before re-building to prevent linking
   errors.
