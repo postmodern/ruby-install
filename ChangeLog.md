@@ -1,3 +1,31 @@
+### 0.4.1 / 2014-02-28
+
+* Always clean the source directory before re-building to prevent linking
+  errors.
+
+#### functions.sh
+
+* Added the `clean_ruby` function to handle cleaning the source directory.
+
+#### ruby
+
+* Added versions for 2.1.1, 2.0.0-p451 and 1.9.3-p545.
+* Removed version aliases for 1.9.1 and 1.9.2.
+
+#### jruby
+
+* Added the 1.7.11 version.
+* Copy the compiled ruby instead of moving it.
+
+#### maglev
+
+* Copy the compiled ruby instead of moving it.
+
+#### mruby
+
+* Add support for building with `-j,--jobs`.
+* Copy the compiled ruby instead of moving it.
+
 ### 0.4.0 / 2014-02-13
 
 * Add support for installing [MRuby] 1.0.0!
