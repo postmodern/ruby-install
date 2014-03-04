@@ -1,7 +1,7 @@
 ### 0.4.1 / 2014-03-03
 
-* Always clean the source directory before re-building to prevent linking
-  errors.
+* Always clean the source directory before re-building, to prevent linking
+  errors after an OS upgrade.
 
 #### functions.sh
 
