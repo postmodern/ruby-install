@@ -1,3 +1,3 @@
-apt: openjdk-7-jdk
+apt: openjdk-7-jre-headless
 yum: java-1.7.0-openjdk
 pacman: jre7-openjdk
