@@ -45,7 +45,7 @@ https://github.com/postmodern/ruby-install#readme
 	Specifies any additional patches to apply.
 
 `-M`, `--mirror` *URL*
-	Specifies an altnerate mirror to download the Ruby archive from.
+	Specifies an alternate mirror to download the Ruby archive from.
 
 `-u`, `--url` *URL*
 	Alternate URL to download the Ruby archive from.
@@ -93,7 +93,7 @@ Install a Ruby into a specific directory:
 
     $ ruby-install -i /usr/local/ ruby 1.9.3-p429
 
-Install a Ruby from a official site with directly download:
+Install a Ruby from an official site with directly download:
 
     $ ruby-install -M https://ftp.ruby-lang.org/pub/ruby ruby 2.0.0-p247
 
