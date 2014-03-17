@@ -61,7 +61,7 @@ Install a Ruby into a specific directory:
 
     $ ruby-install -i /usr/local/ ruby 1.9.3-p429
 
-Install a Ruby from a official site with directly download:
+Install a Ruby from an official site with directly download:
 
     $ ruby-install -M https://ftp.ruby-lang.org/pub/ruby ruby 2.0.0-p247
 
