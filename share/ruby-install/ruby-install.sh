@@ -43,6 +43,138 @@ else                     sudo="sudo"
 fi
 
 #
+# Auto-detect the system information
+#
+system_name="unknown"
+system_version="unknown"
+system_arch="$(uname -m)"
+
+case "$(uname)" in
+	(Linux|GNU*)
+		if [[ -f /etc/lsb-release ]] && grep "DISTRIB_ID=Ubuntu" /etc/lsb-release >/dev/null; then
+			system_name="ubuntu"
+			system_version="$(awk -F'=' '$1=="DISTRIB_RELEASE"{print $2}' /etc/lsb-release)"
+			system_arch="$(dpkg --print-architecture)"
+		elif [[ -f /etc/lsb-release ]] && grep "DISTRIB_ID=LinuxMint" /etc/lsb-release >/dev/null; then
+			system_name="mint"
+			system_version="$(awk -F'=' '$1=="DISTRIB_RELEASE"{print $2}' /etc/lsb-release)"
+			system_arch="$(dpkg --print-architecture)"
+		elif [[ -f /etc/lsb-release ]] && grep "DISTRIB_ID=ManjaroLinux" /etc/lsb-release >/dev/null; then
+			system_name="manjaro"
+			system_version="$(awk -F'=' '$1=="DISTRIB_RELEASE"{print $2}' /etc/lsb-release)"
+		elif [[ -f /etc/altlinux-release ]]; then
+			system_name="arch"
+			system_version="libc-$(ldd --version | awk 'NR==1 {print $NF}' | awk -F. '{print $1"."$2}')"
+		elif [[ -f /etc/os-release ]] && grep "ID=opensuse" /etc/os-release >/dev/null; then
+			system_name="opensuse"
+			system_version="$(awk -F'=' '$1=="VERSION_ID"{gsub(/"/,"");print $2}' /etc/os-release)"
+		elif [[ -f /etc/SuSE-release ]]; then
+			system_name="suse"
+			system_version="$(awk -F'=' '{gsub(/ /,"")} $1~/VERSION/ {version=$2} $1~/PATCHLEVEL/ {patch=$2} END {print version"."patch}' < /etc/SuSE-release)"
+		elif [[ -f /etc/debian_version ]]; then
+			system_name="debian"
+			system_version="$(cat /etc/debian_version | awk -F. '{print $1}')"
+			system_arch="$(dpkg --print-architecture)"
+		elif [[ -f /etc/os-release ]] && grep "ID=debian" /etc/os-release >/dev/null; then
+			system_name="debian"
+			system_version="$(awk -F'=' '$1=="VERSION_ID"{gsub(/"/,"");print $2}' /etc/os-release | awk -F. '{print $1}')"
+			system_arch="$(dpkg --print-architecture)"
+		elif [[ -f /etc/system-release ]] && grep "Amazon Linux AMI" /etc/system-release >/dev/null; then
+			system_name="amazon"
+			system_version="$(grep -Eo '[0-9\.]+' /etc/system-release | awk -F. '{print $1"."$2}')"
+		elif [[ -f /etc/sabayon-release ]]; then
+			# needs to be before gentoo
+			system_name="sabayon"
+			system_version="$(\cat /etc/sabayon-release | awk 'NR==1 {print $NF}' | awk -F. '{print $1"."$2}')"
+		elif [[ -f /etc/gentoo-release ]]; then
+			system_name="gentoo"
+			system_version="base-$(\cat /etc/gentoo-release | awk 'NR==1 {print $NF}' | awk -F. '{print $1"."$2}')"
+		elif [[ -f /etc/arch-release ]]; then
+			system_name="arch"
+			system_version="libc-$(ldd --version  | awk 'NR==1 {print $NF}' | awk -F. '{print $1"."$2}')"
+		elif [[ -f /proc/devices ]] && grep -Eo "synobios" /proc/devices >/dev/null; then
+			system_name="synology"
+			system_version="libc-$(ldd --version  | awk 'NR==1 {print $NF}' | awk -F. '{print $1"."$2}')"
+		elif [[ -f /etc/fedora-release ]]; then
+			system_name="fedora"
+			system_version="$(grep -Eo '[0-9]+' /etc/fedora-release)"
+		elif [[ -f /etc/centos-release ]]; then
+			system_name="centos"
+			system_version="$(grep -Eo '[0-9\.]+' /etc/centos-release | awk -F. '{print $1}')"
+		elif [[ -f /etc/redhat-release ]]; then
+			system_name="$(grep -Eo 'CentOS|ClearOS|Mageia|Scientific' /etc/redhat-release 2>/dev/null)" || system_name="redhat"
+			system_version="$(grep -Eo '[0-9\.]+' /etc/redhat-release  | awk -F. 'NR==1{print $1}')"
+		else
+			system_version="libc-$(ldd --version | awk 'NR==1 {print $NF}' | awk -F. '{print $1"."$2}')"
+		fi
+		;;
+	(SunOS)
+		system_name="solaris"
+		system_version="$(uname -v)"
+		system_arch="$(uname -p)"
+		if
+			[[ "${system_version}" =~ ^joyent* ]]
+		then
+			system_name="smartos"
+			system_version="${system_version#* }"
+		elif
+			[[ "${system_version}" =~ ^omnios* ]]
+		then
+			system_name="omnios"
+			system_version="${system_version#* }"
+		elif
+			[[ "${system_version}" =~ ^oi* || "${system_version}" =~ ^illumos* ]]
+		then
+			system_name="openindiana"
+			system_version="${system_version#* }"
+		elif
+			[[ "${system_version}" =~ Generic* ]]
+		then
+			system_version="10"
+		elif
+			[[ "${system_version}" =~ 11* ]]
+		then
+			system_version="11"
+			# is else needed here?
+		fi
+		;;
+	(FreeBSD)
+		system_name="freebsd"
+		system_version="$(uname -r)"
+		system_version="${system_version%%-*}"
+		;;
+	(OpenBSD)
+		system_name="openbsd"
+		system_version="$(uname -r)"
+		;;
+	(DragonFly)
+		system_name="dragonfly"
+		system_version="$(uname -r)"
+		system_version="${system_version%%-*}"
+		;;
+	(NetBSD)
+		system_name="netbsd"
+		system_version="$(uname -r | awk -F. '{print $1"."$2}')"
+		;;
+	(Darwin)
+		system_name="osx"
+		system_version="$(sw_vers -productVersion | awk -F. '{print $1"."$2}')"
+		;;
+	(CYGWIN*)
+		system_name="cygwin"
+		;;
+	(MINGW*)
+		system_name="mingw"
+		;;
+esac
+system_name="${system_name//[ \/]/_}"
+system_name="$(echo ${system_name} | tr '[A-Z]' '[a-z]')"
+system_version="${system_version//[ \/]/_}"
+system_arch="${system_arch//[ \/]/_}"
+system_arch="${system_arch/amd64/x86_64}"
+system_arch="${system_arch/i[123456789]86/i386}"
+
+#
 # Prints a log message.
 #
 function log()
@@ -300,6 +432,10 @@ function parse_options()
 			-m|--md5)
 				ruby_md5="$2"
 				shift 2
+				;;
+			--binary)
+				binary_install=1
+				shift
 				;;
 			--no-download)
 				no_download=1
