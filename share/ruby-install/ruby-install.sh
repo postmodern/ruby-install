@@ -112,28 +112,18 @@ case "$(uname)" in
 		system_name="solaris"
 		system_version="$(uname -v)"
 		system_arch="$(uname -p)"
-		if
-			[[ "${system_version}" =~ ^joyent* ]]
-		then
+		if [[ "${system_version}" =~ ^joyent* ]]; then
 			system_name="smartos"
 			system_version="${system_version#* }"
-		elif
-			[[ "${system_version}" =~ ^omnios* ]]
-		then
+		elif [[ "${system_version}" =~ ^omnios* ]]; then
 			system_name="omnios"
 			system_version="${system_version#* }"
-		elif
-			[[ "${system_version}" =~ ^oi* || "${system_version}" =~ ^illumos* ]]
-		then
+		elif [[ "${system_version}" =~ ^oi* || "${system_version}" =~ ^illumos* ]]; then
 			system_name="openindiana"
 			system_version="${system_version#* }"
-		elif
-			[[ "${system_version}" =~ Generic* ]]
-		then
+		elif [[ "${system_version}" =~ Generic* ]]; then
 			system_version="10"
-		elif
-			[[ "${system_version}" =~ 11* ]]
-		then
+		elif [[ "${system_version}" =~ 11* ]]; then
 			system_version="11"
 			# is else needed here?
 		fi
