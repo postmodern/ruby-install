@@ -18,10 +18,6 @@ fi
 #
 function configure_ruby()
 {
-	if [[ $binary_install -eq 1 ]]; then
-		return
-	fi
-
 	log "Configuring ruby $ruby_version ..."
 	case "$package_manager" in
 		brew)
@@ -46,10 +42,6 @@ function configure_ruby()
 #
 function clean_ruby()
 {
-	if [[ $binary_install -eq 1 ]]; then
-		return
-	fi
-
 	log "Cleaning ruby $ruby_version ..."
 	make clean || return $?
 }
@@ -59,10 +51,6 @@ function clean_ruby()
 #
 function compile_ruby()
 {
-	if [[ $binary_install -eq 1 ]]; then
-		return
-	fi
-
 	log "Compiling ruby $ruby_version ..."
 	make "${make_opts[@]}" || return $?
 }
