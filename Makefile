@@ -3,7 +3,7 @@ VERSION=0.4.1
 AUTHOR=postmodern
 URL=https://github.com/$(AUTHOR)/$(NAME)
 
-DIRS=etc lib bin sbin share
+DIRS=bin share
 INSTALL_DIRS=`find $(DIRS) -type d 2>/dev/null`
 INSTALL_FILES=`find $(DIRS) -type f 2>/dev/null`
 DOC_FILES=*.md *.txt
