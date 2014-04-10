@@ -4,8 +4,8 @@ AUTHOR=postmodern
 URL=https://github.com/$(AUTHOR)/$(NAME)
 
 DIRS=bin share
-INSTALL_DIRS=`find $(DIRS) -type d 2>/dev/null`
-INSTALL_FILES=`find $(DIRS) -type f 2>/dev/null`
+INSTALL_DIRS=`find $(DIRS) -type d`
+INSTALL_FILES=`find $(DIRS) -type f`
 DOC_FILES=*.md *.txt
 
 PKG_DIR=pkg
