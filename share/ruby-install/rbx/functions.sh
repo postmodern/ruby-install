@@ -12,9 +12,7 @@ function install_optional_deps()
 {
 	if ! command -v bundle >/dev/null; then
 		log "Installing bundler ..."
-		if [[ -w "$(gem env gemdir)" ]]; then gem install bundler || return $?
-		else sudo gem install bundler || return $?
-		fi
+		$sudo gem install bundler || return $?
 	fi
 }
 
