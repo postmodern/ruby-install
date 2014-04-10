@@ -30,9 +30,9 @@ function test_parse_options_with_one_argument()
 {
 	local expected="jruby"
 
-	parse_options $expected
+	parse_options "$expected"
 
-	assertEquals "did not set \$ruby" $expected $ruby
+	assertEquals "did not set \$ruby" "$expected" "$ruby"
 }
 
 function test_parse_options_with_two_arguments()
@@ -40,11 +40,11 @@ function test_parse_options_with_two_arguments()
 	local expected_ruby="jruby"
 	local expected_version="1.7.4"
 
-	parse_options $expected_ruby $expected_version
+	parse_options "$expected_ruby" "$expected_version"
 
-	assertEquals "did not set \$ruby" $expected_ruby $ruby
-	assertEquals "did not set \$ruby_version" $expected_version \
-		     				  $ruby_version
+	assertEquals "did not set \$ruby" "$expected_ruby" "$ruby"
+	assertEquals "did not set \$ruby_version" "$expected_version" \
+		     				  "$ruby_version"
 }
 
 function test_parse_options_with_more_than_two_arguments()
@@ -58,9 +58,9 @@ function test_parse_options_with_install_dir()
 {
 	local expected="/usr/local/"
 
-	parse_options "--install-dir" $expected "ruby"
+	parse_options "--install-dir" "$expected" "ruby"
 
-	assertEquals "did not set \$install_dir" $expected $install_dir
+	assertEquals "did not set \$install_dir" "$expected" "$install_dir"
 }
 
 function test_parse_options_with_relative_install_dir()
@@ -68,27 +68,27 @@ function test_parse_options_with_relative_install_dir()
 	local relative="path/to/dir"
 	local expected="$PWD/$relative"
 
-	parse_options "--install-dir" $relative "ruby"
+	parse_options "--install-dir" "$relative" "ruby"
 
-	assertEquals "did not set \$install_dir" $expected $install_dir
+	assertEquals "did not set \$install_dir" "$expected" "$install_dir"
 }
 
 function test_parse_options_with_src_dir()
 {
 	local expected="~/src/"
 
-	parse_options "--src-dir" $expected "ruby"
+	parse_options "--src-dir" "$expected" "ruby"
 
-	assertEquals "did not set \$src_dir" $expected $src_dir
+	assertEquals "did not set \$src_dir" "$expected" "$src_dir"
 }
 
 function test_parse_options_with_jobs()
 {
 	local expected="--jobs"
 
-	parse_options $expected "ruby"
+	parse_options "$expected" "ruby"
 
-	assertEquals "did not set \$make_opts" $expected ${make_opts[0]}
+	assertEquals "did not set \$make_opts" "$expected" "${make_opts[0]}"
 }
 
 function test_parse_options_with_jobs_and_arguments()
@@ -97,14 +97,15 @@ function test_parse_options_with_jobs_and_arguments()
 
 	parse_options "$expected" "ruby"
 
-	assertEquals "did not set \$make_opts" $expected ${make_opts[0]}
+	assertEquals "did not set \$make_opts" "$expected" "${make_opts[0]}"
 }
 
 function test_parse_options_with_patches()
 {
 	local expected=(patch1.diff patch2.diff)
 
-	parse_options "--patch" ${expected[0]} "--patch" ${expected[1]} "ruby"
+	parse_options "--patch" "${expected[0]}" \
+		      "--patch" "${expected[1]}" "ruby"
 
 	assertEquals "did not set \$patches" $expected $patches
 }
