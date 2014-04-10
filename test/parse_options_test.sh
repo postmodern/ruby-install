@@ -63,6 +63,16 @@ function test_parse_options_with_install_dir()
 	assertEquals "did not set \$install_dir" $expected $install_dir
 }
 
+function test_parse_options_with_relative_install_dir()
+{
+	local relative="path/to/dir"
+	local expected="$PWD/$relative"
+
+	parse_options "--install-dir" $relative "ruby"
+
+	assertEquals "did not set \$install_dir" $expected $install_dir
+}
+
 function test_parse_options_with_src_dir()
 {
 	local expected="~/src/"

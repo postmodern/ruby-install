@@ -274,7 +274,10 @@ function parse_options()
 				shift 2
 				;;
 			-i|--install-dir)
-				install_dir="$2"
+				case "$2" in
+					/*|./*)	install_dir="$2" ;;
+					*)	install_dir="$PWD/$2" ;;
+				esac
 				shift 2
 				;;
 			-s|--src-dir)
