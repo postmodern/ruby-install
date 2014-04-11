@@ -11,6 +11,11 @@ ruby_url="${ruby_url:-$ruby_mirror/$ruby_version_family/$ruby_archive}"
 #
 function configure_ruby()
 {
+	if [[ ! -s configure || configure.in -nt configure ]]; then
+		log "Regenerating ./configure script ..."
+		autoreconf || return $?
+	fi
+
 	log "Configuring ruby $ruby_version ..."
 	case "$package_manager" in
 		brew)
