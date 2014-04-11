@@ -20,6 +20,9 @@
         	baz) other_command ;;
         esac
 
+* Keep branching logic to a minimum.
+* Code should be declarative and easy to understand.
+
 ## Pull Request Guidelines
 
 * Utility functions should go into `share/ruby-install/ruby-install.sh`.
@@ -40,6 +43,8 @@
 
         ruby-install ruby 2.0 -- --foo --bar
 
+* Excessive version or environment checks. This is the job of a `./configure`
+  script.
 * Excessive OS specific workarounds. We should strive to fix any Ruby build
   issues or OS environment issues.
 * Building Rubies from HEAD. This is risky and may result in a buggy/broken
