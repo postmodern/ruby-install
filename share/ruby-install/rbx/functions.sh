@@ -21,11 +21,12 @@ function install_optional_deps()
 #
 function configure_ruby()
 {
+	export PATH="$PWD/vendor/gems/bin:$PATH"
 	export GEM_HOME="$PWD/vendor/gems"
 
 	log "Bundling rubinius $ruby_version ..."
 	gem install bundler || return $?
-	./vendor/gems/bin/bundle install || return $?
+	bundle install || return $?
 
 	log "Configuring rubinius $ruby_version ..."
 	case "$package_manager" in
