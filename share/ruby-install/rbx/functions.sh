@@ -21,7 +21,7 @@ function install_optional_deps()
 #
 function configure_ruby()
 {
-	export GEM_HOME=$PWD/vendor/gems
+	export GEM_HOME="$PWD/vendor/gems"
 
 	log "Bundling rubinius $ruby_version ..."
 	gem install bundler || return $?
