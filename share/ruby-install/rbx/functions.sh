@@ -12,7 +12,7 @@ function install_optional_deps()
 {
 	if ! command -v bundle >/dev/null; then
 		log "Installing bundler ..."
-		$sudo gem install bundler || return $?
+		GEM_HOME=$src_dir/ gem install bundler || return $?
 	fi
 }
 
@@ -21,8 +21,11 @@ function install_optional_deps()
 #
 function configure_ruby()
 {
+	export GEM_HOME=$PWD/vendor/gems
+
 	log "Bundling rubinius $ruby_version ..."
-	bundle install --path vendor/gems || return $?
+	gem install bundler || return $?
+	./vendor/gems/bin/bundle install || return $?
 
 	log "Configuring rubinius $ruby_version ..."
 	case "$package_manager" in
