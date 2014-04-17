@@ -33,23 +33,21 @@ function configure_ruby()
 {
 	install_gems
 
+	local opt_dir
+
 	log "Configuring rubinius $ruby_version ..."
 	case "$package_manager" in
 		brew)
-			./configure --prefix="$install_dir" \
-				    --with-opt-dir="$(brew --prefix openssl):$(brew --prefix readline):$(brew --prefix libyaml):$(brew --prefix gdbm)" \
-				    "${configure_opts[@]}" || return $?
+			opt_dir="$(brew --prefix openssl):$(brew --prefix readline):$(brew --prefix libyaml):$(brew --prefix gdbm)"
 			;;
 		port)
-			./configure --prefix="$install_dir" \
-				    --with-opt-dir=/opt/local \
-				    "${configure_opts[@]}" || return $?
-			;;
-		*)
-			./configure --prefix="$install_dir" \
-				    "${configure_opts[@]}" || return $?
+			opt_dir="/opt/local"
 			;;
 	esac
+
+	./configure --prefix="$install_dir" \
+		    "${opt_dir:+--with-opt-dir=\"$opt_dir\"}" \
+		    "${configure_opts[@]}" || return $?
 }
 
 #
