@@ -16,10 +16,7 @@ function install_optional_deps()
 	fi
 }
 
-#
-# Configures Rubinius.
-#
-function configure_ruby()
+function install_gems()
 {
 	export PATH="$PWD/vendor/gems/bin:$PATH"
 	export GEM_HOME="$PWD/vendor/gems"
@@ -27,6 +24,14 @@ function configure_ruby()
 	log "Bundling rubinius $ruby_version ..."
 	gem install bundler || return $?
 	bundle install || return $?
+}
+
+#
+# Configures Rubinius.
+#
+function configure_ruby()
+{
+	install_gems
 
 	log "Configuring rubinius $ruby_version ..."
 	case "$package_manager" in
