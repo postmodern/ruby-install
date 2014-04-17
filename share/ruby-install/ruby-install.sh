@@ -277,6 +277,10 @@ function parse_options()
 				install_dir="$2"
 				shift 2
 				;;
+			--system)
+				install_dir="/usr/local"
+				shift 1
+				;;
 			-s|--src-dir)
 				src_dir="$2"
 				shift 2
