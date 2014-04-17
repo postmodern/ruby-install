@@ -4,6 +4,10 @@
 
 * Call `autoreconf` if `configure.in` was patched but `configure` was not.
 
+#### jruby
+
+* Added version 1.7.12.
+
 #### rbx
 
 * Added version 2.2.6.
