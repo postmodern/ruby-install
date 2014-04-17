@@ -1,3 +1,15 @@
+### 0.4.2 / 2014-04-16
+
+#### ruby
+
+* Call `autoreconf` if `configure.in` was patched but `configure` was not.
+
+#### rbx
+
+* Added version 2.2.6.
+* Install bundler into `vendor/gems/` to prevent issues when the default
+  gemdir is not writable or does not yet exist.
+
 ### 0.4.1 / 2014-03-03
 
 * Always clean the source directory before re-building, to prevent linking
