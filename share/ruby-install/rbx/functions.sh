@@ -46,7 +46,7 @@ function configure_ruby()
 	esac
 
 	./configure --prefix="$install_dir" \
-		    "${opt_dir:+--with-opt-dir=\"$opt_dir\"}" \
+		    "${opt_dir:+--with-opt-dir="$opt_dir"}" \
 		    "${configure_opts[@]}" || return $?
 }
 
