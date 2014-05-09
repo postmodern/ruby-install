@@ -1,3 +1,14 @@
+### 0.4.3 / 2014-05-08
+
+#### ruby
+
+* Added 2.1.2.
+* Do not explicitly quote the value of `--with-opt-dir`.
+
+#### rbx
+
+* Do not explicitly quote the value of `--with-opt-dir`.
+
 ### 0.4.2 / 2014-04-17
 
 #### ruby
