@@ -7,3 +7,4 @@ rubinius-2.2.3.tar.bz2: d9978cf1a4e8f0310db63e49834f9837
 rubinius-2.2.4.tar.bz2: c10699da85a8eb5861a37b29077213bd
 rubinius-2.2.5.tar.bz2: 5996dc8529b2ffe5921c5e7020bee20e
 rubinius-2.2.6.tar.bz2: 85339bb6dd525eee719edf0551868f56
+rubinius-2.2.7.tar.bz2: de2e6f4c3bd9a90bcb89f2ea27ddee9e
