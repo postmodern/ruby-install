@@ -27,6 +27,7 @@ Installs [Ruby], [JRuby], [Rubinius], [MagLev] or [mruby].
 ## Anti-Features
 
 * Does not require updating every time a new Ruby version comes out.
+  * NOTE: You may have to specify a full version number (i.e. not just 1.9.3 or 2.1).
 * Does not require recipes for each individual Ruby version or configuration.
 * Does not support installing trunk/HEAD.
 
@@ -49,9 +50,13 @@ Install the current stable version of Ruby:
 
     $ ruby-install ruby
 
-Install a latest version of Ruby:
+Install a latest version of Ruby (that ruby-install knows about):
 
     $ ruby-install ruby 1.9
+
+Install a version of Ruby newer than what ruby-install knows about (MD5 of bz2 archive):
+
+    $ ruby-install --md5 5363d399be7f827c77bf8ae5d1a69b38 ruby 1.9.3-p547
 
 Install a specific version of Ruby:
 
