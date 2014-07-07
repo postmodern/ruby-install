@@ -120,6 +120,11 @@ Or the absolute latest ruby-install can be installed from source:
 
     brew install ruby-install --HEAD
 
+### FreeBSD
+
+There is a [FreeBSD port] of ruby-install which can be copied into the local
+ports tree.
+
 ## Known Issues
 
 ### Ruby
@@ -180,3 +185,4 @@ of [rbenv]
 [1]: http://postmodern.github.com/contact.html#pgp
 
 [homebrew]: http://brew.sh/
+[FreeBSD port]: https://github.com/steakknife/ruby-install-freebsd#readme
