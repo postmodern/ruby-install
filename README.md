@@ -7,6 +7,7 @@ Installs [Ruby], [JRuby], [Rubinius], [MagLev] or [mruby].
 ## Features
 
 * Supports installing arbitrary versions.
+  * Provides a list of stable versions.
 * Supports installing into `/opt/rubies/` for root and `~/.rubies/` for users
   by default.
 * Supports installing into arbitrary directories.
