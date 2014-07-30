@@ -50,13 +50,17 @@ Install the current stable version of Ruby:
 
     $ ruby-install ruby
 
-Install a latest version of Ruby:
+Install a stable version of Ruby:
 
     $ ruby-install ruby 1.9
 
 Install a specific version of Ruby:
 
     $ ruby-install ruby 1.9.3-p429
+
+Install a recently released version of Ruby:
+
+    $ ruby-install --md5 MD5_OF_TAR_BZ2 ruby 2.3.4
 
 Install a Ruby into a specific directory:
 
