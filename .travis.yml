@@ -6,7 +6,6 @@ install:
 
 before_script:
   - sudo rm -rf $HOME/.rvm $HOME/.rvmrc /etc/rvmrc /etc/profile.d/rvm.sh /usr/local/rvm /usr/local/bin/rvm
-  - sudo /usr/sbin/groupdel rvm
   - __rvm_unload
 
 script: make test
