@@ -23,7 +23,8 @@ share/man/man1/ruby-install.1: doc/man/ruby-install.1.md
 	kramdown-man doc/man/ruby-install.1.md > share/man/man1/ruby-install.1
 
 man: doc/man/ruby-install.1.md share/man/man1/ruby-install.1
-	git commit doc/man/ruby-install.1.md share/man/man1/ruby-install.1
+	git add doc/man/ruby-install.1.md share/man/man1/ruby-install.1
+	git commit
 
 download: pkg
 	wget -O $(PKG) $(URL)/archive/v$(VERSION).tar.gz
