@@ -35,3 +35,4 @@ jruby-bin-1.7.10.tar.gz:          c84fe9245a73f9cd29f56343b7d2e39a
 jruby-bin-1.7.11.tar.gz:          d6e6ab72426fa7fdc9ae55950980d877
 jruby-bin-1.7.12.tar.gz:          2073aa6dfc7c701ef7c3d3143d181582
 jruby-bin-1.7.13.tar.gz:          9cf9e35f5eed0e666239458a73617e57
+jruby-bin-1.7.14.tar.gz:          44989d2396c4315cb0ca4f1c7477ad3a
