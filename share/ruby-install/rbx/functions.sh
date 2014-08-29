@@ -5,6 +5,9 @@ ruby_src_dir="rubinius-$ruby_version"
 ruby_mirror="${ruby_mirror:-http://releases.rubini.us}"
 ruby_url="${ruby_url:-$ruby_mirror/$ruby_archive}"
 
+#
+# Install gems needed by Rubinius.
+#
 function install_gems()
 {
 	export PATH="$PWD/vendor/gems/bin:$PATH"
