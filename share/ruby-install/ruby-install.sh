@@ -2,7 +2,7 @@
 
 shopt -s extglob
 
-ruby_install_version="0.4.3"
+ruby_install_version="0.4.4"
 ruby_install_dir="${BASH_SOURCE[0]%/*}"
 
 rubies=(ruby jruby rbx maglev mruby)
