@@ -241,6 +241,7 @@ Options:
 	-u, --url URL		Alternate URL to download the Ruby archive from
 	-m, --md5 MD5		MD5 checksum of the Ruby archive
 	--no-download		Use the previously downloaded Ruby archive
+	--no-extract		Do not extract the archive, use existing directory
 	--no-verify		Do not verify the downloaded Ruby archive
 	--no-install-deps	Do not install build dependencies before installing Ruby
 	--no-reinstall  	Skip installation if another Ruby is detected in same location
@@ -303,6 +304,10 @@ function parse_options()
 				;;
 			--no-download)
 				no_download=1
+				shift
+				;;
+			--no-extract)
+				no_extract=1
 				shift
 				;;
 			--no-verify)
