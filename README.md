@@ -96,8 +96,7 @@ Using ruby-install with [rbenv]:
 
     $ ruby-install --install-dir ~/.rbenv/versions/2.0.0-p247 ruby 2.0.0-p247
 
-ruby-install can even be used with
-[Chef].
+ruby-install can even be used with [Chef].
 
 ## Install
 
