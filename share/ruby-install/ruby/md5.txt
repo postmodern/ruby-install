@@ -44,4 +44,5 @@ ruby-2.1.0-rc1.tar.bz2:       cae095b90349b5b0f7026060cc3dd2c5
 ruby-2.1.0.tar.bz2:           1546eeb763ac7754365664be763a1e8f
 ruby-2.1.1.tar.bz2:           53edc33b2f590ecdd9f6a344b9d92d0d
 ruby-2.1.2.tar.bz2:           ed9b8565bdeccb401d628ec8d54a0774
+ruby-2.1.3.tar.bz2:           02b7da3bb06037c777ca52e1194efccb
 ruby-2.2.0-preview1.tar.bz2:  767b132eec3e70b14afe5884a7a767b1
