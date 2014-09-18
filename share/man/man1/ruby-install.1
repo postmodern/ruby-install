@@ -32,10 +32,6 @@ Additional optional configure arguments\.
 .SH OPTIONS
 .LP
 .TP
-\fB-s\fR, \fB--src-dir\fR \fIDIR\fP
-Specifies the directory for downloading and unpacking Ruby source\.
-.LP
-.TP
 \fB-r\fR, \fB--rubies-dir\fR \fIDIR\fP
 Specifies the alternate directory where other Ruby directories are
 installed, such as \fI\[ti]\[sl]\.rvm\[sl]rubies\fP or \fI\[ti]\[sl]\.rbenv\[sl]versions\fP\.
@@ -46,6 +42,15 @@ Defaults to \fI\[sl]opt\[sl]rubies\fP for root and \fI\[ti]\[sl]\.rubies\fP for 
 Specifies the directory where Ruby will be installed\.
 Defaults to \fI\[sl]opt\[sl]rubies\[sl]\[Do]ruby\-\[Do]version\fP for root and
 \fI\[ti]\[sl]\.rubies\[sl]\[Do]ruby\-\[Do]version\fP for normal users\.
+.LP
+.TP
+\fB-s\fR, \fB--src-dir\fR \fIDIR\fP
+Specifies the directory for downloading and unpacking Ruby source\.
+.LP
+.TP
+\fB-c\fR, \fB--cleanup\fR
+Remove the downloaded Ruby archive and unpacked source\-code after
+installation\.
 .LP
 .TP
 \fB-j[\fR\fIJOBS\fP\fB]\fR, \fB--jobs[=\fR\fIJOBS\fP\fB]\fR
