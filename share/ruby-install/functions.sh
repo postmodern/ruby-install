@@ -1,3 +1,5 @@
+source "$ruby_install_dir/checksums.sh"
+
 if (( $UID == 0 )); then
 	src_dir="${src_dir:-/usr/local/src}"
 	rubies_dir="${rubies_dir:-/opt/rubies}"
@@ -47,16 +49,27 @@ function download_ruby()
 }
 
 #
-# Verifies the Ruby archive matches a checksum.
+# Verifies the Ruby archive against all known checksums.
 #
 function verify_ruby()
 {
-	if [[ -n "$ruby_md5" ]]; then
-		log "Verifying $ruby_archive ..."
-		verify "$src_dir/$ruby_archive" "$ruby_md5" || return $?
-	else
-		warn "No checksum for $ruby_archive. Proceeding anyways"
+	log "Verifying $ruby_archive ..."
+
+	if (( ${#supported_checksums[@]} == 0 )); then
+		warn "No checksum utilities detected! Proceeding anyways"
+		return
 	fi
+
+	local algorithm checksum
+
+	for checksum in "${supported_checksums[@]}"; do
+		algorithm="${checksum%%:*}"
+		program="${checksum##*:}"
+
+		verify_checksum "$ruby_dir/checksums.$algorithm" \
+				"$src_dir/$ruby_archive" \
+				"$program" || return $?
+	done
 }
 
 #
