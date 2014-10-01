@@ -5,10 +5,13 @@ shopt -s extglob
 ruby_install_version="0.4.4"
 ruby_install_dir="${BASH_SOURCE[0]%/*}"
 
+
 rubies=(ruby jruby rbx maglev mruby)
 patches=()
 configure_opts=()
 make_opts=()
+
+source "$ruby_install_dir/functions.sh"
 
 #
 # Auto-detect the package manager.
@@ -203,7 +206,6 @@ function load_ruby()
 	local expanded_version="$(fetch "$ruby/versions" "$ruby_version")"
 	ruby_version="${expanded_version:-$ruby_version}"
 
-	source "$ruby_install_dir/functions.sh" || return $?
 	source "$ruby_dir/functions.sh" || return $?
 
 	ruby_md5="${ruby_md5:-$(fetch "$ruby/md5" "$ruby_archive")}"
