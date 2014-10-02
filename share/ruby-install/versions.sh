@@ -35,7 +35,7 @@ function resolve_version()
 {
 	local version="$1"
 	local versions_file="$2"
-	local stable_file="$2"
+	local stable_file="$3"
 
 	if is_valid_version "$version" "$versions_file"; then
 		echo -n "$1"
