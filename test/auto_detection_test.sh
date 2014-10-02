@@ -42,18 +42,4 @@ function test_downloader_without_wget_but_with_curl()
 	assertEquals "did not detect curl" "curl" "$downloader" 
 }
 
-function test_downloader_with_md5sum()
-{
-	command -v md5sum >/dev/null || return
-
-	assertEquals "did not detect md5sum" "md5sum" "$md5sum" 
-}
-
-function test_downloader_without_md5sum_but_with_md5()
-{
-	(! command -v md5sum >/dev/null && command -v md5 >/dev/null) || return
-
-	assertEquals "did not detect md5" "md5" "$md5sum" 
-}
-
 SHUNIT_PARENT=$0 . $SHUNIT2
