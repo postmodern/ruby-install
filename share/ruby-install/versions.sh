@@ -16,7 +16,7 @@ function stable_version()
 	readarray stable_versions < "$file"
 
 	if [[ -z "$key" ]]; then
-		echo "${stable_versions[$((${#stable_versions[@]}-1))]}"
+		echo -n "${stable_versions[$((${#stable_versions[@]}-1))]}"
 		return
 	fi
 
@@ -38,7 +38,7 @@ function resolve_version()
 	local stable_file="$2"
 
 	if is_valid_version "$version" "$versions_file"; then
-		echo "$1"
+		echo -n "$1"
 	else
 		stable_version "$version" "$stable_file"
 	fi
