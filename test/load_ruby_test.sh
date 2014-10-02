@@ -4,7 +4,7 @@ function setUp()
 {
 	ruby="ruby"
 	ruby_version="1.9"
-	expanded_ruby_version="1.9.3-p547"
+	expected_ruby_version="1.9.3-p547"
 }
 
 function test_load_ruby()
@@ -28,7 +28,7 @@ function test_ruby_version()
 	load_ruby
 
 	assertEquals "did not expand ruby_version" \
-		     "$expanded_ruby_version" \
+		     "$expected_ruby_version" \
 		     "$ruby_version"
 }
 
@@ -95,11 +95,11 @@ function test_install_dir()
 
 	if (( $UID == 0 )); then
 		assertEquals "did not correctly default install_dir" \
-			     "$rubies_dir/$ruby-$expanded_ruby_version" \
+			     "$rubies_dir/$ruby-$expected_ruby_version" \
 			     "$install_dir"
 	else
 		assertEquals "did not correctly default install_dir" \
-			     "$rubies_dir/$ruby-$expanded_ruby_version" \
+			     "$rubies_dir/$ruby-$expected_ruby_version" \
 			     "$install_dir"
 	fi
 }
