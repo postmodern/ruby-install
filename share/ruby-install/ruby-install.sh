@@ -5,13 +5,12 @@ shopt -s extglob
 ruby_install_version="0.4.4"
 ruby_install_dir="${BASH_SOURCE[0]%/*}"
 
+source "$ruby_install_dir/versions.sh"
 
 rubies=(ruby jruby rbx maglev mruby)
 patches=()
 configure_opts=()
 make_opts=()
-
-source "$ruby_install_dir/functions.sh"
 
 #
 # Auto-detect the package manager.
@@ -28,14 +27,6 @@ fi
 #
 if   command -v wget >/dev/null; then downloader="wget"
 elif command -v curl >/dev/null; then downloader="curl"
-fi
-
-#
-# Auto-detect the md5 utility.
-#
-if   command -v md5sum  >/dev/null; then md5sum="md5sum"
-elif command -v md5     >/dev/null; then md5sum="md5"
-elif command -v openssl >/dev/null; then md5sum="openssl md5"
 fi
 
 #
@@ -203,12 +194,20 @@ function load_ruby()
 		return 1
 	fi
 
-	local expanded_version="$(fetch "$ruby/versions" "$ruby_version")"
-	ruby_version="${expanded_version:-$ruby_version}"
+	local absolute_version="$(
+	  resolve_version "$ruby_version" \
+		          "$ruby_dir/versions.txt" \
+			  "$ruby_dir/stable.txt"
+	)"
 
+	if [[ -z "$absolute_version" ]]; then
+		warn "Unknown $ruby version: $ruby_version"
+	fi
+
+	ruby_version="${absolute_version:-$ruby_version}"
+
+	source "$ruby_install_dir/functions.sh" || return $?
 	source "$ruby_dir/functions.sh" || return $?
-
-	ruby_md5="${ruby_md5:-$(fetch "$ruby/md5" "$ruby_archive")}"
 }
 
 #
@@ -220,7 +219,7 @@ function known_rubies()
 
 	for ruby in ${rubies[@]}; do
 		echo "  $ruby:"
-		cat "$ruby_install_dir/$ruby/versions.txt" | sed -e 's/^/    /' || return $?
+		cat "$ruby_install_dir/$ruby/stable.txt" | sed -e 's/^/    /' || return $?
 	done
 }
 
@@ -350,7 +349,7 @@ function parse_options()
 			;;
 		1)
 			ruby="${argv[0]}"
-			ruby_version="stable"
+			ruby_version=""
 			;;
 		0)
 			echo "ruby-install: too few arguments" >&2

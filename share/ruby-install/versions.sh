@@ -1,15 +1,21 @@
 function is_valid_version()
 {
-	grep --quiet --line-regexp "$1" "$ruby_dir/versions.txt"
+	local version="$1"
+	local file="$2"
+
+	grep --quiet --line-regexp "$version" "$file"
 }
 
 function stable_version()
 {
+	local key="$1"
+	local file="$2"
+
 	local stable_versions
 
-	readarray stable_versions < "$ruby_dir/stable.txt"
+	readarray stable_versions < "$file"
 
-	if [[ -z "$1" ]]; then
+	if [[ -z "$key" ]]; then
 		echo "${stable_versions[$((${#stable_versions[@]}-1))]}"
 		return
 	fi
@@ -17,7 +23,7 @@ function stable_version()
 	local match
 
 	for version in "${stable_versions[@]}"; do
-		if [[ "$version" == "$1".* || "$version" == "$1"-* ]]; then
+		if [[ "$version" == "$key".* || "$version" == "$key"-* ]]; then
 			match="$version"
 		fi
 	done
@@ -27,9 +33,13 @@ function stable_version()
 
 function resolve_version()
 {
-	if is_valid_version "$1"; then
+	local version="$1"
+	local versions_file="$2"
+	local stable_file="$2"
+
+	if is_valid_version "$version" "$versions_file"; then
 		echo "$1"
 	else
-		stable_version "$1"
+		stable_version "$version" "$stable_file"
 	fi
 }
