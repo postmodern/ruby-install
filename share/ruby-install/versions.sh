@@ -3,7 +3,7 @@ function is_valid_version()
 	local version="$1"
 	local file="$2"
 
-	grep --quiet --line-regexp "$version" "$file"
+	grep -q -x "$version" "$file"
 }
 
 function expand_version()
