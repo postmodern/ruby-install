@@ -140,30 +140,6 @@ function download()
 }
 
 #
-# Verifies a file against a md5 checksum.
-#
-function verify()
-{
-	local path="$1"
-	local md5="$2"
-
-	if [[ -z "$md5sum" ]]; then
-		error "Unable to find the md5 checksum utility"
-		return 1
-	fi
-
-	if [[ -z "$md5" ]]; then
-		error "No md5 checksum given"
-		return 1
-	fi
-
-	if [[ "$($md5sum "$path")" != *$md5* ]]; then
-		error "$path is invalid!"
-		return 1
-	fi
-}
-
-#
 # Extracts an archive.
 #
 function extract()
