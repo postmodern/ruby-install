@@ -20,7 +20,7 @@ function latest_version()
 		return
 	fi
 
-	local match=""
+	local version match=""
 
 	for version in "${stable_versions[@]}"; do
 		if [[ "$version" == "$key".* || "$version" == "$key"-* ]]; then
