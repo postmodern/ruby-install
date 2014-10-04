@@ -45,6 +45,6 @@ function resolve_version()
 		echo -n "$version"
 	else
 		latest_version "$version" "$latest_versions_file" ||
-		echo "$version"
+		echo -n "$version"
 	fi
 }
