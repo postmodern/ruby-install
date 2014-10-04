@@ -1,4 +1,5 @@
 . ./test/helper.sh
+. ./share/ruby-install/checksums.sh
 
 if   command -v md5sum >/dev/null; then md5sum="md5sum"
 elif command -v md5    >/dev/null; then md5sum="md5"
