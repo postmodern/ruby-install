@@ -176,11 +176,11 @@ function load_ruby()
 			  "$ruby_dir/stable.txt"
 	)"
 
-	if [[ -z "$absolute_version" ]]; then
+	if [[ -n "$absolute_version" ]]; then
+		ruby_version="$absolute_version"
+	else
 		warn "Unknown $ruby version: $ruby_version"
 	fi
-
-	ruby_version="${absolute_version:-$ruby_version}"
 
 	source "$ruby_install_dir/functions.sh" || return $?
 	source "$ruby_dir/functions.sh" || return $?

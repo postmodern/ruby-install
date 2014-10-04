@@ -55,9 +55,9 @@ function test_expand_version_with_unknown_version()
 {
 	local unknwon_version="1.2.3"
 
-	assertEquals "did not return an empty string" \
-		     "" \
-		     "$(expand_version "$unknown_version" "$stable_file")"
+	expand_version "$unknown_version" "$stable_file"
+
+	assertEquals "did not return an error" 1 $?
 }
 
 function test_resolve_version_with_exact_version()
@@ -79,13 +79,13 @@ function test_resolve_version_with_short_version()
 		     "$(resolve_version "$version" "$versions_file" "$stable_file")"
 }
 
-function test_resolve_version_with_unknown_version()
+function test_resolve_version_with_new_version()
 {
-	local unknown_version="1.2.3"
+	local new_version="3.0.0"
 
-	assertEquals "did not return the an empty string" \
-		     "" \
-		     "$(resolve_version "$version" "$versions_file" "$stable_file")"
+	assertEquals "did not return the new version" \
+		     "$new_version" \
+		     "$(resolve_version "$new_version" "$version_file" "$stable_file")"
 }
 
 function tearDown()

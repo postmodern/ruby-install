@@ -28,6 +28,10 @@ function expand_version()
 		fi
 	done
 
+	if [[ -z "$match" ]]; then
+		return 1
+	fi
+
 	echo -n "$match"
 }
 
@@ -40,6 +44,7 @@ function resolve_version()
 	if is_valid_version "$version" "$versions_file"; then
 		echo -n "$1"
 	else
-		expand_version "$version" "$latest_versions_file"
+		expand_version "$version" "$latest_versions_file" ||
+		echo "$version"
 	fi
 }
