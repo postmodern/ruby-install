@@ -17,7 +17,7 @@ function test_is_valid_version()
 {
 	local version="2.0.0-p576"
 
-        is_valid_version "$version" "$versions_file"
+	is_valid_version "$version" "$versions_file"
 
 	assertEquals "did not find the version within the file" \
 		     0 $?
@@ -27,7 +27,7 @@ function test_is_valid_version_with_invalid_version()
 {
 	local version="1.2.3"
 
-        is_valid_version "$version" "$versions_file"
+	is_valid_version "$version" "$versions_file"
 
 	assertEquals "did not return an error" 1 $?
 }
