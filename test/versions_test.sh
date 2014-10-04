@@ -53,7 +53,7 @@ function test_latest_version_with_empty_string()
 
 function test_latest_version_with_unknown_version()
 {
-	local unknwon_version="1.2.3"
+	local unknown_version="1.2.3"
 
 	latest_version "$unknown_version" "$stable_file"
 
@@ -85,7 +85,7 @@ function test_resolve_version_with_new_version()
 
 	assertEquals "did not return the new version" \
 		     "$new_version" \
-		     "$(resolve_version "$new_version" "$version_file" "$stable_file")"
+		     "$(resolve_version "$new_version" "$versions_file" "$stable_file")"
 }
 
 function tearDown()
