@@ -79,6 +79,15 @@ function test_resolve_version_with_short_version()
 		     "$(resolve_version "$version" "$versions_file" "$stable_file")"
 }
 
+function test_resolve_version_with_unknown_version()
+{
+	local unknown_version="1.2.3"
+
+	assertEquals "did not return the an empty string" \
+		     "" \
+		     "$(resolve_version "$version" "$versions_file" "$stable_file")"
+}
+
 function tearDown()
 {
 	rm "$versions_file"
