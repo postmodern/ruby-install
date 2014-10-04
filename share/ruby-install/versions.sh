@@ -20,7 +20,7 @@ function expand_version()
 		return
 	fi
 
-	local match
+	local match=""
 
 	for version in "${stable_versions[@]}"; do
 		if [[ "$version" == "$key".* || "$version" == "$key"-* ]]; then
