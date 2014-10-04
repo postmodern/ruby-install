@@ -60,15 +60,12 @@ function verify_ruby()
 		return
 	fi
 
-	local algorithm checksum
+	local algorithm
 
-	for checksum in "${supported_checksums[@]}"; do
-		algorithm="${checksum%%:*}"
-		program="${checksum##*:}"
-
-		verify_checksum "$ruby_dir/checksums.$algorithm" \
+	for algorithm in md5 sha1 sha256 sha512; do
+		verify_checksum "$algorithm" \
 				"$src_dir/$ruby_archive" \
-				"$program" || return $?
+			        "$ruby_dir/checksums.$algorithm" || return $?
 	done
 }
 

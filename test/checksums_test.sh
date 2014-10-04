@@ -3,22 +3,6 @@
 . ./test/helper.sh
 . ./share/ruby-install/checksums.sh
 
-if   command -v md5sum >/dev/null; then md5sum="md5sum"
-elif command -v md5    >/dev/null; then md5sum="md5"
-fi
-
-if   command -v sha1sum >/dev/null; then sha1sum="sha1sum"
-elif command -v sha1    >/dev/null; then sha1sum="sha1"
-fi
-
-if   command -v sha256sum >/dev/null; then sha256sum="sha256sum"
-elif command -v sha256    >/dev/null; then sha256sum="sha256"
-fi
-
-if   command -v sha512sum >/dev/null; then sha512sum="sha512sum"
-elif command -v sha512    >/dev/null; then sha512sum="sha512"
-fi
-
 data="hello world"
 file="./test/file.txt"
 
@@ -63,17 +47,10 @@ EOS
 
 function test_supported_checksums()
 {
-	assertEquals "did not detect the md5 checksum utilility" \
-		     "md5:$md5sum" "${supported_checksums[0]}"
-
-	assertEquals "did not detect the sha1 checksum utilility" \
-		     "sha1:$sha1sum" "${supported_checksums[1]}"
-
-	assertEquals "did not detect the sha256 checksum utilility" \
-		     "sha256:$sha256sum" "${supported_checksums[2]}"
-
-	assertEquals "did not detect the sha512 checksum utilility" \
-		     "sha512:$sha512sum" "${supported_checksums[3]}"
+	assertNotNull "did not detect the md5 checksum utilility" "$md5sum"
+	assertNotNull "did not detect the sha1 checksum utilility" "$sha1sum"
+	assertNotNull "did not detect the sha256 checksum utilility" "$sha256sum"
+	assertNotNull "did not detect the sha512 checksum utilility" "$sha512sum"
 }
 
 function test_lookup_checksum_md5()
@@ -129,61 +106,61 @@ function test_compute_checksum_md5()
 {
 	assertEquals "did not return the expected md5 checksum" \
 		     "$md5" \
-		     "$(compute_checksum "$md5sum" "$file")"
+		     "$(compute_checksum md5 "$file")"
 }
 
 function test_compute_checksum_sha1()
 {
 	assertEquals "did not return the expected sha1 checksum" \
 		     "$sha1" \
-		     "$(compute_checksum "$sha1sum" "$file")"
+		     "$(compute_checksum sha1 "$file")"
 }
 
 function test_compute_checksum_sha256()
 {
 	assertEquals "did not return the expected sha256 checksum" \
 		     "$sha256" \
-		     "$(compute_checksum "$sha256sum" "$file")"
+		     "$(compute_checksum sha256 "$file")"
 }
 
 function test_compute_checksum_sha512()
 {
 	assertEquals "did not return the expected sha512 checksum" \
 		     "$sha512" \
-		     "$(compute_checksum "$sha512sum" "$file")"
+		     "$(compute_checksum sha512 "$file")"
 }
 
 function test_compute_checksum_with_missing_file()
 {
 	assertEquals "returned data when it should not have" \
 		     "" \
-		     "$(compute_checksum "$md5sum" "missing.txt")"
+		     "$(compute_checksum md5 "missing.txt" 2>/dev/null)"
 }
 
 function test_verify_checksum_md5()
 {
-	verify_checksum "$checksums_md5" "$file" "$md5sum"
+	verify_checksum md5 "$file" "$checksums_md5"
 
 	assertEquals "checksum was not valid" 0 $?
 }
 
 function test_verify_checksum_sha1()
 {
-	verify_checksum "$checksums_sha1" "$file" "$sha1sum"
+	verify_checksum sha1 "$file" "$checksums_sha1"
 
 	assertEquals "checksum was not valid" 0 $?
 }
 
 function test_verify_checksum_sha256()
 {
-	verify_checksum "$checksums_sha256" "$file" "$sha256sum"
+	verify_checksum sha256 "$file" "$checksums_sha256"
 
 	assertEquals "checksum was not valid" 0 $?
 }
 
 function test_verify_checksum_sha512()
 {
-	verify_checksum "$checksums_sha512" "$file" "$sha512sum"
+	verify_checksum sha512 "$file" "$checksums_sha512"
 
 	assertEquals "checksum was not valid" 0 $?
 }

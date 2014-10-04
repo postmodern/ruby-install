@@ -1,13 +1,7 @@
-supported_checksums=()
-
-for algorithm in md5 sha1 sha256 sha512; do
-	for program in "${algorithm}sum" "$algorithm -r"; do
-		if command -v "$program" >/dev/null; then
-			supported_checksums+=("$algorithm:$program")
-			break
-		fi
-	done
-done
+md5sum="$(command -v md5sum    || echo "$(command -v md5) -r")"
+sha1sum="$(command -v sha1sum  || echo "$(command -v sha1) -r")"
+sha256sum="$(command -v sha256sum || echo "$(command -v sha256) -r")"
+sha512sum="$(command -v sha512sum || echo "$(command -v sha512) -r")"
 
 function lookup_checksum()
 {
@@ -20,18 +14,27 @@ function lookup_checksum()
 
 function compute_checksum()
 {
-	local program="$1"
+	local algorithm="$1"
 	local file="$2"
-	local output="$($program "$file")"
+
+	case "$algorithm" in
+		md5)	output="$($md5sum "$file")" ;;
+		sha1)	output="$($sha1sum "$file")" ;;
+		sha256)	output="$($sha256sum "$file")" ;;
+		sha512)	output="$($sha512sum "$file")" ;;
+		*)
+			return 1
+			;;
+	esac
 
 	echo -n "${output%% *}"
 }
 
 function verify_checksum()
 {
-	local checksums="$1"
+	local algorithm="$1"
 	local file="$2"
-	local program="$3"
+	local checksums="$3"
 
 	local expected_checksum="$(lookup_checksum "$checksums" "$file")"
 
@@ -40,7 +43,7 @@ function verify_checksum()
 		return
 	fi
 
-	local actual_checksum="$(compute_checksum "$program" "$file")"
+	local actual_checksum="$(compute_checksum "$algorithm" "$file")"
 
 	if [[ "$actual_checksum" != "$expected_checksum" ]]; then
 		error "Invalid checksum for $ruby_archive"
