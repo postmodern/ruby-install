@@ -13,7 +13,7 @@ function latest_version()
 
 	local stable_versions
 
-	readarray stable_versions < "$file"
+	readarray -t stable_versions < "$file"
 
 	if [[ -z "$key" ]]; then
 		echo -n "${stable_versions[$((${#stable_versions[@]}-1))]}"
