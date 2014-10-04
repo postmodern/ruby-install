@@ -191,6 +191,8 @@ function load_ruby()
 #
 function known_rubies()
 {
+	local ruby
+
 	echo "Known ruby versions:"
 
 	for ruby in ${rubies[@]}; do

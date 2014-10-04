@@ -86,7 +86,7 @@ function extract_ruby()
 #
 function download_patches()
 {
-	local dest patch
+	local i patch dest
 
 	for (( i=0; i<${#patches[@]}; i++ )) do
 		patch="${patches[$i]}"
@@ -106,7 +106,7 @@ function download_patches()
 #
 function apply_patches()
 {
-	local name
+	local patch name
 
 	for patch in "${patches[@]}"; do
 		name="${patch##*/}"
