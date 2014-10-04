@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 . ./test/helper.sh
 
 ruby_install_dir="./test/tmp"

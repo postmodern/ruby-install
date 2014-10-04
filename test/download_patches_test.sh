@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 . ./test/helper.sh
 
 patches=("https://gist.github.com/funny-falcon/2981959/raw/ary-queue.diff" "local.patch")

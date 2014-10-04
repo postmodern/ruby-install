@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 . ./test/helper.sh
 
 function test_package_manager_with_apt_get()

@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 . ./test/helper.sh
 . ./share/ruby-install/checksums.sh
 
