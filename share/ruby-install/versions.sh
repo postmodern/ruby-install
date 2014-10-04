@@ -28,11 +28,11 @@ function latest_version()
 		fi
 	done
 
-	if [[ -z "$match" ]]; then
+	if [[ -n "$match" ]]; then
+		echo -n "$match"
+	else
 		return 1
 	fi
-
-	echo -n "$match"
 }
 
 function resolve_version()
