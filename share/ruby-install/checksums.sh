@@ -1,7 +1,7 @@
 supported_checksums=()
 
 for algorithm in md5 sha1 sha256 sha512; do
-	for program in "${algorithm}sum" "$algorithm"; do
+	for program in "${algorithm}sum" "$algorithm -r"; do
 		if command -v "$program" >/dev/null; then
 			supported_checksums+=("$algorithm:$program")
 			break
@@ -15,7 +15,7 @@ function lookup_checksum()
 	local file="${2##*/}"
 	local output="$(grep "  $file" "$checksums")"
 
-	echo -n "${output%%  *}"
+	echo -n "${output%% *}"
 }
 
 function compute_checksum()
@@ -24,7 +24,7 @@ function compute_checksum()
 	local file="$2"
 	local output="$("$program" "$file")"
 
-	echo -n "${output%%  *}"
+	echo -n "${output%% *}"
 }
 
 function verify_checksum()
