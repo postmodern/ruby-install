@@ -9,8 +9,8 @@ function setUp()
 	local commit="08cb86b18210e58fb9f85c0b4403e0a83f64fbf3"
 	local download_url="https://raw.githubusercontent.com/postmodern/ruby-versions/$commit"
 
-	wget -q -c -O "$versions_file" "$download_url/ruby/versions.txt"
-	wget -q -c -O "$stable_file" "$download_url/ruby/stable.txt"
+	wget -q -O "$versions_file" "$download_url/ruby/versions.txt"
+	wget -q -O "$stable_file" "$download_url/ruby/stable.txt"
 }
 
 function test_is_valid_version()
