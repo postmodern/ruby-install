@@ -22,7 +22,7 @@ function compute_checksum()
 {
 	local program="$1"
 	local file="$2"
-	local output="$("$program" "$file")"
+	local output="$($program "$file")"
 
 	echo -n "${output%% *}"
 }
