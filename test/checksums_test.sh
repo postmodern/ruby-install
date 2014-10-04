@@ -108,6 +108,20 @@ function test_lookup_checksum_with_missing_file()
 		     "$(lookup_checksum "$checksums_sha512" "missing.txt")"
 }
 
+function test_lookup_checksum_with_duplicate_entries()
+{
+	cat <<EOS > duplicate_checksums.md5
+$md5  $(basename "$file")
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa  $(basename "$file")
+EOS
+
+	assertEquals "did not return the first checksum for the file" \
+		     "$md5" \
+		     "$(lookup_checksum duplicate_checksums.md5 "$file")"
+
+	rm duplicate_checksums.md5
+}
+
 function test_compute_checksum_md5()
 {
 	assertEquals "did not return the expected md5 checksum" \
