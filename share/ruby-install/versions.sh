@@ -6,7 +6,7 @@ function is_valid_version()
 	grep -q -x "$version" "$file"
 }
 
-function expand_version()
+function latest_version()
 {
 	local key="$1"
 	local file="$2"
@@ -42,9 +42,9 @@ function resolve_version()
 	local latest_versions_file="$3"
 
 	if is_valid_version "$version" "$versions_file"; then
-		echo -n "$1"
+		echo -n "$version"
 	else
-		expand_version "$version" "$latest_versions_file" ||
+		latest_version "$version" "$latest_versions_file" ||
 		echo "$version"
 	fi
 }

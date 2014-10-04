@@ -32,30 +32,30 @@ function test_is_valid_version_with_invalid_version()
 	assertEquals "did not return an error" 1 $?
 }
 
-function test_expand_version()
+function test_latest_version()
 {
 	local version="2.0"
 	local expected_version="2.0.0-p481"
 
 	assertEquals "did not return the last matching version" \
 		     "$expected_version" \
-		     "$(expand_version "$version" "$stable_file")"
+		     "$(latest_version "$version" "$stable_file")"
 }
 
-function test_expand_version_with_empty_string()
+function test_latest_version_with_empty_string()
 {
 	local expected_version="2.1.3"
 
 	assertEquals "did not return the last version" \
 		     "$expected_version" \
-		     "$(expand_version "" "$stable_file")"
+		     "$(latest_version "" "$stable_file")"
 }
 
-function test_expand_version_with_unknown_version()
+function test_latest_version_with_unknown_version()
 {
 	local unknwon_version="1.2.3"
 
-	expand_version "$unknown_version" "$stable_file"
+	latest_version "$unknown_version" "$stable_file"
 
 	assertEquals "did not return an error" 1 $?
 }
