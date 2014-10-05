@@ -1,5 +1,11 @@
 # Contributing
 
+## versions/checksums
+
+versions and checksum information is actually kept in the [ruby-versions]
+repository. All version or checksum related Pull Requests should be submitted
+to [ruby-versions].
+
 ## Code Style
 
 * Tab indent code.
@@ -55,3 +61,4 @@
 [shunit2]: http://code.google.com/p/shunit2/
 
 [bash]: http://www.gnu.org/software/bash/
+[ruby-versions]: https://github.com/postmodern/ruby-versions
