@@ -32,6 +32,7 @@ update:
 	wget -nv -N -P share/ruby-install/ruby/ $(UPDATE_URL)/ruby/$(UPDATE_FILES)
 	wget -nv -N -P share/ruby-install/jruby/ $(UPDATE_URL)/jruby/$(UPDATE_FILES)
 	wget -nv -N -P share/ruby-install/rbx/ $(UPDATE_URL)/rubinius/$(UPDATE_FILES)
+	git commit share/ruby-install/{ruby,jruby,rbx}/$(UPDATE_FILES) -m "Updated versions/checksums"
 
 download: pkg
 	wget -O $(PKG) $(URL)/archive/v$(VERSION).tar.gz
