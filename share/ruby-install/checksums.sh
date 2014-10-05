@@ -1,7 +1,7 @@
-md5sum="$(command -v md5sum    || echo "$(command -v md5) -r")"
-sha1sum="$(command -v sha1sum  || echo "$(command -v sha1) -r")"
-sha256sum="$(command -v sha256sum || echo "$(command -v sha256) -r")"
-sha512sum="$(command -v sha512sum || echo "$(command -v sha512) -r")"
+md5sum="$(basename $(command -v md5sum || command -v md5))"
+sha1sum="$(basename $(command -v sha1sum || command -v sha1))"
+sha256sum="$(basename $(command -v sha256sum || command -v sha256))"
+sha512sum="$(basename $(command -v sha512sum || command -v sha512))"
 
 function lookup_checksum()
 {
@@ -16,15 +16,21 @@ function compute_checksum()
 {
 	local algorithm="$1"
 	local file="$2"
+	local program
 
 	case "$algorithm" in
-		md5)	output="$($md5sum "$file")" ;;
-		sha1)	output="$($sha1sum "$file")" ;;
-		sha256)	output="$($sha256sum "$file")" ;;
-		sha512)	output="$($sha512sum "$file")" ;;
-		*)
-			return 1
-			;;
+		md5)	program="$md5sum" ;;
+		sha1)	program="$sha1sum" ;;
+		sha256)	program="$sha256sum" ;;
+		sha512)	program="$sha512sum" ;;
+		*)	return 1 ;;
+	esac
+
+	case "$program" in
+		md5|sha1|sha256|sha512)
+			output="$($program -r "$file")" ;;
+		md5sum|sha1sum|sha256sum|sha512sum)
+			output="$($program "$file")" ;;
 	esac
 
 	echo -n "${output%% *}"
