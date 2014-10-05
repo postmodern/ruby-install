@@ -26,13 +26,13 @@ function compute_checksum()
 		*)	return 1 ;;
 	esac
 
-	local output="$("$program" "$file")" ;;
+	local output="$("$program" "$file")"
 
 	case "$program" in
 		md5|sha1|sha256|sha512)
-			echo -n "${output##* = }"
+			echo -n "${output##* = }" ;;
 		md5sum|sha1sum|sha256sum|sha512sum)
-			echo -n "${output%%  *}"
+			echo -n "${output%%  *}" ;;
 	esac
 }
 
