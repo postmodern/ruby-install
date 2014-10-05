@@ -53,14 +53,9 @@ function download_ruby()
 #
 function verify_ruby()
 {
-	log "Verifying $ruby_archive ..."
-
-	if (( ${#supported_checksums[@]} == 0 )); then
-		warn "No checksum utilities detected! Proceeding anyways"
-		return
-	fi
-
 	local algorithm
+
+	log "Verifying $ruby_archive ..."
 
 	for algorithm in md5 sha1 sha256 sha512; do
 		verify_checksum "$algorithm" \
