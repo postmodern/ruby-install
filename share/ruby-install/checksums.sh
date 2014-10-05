@@ -8,8 +8,8 @@ elif command -v shasum > /dev/null;  then sha1sum="shasum"
 fi
 
 if   command -v sha256sum > /dev/null; then sha256sum="sha256sum"
-elif command -v sha256 > /dev/null;    then sha1sum="sha256 -r"
-elif command -v shasum > /dev/null;    then sha1sum="shasum -a 256"
+elif command -v sha256 > /dev/null;    then sha256sum="sha256 -r"
+elif command -v shasum > /dev/null;    then sha256sum="shasum -a 256"
 fi
 
 if   command -v sha512sum > /dev/null; then sha512sum="sha512sum"
