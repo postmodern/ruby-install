@@ -193,7 +193,7 @@ function known_rubies()
 {
 	local ruby
 
-	echo "Known ruby versions:"
+	echo "Latest ruby versions:"
 
 	for ruby in ${rubies[@]}; do
 		echo "  $ruby:"
