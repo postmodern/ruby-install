@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 . ./test/helper.sh
 
 URL="https://raw.github.com/postmodern/ruby-install/master/README.md"

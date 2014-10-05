@@ -5,6 +5,8 @@ shopt -s extglob
 ruby_install_version="0.4.4"
 ruby_install_dir="${BASH_SOURCE[0]%/*}"
 
+source "$ruby_install_dir/versions.sh"
+
 rubies=(ruby jruby rbx maglev mruby)
 patches=()
 configure_opts=()
@@ -25,14 +27,6 @@ fi
 #
 if   command -v wget >/dev/null; then downloader="wget"
 elif command -v curl >/dev/null; then downloader="curl"
-fi
-
-#
-# Auto-detect the md5 utility.
-#
-if   command -v md5sum  >/dev/null; then md5sum="md5sum"
-elif command -v md5     >/dev/null; then md5sum="md5"
-elif command -v openssl >/dev/null; then md5sum="openssl md5"
 fi
 
 #
@@ -146,30 +140,6 @@ function download()
 }
 
 #
-# Verifies a file against a md5 checksum.
-#
-function verify()
-{
-	local path="$1"
-	local md5="$2"
-
-	if [[ -z "$md5sum" ]]; then
-		error "Unable to find the md5 checksum utility"
-		return 1
-	fi
-
-	if [[ -z "$md5" ]]; then
-		error "No md5 checksum given"
-		return 1
-	fi
-
-	if [[ "$($md5sum "$path")" != *$md5* ]]; then
-		error "$path is invalid!"
-		return 1
-	fi
-}
-
-#
 # Extracts an archive.
 #
 function extract()
@@ -200,13 +170,20 @@ function load_ruby()
 		return 1
 	fi
 
-	local expanded_version="$(fetch "$ruby/versions" "$ruby_version")"
-	ruby_version="${expanded_version:-$ruby_version}"
+	local absolute_version="$(
+	  resolve_version "$ruby_version" \
+		          "$ruby_dir/versions.txt" \
+			  "$ruby_dir/stable.txt"
+	)"
+
+	if [[ -n "$absolute_version" ]]; then
+		ruby_version="$absolute_version"
+	else
+		warn "Unknown $ruby version: $ruby_version"
+	fi
 
 	source "$ruby_install_dir/functions.sh" || return $?
 	source "$ruby_dir/functions.sh" || return $?
-
-	ruby_md5="${ruby_md5:-$(fetch "$ruby/md5" "$ruby_archive")}"
 }
 
 #
@@ -214,11 +191,13 @@ function load_ruby()
 #
 function known_rubies()
 {
-	echo "Known ruby versions:"
+	local ruby
+
+	echo "Latest ruby versions:"
 
 	for ruby in ${rubies[@]}; do
 		echo "  $ruby:"
-		cat "$ruby_install_dir/$ruby/versions.txt" | sed -e 's/^/    /' || return $?
+		cat "$ruby_install_dir/$ruby/stable.txt" | sed -e 's/^/    /' || return $?
 	done
 }
 
@@ -353,7 +332,7 @@ function parse_options()
 			;;
 		1)
 			ruby="${argv[0]}"
-			ruby_version="stable"
+			ruby_version=""
 			;;
 		0)
 			echo "ruby-install: too few arguments" >&2

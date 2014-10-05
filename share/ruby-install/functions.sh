@@ -1,3 +1,5 @@
+source "$ruby_install_dir/checksums.sh"
+
 if (( $UID == 0 )); then
 	src_dir="${src_dir:-/usr/local/src}"
 	rubies_dir="${rubies_dir:-/opt/rubies}"
@@ -47,16 +49,19 @@ function download_ruby()
 }
 
 #
-# Verifies the Ruby archive matches a checksum.
+# Verifies the Ruby archive against all known checksums.
 #
 function verify_ruby()
 {
-	if [[ -n "$ruby_md5" ]]; then
-		log "Verifying $ruby_archive ..."
-		verify "$src_dir/$ruby_archive" "$ruby_md5" || return $?
-	else
-		warn "No checksum for $ruby_archive. Proceeding anyways"
-	fi
+	local algorithm
+
+	log "Verifying $ruby_archive ..."
+
+	for algorithm in md5 sha1 sha256 sha512; do
+		verify_checksum "$algorithm" \
+				"$src_dir/$ruby_archive" \
+			        "$ruby_dir/checksums.$algorithm" || return $?
+	done
 }
 
 #
@@ -73,7 +78,7 @@ function extract_ruby()
 #
 function download_patches()
 {
-	local dest patch
+	local i patch dest
 
 	for (( i=0; i<${#patches[@]}; i++ )) do
 		patch="${patches[$i]}"
@@ -93,7 +98,7 @@ function download_patches()
 #
 function apply_patches()
 {
-	local name
+	local patch name
 
 	for patch in "${patches[@]}"; do
 		name="${patch##*/}"
