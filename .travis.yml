@@ -1,6 +1,6 @@
 os:
   - linux
-  - os
+  - osx
 
 language: c
 
