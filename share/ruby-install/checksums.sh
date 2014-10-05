@@ -42,7 +42,7 @@ function compute_checksum()
 
 	local output="$($program "$file")"
 
-	echo -n "${output%%  *}"
+	echo -n "${output%% *}"
 }
 
 function verify_checksum()
