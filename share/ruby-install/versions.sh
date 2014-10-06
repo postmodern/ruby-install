@@ -1,15 +1,15 @@
 function is_valid_version()
 {
-	local version="$1"
-	local file="$2"
+	local file="$1"
+	local version="$2"
 
 	grep -q -x "$version" "$file"
 }
 
 function latest_version()
 {
-	local key="$1"
-	local file="$2"
+	local file="$1"
+	local key="$2"
 
 	local stable_versions
 
@@ -41,10 +41,10 @@ function resolve_version()
 	local versions_file="$2"
 	local latest_versions_file="$3"
 
-	if is_valid_version "$version" "$versions_file"; then
+	if is_valid_version "$versions_file" "$version"; then
 		echo -n "$version"
 	else
-		latest_version "$version" "$latest_versions_file" ||
+		latest_version "$latest_versions_file" "$version" ||
 		echo -n "$version"
 	fi
 }

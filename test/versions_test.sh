@@ -19,7 +19,7 @@ function test_is_valid_version()
 {
 	local version="2.0.0-p576"
 
-	is_valid_version "$version" "$versions_file"
+	is_valid_version "$versions_file" "$version"
 
 	assertEquals "did not find the version within the file" \
 		     0 $?
@@ -29,7 +29,7 @@ function test_is_valid_version_with_invalid_version()
 {
 	local version="1.2.3"
 
-	is_valid_version "$version" "$versions_file"
+	is_valid_version "$versions_file" "$version"
 
 	assertEquals "did not return an error" 1 $?
 }
@@ -41,7 +41,7 @@ function test_latest_version()
 
 	assertEquals "did not return the last matching version" \
 		     "$expected_version" \
-		     "$(latest_version "$version" "$stable_file")"
+		     "$(latest_version "$stable_file" "$version")"
 }
 
 function test_latest_version_with_empty_string()
@@ -50,14 +50,14 @@ function test_latest_version_with_empty_string()
 
 	assertEquals "did not return the last version" \
 		     "$expected_version" \
-		     "$(latest_version "" "$stable_file")"
+		     "$(latest_version "$stable_file" "")"
 }
 
 function test_latest_version_with_unknown_version()
 {
 	local unknown_version="1.2.3"
 
-	latest_version "$unknown_version" "$stable_file"
+	latest_version "$stable_file" "$unknown_version"
 
 	assertEquals "did not return an error" 1 $?
 }
