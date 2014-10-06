@@ -6,7 +6,7 @@
 versions_file="./test/versions.txt"
 stable_file="./test/stable.txt"
 
-function setUp()
+function oneTimeSetUp()
 {
 	local commit="08cb86b18210e58fb9f85c0b4403e0a83f64fbf3"
 	local download_url="https://raw.githubusercontent.com/postmodern/ruby-versions/$commit"
@@ -90,7 +90,7 @@ function test_resolve_version_with_new_version()
 		     "$(resolve_version "$new_version" "$versions_file" "$stable_file")"
 }
 
-function tearDown()
+function oneTimeTearDown()
 {
 	rm "$versions_file"
 	rm "$stable_file"

@@ -16,7 +16,7 @@ checksums_sha1="./test/checksums.sha1"
 checksums_sha256="./test/checksums.sha256"
 checksums_sha512="./test/checksums.sha512"
 
-function setUp()
+function oneTimeSetUp()
 {
 	echo -n "$data" > "$file"
 
@@ -165,7 +165,7 @@ function test_verify_checksum_sha512()
 	assertEquals "checksum was not valid" 0 $?
 }
 
-function tearDown()
+function oneTimeTearDown()
 {
 	rm "$file"
 	rm "$checksums_md5" \
