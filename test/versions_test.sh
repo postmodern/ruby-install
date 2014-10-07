@@ -81,6 +81,16 @@ function test_resolve_version_with_short_version()
 		     "$(resolve_version "$version" "$versions_file" "$stable_file")"
 }
 
+function test_resolve_version_with_empty_string()
+{
+	local version=""
+	local expected_version="2.1.3"
+
+	assertEquals "did not return the exact version" \
+		     "$expected_version" \
+		     "$(resolve_version "$version" "$versions_file" "$stable_file")"
+}
+
 function test_resolve_version_with_new_version()
 {
 	local new_version="3.0.0"
