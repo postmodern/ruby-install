@@ -2,7 +2,7 @@
 
 shopt -s extglob
 
-ruby_install_version="0.4.4"
+ruby_install_version="0.5.0"
 ruby_install_dir="${BASH_SOURCE[0]%/*}"
 
 source "$ruby_install_dir/versions.sh"
@@ -257,6 +257,10 @@ function parse_options()
 			-i|--install-dir)
 				install_dir="$2"
 				shift 2
+				;;
+			--system)
+				install_dir="/usr/local"
+				shift 1
 				;;
 			-s|--src-dir)
 				src_dir="$2"

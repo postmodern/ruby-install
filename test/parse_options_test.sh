@@ -65,6 +65,16 @@ function test_parse_options_with_install_dir()
 	assertEquals "did not set \$install_dir" "$expected" "$install_dir"
 }
 
+function test_parse_options_with_system()
+{
+	local expected="/usr/local"
+
+	parse_options "--system"
+
+	assertEquals "did not set \$install_dir to $expected" "$expected" \
+		                                              "$install_dir"
+}
+
 function test_parse_options_with_src_dir()
 {
 	local expected="~/src/"
