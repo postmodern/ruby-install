@@ -54,14 +54,14 @@ function verify_checksum()
 	local expected_checksum="$(lookup_checksum "$checksums" "$file")"
 
 	if [[ -z "$expected_checksum" ]]; then
-		warn "No checksum for $file"
+		warn "No $algorithm checksum for $file"
 		return
 	fi
 
 	local actual_checksum="$(compute_checksum "$algorithm" "$file")"
 
 	if [[ "$actual_checksum" != "$expected_checksum" ]]; then
-		error "Invalid checksum for $file"
+		error "Invalid $algorithm checksum for $file"
 		error "  expected: $expected_checksum"
 		error "  actual:   $actual_checksum"
 		return 1
