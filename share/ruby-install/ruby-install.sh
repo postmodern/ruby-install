@@ -112,7 +112,7 @@ function install_packages()
 				$sudo pacman -S $missing_pkgs || return $?
 			fi
 			;;
-		"")	warn "Could not determine Package Manager. Proceeding anyways." ;;
+		"")	warn "Could not determine Package Manager. Proceeding anyway." ;;
 	esac
 }
 
