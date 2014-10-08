@@ -222,6 +222,7 @@ Options:
 	-m, --md5 MD5		MD5 checksum of the Ruby archive
 	--no-download		Use the previously downloaded Ruby archive
 	--no-verify		Do not verify the downloaded Ruby archive
+	--no-extract		Do not use the archive, only the existing extracted directory
 	--no-install-deps	Do not install build dependencies before installing Ruby
 	--no-reinstall  	Skip installation if another Ruby is detected in same location
 	-V, --version		Prints the version
@@ -291,6 +292,12 @@ function parse_options()
 				;;
 			--no-verify)
 				no_verify=1
+				shift
+				;;
+			--no-extract)
+				no_download=1
+				no_verify=1
+				no_extract=1
 				shift
 				;;
 			--no-install-deps)

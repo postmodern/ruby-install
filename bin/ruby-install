@@ -31,7 +31,10 @@ if [[ ! $no_verify -eq 1 ]]; then
 	verify_ruby || fail "Verification of of $ruby_archive failed!"
 fi
 
-extract_ruby   || fail "Unpacking of $ruby_archive failed!"
+if [[ ! $no_extract -eq 1 ]]; then
+  extract_ruby   || fail "Unpacking of $ruby_archive failed!"
+fi
+
 download_patches || fail "Fetching patches $patches failed!"
 apply_patches  || fail "Patching $ruby $ruby_version failed!"
 cd "$src_dir/$ruby_src_dir"
