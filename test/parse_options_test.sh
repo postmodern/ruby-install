@@ -153,6 +153,15 @@ function test_parse_options_with_no_verify()
  	assertEquals "did not set \$no_verify" 1 $no_verify
 }
 
+function test_parse_options_with_no_verify()
+{
+	parse_options "--no-extract" "ruby"
+
+ 	assertEquals "did not set \$no_extract" 1 $no_extract
+ 	assertEquals "did not set \$no_verify" 1 $no_verify
+ 	assertEquals "did not set \$no_download" 1 $no_download
+}
+
 function test_parse_options_with_no_install_deps()
 {
 	parse_options "--no-install-deps" "ruby"
