@@ -49,19 +49,32 @@ function download_ruby()
 }
 
 #
+# Looks up a checksum for $ruby_archive.
+#
+function ruby_checksum()
+{
+	local algorithm="$1"
+	local checksums="$ruby_dir/checksums.$algorithm"
+
+	lookup_checksum "$checksums" "$ruby_archive"
+}
+
+#
 # Verifies the Ruby archive against all known checksums.
 #
 function verify_ruby()
 {
-	local algorithm
-
 	log "Verifying $ruby_archive ..."
 
-	for algorithm in md5 sha1 sha256 sha512; do
-		verify_checksum "$algorithm" \
-				"$src_dir/$ruby_archive" \
-			        "$ruby_dir/checksums.$algorithm" || return $?
-	done
+	ruby_md5="${ruby_md5:-$(ruby_checksum md5)}"
+	ruby_sha1="${ruby_sha1:-$(ruby_checksum sha1)}"
+	ruby_sha256="${ruby_sha256:-$(ruby_checksum sha256)}"
+	ruby_sha512="${ruby_sha512:-$(ruby_checksum sha512)}"
+
+	verify_checksum "$ruby_archive" md5 "$ruby_md5"       || return $?
+	verify_checksum "$ruby_archive" sha1 "$ruby_sha1"     || return $?
+	verify_checksum "$ruby_archive" sha256 "$ruby_sha256" || return $?
+	verify_checksum "$ruby_archive" sha512 "$ruby_sha512" || return $?
 }
 
 #
