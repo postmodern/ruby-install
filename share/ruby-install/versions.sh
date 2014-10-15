@@ -11,22 +11,18 @@ function latest_version()
 	local file="$1"
 	local key="$2"
 
-	local stable_versions
-
-	readarray -t stable_versions < "$file"
-
 	if [[ -z "$key" ]]; then
-		echo -n "${stable_versions[$((${#stable_versions[@]}-1))]}"
+		tail -n 1 "$file"
 		return
 	fi
 
 	local version match=""
 
-	for version in "${stable_versions[@]}"; do
+	while IFS="" read -r version; do
 		if [[ "$version" == "$key".* || "$version" == "$key"-* ]]; then
 			match="$version"
 		fi
-	done
+	done < "$file"
 
 	if [[ -n "$match" ]]; then
 		echo -n "$match"
