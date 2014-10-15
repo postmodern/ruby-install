@@ -89,9 +89,13 @@ function fetch()
 {
 	local file="$ruby_install_dir/$1.txt"
 	local key="$2"
-	local pair="$(grep -E "^$key:" "$file")"
+	local line
 
-	echo "${pair##$key:*([[:space:]])}"
+	while IFS="" read -r line; do
+		if [[ "$line" == "$key:"* ]]; then
+			echo "${line##$key:*([[:space:]])}"
+		fi
+	done < "$file"
 }
 
 function install_packages()
