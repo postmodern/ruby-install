@@ -47,11 +47,9 @@ function compute_checksum()
 
 function verify_checksum()
 {
-	local algorithm="$1"
-	local file="$2"
-	local checksums="$3"
-
-	local expected_checksum="$(lookup_checksum "$checksums" "$file")"
+	local file="$1"
+	local algorithm="$2"
+	local expected_checksum="$3"
 
 	if [[ -z "$expected_checksum" ]]; then
 		warn "No $algorithm checksum for $file"

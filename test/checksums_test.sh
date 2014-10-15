@@ -139,28 +139,28 @@ function test_compute_checksum_with_missing_file()
 
 function test_verify_checksum_md5()
 {
-	verify_checksum md5 "$file" "$checksums_md5"
+	verify_checksum "$file" md5 "$md5"
 
 	assertEquals "checksum was not valid" 0 $?
 }
 
 function test_verify_checksum_sha1()
 {
-	verify_checksum sha1 "$file" "$checksums_sha1"
+	verify_checksum "$file" sha1 "$sha1"
 
 	assertEquals "checksum was not valid" 0 $?
 }
 
 function test_verify_checksum_sha256()
 {
-	verify_checksum sha256 "$file" "$checksums_sha256"
+	verify_checksum "$file" sha256 "$sha256"
 
 	assertEquals "checksum was not valid" 0 $?
 }
 
 function test_verify_checksum_sha512()
 {
-	verify_checksum sha512 "$file" "$checksums_sha512"
+	verify_checksum "$file" sha512 "$sha512"
 
 	assertEquals "checksum was not valid" 0 $?
 }
