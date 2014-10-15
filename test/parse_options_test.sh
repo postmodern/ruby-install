@@ -139,6 +139,33 @@ function test_parse_options_with_md5()
 	assertEquals "did not set \$ruby_md5" "$md5" "$ruby_md5"
 }
 
+function test_parse_options_with_sha1()
+{
+	local sha1="2aae6c35c94fcfb415dbe95f408b9ce91ee846ed"
+
+	parse_options "--sha1" "$sha1" "ruby"
+
+	assertEquals "did not set \$ruby_sha1" "$sha1" "$ruby_sha1"
+}
+
+function test_parse_options_with_sha256()
+{
+	local sha256="b94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde9"
+
+	parse_options "--sha256" "$sha256" "ruby"
+
+	assertEquals "did not set \$ruby_sha256" "$sha256" "$ruby_sha256"
+}
+
+function test_parse_options_with_sha512()
+{
+	local sha512="309ecc489c12d6eb4cc40f50c902f2b4d0ed77ee511a7c7a9bcd3ca86d4cd86f989dd35bc5ff499670da34255b45b0cfd830e81f605dcf7dc5542e93ae9cd76f"
+
+	parse_options "--sha512" "$sha512" "ruby"
+
+	assertEquals "did not set \$ruby_sha512" "$sha512" "$ruby_sha512"
+}
+
 function test_parse_options_with_no_download()
 {
 	parse_options "--no-download" "ruby"

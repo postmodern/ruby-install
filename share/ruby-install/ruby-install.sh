@@ -220,6 +220,9 @@ Options:
 	-M, --mirror URL	Alternate mirror to download the Ruby archive from
 	-u, --url URL		Alternate URL to download the Ruby archive from
 	-m, --md5 MD5		MD5 checksum of the Ruby archive
+	    --sha1 SHA1		SHA1 checksum of the Ruby archive
+	    --sha256 SHA256	SHA256 checksum of the Ruby archive
+	    --sha512 SHA512	SHA512 checksum of the Ruby archive
 	--no-download		Use the previously downloaded Ruby archive
 	--no-verify		Do not verify the downloaded Ruby archive
 	--no-extract		Do not use the archive, only the existing extracted directory
@@ -288,6 +291,18 @@ function parse_options()
 				;;
 			-m|--md5)
 				ruby_md5="$2"
+				shift 2
+				;;
+			--sha1)
+				ruby_sha1="$2"
+				shift 2
+				;;
+			--sha256)
+				ruby_sha256="$2"
+				shift 2
+				;;
+			--sha512)
+				ruby_sha512="$2"
 				shift 2
 				;;
 			--no-download)
