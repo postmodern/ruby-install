@@ -71,10 +71,10 @@ function verify_ruby()
 	ruby_sha256="${ruby_sha256:-$(ruby_checksum sha256)}"
 	ruby_sha512="${ruby_sha512:-$(ruby_checksum sha512)}"
 
-	verify_checksum "$ruby_archive" md5 "$ruby_md5"       || return $?
-	verify_checksum "$ruby_archive" sha1 "$ruby_sha1"     || return $?
-	verify_checksum "$ruby_archive" sha256 "$ruby_sha256" || return $?
-	verify_checksum "$ruby_archive" sha512 "$ruby_sha512" || return $?
+	verify_checksum "$src_dir/$ruby_archive" md5 "$ruby_md5"       || return $?
+	verify_checksum "$src_dir/$ruby_archive" sha1 "$ruby_sha1"     || return $?
+	verify_checksum "$src_dir/$ruby_archive" sha256 "$ruby_sha256" || return $?
+	verify_checksum "$src_dir/$ruby_archive" sha512 "$ruby_sha512" || return $?
 }
 
 #
