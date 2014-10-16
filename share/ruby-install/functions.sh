@@ -64,6 +64,8 @@ function ruby_checksum()
 #
 function verify_ruby()
 {
+	local file="$src_dir/$ruby_archive"
+
 	log "Verifying $ruby_archive ..."
 
 	ruby_md5="${ruby_md5:-$(ruby_checksum md5)}"
@@ -71,10 +73,10 @@ function verify_ruby()
 	ruby_sha256="${ruby_sha256:-$(ruby_checksum sha256)}"
 	ruby_sha512="${ruby_sha512:-$(ruby_checksum sha512)}"
 
-	verify_checksum "$src_dir/$ruby_archive" md5 "$ruby_md5"       || return $?
-	verify_checksum "$src_dir/$ruby_archive" sha1 "$ruby_sha1"     || return $?
-	verify_checksum "$src_dir/$ruby_archive" sha256 "$ruby_sha256" || return $?
-	verify_checksum "$src_dir/$ruby_archive" sha512 "$ruby_sha512" || return $?
+	verify_checksum "$file" md5 "$ruby_md5"       || return $?
+	verify_checksum "$file" sha1 "$ruby_sha1"     || return $?
+	verify_checksum "$file" sha256 "$ruby_sha256" || return $?
+	verify_checksum "$file" sha512 "$ruby_sha512" || return $?
 }
 
 #
