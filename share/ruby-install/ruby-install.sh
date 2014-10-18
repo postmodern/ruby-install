@@ -217,6 +217,7 @@ Options:
 
 	-r, --rubies-dir DIR	Directory that contains other installed Rubies
 	-i, --install-dir DIR	Directory to install Ruby into
+	    --system		Alias for -i /usr/local
 	-s, --src-dir DIR	Directory to download source-code into
 	-c, --cleanup		Remove archive and unpacked source-code after installation
 	-j, --jobs JOBS		Number of jobs to run in parallel when compiling

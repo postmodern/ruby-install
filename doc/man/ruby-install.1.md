@@ -33,6 +33,9 @@ https://github.com/postmodern/ruby-install#readme
 	Defaults to */opt/rubies/$ruby-$version* for root and
 	*~/.rubies/$ruby-$version* for normal users.
 
+`--system`
+	Alias for `-i /usr/local`.
+
 `-s`, `--src-dir` *DIR*
 	Specifies the directory for downloading and unpacking Ruby source.
 
