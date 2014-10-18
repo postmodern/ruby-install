@@ -64,7 +64,7 @@ Specifies any additional patches to apply\.
 .LP
 .TP
 \fB-M\fR, \fB--mirror\fR \fIURL\fP
-Specifies an altnerate mirror to download the Ruby archive from\.
+Specifies an alternate mirror to download the Ruby archive from\.
 .LP
 .TP
 \fB-u\fR, \fB--url\fR \fIURL\fP
@@ -73,6 +73,18 @@ Alternate URL to download the Ruby archive from\.
 .TP
 \fB-m\fR, \fB--md5\fR \fIMD5\fP
 Specifies the MD5 checksum for the Ruby archive\.
+.LP
+.TP
+\fB--sha1\fR \fISHA1\fP
+Specifies the SHA1 checksum for the Ruby archive\.
+.LP
+.TP
+\fB--sha256\fR \fISHA256\fP
+Specifies the SHA256 checksum for the Ruby archive\.
+.LP
+.TP
+\fB--sha512\fR \fISHA512\fP
+Specifies the SHA512 checksum for the Ruby archive\.
 .LP
 .TP
 \fB--no-download\fR
@@ -136,7 +148,7 @@ Install a Ruby into a specific directory:
 .fi
 .LP
 .PP
-Install a Ruby from a official site with directly download:
+Install a Ruby from an official site with directly download:
 .LP
 .nf
 \[Do] ruby\-install \-M https:\[sl]\[sl]ftp\.ruby\-lang\.org\[sl]pub\[sl]ruby ruby 2\.0\.0\-p247

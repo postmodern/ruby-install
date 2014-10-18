@@ -57,6 +57,15 @@ https://github.com/postmodern/ruby-install#readme
 `-m`, `--md5` *MD5*
 	Specifies the MD5 checksum for the Ruby archive.
 
+`--sha1` *SHA1*
+	Specifies the SHA1 checksum for the Ruby archive.
+
+`--sha256` *SHA256*
+	Specifies the SHA256 checksum for the Ruby archive.
+
+`--sha512` *SHA512*
+	Specifies the SHA512 checksum for the Ruby archive.
+
 `--no-download`
 	Use the previously downloaded Ruby archive.
 
