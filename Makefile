@@ -62,7 +62,7 @@ tag:
 	git tag -s -m "Releasing $(VERSION)" v$(VERSION)
 	git push --tags
 
-release: tag download sign
+release: update tag download sign
 
 rpm:
 	rpmdev-setuptree
