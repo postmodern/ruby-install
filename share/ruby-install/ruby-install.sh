@@ -231,7 +231,7 @@ Options:
 	    --sha512 SHA512	SHA512 checksum of the Ruby archive
 	--no-download		Use the previously downloaded Ruby archive
 	--no-verify		Do not verify the downloaded Ruby archive
-	--no-extract		Do not use the archive, only the existing extracted directory
+	--no-extract		Do not re-extract the downloaded Ruby archive
 	--no-install-deps	Do not install build dependencies before installing Ruby
 	--no-reinstall  	Skip installation if another Ruby is detected in same location
 	-V, --version		Prints the version
