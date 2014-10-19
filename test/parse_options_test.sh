@@ -65,6 +65,15 @@ function test_parse_options_with_install_dir()
 	assertEquals "did not set \$install_dir" "$expected" "$install_dir"
 }
 
+function test_parse_options_with_prefix()
+{
+	local expected="/usr/local/"
+
+	parse_options "--prefix" "$expected" "ruby"
+
+	assertEquals "did not set \$install_dir" "$expected" "$install_dir"
+}
+
 function test_parse_options_with_system()
 {
 	local expected="/usr/local"

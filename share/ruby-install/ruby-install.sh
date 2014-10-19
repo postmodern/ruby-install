@@ -217,6 +217,7 @@ Options:
 
 	-r, --rubies-dir DIR	Directory that contains other installed Rubies
 	-i, --install-dir DIR	Directory to install Ruby into
+	    --prefix DIR        Alias for -i DIR
 	    --system		Alias for -i /usr/local
 	-s, --src-dir DIR	Directory to download source-code into
 	-c, --cleanup		Remove archive and unpacked source-code after installation
@@ -262,7 +263,7 @@ function parse_options()
 				rubies_dir="$2"
 				shift 2
 				;;
-			-i|--install-dir)
+			-i|--install-dir|--prefix)
 				install_dir="$2"
 				shift 2
 				;;
