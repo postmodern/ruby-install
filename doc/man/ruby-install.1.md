@@ -1,4 +1,4 @@
-# ruby-install 1 "Dec 2013" ruby-install "User Manuals"
+# ruby-install 1 "Oct 2014" ruby-install "User Manuals"
 
 ## SYNOPSIS
 
