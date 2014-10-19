@@ -78,6 +78,10 @@ https://github.com/postmodern/ruby-install#readme
 `--no-verify`
 	Do not verify the downloaded Ruby archive.
 
+`--no-extract`
+	Do not extract the downloaded Ruby archive. Implies `--no-download`
+	and `--no-verify`.
+
 `--no-install-deps`
 	Do not install build dependencies before installing Ruby.
 
