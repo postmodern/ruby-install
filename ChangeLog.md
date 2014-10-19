@@ -1,3 +1,24 @@
+### 0.5.0 / 2014-10-18
+
+* Added the `--prefix` alias for `--install-dir`.
+* Added the `--system` alias for `--install-dir /usr/local`.
+* Added the `--sha1` option.
+* Added the `--sha256` option.
+* Added the `--sha512` option.
+* Added the `--cleanup` option for deleting the downloaded archive after a
+  successful installation.
+* Added the `--no-extract` option.
+* Switched to using [ruby-versions] for version and checksum information.
+  * Adds support for verifying SHA1, SHA256 and SHA512 checksums.
+  * All releases of ruby-install will automatically include the latest versions
+    and checksums from [ruby-versions].
+  * All Pull Requests for new Ruby versions **MUST** be sent to [ruby-versions]!
+
+#### rbx
+
+* Remove duplicate `gem install bundler` command.
+* Added `llvm-static` as a yum dependency.
+
 ### 0.4.3 / 2014-05-08
 
 #### ruby
@@ -263,3 +284,5 @@
 [Rubinius]: http://rubini.us/
 [MagLev]: http://maglev.github.io/
 [MRuby]: https://github.com/mruby/mruby#readme
+
+[ruby-versions]: https://github.com/postmodern/ruby-versions#readme
