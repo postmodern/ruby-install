@@ -114,7 +114,7 @@ Install a specific version of Ruby:
 
 Install a Ruby into a specific directory:
 
-    $ ruby-install -i /usr/local/ ruby 1.9.3-p429
+    $ ruby-install --system ruby 1.9.3-p429
 
 Install a Ruby from an official site with directly download:
 
@@ -134,7 +134,7 @@ Install a Ruby with specific configuration:
 
 Using ruby-install with [RVM]:
 
-    $ ruby-install -i ~/.rvm/rubies/ruby-2.0.0-p247 ruby 2.0.0-p247
+    $ ruby-install --rubies-dir ~/.rvm/rubies ruby 2.0.0-p247
 
 Using ruby-install with [rbenv]:
 
