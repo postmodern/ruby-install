@@ -14,7 +14,7 @@ function install_gems()
 	export GEM_HOME="$PWD/vendor/gems"
 
 	log "Bundling rubinius $ruby_version ..."
-	gem install bundler || return $?
+	gem install --no-format-executable bundler || return $?
 	bundle install || return $?
 }
 
