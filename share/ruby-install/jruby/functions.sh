@@ -2,7 +2,7 @@
 
 ruby_archive="jruby-bin-$ruby_version.tar.gz"
 ruby_src_dir="jruby-$ruby_version"
-ruby_mirror="${ruby_mirror:-http://jruby.org.s3.amazonaws.com/downloads}"
+ruby_mirror="${ruby_mirror:-https://s3.amazonaws.com/jruby.org/downloads}"
 ruby_url="${ruby_url:-$ruby_mirror/$ruby_version/$ruby_archive}"
 
 #
