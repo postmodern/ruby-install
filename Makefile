@@ -1,3 +1,4 @@
+SHELL=/bin/bash
 NAME=ruby-install
 VERSION=0.5.1
 AUTHOR=postmodern
