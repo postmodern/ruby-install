@@ -1,4 +1,4 @@
-SHELL=/bin/bash
+SHELL=/usr/bin/env bash
 NAME=ruby-install
 VERSION=0.5.1
 AUTHOR=postmodern
