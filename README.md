@@ -65,6 +65,10 @@ Install a recently released version of Ruby:
 
 Install a Ruby into a specific directory:
 
+    $ ruby-install --install-dir /path/to/dir ruby
+
+Install a Ruby into a specific `rubies` directory:
+
     $ ruby-install --rubies-dir /path/to/rubies/ ruby
 
 Install a Ruby into `/usr/local`:
