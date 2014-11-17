@@ -65,6 +65,10 @@ Install a recently released version of Ruby:
 
 Install a Ruby into a specific directory:
 
+    $ ruby-install ruby --rubies-dir /somewhere/unusual
+
+Install a Ruby into `/usr/local`:
+
     $ ruby-install --system ruby 1.9.3-p429
 
 Install a Ruby from an official site with directly download:
