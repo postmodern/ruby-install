@@ -1,6 +1,6 @@
 # ruby-install
 
-[![Build Status](https://travis-ci.org/postmodern/ruby-install.png?branch=master)](https://travis-ci.org/postmodern/ruby-install)
+[![Build Status](https://travis-ci.org/postmodern/ruby-install.svg?branch=master)](https://travis-ci.org/postmodern/ruby-install)
 
 Installs [Ruby], [JRuby], [Rubinius], [MagLev] or [mruby].
 
