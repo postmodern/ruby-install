@@ -95,6 +95,10 @@ Install a Ruby with specific configuration:
 
     $ ruby-install ruby 2.0.0 -- --enable-shared --enable-dtrace CFLAGS="-O3"
 
+Uninstall a Ruby version:
+
+    $ rm -rf ~/.rubies/ruby-2.2.0
+
 ### Integration
 
 Using ruby-install with [RVM]:
