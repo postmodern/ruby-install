@@ -7,7 +7,7 @@ Installs [Ruby], [JRuby], [Rubinius], [MagLev] or [mruby].
 ## Features
 
 * Supports installing arbitrary versions.
-  * Provides a list of stable versions.
+  * Provides a fixed list of stable versions (an [update option][issue175] is planned).
 * Supports installing into `/opt/rubies/` for root and `~/.rubies/` for users
   by default.
 * Supports installing into arbitrary directories.
@@ -43,25 +43,30 @@ Installs [Ruby], [JRuby], [Rubinius], [MagLev] or [mruby].
 
 ## Synopsis
 
-List supported Rubies and their major versions:
+List supported Rubies and their known stable versions:
 
     $ ruby-install
 
-Install the current stable version of Ruby:
+For newer [unknown versions][issue198] follow the 'recently released' install steps below.
+
+Install the known current stable version of Ruby:
 
     $ ruby-install ruby
 
-Install a stable version of Ruby:
+Install a known stable version of Ruby:
 
     $ ruby-install ruby 1.9
 
-Install a specific version of Ruby:
+Install a known specific version of Ruby:
 
     $ ruby-install ruby 1.9.3-p429
 
-Install a recently released version of Ruby:
+Install a recently released version of Ruby not known by ruby-install:
 
     $ ruby-install --md5 MD5_OF_TAR_BZ2 ruby 2.3.4
+
+There are also `--sha1`, `--sha256` and `--sha512` options. Specify one or more
+checksums to validate.
 
 Install a Ruby into a specific directory:
 
@@ -173,6 +178,9 @@ Instead, please use Rubinius >= 2.1.x.
 
 -- [Sam Stephenson](https://twitter.com/sstephenson/status/334461494668443649)
 of [rbenv]
+
+[issue175]: https://github.com/postmodern/ruby-install/issues/175
+[issue198]: https://github.com/postmodern/ruby-install/issues/198
 
 [Ruby]: http://www.ruby-lang.org/
 [JRuby]: http://jruby.org/

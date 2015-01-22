@@ -197,12 +197,18 @@ function known_rubies()
 {
 	local ruby
 
-	echo "Latest ruby versions:"
+	echo "Known stable ruby versions:"
 
 	for ruby in ${rubies[@]}; do
 		echo "  $ruby:"
 		cat "$ruby_install_dir/$ruby/stable.txt" | sed -e 's/^/    /' || return $?
 	done
+
+	echo -e "\nRecently released but unknown versions can also be installed. Eg:"
+	echo "ruby-install --md5 MD5_OF_TAR_BZ2 ruby 2.3.4"
+	echo -e "\nFor additional options:"
+	echo "ruby-install --help"
+
 }
 
 #
