@@ -156,6 +156,10 @@ e4621bbcc51242061eaa9b62caee69c2a2b433f0  jruby-bin-1.7.17.tar.gz
 ff1cb0f17c208276bfbb959f9a52569709052219  jruby-bin-1.7.17.zip
 87a4d5fbf10d88ef8de12f3ebececf9ffc1abaee  jruby-bin-1.7.18.tar.gz
 8ecb1b0751f8986939f1aac6d03044efc1f02a3d  jruby-bin-1.7.18.zip
+a3296d1ae9b9aa78825b8d65a0d2498b449eaa3d  jruby-bin-1.7.19.tar.gz
+ea30add01bd6dd953fc23729a692ba58553ab168  jruby-bin-1.7.19.zip
+fc2e037643f233332687bdd9d6d3405ed981c21c  jruby-bin-9.0.0.0.pre1.tar.gz
+002789f974b9806c4d49f5f43403a27489f3669e  jruby-bin-9.0.0.0.pre1.zip
 b117a01f6d3fc72fdf55905caed8e9dc334c09f4  jruby-src-1.0.0RC1.tar.gz
 52cf1af685f8c1d46850a8ecdff72baa33ba9fa6  jruby-src-1.0.0RC1.zip
 30d22b8beca4924be112573e15bb79565ab1d450  jruby-src-1.0.0RC2.tar.gz
@@ -314,3 +318,7 @@ dbe4e3dcf8bb852f6f2a058812eee7e3bffd19b3  jruby-src-1.7.16.1.zip
 b54cd6ce36d4dba1335a59666d00aa544ea75306  jruby-src-1.7.17.zip
 b093927e0749f505248313eb13c26152b94db8c8  jruby-src-1.7.18.tar.gz
 76b0be6c0006036d8aad5f7cd1c538af461666bd  jruby-src-1.7.18.zip
+7740f8e03fdcbc257d3f606926a65c79c37795ba  jruby-src-1.7.19.tar.gz
+72bad80240800c755643815c6c1cbcf7fcb1bd8c  jruby-src-1.7.19.zip
+658a183a2d5a5f704a304ce988aa3cc8d558b075  jruby-src-9.0.0.0.pre1.tar.gz
+7b17b33d9564aac63cb6f169b15c1fe75ea2f6e0  jruby-src-9.0.0.0.pre1.zip
