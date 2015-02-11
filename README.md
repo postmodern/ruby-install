@@ -7,7 +7,7 @@ Installs [Ruby], [JRuby], [Rubinius], [MagLev] or [mruby].
 ## Features
 
 * Supports installing arbitrary versions.
-  * Provides a list of stable versions.
+  * Contains a list of known versions and checksums from [ruby-versions].
 * Supports installing into `/opt/rubies/` for root and `~/.rubies/` for users
   by default.
 * Supports installing into arbitrary directories.
@@ -173,6 +173,8 @@ Instead, please use Rubinius >= 2.1.x.
 
 -- [Sam Stephenson](https://twitter.com/sstephenson/status/334461494668443649)
 of [rbenv]
+
+[ruby-versions]: https://github.com/postmodern/ruby-versions#readme
 
 [Ruby]: http://www.ruby-lang.org/
 [JRuby]: http://jruby.org/
