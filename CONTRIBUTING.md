@@ -2,9 +2,19 @@
 
 ## versions/checksums
 
-versions and checksum information is actually kept in the [ruby-versions]
+versions and checksum information is _actually_ kept in the [ruby-versions]
 repository. All version or checksum related Pull Requests should be submitted
 to [ruby-versions].
+
+Please **DO NOT** modify the following files, as they are automatically updated
+from [ruby-versions] during the release process:
+
+* `share/ruby-install/$ruby/stable.txt`
+* `share/ruby-install/$ruby/versions.txt`
+* `share/ruby-install/$ruby/checksums.md5`
+* `share/ruby-install/$ruby/checksums.sha1`
+* `share/ruby-install/$ruby/checksums.sha256`
+* `share/ruby-install/$ruby/checksums.sha512`
 
 ## Code Style
 
@@ -38,8 +48,6 @@ to [ruby-versions].
   `share/ruby-install/functions.sh`.
 * Ruby build dependencies should go into
   `share/ruby-install/$ruby/dependencies.txt`.
-* Ruby md5 checksums should go into `share/ruby-install/$ruby/md5.txt`.
-* Ruby version aliases should go into `share/ruby-install/$ruby/versions.txt`.
 * All new code must have [shunit2] unit-tests.
 
 ### What Will Not Be Accepted
