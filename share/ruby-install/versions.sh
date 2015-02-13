@@ -1,4 +1,4 @@
-function is_valid_version()
+function is_known_version()
 {
 	local file="$1"
 	local version="$2"
@@ -39,7 +39,7 @@ function resolve_version()
 
 	if [[ -z "$version" ]]; then
 		latest_version "$latest_versions_file"
-	elif is_valid_version "$versions_file" "$version"; then
+	elif is_known_version "$versions_file" "$version"; then
 		echo -n "$version"
 	else
 		latest_version "$latest_versions_file" "$version" ||

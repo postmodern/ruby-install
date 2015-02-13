@@ -15,21 +15,21 @@ function oneTimeSetUp()
 	wget -q -O "$stable_file" "$download_url/ruby/stable.txt"
 }
 
-function test_is_valid_version()
+function test_is_known_version()
 {
 	local version="2.0.0-p576"
 
-	is_valid_version "$versions_file" "$version"
+	is_known_version "$versions_file" "$version"
 
 	assertEquals "did not find the version within the file" \
 		     0 $?
 }
 
-function test_is_valid_version_with_invalid_version()
+function test_is_known_version_with_invalid_version()
 {
 	local version="1.2.3"
 
-	is_valid_version "$versions_file" "$version"
+	is_known_version "$versions_file" "$version"
 
 	assertEquals "did not return an error" 1 $?
 }
