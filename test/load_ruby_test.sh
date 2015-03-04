@@ -5,7 +5,7 @@
 function setUp()
 {
 	ruby="ruby"
-	ruby_version="1.9"
+	ruby_version="2.1"
 	expected_ruby_version="$(latest_version "$ruby_install_dir/$ruby/stable.txt" "$ruby_version")"
 }
 
