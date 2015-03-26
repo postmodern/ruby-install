@@ -377,4 +377,11 @@ function parse_options()
 			return 1
 			;;
 	esac
+	case "${ruby}" in
+		*:*|*/*|*@*)
+			echo "ruby-install: argument \"${ruby}\" does not look like a Ruby name"
+			return 1
+			;;
+	esac
+	return 0
 }
