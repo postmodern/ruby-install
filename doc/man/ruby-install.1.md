@@ -110,19 +110,19 @@ Install a latest version of Ruby:
 
 Install a specific version of Ruby:
 
-    $ ruby-install ruby 2.2.1
+    $ ruby-install ruby 2.2.2
 
 Install a Ruby into a specific directory:
 
-    $ ruby-install --system ruby 2.2.1
+    $ ruby-install --system ruby 2.2.2
 
 Install a Ruby from an official site with directly download:
 
-    $ ruby-install -M https://ftp.ruby-lang.org/pub/ruby ruby 2.0.0-p643
+    $ ruby-install -M https://ftp.ruby-lang.org/pub/ruby ruby 2.0.0-p645
 
 Install a Ruby from a mirror:
 
-    $ ruby-install -M http://www.mirrorservice.org/sites/ftp.ruby-lang.org/pub/ruby ruby 2.0.0-p643
+    $ ruby-install -M http://www.mirrorservice.org/sites/ftp.ruby-lang.org/pub/ruby ruby 2.0.0-p645
 
 Install a Ruby with a specific patch:
 
@@ -130,21 +130,21 @@ Install a Ruby with a specific patch:
 
 Install a Ruby with specific configuration:
 
-    $ ruby-install ruby 2.2.1 -- --enable-shared --enable-dtrace CFLAGS="-O3"
+    $ ruby-install ruby 2.2.2 -- --enable-shared --enable-dtrace CFLAGS="-O3"
 
 Using ruby-install with [RVM]:
 
-    $ ruby-install --rubies-dir ~/.rvm/rubies ruby 2.2.1
+    $ ruby-install --rubies-dir ~/.rvm/rubies ruby 2.2.2
 
 Using ruby-install with [rbenv]:
 
-    $ ruby-install -i ~/.rbenv/versions/2.2.1 ruby 2.2.1
+    $ ruby-install -i ~/.rbenv/versions/2.2.2 ruby 2.2.2
 
 ## FILES
 
 */usr/local/src*
 	Default root user source directory.
-    
+
 *~/src*
 	Default non-root user source directory.
 
