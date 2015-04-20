@@ -118,11 +118,11 @@ Install a Ruby into a specific directory:
 
 Install a Ruby from an official site with directly download:
 
-    $ ruby-install -M https://ftp.ruby-lang.org/pub/ruby ruby 2.0.0-p643
+    $ ruby-install -M https://ftp.ruby-lang.org/pub/ruby ruby 2.0.0-p645
 
 Install a Ruby from a mirror:
 
-    $ ruby-install -M http://www.mirrorservice.org/sites/ftp.ruby-lang.org/pub/ruby ruby 2.0.0-p643
+    $ ruby-install -M http://www.mirrorservice.org/sites/ftp.ruby-lang.org/pub/ruby ruby 2.0.0-p645
 
 Install a Ruby with a specific patch:
 
