@@ -211,6 +211,10 @@ aa6ac22747947e6562d5b0dc9767ecda  ruby-2.0.0-p598.zip
 1390888cac6cd175e6f164eff378cdde  ruby-2.0.0-p643.tar.bz2
 4d95201c58bca074b9de7b3183364702  ruby-2.0.0-p643.tar.gz
 3a279ba390dfb5a7ab798d3de42ffcb5  ruby-2.0.0-p643.zip
+d576240c97cfcc3ed9bdc457eb1e8280  ruby-2.0.0-p645.tar.bz2
+49919bba0c855eaf8e247108c7933a62  ruby-2.0.0-p645.tar.gz
+29ac63614a3e982767a1cfdef9d11e61  ruby-2.0.0-p645.tar.xz
+9ca3d3076663f3c76ddccad4bd475acc  ruby-2.0.0-p645.zip
 47a0f662f0e258aa1c5e429c310861b3  ruby-2.0.0-preview1.tar.bz2
 c7d73f3ddb6d25e7733626ddbad04158  ruby-2.0.0-preview1.tar.gz
 4adb51aa69b56b81c81a8c5f892689cf  ruby-2.0.0-preview1.zip
@@ -250,6 +254,10 @@ f4136e781d261e3cc20748005e1740b7  ruby-2.1.4.tar.bz2
 a7c3e5fec47eff23091b566e9e1dac1b  ruby-2.1.5.tar.bz2
 df4c1b23f624a50513c7a78cb51a13dc  ruby-2.1.5.tar.gz
 810cd05eb03c00f89b0b03b10e9a3606  ruby-2.1.5.zip
+e1a8e6c6bfbb09bb7f8d6be8f508e4a1  ruby-2.1.6.tar.bz2
+6e5564364be085c45576787b48eeb75f  ruby-2.1.6.tar.gz
+ec6f10ca331ce947802ede86259513a8  ruby-2.1.6.tar.xz
+1f2a502edb3712d4a3fecd81dbbbbdcf  ruby-2.1.6.zip
 d03cd4690fec1fff81d096d1c1255fde  ruby-2.2.0.tar.bz2
 cd03b28fd0b555970f5c4fd481700852  ruby-2.2.0.tar.gz
 f8e1d0cee4f2d9535a9529ed23ae3700  ruby-2.2.0.zip
@@ -268,3 +276,7 @@ d94160c214016863932c25cc1ac6ff90  ruby-2.2.0-preview2.zip
 b49fc67a834e4f77249eb73eecffb1c9  ruby-2.2.1.tar.gz
 f7570579539faaa734c02e2857370298  ruby-2.2.1.tar.xz
 fc0a654425419e9397a1a6858a76325d  ruby-2.2.1.zip
+af6eb4fa7247f1f7b2e19c8e6f3e3145  ruby-2.2.2.tar.bz2
+326e99ddc75381c7b50c85f7089f3260  ruby-2.2.2.tar.gz
+dbce9b9d79d90f213ba8d448b0b6ed86  ruby-2.2.2.tar.xz
+407da948f41325bb79d6be3e6c753144  ruby-2.2.2.zip
