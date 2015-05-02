@@ -65,7 +65,7 @@ function test_src_dir()
 {
 	load_ruby
 
-	if (( $UID == 0 )); then
+	if (( UID == 0 )); then
 		assertEquals "did not correctly default src_dir" \
 			     "/usr/local/src" \
 			     "$src_dir"
@@ -80,7 +80,7 @@ function test_rubies_dir()
 {
 	load_ruby
 
-	if (( $UID == 0 )); then
+	if (( UID == 0 )); then
 		assertEquals "did not correctly default rubies_dir" \
 			     "/opt/rubies" \
 			     "$rubies_dir"
@@ -95,7 +95,7 @@ function test_install_dir()
 {
 	load_ruby
 
-	if (( $UID == 0 )); then
+	if (( UID == 0 )); then
 		assertEquals "did not correctly default install_dir" \
 			     "$rubies_dir/$ruby-$expected_ruby_version" \
 			     "$install_dir"

@@ -1,6 +1,6 @@
 source "$ruby_install_dir/checksums.sh"
 
-if (( $UID == 0 )); then
+if (( UID == 0 )); then
 	src_dir="${src_dir:-/usr/local/src}"
 	rubies_dir="${rubies_dir:-/opt/rubies}"
 else
