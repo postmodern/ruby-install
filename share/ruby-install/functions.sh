@@ -1,3 +1,10 @@
+declare ruby_mirror
+declare ruby_url
+declare ruby_md5
+declare ruby_sha1
+declare ruby_sha256
+declare ruby_sha512
+
 source "$ruby_install_dir/checksums.sh"
 
 if (( UID == 0 )); then
