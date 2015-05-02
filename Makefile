@@ -56,6 +56,9 @@ clean:
 
 all: $(PKG) $(SIG)
 
+check:
+	shellcheck share/$(NAME)/*.sh bin/*
+
 test:
 	./test/runner
 
@@ -81,4 +84,4 @@ uninstall:
 	for file in $(INSTALL_FILES); do rm -f $(DESTDIR)$(PREFIX)/$$file; done
 	rm -rf $(DESTDIR)$(DOC_DIR)
 
-.PHONY: build man update download sign verify clean test tag release rpm install uninstall all
+.PHONY: build man update download sign verify clean check test tag release rpm install uninstall all
