@@ -57,7 +57,7 @@ clean:
 all: $(PKG) $(SIG)
 
 check:
-	shellcheck share/$(NAME)/*.sh bin/*
+	shellcheck --exclude SC2034 share/$(NAME)/*.sh bin/*
 
 test:
 	./test/runner
