@@ -105,7 +105,7 @@ function download_patches()
 	for (( i=0; i<${#patches[@]}; i++ )) do
 		patch="${patches[$i]}"
 
-		if [[ "$patch" == http:\/\/* || "$patch" == https:\/\/* ]]; then
+		if [[ "$patch" == "http://"* || "$patch" == "https://"* ]]; then
 			dest="$src_dir/$ruby_src_dir/${patch##*/}"
 
 			log "Downloading patch $patch ..."
