@@ -2,12 +2,12 @@
 
 shopt -s extglob
 
-declare -r ruby_install_version="0.5.1"
-declare -r ruby_install_dir="${BASH_SOURCE[0]%/*}"
+declare ruby_install_version="0.5.1"
+declare ruby_install_dir="${BASH_SOURCE[0]%/*}"
 
 source "$ruby_install_dir/versions.sh"
 
-declare -ra rubies=(ruby jruby rbx maglev mruby)
+declare -a rubies=(ruby jruby rbx maglev mruby)
 declare rubies_dir install_dir src_dir
 declare -a patches=()
 declare -a configure_opts=()
