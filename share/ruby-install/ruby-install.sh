@@ -208,7 +208,7 @@ function known_rubies()
 
 	for ruby in "${rubies[@]}"; do
 		echo "  $ruby:"
-		cat "$ruby_install_dir/$ruby/stable.txt" | sed -e 's/^/    /' || return $?
+		sed -e 's/^/    /' "$ruby_install_dir/$ruby/stable.txt" || return $?
 	done
 }
 
