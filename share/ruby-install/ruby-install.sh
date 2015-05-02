@@ -16,28 +16,31 @@ declare -a make_opts=()
 # option flags
 declare cleanup no_download no_verify no_extract no_install_deps no_reinstall
 
+# command aliases
+declare package_manager downloader sudo
+
 #
 # Auto-detect the package manager.
 #
-if   command -v apt-get >/dev/null; then declare -r package_manager="apt"
-elif command -v yum     >/dev/null; then declare -r package_manager="yum"
-elif command -v port    >/dev/null; then declare -r package_manager="port"
-elif command -v brew    >/dev/null; then declare -r package_manager="brew"
-elif command -v pacman  >/dev/null; then declare -r package_manager="pacman"
+if   command -v apt-get >/dev/null; then package_manager="apt"
+elif command -v yum     >/dev/null; then package_manager="yum"
+elif command -v port    >/dev/null; then package_manager="port"
+elif command -v brew    >/dev/null; then package_manager="brew"
+elif command -v pacman  >/dev/null; then package_manager="pacman"
 fi
 
 #
 # Auto-detect the downloader.
 #
-if   command -v wget >/dev/null; then declare -r downloader="wget"
-elif command -v curl >/dev/null; then declare -r downloader="curl"
+if   command -v wget >/dev/null; then downloader="wget"
+elif command -v curl >/dev/null; then downloader="curl"
 fi
 
 #
 # Only use sudo if already root.
 #
-if (( UID == 0 )); then declare -r sudo=""
-else                    declare -r sudo="sudo"
+if (( UID == 0 )); then sudo=""
+else                    sudo="sudo"
 fi
 
 #

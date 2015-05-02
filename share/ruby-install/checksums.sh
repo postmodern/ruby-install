@@ -1,20 +1,22 @@
-if   command -v md5sum > /dev/null; then declare -r md5sum="md5sum"
-elif command -v md5 > /dev/null;    then declare -r md5sum="md5 -r"
+declare md5sum sha1sum sha256sum sha512sum
+
+if   command -v md5sum > /dev/null; then md5sum="md5sum"
+elif command -v md5 > /dev/null;    then md5sum="md5 -r"
 fi
 
-if   command -v sha1sum > /dev/null; then declare -r sha1sum="sha1sum"
-elif command -v sha1 > /dev/null;    then declare -r sha1sum="sha1 -r"
-elif command -v shasum > /dev/null;  then declare -r sha1sum="shasum"
+if   command -v sha1sum > /dev/null; then sha1sum="sha1sum"
+elif command -v sha1 > /dev/null;    then sha1sum="sha1 -r"
+elif command -v shasum > /dev/null;  then sha1sum="shasum"
 fi
 
-if   command -v sha256sum > /dev/null; then declare -r sha256sum="sha256sum"
-elif command -v sha256 > /dev/null;    then declare -r sha256sum="sha256 -r"
-elif command -v shasum > /dev/null;    then declare -r sha256sum="shasum -a 256"
+if   command -v sha256sum > /dev/null; then sha256sum="sha256sum"
+elif command -v sha256 > /dev/null;    then sha256sum="sha256 -r"
+elif command -v shasum > /dev/null;    then sha256sum="shasum -a 256"
 fi
 
-if   command -v sha512sum > /dev/null; then declare -r sha512sum="sha512sum"
-elif command -v sha512 > /dev/null;    then declare -r sha512sum="sha512 -r"
-elif command -v shasum > /dev/null;    then declare -r sha512sum="shasum -a 512"
+if   command -v sha512sum > /dev/null; then sha512sum="sha512sum"
+elif command -v sha512 > /dev/null;    then sha512sum="sha512 -r"
+elif command -v shasum > /dev/null;    then sha512sum="shasum -a 512"
 fi
 
 function lookup_checksum()
