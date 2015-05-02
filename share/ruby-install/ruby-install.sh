@@ -81,7 +81,7 @@ function error()
 #
 function fail()
 {
-	error "$*"
+	error "$@"
 	exit -1
 }
 
@@ -105,19 +105,19 @@ function fetch()
 function install_packages()
 {
 	case "$package_manager" in
-		apt)	$sudo apt-get install -y $* || return $? ;;
-		yum)	$sudo yum install -y $* || return $?     ;;
-		port)   $sudo port install $* || return $?       ;;
+		apt)	$sudo apt-get install -y "$@" || return $? ;;
+		yum)	$sudo yum install -y "$@" || return $?     ;;
+		port)   $sudo port install "$@" || return $?       ;;
 		brew)
 			local brew_owner="$(/usr/bin/stat -f %Su "$(command -v brew)")"
-			sudo -u "$brew_owner" brew install $* ||
-			sudo -u "$brew_owner" brew upgrade $* || return $?
+			sudo -u "$brew_owner" brew install "$@" ||
+			sudo -u "$brew_owner" brew upgrade "$@" || return $?
 			;;
 		pacman)
-			local missing_pkgs="$(pacman -T $*)"
+			local missing_pkgs=($(pacman -T "$@"))
 
-			if [[ -n "$missing_pkgs" ]]; then
-				$sudo pacman -S $missing_pkgs || return $?
+			if (( ${#missing_pkgs[@]} > 0 )); then
+				$sudo pacman -S "${missing_pkgs[@]}" || return $?
 			fi
 			;;
 		"")	warn "Could not determine Package Manager. Proceeding anyway." ;;
@@ -203,7 +203,7 @@ function known_rubies()
 
 	echo "Latest ruby versions:"
 
-	for ruby in ${rubies[@]}; do
+	for ruby in "${rubies[@]}"; do
 		echo "  $ruby:"
 		cat "$ruby_install_dir/$ruby/stable.txt" | sed -e 's/^/    /' || return $?
 	done

@@ -31,11 +31,11 @@ function pre_install()
 #
 function install_deps()
 {
-	local packages="$(fetch "$ruby/dependencies" "$package_manager" || return $?)"
+	local packages=($(fetch "$ruby/dependencies" "$package_manager" || return $?))
 
-	if [[ -n "$packages" ]]; then
+	if (( ${#packages[@]} > 0 )); then
 		log "Installing dependencies for $ruby $ruby_version ..."
-		install_packages $packages || return $?
+		install_packages "${packages[@]}" || return $?
 	fi
 
 	install_optional_deps || return $?
