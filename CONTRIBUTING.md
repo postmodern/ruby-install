@@ -21,8 +21,15 @@ from [ruby-versions] during the release process:
 * Tab indent code.
 * Keep code within 80 columns.
 * Use [bash] 3.x features.
+* Declare all non-local variables with the `declare` keyword.
 * Use the `function` keyword for functions.
 * Quote all String variables.
+* Use `(( ))` for arithmetic expressions and `[[ ]]` otherwise.
+* Use `$(...)` instead of back-ticks.
+* Use `${path##*/}` instead of `$(basename $path)`.
+* Use `${path%/*}` instead of `$(dirname $path)`.
+* Always use `"$@"` and `${array[@]}` instead of `$*` or `${arry[*]}`,
+  respectively.
 * Prefer single-line expressions where appropriate:
 
         [[ -n "$foo" ]] && other command
