@@ -2,22 +2,22 @@
 
 shopt -s extglob
 
-declare ruby_install_version="0.5.1"
-declare ruby_install_dir="${BASH_SOURCE[0]%/*}"
+declare -g ruby_install_version="0.5.1"
+declare -g ruby_install_dir="${BASH_SOURCE[0]%/*}"
 
 source "$ruby_install_dir/versions.sh"
 
-declare -a rubies=(ruby jruby rbx maglev mruby)
-declare rubies_dir install_dir src_dir
-declare -a patches=()
-declare -a configure_opts=()
-declare -a make_opts=()
+declare -g -a rubies=(ruby jruby rbx maglev mruby)
+declare -g rubies_dir install_dir src_dir
+declare -g -a patches=()
+declare -g -a configure_opts=()
+declare -g -a make_opts=()
 
 # option flags
-declare cleanup no_download no_verify no_extract no_install_deps no_reinstall
+declare -g cleanup no_download no_verify no_extract no_install_deps no_reinstall
 
 # command aliases
-declare package_manager downloader sudo
+declare -g package_manager downloader sudo
 
 #
 # Auto-detect the package manager.
