@@ -42,6 +42,11 @@ function compute_checksum()
 		*)	return 1 ;;
 	esac
 
+	if [[ -z "$program" ]]; then
+		error "could not find $algorithm checksum utility"
+		return 1
+	fi
+
 	local output="$($program "$file")"
 
 	echo -n "${output%% *}"
