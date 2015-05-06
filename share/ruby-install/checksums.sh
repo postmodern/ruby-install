@@ -1,5 +1,3 @@
-declare -g md5sum sha1sum sha256sum sha512sum
-
 if   command -v md5sum > /dev/null; then md5sum="md5sum"
 elif command -v md5 > /dev/null;    then md5sum="md5 -r"
 fi
