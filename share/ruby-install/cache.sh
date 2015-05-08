@@ -23,3 +23,22 @@ function cache_download()
 			;;
 	esac
 }
+
+function cache_update_ruby()
+{
+	local ruby="$1"
+
+	cache_download "$ruby/versions.txt" || return $?
+	cache_download "$ruby/stable.txt"   || return $?
+
+	for algorithm in md5 sha1 sha256 sha512; do
+		cache_download "$ruby/checksums.$algorithm" || return $?
+	done
+}
+
+function cache_update_rubies()
+{
+	for ruby in "${rubies[@]}"; do
+		cache_update_ruby "$ruby" || return $?
+	done
+}
