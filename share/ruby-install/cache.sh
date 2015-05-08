@@ -28,6 +28,10 @@ function cache_update_ruby()
 {
 	local ruby="$1"
 
+	if [[ "$ruby" == "rbx" ]]; then
+		ruby="rubinius"
+	fi
+
 	cache_download "$ruby/versions.txt" || return $?
 	cache_download "$ruby/stable.txt"   || return $?
 
