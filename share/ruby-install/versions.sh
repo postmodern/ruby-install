@@ -3,7 +3,7 @@ function is_known_version()
 	local file="$1"
 	local version="$2"
 
-	if [[ ! -f "$file" ]]; then
+	if [[ ! -f "$file" ]] || [[ -z "$version" ]]; then
 		return 1
 	fi
 
