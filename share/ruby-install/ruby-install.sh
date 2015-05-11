@@ -420,6 +420,10 @@ function parse_ruby_version()
 
 	update_ruby || warn "Could not update $ruby!"
 
+	if is_known_version "$ruby_version" "$ruby_versions"; then
+		return
+	fi
+
 	local version="$(latest_version "$ruby_stable_versions" "$ruby_version")"
 
 	if [[ -n "$version" ]]; then
