@@ -3,8 +3,6 @@ cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/ruby-install"
 function cache_is_stale()
 {
 	local file="$cache_dir/$1"
-	local now="$(date +%s)"
-	local one_hour_ago="$(( now - 60 * 60 ))"
 
 	[[ ! -f "$file" ]] || [[ -n "$(find "$file" -mmin +60)" ]]
 }
