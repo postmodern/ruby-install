@@ -3,6 +3,10 @@ function is_known_version()
 	local file="$1"
 	local version="$2"
 
+	if [[ ! -f "$file" ]]; then
+		return 1
+	fi
+
 	grep -q -x "$version" "$file"
 }
 
@@ -10,6 +14,10 @@ function latest_version()
 {
 	local file="$1"
 	local key="$2"
+
+	if [[ ! -f "$file" ]]; then
+		return 1
+	fi
 
 	if [[ -z "$key" ]]; then
 		tail -n 1 "$file"
