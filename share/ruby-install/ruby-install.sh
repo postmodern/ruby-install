@@ -4,7 +4,9 @@ shopt -s extglob
 
 ruby_install_version="0.6.0"
 ruby_install_dir="${BASH_SOURCE[0]%/*}"
+ruby_versions_url="https://raw.githubusercontent.com/postmodern/ruby-versions/master"
 
+source "$ruby_install_dir/cache.sh"
 source "$ruby_install_dir/versions.sh"
 
 rubies=(ruby jruby rbx maglev mruby)
@@ -131,6 +133,8 @@ function download()
 	[[ -d "$dest" ]] && dest="$dest/${url##*/}"
 	[[ -f "$dest" ]] && return
 
+	mkdir -p "${dest%/*}" || return $?
+
 	case "$downloader" in
 		wget) wget -c -O "$dest.part" "$url" || return $?         ;;
 		curl) curl -f -L -C - -o "$dest.part" "$url" || return $? ;;
@@ -162,30 +166,32 @@ function extract()
 	esac
 }
 
+function update_ruby()
+{
+	if cache_is_stale "$ruby/versions.txt" ||
+	   cache_is_stale "$ruby/stable.txt"; then
+		log "Updating $ruby versions ..."
+		cache_update "$ruby/versions.txt" "$ruby_versions_url" || return $?
+		cache_update "$ruby/stable.txt" "$ruby_versions_url" || return $?
+	fi
+
+	local algorithm ruby_checksums
+
+	for algorithm in md5 sha1 sha256 sha512; do
+		ruby_checksums="$ruby/checksums.$algorithm"
+
+		if cache_is_stale "$ruby_checksums"; then
+			log "Updating $ruby $algorithm checksums ..."
+			cache_update "$ruby_checksums" "$ruby_versions_url" || return $?
+		fi
+	done
+}
+
 #
 # Loads function.sh for the given Ruby.
 #
 function load_ruby()
 {
-	ruby_dir="$ruby_install_dir/$ruby"
-
-	if [[ ! -d "$ruby_dir" ]]; then
-		echo "ruby-install: unsupported ruby: $ruby" >&2
-		return 1
-	fi
-
-	local absolute_version="$(
-	  resolve_version "$ruby_version" \
-		          "$ruby_dir/versions.txt" \
-			  "$ruby_dir/stable.txt"
-	)"
-
-	if [[ -n "$absolute_version" ]]; then
-		ruby_version="$absolute_version"
-	else
-		warn "Unknown $ruby version: $ruby_version"
-	fi
-
 	source "$ruby_install_dir/functions.sh" || return $?
 	source "$ruby_dir/functions.sh" || return $?
 }
@@ -195,13 +201,23 @@ function load_ruby()
 #
 function known_rubies()
 {
-	local ruby
-
-	echo "Latest ruby versions:"
+	local ruby ruby_stable_versions
 
 	for ruby in "${rubies[@]}"; do
+		ruby_stable_versions="$ruby/stable.txt"
+
+		if cache_is_stale "$ruby_stable_versions"; then
+			log "Updating $ruby versions ..."
+			cache_update "$ruby_stable_versions" "$ruby_versions_url" || warn "Could not update $ruby!"
+		fi
+	done
+
+	echo "Latest ruby versions:"
+	for ruby in "${rubies[@]}"; do
+		ruby_stable_versions="$cache_dir/$ruby/stable.txt"
+
 		echo "  $ruby:"
-		sed -e 's/^/    /' "$ruby_install_dir/$ruby/stable.txt" || return $?
+		sed -e 's/^/    /' "$ruby_stable_versions" || return $?
 	done
 }
 
@@ -359,12 +375,12 @@ function parse_options()
 
 	case ${#argv[*]} in
 		2)
-			ruby="${argv[0]}"
-			ruby_version="${argv[1]}"
+			parse_ruby "${argv[0]}"
+			parse_ruby_version "${argv[1]}"
 			;;
 		1)
-			ruby="${argv[0]}"
-			ruby_version=""
+			parse_ruby "${argv[0]}"
+			parse_ruby_version ""
 			;;
 		0)
 			echo "ruby-install: too few arguments" >&2
@@ -377,4 +393,38 @@ function parse_options()
 			return 1
 			;;
 	esac
+}
+
+function parse_ruby()
+{
+	ruby="$1"
+	ruby_dir="$ruby_install_dir/$ruby"
+	ruby_cache_dir="$cache_dir/$ruby"
+
+	if [[ ! -d "$ruby_dir" ]]; then
+		echo "ruby-install: unsupported ruby: $ruby" >&2
+		return 1
+	fi
+}
+
+function parse_ruby_version()
+{
+	ruby_version="$1"
+
+	local ruby_versions="$ruby_cache_dir/versions.txt"
+	local ruby_stable_versions="$ruby_cache_dir/stable.txt"
+
+	if is_known_version "$ruby_version" "$ruby_versions"; then
+		return
+	fi
+
+	update_ruby || warn "Could not update $ruby!"
+
+	local version="$(latest_version "$ruby_stable_versions" "$ruby_version")"
+
+	if [[ -n "$version" ]]; then
+		ruby_version="$version"
+	else
+		warn "Unknown $ruby version: $ruby_version. Proceeding anyway."
+	fi
 }

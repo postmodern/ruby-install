@@ -54,7 +54,7 @@ function download_ruby()
 function ruby_checksum()
 {
 	local algorithm="$1"
-	local checksums="$ruby_dir/checksums.$algorithm"
+	local checksums="$ruby_cache_dir/checksums.$algorithm"
 
 	lookup_checksum "$checksums" "$ruby_archive"
 }
