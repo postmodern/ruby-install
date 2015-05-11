@@ -414,13 +414,13 @@ function parse_ruby_version()
 	local ruby_versions="$ruby_cache_dir/versions.txt"
 	local ruby_stable_versions="$ruby_cache_dir/stable.txt"
 
-	if is_known_version "$ruby_version" "$ruby_versions"; then
+	if is_known_version "$ruby_versions" "$ruby_version"; then
 		return
 	fi
 
 	update_ruby || warn "Could not update $ruby!"
 
-	if is_known_version "$ruby_version" "$ruby_versions"; then
+	if is_known_version "$ruby_versions" "$ruby_version"; then
 		return
 	fi
 
