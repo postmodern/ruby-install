@@ -80,44 +80,6 @@ function test_latest_version_with_unknown_version()
 	assertEquals "did not return an error" 1 $?
 }
 
-function test_resolve_version_with_exact_version()
-{
-	local version="2.0.0-p0"
-
-	assertEquals "did not return the exact version" \
-		     "$version" \
-		     "$(resolve_version "$version" "$versions_file" "$stable_file")"
-}
-
-function test_resolve_version_with_short_version()
-{
-	local version="2.0"
-	local expected_version="2.0.0-p481"
-
-	assertEquals "did not return the exact version" \
-		     "$expected_version" \
-		     "$(resolve_version "$version" "$versions_file" "$stable_file")"
-}
-
-function test_resolve_version_with_empty_string()
-{
-	local version=""
-	local expected_version="2.1.3"
-
-	assertEquals "did not return the exact version" \
-		     "$expected_version" \
-		     "$(resolve_version "$version" "$versions_file" "$stable_file")"
-}
-
-function test_resolve_version_with_new_version()
-{
-	local new_version="3.0.0"
-
-	assertEquals "did not return the new version" \
-		     "$new_version" \
-		     "$(resolve_version "$new_version" "$versions_file" "$stable_file")"
-}
-
 function oneTimeTearDown()
 {
 	rm "$versions_file"

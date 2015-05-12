@@ -38,19 +38,3 @@ function latest_version()
 		return 1
 	fi
 }
-
-function resolve_version()
-{
-	local version="$1"
-	local versions_file="$2"
-	local latest_versions_file="$3"
-
-	if [[ -z "$version" ]]; then
-		latest_version "$latest_versions_file"
-	elif is_known_version "$versions_file" "$version"; then
-		echo -n "$version"
-	else
-		latest_version "$latest_versions_file" "$version" ||
-		echo -n "$version"
-	fi
-}
