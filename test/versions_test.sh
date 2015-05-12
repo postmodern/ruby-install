@@ -25,6 +25,24 @@ function test_is_known_version()
 		     0 $?
 }
 
+function test_is_known_version_with_invalid_file()
+{
+	local version="2.0.0-p576"
+
+	is_known_version "./test/foo/bar" "$version"
+
+	assertEquals "did not return an error" 1 $?
+}
+
+function test_is_known_version_with_empty_version()
+{
+	local version=""
+
+	is_known_version "$versions_file" "$version"
+
+	assertEquals "did not return an error" 1 $?
+}
+
 function test_is_known_version_with_invalid_version()
 {
 	local version="1.2.3"
