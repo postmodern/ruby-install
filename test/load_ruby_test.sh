@@ -16,15 +16,6 @@ function test_load_ruby()
 	assertEquals "did not return 0" 0 $?
 }
 
-function test_load_ruby_with_invalid_ruby()
-{
-	ruby="foo"
-
-	load_ruby 2>/dev/null
-
-	assertEquals "did not return 1" 1 $?
-}
-
 function test_ruby_version()
 {
 	load_ruby
