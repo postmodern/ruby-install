@@ -15,11 +15,11 @@ make_opts=()
 #
 # Auto-detect the package manager.
 #
-if   command -v apt-get >/dev/null; then package_manager="apt"
+if   command -v pacman  >/dev/null; then package_manager="pacman"
 elif command -v yum     >/dev/null; then package_manager="yum"
+elif command -v apt-get >/dev/null; then package_manager="apt"
 elif command -v port    >/dev/null; then package_manager="port"
 elif command -v brew    >/dev/null; then package_manager="brew"
-elif command -v pacman  >/dev/null; then package_manager="pacman"
 fi
 
 #
