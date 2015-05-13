@@ -15,13 +15,12 @@ make_opts=()
 #
 # Auto-detect the package manager.
 #
-if   command -v pacman	>/dev/null; then package_manager="pacman"
-elif command -v yum	>/dev/null; then package_manager="yum"
+if   command -v pacman  >/dev/null; then package_manager="pacman"
+elif command -v yum     >/dev/null; then package_manager="yum"
 elif command -v apt-get >/dev/null; then package_manager="apt"
-elif command -v port	>/dev/null; then package_manager="port"
-elif command -v brew	>/dev/null; then package_manager="brew"
+elif command -v port    >/dev/null; then package_manager="port"
+elif command -v brew    >/dev/null; then package_manager="brew"
 fi
-
 #
 # Auto-detect the downloader.
 #
@@ -32,8 +31,8 @@ fi
 #
 # Only use sudo if already root.
 #
-if (( $UID == 0 )); then sudo=""
-else			 sudo="sudo"
+if (( UID == 0 )); then sudo=""
+else                    sudo="sudo"
 fi
 
 #
@@ -77,7 +76,7 @@ function error()
 #
 function fail()
 {
-	error "$*"
+	error "$@"
 	exit -1
 }
 
@@ -101,22 +100,22 @@ function fetch()
 function install_packages()
 {
 	case "$package_manager" in
-		apt)	$sudo apt-get install -y $* || return $? ;;
-		yum)	$sudo yum install -y $* || return $?	 ;;
-		port)	$sudo port install $* || return $?		 ;;
+		apt)	$sudo apt-get install -y "$@" || return $? ;;
+		yum)	$sudo yum install -y "$@" || return $?     ;;
+		port)   $sudo port install "$@" || return $?       ;;
 		brew)
 			local brew_owner="$(/usr/bin/stat -f %Su "$(command -v brew)")"
-			sudo -u "$brew_owner" brew install $* ||
-			sudo -u "$brew_owner" brew upgrade $* || return $?
+			sudo -u "$brew_owner" brew install "$@" ||
+			sudo -u "$brew_owner" brew upgrade "$@" || return $?
 			;;
 		pacman)
-			local missing_pkgs="$(pacman -T $*)"
+			local missing_pkgs=($(pacman -T "$@"))
 
-			if [[ -n "$missing_pkgs" ]]; then
-				$sudo pacman -S $missing_pkgs || return $?
+			if (( ${#missing_pkgs[@]} > 0 )); then
+				$sudo pacman -S "${missing_pkgs[@]}" || return $?
 			fi
 			;;
-		"") warn "Could not determine Package Manager. Proceeding anyway." ;;
+		"")	warn "Could not determine Package Manager. Proceeding anyway." ;;
 	esac
 }
 
@@ -132,7 +131,7 @@ function download()
 	[[ -f "$dest" ]] && return
 
 	case "$downloader" in
-		wget) wget -c -O "$dest.part" "$url" || return $?		  ;;
+		wget) wget -c -O "$dest.part" "$url" || return $?         ;;
 		curl) curl -f -L -C - -o "$dest.part" "$url" || return $? ;;
 		"")
 			error "Could not find wget or curl"
@@ -153,7 +152,7 @@ function extract()
 
 	case "$archive" in
 		*.tgz|*.tar.gz) tar -xzf "$archive" -C "$dest" || return $? ;;
-		*.tbz|*.tbz2|*.tar.bz2) tar -xjf "$archive" -C "$dest" || return $? ;;
+		*.tbz|*.tbz2|*.tar.bz2)	tar -xjf "$archive" -C "$dest" || return $? ;;
 		*.zip) unzip "$archive" -d "$dest" || return $? ;;
 		*)
 			error "Unknown archive format: $archive"
@@ -176,7 +175,7 @@ function load_ruby()
 
 	local absolute_version="$(
 	  resolve_version "$ruby_version" \
-				  "$ruby_dir/versions.txt" \
+		          "$ruby_dir/versions.txt" \
 			  "$ruby_dir/stable.txt"
 	)"
 
@@ -199,9 +198,9 @@ function known_rubies()
 
 	echo "Latest ruby versions:"
 
-	for ruby in ${rubies[@]}; do
-		echo "	$ruby:"
-		cat "$ruby_install_dir/$ruby/stable.txt" | sed -e 's/^/    /' || return $?
+	for ruby in "${rubies[@]}"; do
+		echo "  $ruby:"
+		sed -e 's/^/    /' "$ruby_install_dir/$ruby/stable.txt" || return $?
 	done
 }
 
@@ -217,8 +216,8 @@ Options:
 
 	-r, --rubies-dir DIR	Directory that contains other installed Rubies
 	-i, --install-dir DIR	Directory to install Ruby into
-		--prefix DIR		Alias for -i DIR
-		--system		Alias for -i /usr/local
+	    --prefix DIR        Alias for -i DIR
+	    --system		Alias for -i /usr/local
 	-s, --src-dir DIR	Directory to download source-code into
 	-c, --cleanup		Remove archive and unpacked source-code after installation
 	-j, --jobs JOBS		Number of jobs to run in parallel when compiling
@@ -226,14 +225,14 @@ Options:
 	-M, --mirror URL	Alternate mirror to download the Ruby archive from
 	-u, --url URL		Alternate URL to download the Ruby archive from
 	-m, --md5 MD5		MD5 checksum of the Ruby archive
-		--sha1 SHA1		SHA1 checksum of the Ruby archive
-		--sha256 SHA256 SHA256 checksum of the Ruby archive
-		--sha512 SHA512 SHA512 checksum of the Ruby archive
+	    --sha1 SHA1		SHA1 checksum of the Ruby archive
+	    --sha256 SHA256	SHA256 checksum of the Ruby archive
+	    --sha512 SHA512	SHA512 checksum of the Ruby archive
 	--no-download		Use the previously downloaded Ruby archive
 	--no-verify		Do not verify the downloaded Ruby archive
 	--no-extract		Do not re-extract the downloaded Ruby archive
 	--no-install-deps	Do not install build dependencies before installing Ruby
-	--no-reinstall		Skip installation if another Ruby is detected in same location
+	--no-reinstall  	Skip installation if another Ruby is detected in same location
 	-V, --version		Prints the version
 	-h, --help		Prints this message
 
@@ -378,5 +377,3 @@ function parse_options()
 			;;
 	esac
 }
-
-# vim: ts=8 sw=8 noexpandtab
