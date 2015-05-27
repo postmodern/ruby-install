@@ -21,7 +21,6 @@ elif command -v apt-get >/dev/null; then package_manager="apt"
 elif command -v port    >/dev/null; then package_manager="port"
 elif command -v brew    >/dev/null; then package_manager="brew"
 fi
-
 #
 # Auto-detect the downloader.
 #
