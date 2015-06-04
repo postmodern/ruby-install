@@ -28,7 +28,7 @@ if [[ ! $no_download -eq 1 ]]; then
 fi
 
 if [[ ! $no_verify -eq 1 ]]; then
-	verify_ruby || fail "Verification of of $ruby_archive failed!"
+	verify_ruby || fail "Verification of $ruby_archive failed!"
 fi
 
 if [[ ! $no_extract -eq 1 ]]; then
