@@ -12,7 +12,7 @@ function install_gems()
 {
 	export PATH="$PWD/vendor/gems/bin:$PATH"
 	export GEM_HOME="$PWD/vendor/gems"
-	unset RUBYGEMS_DEPS
+	unset RUBYGEMS_GEMDEPS
 
 	log "Bundling rubinius $ruby_version ..."
 	gem install --no-format-executable bundler || return $?
