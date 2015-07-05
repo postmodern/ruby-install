@@ -1,3 +1,5 @@
+unset GREP_OPTIONS GREP_COLOR GREP_COLORS
+
 function is_known_version()
 {
 	local file="$1"

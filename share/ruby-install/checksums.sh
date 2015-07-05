@@ -1,3 +1,5 @@
+unset GREP_OPTIONS GREP_COLOR GREP_COLORS
+
 if   command -v md5sum > /dev/null; then md5sum="md5sum"
 elif command -v md5 > /dev/null;    then md5sum="md5 -r"
 fi
