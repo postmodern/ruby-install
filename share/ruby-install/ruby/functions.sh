@@ -3,7 +3,7 @@
 ruby_version_family="${ruby_version:0:3}"
 ruby_archive="ruby-$ruby_version.tar.bz2"
 ruby_src_dir="ruby-$ruby_version"
-ruby_mirror="${ruby_mirror:-http://cache.ruby-lang.org/pub/ruby}"
+ruby_mirror="${ruby_mirror:-https://cache.ruby-lang.org/pub/ruby}"
 ruby_url="${ruby_url:-$ruby_mirror/$ruby_version_family/$ruby_archive}"
 
 #
