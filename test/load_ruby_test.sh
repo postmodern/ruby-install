@@ -7,8 +7,9 @@ function setUp()
 	ruby="ruby"
 	ruby_version="2.1"
 	ruby_dir="$ruby_install_dir/$ruby"
+	ruby_cache_dir="$cache_dir/$ruby"
 
-	expected_ruby_version="$(latest_version "$ruby_dir/stable.txt" "$ruby_version")"
+	expected_ruby_version="$(latest_version "$ruby_cache_dir/stable.txt" "$ruby_version")"
 }
 
 function test_load_ruby()
