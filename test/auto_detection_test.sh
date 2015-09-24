@@ -9,6 +9,13 @@ function test_package_manager_with_apt_get()
 	assertEquals "did not detect apt-get" "apt" "$package_manager" 
 }
 
+function test_package_manager_with_dnf()
+{
+	command -v dnf >/dev/null || return
+
+	assertEquals "did not detect dnf" "dnf" "$package_manager"
+}
+
 function test_package_manager_with_yum()
 {
 	command -v yum >/dev/null || return

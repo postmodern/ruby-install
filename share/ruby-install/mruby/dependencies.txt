@@ -1,4 +1,5 @@
 apt: build-essential bison
+dnf: gcc make bison
 yum: gcc make bison
 port: bison
 brew: bison
