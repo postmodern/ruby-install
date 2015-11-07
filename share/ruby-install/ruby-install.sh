@@ -16,6 +16,7 @@ make_opts=()
 # Auto-detect the package manager.
 #
 if   command -v pacman  >/dev/null; then package_manager="pacman"
+elif command -v dnf     >/dev/null; then package_manager="dnf"
 elif command -v yum     >/dev/null; then package_manager="yum"
 elif command -v apt-get >/dev/null; then package_manager="apt"
 elif command -v port    >/dev/null; then package_manager="port"
@@ -102,6 +103,7 @@ function install_packages()
 {
 	case "$package_manager" in
 		apt)	$sudo apt-get install -y "$@" || return $? ;;
+		dnf)	$sudo dnf install -y "$@" || return $?     ;;
 		yum)	$sudo yum install -y "$@" || return $?     ;;
 		port)   $sudo port install "$@" || return $?       ;;
 		brew)
