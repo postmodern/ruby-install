@@ -33,7 +33,7 @@ fi
 # Only use sudo if already root.
 #
 if (( UID == 0 )); then sudo=""
-else                    sudo="sudo"
+else                    sudo="sudo -S"
 fi
 
 #
