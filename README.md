@@ -142,6 +142,13 @@ Or the absolute latest ruby-install can be installed from source:
 There is a [FreeBSD port] of ruby-install which can be copied into the local
 ports tree.
 
+### Fedora
+
+Fedora users can install ruby-install from [this COPR repository]:
+
+    # dnf copr enable nwallace/ruby-tools
+    # dnf install ruby-install
+
 ## Known Issues
 
 ### Ruby
@@ -205,3 +212,4 @@ of [rbenv]
 
 [homebrew]: http://brew.sh/
 [FreeBSD port]: https://github.com/steakknife/ruby-install-freebsd#readme
+[this COPR repository]: https://copr.fedoraproject.org/coprs/nwallace/ruby-tools/
