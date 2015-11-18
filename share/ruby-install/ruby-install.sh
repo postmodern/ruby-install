@@ -190,7 +190,7 @@ function update_ruby()
 #
 # Loads function.sh for the given Ruby.
 #
-function load_ruby()
+function load_functions()
 {
 	source "$ruby_install_dir/functions.sh" || return $?
 	source "$ruby_dir/functions.sh" || return $?
