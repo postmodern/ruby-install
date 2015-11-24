@@ -139,6 +139,15 @@ function test_parse_options_with_url()
 	assertEquals "did not set \$ruby_url" "$url" "$ruby_url"
 }
 
+function test_parse_options_with_url_in_wrong_place()
+{
+	local url="http://mirror.s3.amazonaws.com/downloads/ruby-1.2.3.tar.gz"
+
+	parse_options "$url" "ruby" 2>&1
+
+	assertEquals "did not return 1" 1 $?
+}
+
 function test_parse_options_with_md5()
 {
 	local md5="5d41402abc4b2a76b9719d911017c592"
