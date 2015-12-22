@@ -2,7 +2,7 @@
 
 ruby_archive="rubinius-$ruby_version.tar.bz2"
 ruby_src_dir="rubinius-$ruby_version"
-ruby_mirror="${ruby_mirror:-http://releases.rubini.us}"
+ruby_mirror="${ruby_mirror:-https://rubinius-releases-rubinius-com.s3.amazonaws.com}"
 ruby_url="${ruby_url:-$ruby_mirror/$ruby_archive}"
 
 #
