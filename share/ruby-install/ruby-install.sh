@@ -86,6 +86,10 @@ function parse_ruby()
 			ruby_version=""
 			;;
 	esac
+
+	if [[ ! "${rubies[@]}" == *"$ruby"* ]]; then
+		return 1
+	fi
 }
 
 #
