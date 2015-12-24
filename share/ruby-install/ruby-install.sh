@@ -4,7 +4,6 @@ shopt -s extglob
 
 ruby_install_version="0.6.0"
 ruby_install_dir="${BASH_SOURCE[0]%/*}"
-ruby_install_data_dir="${XDG_DATA_HOME:-$HOME/.local/share}/ruby-install"
 ruby_install_cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/ruby-install"
 
 rubies=(ruby jruby rbx maglev mruby)
@@ -250,7 +249,6 @@ function init()
 		warn "Unknown $ruby version $ruby_version. Proceeding anyways ..."
 	fi
 
-	ruby_data_dir="$ruby_install_data_dir/$ruby"
 	ruby_cache_dir="$ruby_install_cache_dir/$ruby"
 	install_dir="${install_dir:-$rubies_dir/$ruby-$ruby_version}"
 
