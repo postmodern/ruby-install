@@ -1,15 +1,5 @@
 source "$ruby_install_dir/checksums.sh"
 
-if (( UID == 0 )); then
-	src_dir="${src_dir:-/usr/local/src}"
-	rubies_dir="${rubies_dir:-/opt/rubies}"
-else
-	src_dir="${src_dir:-$HOME/src}"
-	rubies_dir="${rubies_dir:-$HOME/.rubies}"
-fi
-
-install_dir="${install_dir:-$rubies_dir/$ruby-$ruby_version}"
-
 #
 # Pre-install tasks
 #
@@ -49,29 +39,13 @@ function download_ruby()
 }
 
 #
-# Looks up a checksum for $ruby_archive.
-#
-function ruby_checksum()
-{
-	local algorithm="$1"
-	local checksums="$ruby_cache_dir/checksums.$algorithm"
-
-	lookup_checksum "$checksums" "$ruby_archive"
-}
-
-#
 # Verifies the Ruby archive against all known checksums.
 #
 function verify_ruby()
 {
-	local file="$src_dir/$ruby_archive"
-
 	log "Verifying $ruby_archive ..."
 
-	ruby_md5="${ruby_md5:-$(ruby_checksum md5)}"
-	ruby_sha1="${ruby_sha1:-$(ruby_checksum sha1)}"
-	ruby_sha256="${ruby_sha256:-$(ruby_checksum sha256)}"
-	ruby_sha512="${ruby_sha512:-$(ruby_checksum sha512)}"
+	local file="$src_dir/$ruby_archive"
 
 	verify_checksum "$file" md5 "$ruby_md5"       || return $?
 	verify_checksum "$file" sha1 "$ruby_sha1"     || return $?
