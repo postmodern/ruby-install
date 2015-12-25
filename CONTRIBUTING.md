@@ -8,10 +8,10 @@ repository.**
 ## Code Style
 
 * Tab indent code.
-* Keep code within 80 columns.
-* Use [bash] 3.x features.
-* Declare all non-local variables with the `declare` keyword.
+* (Try to) Keep code within 80 columns.
+* Use [bash] <= 3.x features.
 * Use the `function` keyword for functions.
+* Put curly braces on a new line so they align.
 * Quote all String variables.
 * Use `(( ))` for arithmetic expressions and `[[ ]]` otherwise.
 * Use `$(...)` instead of back-ticks.
@@ -32,6 +32,7 @@ repository.**
         	baz) other_command ;;
         esac
 
+* Explicitly return error codes with `|| return $?`.
 * Keep branching logic to a minimum.
 * Code should be declarative and easy to understand.
 
@@ -56,7 +57,7 @@ repository.**
 * Excessive version or environment checks. This is the job of a `./configure`
   script.
 * Excessive OS specific workarounds. We should strive to fix any Ruby build
-  issues or OS environment issues.
+  issues or OS environment issues at their source.
 * Building Rubies from HEAD. This is risky and may result in a buggy/broken
   version of Ruby. The user should build development versions of Ruby by hand
   and report any bugs to upstream.
