@@ -18,6 +18,7 @@ function test_package_manager_with_dnf()
 
 function test_package_manager_with_yum()
 {
+	command -v dnf >/dev/null && return
 	command -v yum >/dev/null || return
 
 	assertEquals "did not detect yum" "yum" "$package_manager" 
