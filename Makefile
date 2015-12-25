@@ -17,6 +17,8 @@ SIG=$(PKG_DIR)/$(PKG_NAME).asc
 PREFIX?=/usr/local
 DOC_DIR=$(PREFIX)/share/doc/$(PKG_NAME)
 
+all: $(PKG) $(SIG)
+
 pkg:
 	mkdir $(PKG_DIR)
 
@@ -44,8 +46,6 @@ verify: $(PKG) $(SIG)
 
 clean:
 	rm -f $(PKG) $(SIG)
-
-all: $(PKG) $(SIG)
 
 check:
 	shellcheck --exclude SC2034 share/$(NAME)/*.sh bin/*
