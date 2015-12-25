@@ -1,4 +1,4 @@
-### 0.6.0 / 2015-12-24
+### 0.6.0 / 2015-12-25
 
 * Added the `-L`, `--latest` option which downloads versions and checksums from
   [ruby-version].
