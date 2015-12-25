@@ -18,7 +18,9 @@ function test_parse_options_with_no_arguments()
 {
 	parse_options >/dev/null 2>&1
 
-	assertEquals "did not return 1" 1 $?
+	assertEquals "did not return 0" 0 $?
+	assertIsNull "did not leave \$ruby blank" $ruby
+	assertIsNull "did not leave \$ruby_version blank" $ruby_version
 }
 
 function test_parse_options_with_invalid_options()
