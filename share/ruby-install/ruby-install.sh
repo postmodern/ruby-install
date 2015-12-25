@@ -203,8 +203,8 @@ function parse_options()
 	done
 
 	case ${#argv[*]} in
-		2)	parse_ruby "${argv[0]}-${argv[1]}" ;;
-		1)	parse_ruby "${argv[0]}" ;;
+		2)	parse_ruby "${argv[0]}-${argv[1]}" || return $? ;;
+		1)	parse_ruby "${argv[0]}" || return $? ;;
 		0)	return 0 ;;
 		*)
 			echo "ruby-install: too many arguments: ${argv[*]}" >&2
