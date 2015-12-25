@@ -8,6 +8,7 @@ repository.**
 ## Code Style
 
 * Tab indent code.
+  * Spaces may be used to align multi-line commands.
 * (Try to) Keep code within 80 columns.
 * Use [bash] <= 3.x features.
 * Use the `function` keyword for functions.
