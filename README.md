@@ -7,7 +7,7 @@ Installs [Ruby], [JRuby], [Rubinius], [MagLev] or [mruby].
 ## Features
 
 * Supports installing arbitrary versions.
-  * Contains a list of known versions and checksums from [ruby-versions].
+* Supports downloading the latest versions and checksums from [ruby-versions].
 * Supports installing into `/opt/rubies/` for root and `~/.rubies/` for users
   by default.
 * Supports installing into arbitrary directories.
@@ -47,9 +47,17 @@ List supported Rubies and their major versions:
 
     $ ruby-install
 
+Update stable versions:
+
+    $ ruby-install --latest
+
 Install the current stable version of Ruby:
 
     $ ruby-install ruby
+
+Install a new stable version that was just released:
+
+    $ ruby-install --latest ruby
 
 Install a stable version of Ruby:
 
@@ -113,9 +121,9 @@ ruby-install can even be used with [Chef].
 
 ## Install
 
-    wget -O ruby-install-0.5.0.tar.gz https://github.com/postmodern/ruby-install/archive/v0.5.0.tar.gz
-    tar -xzvf ruby-install-0.5.0.tar.gz
-    cd ruby-install-0.5.0/
+    wget -O ruby-install-0.6.0.tar.gz https://github.com/postmodern/ruby-install/archive/v0.6.0.tar.gz
+    tar -xzvf ruby-install-0.6.0.tar.gz
+    cd ruby-install-0.6.0/
     sudo make install
 
 ### PGP
@@ -124,8 +132,8 @@ All releases are [PGP] signed for security. Instructions on how to import my
 PGP key can be found on my [blog][1]. To verify that a release was not tampered
 with:
 
-    wget https://raw.github.com/postmodern/ruby-install/master/pkg/ruby-install-0.5.0.tar.gz.asc
-    gpg --verify ruby-install-0.5.0.tar.gz.asc ruby-install-0.5.0.tar.gz
+    wget https://raw.github.com/postmodern/ruby-install/master/pkg/ruby-install-0.6.0.tar.gz.asc
+    gpg --verify ruby-install-0.6.0.tar.gz.asc ruby-install-0.6.0.tar.gz
 
 ### Homebrew
 

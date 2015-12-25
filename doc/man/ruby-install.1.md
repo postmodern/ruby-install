@@ -2,7 +2,7 @@
 
 ## SYNOPSIS
 
-`ruby-install` [RUBY [VERSION] [-- CONFIGURE_OPTS...]]
+`ruby-install` [[RUBY-VERSION | RUBY [VERSION]] [-- CONFIGURE_OPTS...]]
 
 ## DESCRIPTION
 
@@ -87,6 +87,10 @@ https://github.com/postmodern/ruby-install#readme
 
 `--no-reinstall`
 	Skip installation if another Ruby is detected in same location.
+
+`-L`, `--latest`
+	Downloads the latest ruby versions and checksums from the ruby-versions
+	repository (https://github.com/postmodern/ruby-versions#readme).
 
 `-V`, `--version`
 	Prints the current ruby-install version.

@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
 
 . ./test/helper.sh
+. ./share/ruby-install/functions.sh
 
 patches=("https://gist.github.com/funny-falcon/2981959/raw/ary-queue.diff" "local.patch")
+ruby_src_dir="ruby-1.9.3-p448"
 
 function setUp()
 {
-	src_dir="$PWD/test/src"
-	ruby_src_dir="ruby-1.9.3-p448"
-
 	mkdir -p "$src_dir/$ruby_src_dir"
 }
 
