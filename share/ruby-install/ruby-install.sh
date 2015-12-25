@@ -51,7 +51,7 @@ Options:
 	--no-extract		Do not re-extract the downloaded Ruby archive
 	--no-install-deps	Do not install build dependencies before installing Ruby
 	--no-reinstall  	Skip installation if another Ruby is detected in same location
-	-U, --update		Updates the ruby versions and checksums
+	-L, --latest		Downloads the latest ruby versions and checksums
 	-V, --version		Prints the version
 	-h, --help		Prints this message
 
@@ -175,7 +175,7 @@ function parse_options()
 				no_reinstall=1
 				shift
 				;;
-			-U|--update)
+			-L|--latest)
 				force_update=1
 				shift
 				;;
@@ -225,7 +225,7 @@ function list_rubies()
 	for ruby in "${rubies[@]}"; do
 		if [[ $force_update -eq 1 ]] ||
 		   are_ruby_versions_missing "$ruby"; then
-			log "Updating $ruby versions ..."
+			log "Downloading latest $ruby versions ..."
 			download_ruby_versions "$ruby"
 		fi
 	done
