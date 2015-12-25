@@ -3,6 +3,8 @@
 . ./test/helper.sh
 . ./share/ruby-install/ruby-versions.sh
 
+ruby="ruby"
+
 function oneTimeSetUp()
 {
 	rm -rf "$ruby_install_cache_dir"
