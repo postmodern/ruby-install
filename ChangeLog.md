@@ -1,6 +1,6 @@
 ### 0.6.0 / 2015-12-24
 
-* Added the `--update` option which downloads versions and checksums from
+* Added the `-L`, `--latest` option which downloads versions and checksums from
   [ruby-version].
 * Versions and checksums are now auto-downloaded if they are missing.
 * Versions and checksums are now stored in `~/.cache/ruby-install/`.
