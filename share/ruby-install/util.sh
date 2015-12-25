@@ -91,7 +91,7 @@ function install_packages()
 {
 	case "$package_manager" in
 		apt)	$sudo apt-get install -y "$@" || return $? ;;
-		yum)	$sudo yum install -y "$@" || return $?     ;;
+		dnf|yum)$sudo $package_manager install -y "$@" || return $?     ;;
 		port)   $sudo port install "$@" || return $?       ;;
 		brew)
 			local brew_owner="$(/usr/bin/stat -f %Su "$(command -v brew)")"
