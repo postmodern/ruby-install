@@ -32,7 +32,7 @@ man: doc/man/ruby-install.1.md share/man/man1/ruby-install.1
 update:
 	wget -nv -N -P share/ruby-install/ruby/ $(UPDATE_URL)/ruby/$(UPDATE_FILES)
 	wget -nv -N -P share/ruby-install/jruby/ $(UPDATE_URL)/jruby/$(UPDATE_FILES)
-	wget -nv -N -P share/ruby-install/rbx/ $(UPDATE_URL)/rbx/$(UPDATE_FILES)
+	wget -nv -N -P share/ruby-install/rbx/ $(UPDATE_URL)/rubinius/$(UPDATE_FILES)
 	wget -nv -N -P share/ruby-install/mruby/ $(UPDATE_URL)/mruby/$(UPDATE_FILES)
 	git commit share/ruby-install/{ruby,jruby,rbx,mruby}/$(UPDATE_FILES) -m "Updated versions/checksums"
 
