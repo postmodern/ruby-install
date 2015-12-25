@@ -23,7 +23,7 @@ function test_latest_ruby_version_with_no_empty_string()
 
 function test_latest_ruby_version_with_partial_version()
 {
-	local expected_version="$(grep 2.2 "$stable_file")"
+	local expected_version="$(grep -E '^2\.2\.' "$stable_file")"
 	local partial_version="2.2"
 	local output="$(latest_ruby_version "$ruby" "$partial_version")"
 
