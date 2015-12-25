@@ -19,6 +19,7 @@ Installs [Ruby], [JRuby], [Rubinius], [MagLev] or [mruby].
 * Supports verifying downloaded archives using `md5sum`, `md5` or `openssl md5`.
 * Supports installing build dependencies via the package manager:
   * [apt]
+  * [dnf]
   * [yum]
   * [pacman]
   * [macports]
@@ -191,6 +192,7 @@ of [rbenv]
 [mruby]: https://github.com/mruby/mruby#readme
 
 [apt]: http://wiki.debian.org/Apt
+[dnf]: https://fedoraproject.org/wiki/Features/DNF
 [yum]: http://yum.baseurl.org/
 [pacman]: https://wiki.archlinux.org/index.php/Pacman
 [macports]: https://www.macports.org/
