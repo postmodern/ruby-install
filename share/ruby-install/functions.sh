@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 source "$ruby_install_dir/checksums.sh"
 
 #

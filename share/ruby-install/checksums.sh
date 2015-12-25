@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 unset GREP_OPTIONS GREP_COLOR GREP_COLORS
 
 if   command -v md5sum > /dev/null; then md5sum="md5sum"

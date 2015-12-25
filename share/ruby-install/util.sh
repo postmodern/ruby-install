@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 #
 # Auto-detect the package manager.
 #
