@@ -48,7 +48,7 @@ List supported Rubies and their major versions:
 
     $ ruby-install
 
-Update stable versions:
+List the latest versions:
 
     $ ruby-install --latest
 
@@ -56,21 +56,17 @@ Install the current stable version of Ruby:
 
     $ ruby-install ruby
 
-Install a new stable version that was just released:
+Install the latest version that of Ruby:
 
     $ ruby-install --latest ruby
 
 Install a stable version of Ruby:
 
-    $ ruby-install ruby 2.2
+    $ ruby-install ruby 2.3
 
 Install a specific version of Ruby:
 
-    $ ruby-install ruby 2.3.0
-
-Install a recently released version of Ruby:
-
-    $ ruby-install --md5 MD5_OF_TAR_BZ2 ruby 2.3.4
+    $ ruby-install ruby 2.2.4
 
 Install a Ruby into a specific directory:
 
@@ -86,7 +82,7 @@ Install a Ruby into `/usr/local`:
 
 Install a Ruby from an official site with directly download:
 
-    $ ruby-install -M https://ftp.ruby-lang.org/pub/ruby ruby 2.0.0-p645
+    $ ruby-install -M https://ftp.ruby-lang.org/pub/ruby ruby 2.3.0
 
 Install a Ruby from a mirror:
 

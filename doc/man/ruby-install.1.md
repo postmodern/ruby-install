@@ -104,29 +104,45 @@ List supported Rubies and their major versions:
 
     $ ruby-install
 
+List the latest versions:
+
+    $ ruby-install --latest
+
 Install the current stable version of Ruby:
 
     $ ruby-install ruby
 
+Install the latest version that of Ruby:
+
+    $ ruby-install --latest ruby
+
 Install a latest version of Ruby:
 
-    $ ruby-install ruby 2.2
+    $ ruby-install ruby 2.3
 
 Install a specific version of Ruby:
 
-    $ ruby-install ruby 2.3.0
+    $ ruby-install ruby 2.2.4
 
 Install a Ruby into a specific directory:
+
+    $ ruby-install --install-dir /path/to/dir ruby
+
+Install a Ruby into a specific `rubies` directory:
+
+    $ ruby-install --rubies-dir /path/to/rubies/ ruby
+
+Install a Ruby into `/usr/local`:
 
     $ ruby-install --system ruby 2.3.0
 
 Install a Ruby from an official site with directly download:
 
-    $ ruby-install -M https://ftp.ruby-lang.org/pub/ruby ruby 2.0.0-p645
+    $ ruby-install -M https://ftp.ruby-lang.org/pub/ruby ruby 2.3.0
 
 Install a Ruby from a mirror:
 
-    $ ruby-install -M http://www.mirrorservice.org/sites/ftp.ruby-lang.org/pub/ruby ruby 2.0.0-p645
+    $ ruby-install -M http://www.mirrorservice.org/sites/ftp.ruby-lang.org/pub/ruby ruby 2.3.0
 
 Install a Ruby with a specific patch:
 
@@ -143,6 +159,10 @@ Using ruby-install with [RVM]:
 Using ruby-install with [rbenv]:
 
     $ ruby-install -i ~/.rbenv/versions/2.3.0 ruby 2.3.0
+
+Uninstall a Ruby version:
+
+    $ rm -rf ~/.rubies/ruby-2.3.0
 
 ## FILES
 
