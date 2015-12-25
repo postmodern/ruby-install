@@ -1,20 +1,9 @@
 # Contributing
 
-## versions/checksums
+## New Versions
 
-versions and checksum information is _actually_ kept in the [ruby-versions]
-repository. All version or checksum related Pull Requests should be submitted
-to [ruby-versions].
-
-Please **DO NOT** modify the following files, as they are automatically updated
-from [ruby-versions] during the release process:
-
-* `share/ruby-install/$ruby/stable.txt`
-* `share/ruby-install/$ruby/versions.txt`
-* `share/ruby-install/$ruby/checksums.md5`
-* `share/ruby-install/$ruby/checksums.sha1`
-* `share/ruby-install/$ruby/checksums.sha256`
-* `share/ruby-install/$ruby/checksums.sha512`
+**All new versions or checksums should be submitted to [ruby-versions]
+repository.**
 
 ## Code Style
 
