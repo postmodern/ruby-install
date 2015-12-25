@@ -87,6 +87,7 @@ function parse_ruby()
 	esac
 
 	if [[ ! "${rubies[@]}" == *"$ruby"* ]]; then
+		error "Unknown ruby: $ruby"
 		return 1
 	fi
 }
