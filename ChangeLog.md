@@ -14,6 +14,8 @@
 
 #### rbx
 
+* Switched to the https://rubinius-releases-rubinius-com.s3.amazonaws.com
+  mirror.
 * Switched to LLVM 3.5 for Debian and Arch based systems.
 * Added libedit as a dependency.
 * Fixed multiple issues when invoking `gem install bundler` before configuring
