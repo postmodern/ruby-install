@@ -112,7 +112,7 @@ Install the current stable version of Ruby:
 
     $ ruby-install ruby
 
-Install the latest version that of Ruby:
+Install the latest version of Ruby:
 
     $ ruby-install --latest ruby
 
