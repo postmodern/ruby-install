@@ -2,7 +2,7 @@
 
 ## New Versions
 
-**All new versions or checksums should be submitted to [ruby-versions]
+**All new versions or checksums should be submitted to the [ruby-versions]
 repository.**
 
 ## Code Style
