@@ -9,4 +9,8 @@ class RubyInstall < Formula
   def install
     system "make", "install", "PREFIX=#{prefix}"
   end
+
+  test do
+    system "#{bin}/ruby-install"
+  end
 end
