@@ -5,7 +5,6 @@
 function setUp()
 {
 	unset ruby
-	unset ruby_dir
 	unset ruby_cache_dir
 }
 
