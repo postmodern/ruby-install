@@ -4,6 +4,23 @@
   [ruby-versions].
 * Versions and checksums are now auto-downloaded if they are missing.
 * Versions and checksums are now stored in `~/.cache/ruby-install/`.
+* Added support for the new [dnf] RedHat/Fedora package manager.
+
+#### jruby
+
+* Switched to the https://s3.amazonaws.com/jruby.org/downloads mirror.
+* Switched to java-openjdk dependency on RedHat based systems.
+
+#### rbx
+
+* Switched to LLVM 3.5 for Debian and Arch based systems.
+* Added libedit as a dependency.
+* Fixed multiple issues when invoking `gem install bundler` before configuring
+  rubinius.
+
+#### ruby
+
+* Switched to the https://cache.ruby-lang.org/ CDN.
 
 ### 0.5.0 / 2014-10-18
 
@@ -282,6 +299,7 @@
     * [brew]
 
 [apt]: http://wiki.debian.org/Apt
+[dnf]: https://fedoraproject.org/wiki/Features/DNF
 [yum]: http://yum.baseurl.org/
 [pacman]: https://wiki.archlinux.org/index.php/Pacman
 [brew]: http://mxcl.github.com/homebrew/
