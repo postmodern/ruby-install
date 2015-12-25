@@ -5,6 +5,7 @@
 * Versions and checksums are now auto-downloaded if they are missing.
 * Versions and checksums are now stored in `~/.cache/ruby-install/`.
 * Added support for the new [dnf] RedHat/Fedora package manager.
+* Support `ruby-install RUBY-X.Y.Z` in addition to `ruby-install RUBY X.Y.Z`.
 
 #### jruby
 
