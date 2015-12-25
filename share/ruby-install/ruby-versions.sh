@@ -12,7 +12,7 @@ function are_ruby_versions_missing()
 	local dir="$ruby_install_cache_dir/$ruby"
 
 	if [[ ! -d "$dir" ]]; then
-		return 1
+		return 0
 	fi
 
 	local file
