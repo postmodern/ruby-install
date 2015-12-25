@@ -58,8 +58,8 @@ Options:
 Examples:
 
 	$ ruby-install ruby
-	$ ruby-install ruby 2.0
-	$ ruby-install ruby 2.0.0-p0
+	$ ruby-install ruby 2.3
+	$ ruby-install ruby 2.3.0
 	$ ruby-install ruby -- --with-openssl-dir=...
 	$ ruby-install -M https://ftp.ruby-lang.org/pub/ruby ruby
 	$ ruby-install -M http://www.mirrorservice.org/sites/ftp.ruby-lang.org/pub/ruby ruby
