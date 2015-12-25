@@ -1,11 +1,11 @@
 ### 0.6.0 / 2015-12-25
 
+* Support `ruby-install RUBY-X.Y.Z` in addition to `ruby-install RUBY X.Y.Z`.
 * Added the `-L`, `--latest` option which downloads versions and checksums from
   [ruby-versions].
 * Versions and checksums are now auto-downloaded if they are missing.
 * Versions and checksums are now stored in `~/.cache/ruby-install/`.
 * Added support for the new [dnf] RedHat/Fedora package manager.
-* Support `ruby-install RUBY-X.Y.Z` in addition to `ruby-install RUBY X.Y.Z`.
 
 #### jruby
 
