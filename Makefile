@@ -1,6 +1,6 @@
 SHELL=/usr/bin/env bash
 NAME=ruby-install
-VERSION=0.6.0
+VERSION=0.6.1
 AUTHOR=postmodern
 URL=https://github.com/$(AUTHOR)/$(NAME)
 
