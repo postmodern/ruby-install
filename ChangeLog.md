@@ -9,7 +9,7 @@
 #### jruby
 
 * Switched to the https://s3.amazonaws.com/jruby.org/downloads mirror.
-* Switched to java-openjdk dependency on RedHat based systems.
+* Switched to the java-openjdk dependency on RedHat based systems.
 
 #### rbx
 
