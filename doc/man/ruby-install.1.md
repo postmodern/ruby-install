@@ -114,11 +114,11 @@ Install a latest version of Ruby:
 
 Install a specific version of Ruby:
 
-    $ ruby-install ruby 2.2.2
+    $ ruby-install ruby 2.3.0
 
 Install a Ruby into a specific directory:
 
-    $ ruby-install --system ruby 2.2.2
+    $ ruby-install --system ruby 2.3.0
 
 Install a Ruby from an official site with directly download:
 
@@ -134,15 +134,15 @@ Install a Ruby with a specific patch:
 
 Install a Ruby with specific configuration:
 
-    $ ruby-install ruby 2.2.2 -- --enable-shared --enable-dtrace CFLAGS="-O3"
+    $ ruby-install ruby 2.3.0 -- --enable-shared --enable-dtrace CFLAGS="-O3"
 
 Using ruby-install with [RVM]:
 
-    $ ruby-install --rubies-dir ~/.rvm/rubies ruby 2.2.2
+    $ ruby-install --rubies-dir ~/.rvm/rubies ruby 2.3.0
 
 Using ruby-install with [rbenv]:
 
-    $ ruby-install -i ~/.rbenv/versions/2.2.2 ruby 2.2.2
+    $ ruby-install -i ~/.rbenv/versions/2.3.0 ruby 2.3.0
 
 ## FILES
 
