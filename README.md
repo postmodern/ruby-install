@@ -47,9 +47,17 @@ List supported Rubies and their major versions:
 
     $ ruby-install
 
+Update stable versions:
+
+    $ ruby-install --update
+
 Install the current stable version of Ruby:
 
     $ ruby-install ruby
+
+Install a new stable version that was just released:
+
+    $ ruby-install --update ruby
 
 Install a stable version of Ruby:
 
