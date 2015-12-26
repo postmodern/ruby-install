@@ -11,17 +11,6 @@ repository.**
   * Spaces may be used to align multi-line commands.
 * (Try to) Keep code within 80 columns.
 * Use [bash] <= 3.x features.
-* Use the `function` keyword for functions.
-* Put curly braces on a new line so they align.
-* Load function arguments into local variables for readability:
-
-        function do_stuff()
-	{
-		local ruby="$1"
-		local version="$2"
-                # ...
-	}
-
 * Quote all String variables.
 * Use `(( ))` for arithmetic expressions and `[[ ]]` otherwise.
 * Use `$(...)` instead of back-ticks.
@@ -41,6 +30,17 @@ repository.**
         	bar) command ;;
         	baz) other_command ;;
         esac
+
+* Use the `function` keyword for functions.
+* Put curly braces on a new line so they align.
+* Load function arguments into local variables for readability:
+
+        function do_stuff()
+	{
+		local ruby="$1"
+		local version="$2"
+                # ...
+	}
 
 * Explicitly return error codes with `|| return $?`.
 * Keep branching logic to a minimum.
