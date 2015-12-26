@@ -12,6 +12,8 @@ repository.**
 * (Try to) Keep code within 80 columns.
 * Use [bash] <= 3.x features.
 * Use the `function` keyword for functions.
+* Load function arguments into local variables for readability
+  (ex: `local ruby="$1"`).
 * Put curly braces on a new line so they align.
 * Quote all String variables.
 * Use `(( ))` for arithmetic expressions and `[[ ]]` otherwise.
