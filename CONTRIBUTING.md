@@ -12,9 +12,16 @@ repository.**
 * (Try to) Keep code within 80 columns.
 * Use [bash] <= 3.x features.
 * Use the `function` keyword for functions.
-* Load function arguments into local variables for readability
-  (ex: `local ruby="$1"`).
 * Put curly braces on a new line so they align.
+* Load function arguments into local variables for readability:
+
+        function do_stuff()
+	{
+		local ruby="$1"
+		local version="$2"
+                # ...
+	}
+
 * Quote all String variables.
 * Use `(( ))` for arithmetic expressions and `[[ ]]` otherwise.
 * Use `$(...)` instead of back-ticks.
