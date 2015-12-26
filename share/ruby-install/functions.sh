@@ -60,7 +60,7 @@ function verify_ruby()
 #
 function extract_ruby()
 {
-	log "Extracting $ruby_archive to $src_dir/$ruby_src_dir ..."
+	log "Extracting $ruby_archive to $src_dir/$ruby_dir_name ..."
 	extract "$src_dir/$ruby_archive" "$src_dir" || return $?
 }
 
@@ -75,7 +75,7 @@ function download_patches()
 		patch="${patches[$i]}"
 
 		if [[ "$patch" == "http://"* || "$patch" == "https://"* ]]; then
-			dest="$src_dir/$ruby_src_dir/${patch##*/}"
+			dest="$src_dir/$ruby_dir_name/${patch##*/}"
 
 			log "Downloading patch $patch ..."
 			download "$patch" "$dest" || return $?
@@ -95,7 +95,7 @@ function apply_patches()
 		name="${patch##*/}"
 
 		log "Applying patch $name ..."
-		patch -p1 -d "$src_dir/$ruby_src_dir" < "$patch" || return $?
+		patch -p1 -d "$src_dir/$ruby_dir_name" < "$patch" || return $?
 	done
 }
 
@@ -131,6 +131,6 @@ function cleanup_source() {
 	log "Removing $src_dir/$ruby_archive ..."
 	rm "$src_dir/$ruby_archive" || return $?
 
-	log "Removing $src_dir/$ruby_src_dir ..."
-	rm -rf "$src_dir/$ruby_src_dir" || return $?
+	log "Removing $src_dir/$ruby_dir_name ..."
+	rm -rf "$src_dir/$ruby_dir_name" || return $?
 }

@@ -4,7 +4,7 @@ platform="$(uname -sm)"
 [[ "$platform" == "Darwin x86_64" ]] && platform="Darwin i386"
 
 ruby_archive="MagLev-$ruby_version.tar.gz"
-ruby_src_dir="MagLev-$ruby_version"
+ruby_dir_name="MagLev-$ruby_version"
 ruby_mirror="${ruby_mirror:-http://glass-downloads.gemstone.com/maglev}"
 ruby_url="${ruby_url:-$ruby_mirror/$ruby_archive}"
 
@@ -14,7 +14,7 @@ ruby_url="${ruby_url:-$ruby_mirror/$ruby_archive}"
 function configure_ruby()
 {
 	log "Configuring maglev $ruby_version ..."
-	"$src_dir/$ruby_src_dir/install.sh" || return $?
+	"$src_dir/$ruby_dir_name/install.sh" || return $?
 }
 
 #
@@ -25,12 +25,12 @@ function install_ruby()
 	log "Installing maglev $ruby_version ..."
 
 	# Determine what Maglev named the Gemstone.
-	local gs_ver=$(grep GEMSTONE "$src_dir/$ruby_src_dir/version.txt" || return $?)
+	local gs_ver=$(grep GEMSTONE "$src_dir/$ruby_dir_name/version.txt" || return $?)
 	local gemstone="GemStone-${gs_ver: -5}.${platform/ /-}"
 
 	log "Installing Gemstone into $src_dir/$gemstone ..."
-	ln -fs "$src_dir/$gemstone" "$src_dir/$ruby_src_dir/gemstone" || return $?
-	cp -R "$src_dir/$ruby_src_dir" "$install_dir" || return $?
+	ln -fs "$src_dir/$gemstone" "$src_dir/$ruby_dir_name/gemstone" || return $?
+	cp -R "$src_dir/$ruby_dir_name" "$install_dir" || return $?
 }
 
 #
