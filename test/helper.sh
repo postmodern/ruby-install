@@ -6,7 +6,7 @@ export PATH="$PWD/bin:$PATH"
 
 mkdir -p "$HOME"
 
-. ./share/ruby-install/ruby-install.sh
+. $PWD/share/ruby-install/ruby-install.sh
 
 function oneTimeSetUp() { return; }
 function setUp() { return; }
