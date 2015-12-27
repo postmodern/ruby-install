@@ -58,7 +58,8 @@ function test_sudo()
 	if (( UID == 0 )); then
 		assertEquals "did not omit sudo" "" "$sudo"
 	else
-		assertEquals "did not enable sudo" "sudo" "$sudo"
+		# shunit2 tests will always be running non-interactively
+		assertEquals "did not enable sudo" "sudo -S" "$sudo"
 	fi
 }
 
