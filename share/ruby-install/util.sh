@@ -21,8 +21,13 @@ fi
 #
 # Only use sudo if already root.
 #
-if (( UID == 0 )); then sudo=""
-else                    sudo="sudo -S"
+if (( UID == 0 )); then
+	sudo=""
+elif [ -t $0 ]; then
+	# Do not read sudo password from stdin if running in an interactive session
+	sudo="sudo"
+else
+	sudo="sudo -S"
 fi
 
 #
