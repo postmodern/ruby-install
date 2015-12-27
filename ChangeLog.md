@@ -1,3 +1,30 @@
+### 0.6.0 / 2015-12-25
+
+* Support `ruby-install RUBY-X.Y.Z` in addition to `ruby-install RUBY X.Y.Z`.
+* Added the `-L`, `--latest` option which downloads versions and checksums from
+  [ruby-versions].
+* Versions and checksums are now auto-downloaded if they are missing.
+* Versions and checksums are now stored in `~/.cache/ruby-install/`.
+* Added support for the new [dnf] RedHat/Fedora package manager.
+
+#### jruby
+
+* Switched to the https://s3.amazonaws.com/jruby.org/downloads mirror.
+* Switched to the java-openjdk dependency on RedHat based systems.
+
+#### rbx
+
+* Switched to the https://rubinius-releases-rubinius-com.s3.amazonaws.com
+  mirror.
+* Switched to LLVM 3.5 for Debian and Arch based systems.
+* Added libedit as a dependency.
+* Fixed multiple issues when invoking `gem install bundler` before configuring
+  rubinius.
+
+#### ruby
+
+* Switched to the https://cache.ruby-lang.org/ CDN.
+
 ### 0.5.0 / 2014-10-18
 
 * Added the `--prefix` alias for `--install-dir`.
@@ -275,6 +302,7 @@
     * [brew]
 
 [apt]: http://wiki.debian.org/Apt
+[dnf]: https://fedoraproject.org/wiki/Features/DNF
 [yum]: http://yum.baseurl.org/
 [pacman]: https://wiki.archlinux.org/index.php/Pacman
 [brew]: http://mxcl.github.com/homebrew/

@@ -2,13 +2,19 @@
 
 source "${0%/*}/../share/ruby-install/ruby-install.sh"
 
-if [[ $# -eq 0 ]]; then
-	known_rubies
-	exit
+parse_options "$@" || exit $?
+
+if [[ -z "$ruby" ]]; then
+	list_rubies
+	exit $?
 fi
 
-parse_options "$@" || exit $?
-load_ruby          || exit $?
+if [[ $force_update -eq 1 ]] || are_ruby_versions_missing "$ruby"; then
+	log "Updating $ruby versions ..."
+	download_ruby_versions "$ruby" || fail "Failed to download $ruby versions!"
+fi
+
+init || exit $?
 
 if [[ $no_reinstall -eq 1 ]] && [[ -x "$install_dir/bin/ruby" ]]; then
 	log "Ruby is already installed into $install_dir"
@@ -37,7 +43,7 @@ fi
 
 download_patches || fail "Fetching patches $patches failed!"
 apply_patches  || fail "Patching $ruby $ruby_version failed!"
-cd "$src_dir/$ruby_src_dir"
+cd "$src_dir/$ruby_dir_name"
 configure_ruby || fail "Configuration of $ruby $ruby_version failed!"
 clean_ruby     || fail "Cleaning $ruby $ruby_version failed!"
 compile_ruby   || fail "Compiling $ruby $ruby_version failed!"

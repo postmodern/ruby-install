@@ -1,28 +1,16 @@
 # Contributing
 
-## versions/checksums
+## New Versions
 
-versions and checksum information is _actually_ kept in the [ruby-versions]
-repository. All version or checksum related Pull Requests should be submitted
-to [ruby-versions].
-
-Please **DO NOT** modify the following files, as they are automatically updated
-from [ruby-versions] during the release process:
-
-* `share/ruby-install/$ruby/stable.txt`
-* `share/ruby-install/$ruby/versions.txt`
-* `share/ruby-install/$ruby/checksums.md5`
-* `share/ruby-install/$ruby/checksums.sha1`
-* `share/ruby-install/$ruby/checksums.sha256`
-* `share/ruby-install/$ruby/checksums.sha512`
+**All new versions or checksums should be submitted to the [ruby-versions]
+repository.**
 
 ## Code Style
 
 * Tab indent code.
-* Keep code within 80 columns.
-* Use [bash] 3.x features.
-* Declare all non-local variables with the `declare` keyword.
-* Use the `function` keyword for functions.
+  * Spaces may be used to align multi-line commands.
+* (Try to) Keep code within 80 columns.
+* Use [bash] <= 3.x features.
 * Quote all String variables.
 * Use `(( ))` for arithmetic expressions and `[[ ]]` otherwise.
 * Use `$(...)` instead of back-ticks.
@@ -43,6 +31,18 @@ from [ruby-versions] during the release process:
         	baz) other_command ;;
         esac
 
+* Use the `function` keyword for functions.
+* Put curly braces on a new line so they align.
+* Load function arguments into local variables for readability:
+
+        function do_stuff()
+	{
+		local ruby="$1"
+		local version="$2"
+                # ...
+	}
+
+* Explicitly return error codes with `|| return $?`.
 * Keep branching logic to a minimum.
 * Code should be declarative and easy to understand.
 
@@ -67,7 +67,7 @@ from [ruby-versions] during the release process:
 * Excessive version or environment checks. This is the job of a `./configure`
   script.
 * Excessive OS specific workarounds. We should strive to fix any Ruby build
-  issues or OS environment issues.
+  issues or OS environment issues at their source.
 * Building Rubies from HEAD. This is risky and may result in a buggy/broken
   version of Ruby. The user should build development versions of Ruby by hand
   and report any bugs to upstream.

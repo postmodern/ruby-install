@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ruby_archive="jruby-bin-$ruby_version.tar.gz"
-ruby_src_dir="jruby-$ruby_version"
+ruby_dir_name="jruby-$ruby_version"
 ruby_mirror="${ruby_mirror:-https://s3.amazonaws.com/jruby.org/downloads}"
 ruby_url="${ruby_url:-$ruby_mirror/$ruby_version/$ruby_archive}"
 
@@ -11,7 +11,7 @@ ruby_url="${ruby_url:-$ruby_mirror/$ruby_version/$ruby_archive}"
 function install_ruby()
 {
 	log "Installing jruby $ruby_version ..."
-	cp -R "$src_dir/$ruby_src_dir" "$install_dir" || return $?
+	cp -R "$src_dir/$ruby_dir_name" "$install_dir" || return $?
 }
 
 #

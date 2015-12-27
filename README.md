@@ -7,7 +7,7 @@ Installs [Ruby], [JRuby], [Rubinius], [MagLev] or [mruby].
 ## Features
 
 * Supports installing arbitrary versions.
-  * Contains a list of known versions and checksums from [ruby-versions].
+* Supports downloading the latest versions and checksums from [ruby-versions].
 * Supports installing into `/opt/rubies/` for root and `~/.rubies/` for users
   by default.
 * Supports installing into arbitrary directories.
@@ -19,6 +19,7 @@ Installs [Ruby], [JRuby], [Rubinius], [MagLev] or [mruby].
 * Supports verifying downloaded archives using `md5sum`, `md5` or `openssl md5`.
 * Supports installing build dependencies via the package manager:
   * [apt]
+  * [dnf]
   * [yum]
   * [pacman]
   * [macports]
@@ -47,21 +48,25 @@ List supported Rubies and their major versions:
 
     $ ruby-install
 
+List the latest versions:
+
+    $ ruby-install --latest
+
 Install the current stable version of Ruby:
 
     $ ruby-install ruby
 
+Install the latest version of Ruby:
+
+    $ ruby-install --latest ruby
+
 Install a stable version of Ruby:
 
-    $ ruby-install ruby 2.2
+    $ ruby-install ruby 2.3
 
 Install a specific version of Ruby:
 
-    $ ruby-install ruby 2.2.2
-
-Install a recently released version of Ruby:
-
-    $ ruby-install --md5 MD5_OF_TAR_BZ2 ruby 2.3.4
+    $ ruby-install ruby 2.2.4
 
 Install a Ruby into a specific directory:
 
@@ -73,11 +78,11 @@ Install a Ruby into a specific `rubies` directory:
 
 Install a Ruby into `/usr/local`:
 
-    $ ruby-install --system ruby 2.2.2
+    $ ruby-install --system ruby 2.3.0
 
 Install a Ruby from an official site with directly download:
 
-    $ ruby-install -M https://ftp.ruby-lang.org/pub/ruby ruby 2.0.0-p645
+    $ ruby-install -M https://ftp.ruby-lang.org/pub/ruby ruby 2.3.0
 
 Install a Ruby from a mirror:
 
@@ -89,33 +94,33 @@ Install a Ruby with a specific patch:
 
 Install a Ruby with a specific C compiler:
 
-    $ ruby-install ruby 2.2.2 -- CC=gcc-4.9
+    $ ruby-install ruby 2.3.0 -- CC=gcc-4.9
 
 Install a Ruby with specific configuration:
 
-    $ ruby-install ruby 2.2.2 -- --enable-shared --enable-dtrace CFLAGS="-O3"
+    $ ruby-install ruby 2.3.0 -- --enable-shared --enable-dtrace CFLAGS="-O3"
 
 Uninstall a Ruby version:
 
-    $ rm -rf ~/.rubies/ruby-2.2.2
+    $ rm -rf ~/.rubies/ruby-2.3.0
 
 ### Integration
 
 Using ruby-install with [RVM]:
 
-    $ ruby-install --rubies-dir ~/.rvm/rubies ruby 2.2.2
+    $ ruby-install --rubies-dir ~/.rvm/rubies ruby 2.3.0
 
 Using ruby-install with [rbenv]:
 
-    $ ruby-install --install-dir ~/.rbenv/versions/2.2.2 ruby 2.2.2
+    $ ruby-install --install-dir ~/.rbenv/versions/2.3.0 ruby 2.3.0
 
 ruby-install can even be used with [Chef].
 
 ## Install
 
-    wget -O ruby-install-0.5.0.tar.gz https://github.com/postmodern/ruby-install/archive/v0.5.0.tar.gz
-    tar -xzvf ruby-install-0.5.0.tar.gz
-    cd ruby-install-0.5.0/
+    wget -O ruby-install-0.6.0.tar.gz https://github.com/postmodern/ruby-install/archive/v0.6.0.tar.gz
+    tar -xzvf ruby-install-0.6.0.tar.gz
+    cd ruby-install-0.6.0/
     sudo make install
 
 ### PGP
@@ -124,8 +129,8 @@ All releases are [PGP] signed for security. Instructions on how to import my
 PGP key can be found on my [blog][1]. To verify that a release was not tampered
 with:
 
-    wget https://raw.github.com/postmodern/ruby-install/master/pkg/ruby-install-0.5.0.tar.gz.asc
-    gpg --verify ruby-install-0.5.0.tar.gz.asc ruby-install-0.5.0.tar.gz
+    wget https://raw.github.com/postmodern/ruby-install/master/pkg/ruby-install-0.6.0.tar.gz.asc
+    gpg --verify ruby-install-0.6.0.tar.gz.asc ruby-install-0.6.0.tar.gz
 
 ### Homebrew
 
@@ -155,7 +160,7 @@ installed. OS X users can install GCC via [homebrew]:
 
 And run ruby-install again:
 
-    ruby-install ruby 2.2.2 -- CC=gcc-4.9
+    ruby-install ruby 2.3.0 -- CC=gcc-4.9
 
 ### Rubinius
 
@@ -183,6 +188,7 @@ of [rbenv]
 [mruby]: https://github.com/mruby/mruby#readme
 
 [apt]: http://wiki.debian.org/Apt
+[dnf]: https://fedoraproject.org/wiki/Features/DNF
 [yum]: http://yum.baseurl.org/
 [pacman]: https://wiki.archlinux.org/index.php/Pacman
 [macports]: https://www.macports.org/

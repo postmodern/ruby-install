@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 unset GREP_OPTIONS GREP_COLOR GREP_COLORS
 
 if   command -v md5sum > /dev/null; then md5sum="md5sum"
@@ -23,6 +25,11 @@ function lookup_checksum()
 {
 	local checksums="$1"
 	local file="${2##*/}"
+
+	if [[ ! -f "$checksums" ]]; then
+		return 1
+	fi
+
 	local output="$(grep "  $file" "$checksums")"
 
 	echo -n "${output%% *}"
