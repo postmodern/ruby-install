@@ -142,6 +142,12 @@ Or the absolute latest ruby-install can be installed from source:
 
     brew install ruby-install --HEAD
 
+### Arch Linux
+
+ruby-install is already included in the [AUR]:
+
+    yaourt -S ruby-install
+
 ### FreeBSD
 
 There is a [FreeBSD port] of ruby-install which can be copied into the local
@@ -210,4 +216,5 @@ of [rbenv]
 [1]: http://postmodern.github.com/contact.html#pgp
 
 [homebrew]: http://brew.sh/
+[AUR]: https://aur.archlinux.org/packages/ruby-install/
 [FreeBSD port]: https://github.com/steakknife/ruby-install-freebsd#readme
