@@ -36,11 +36,11 @@ repository.**
 * Load function arguments into local variables for readability:
 
         function do_stuff()
-	{
-		local ruby="$1"
-		local version="$2"
-                # ...
-	}
+        {
+        	local ruby="$1"
+        	local version="$2"
+        	# ...
+        }
 
 * Explicitly return error codes with `|| return $?`.
 * Keep branching logic to a minimum.
