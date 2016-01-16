@@ -62,7 +62,7 @@ Install the latest version of Ruby:
 
 Install a stable version of Ruby:
 
-    $ ruby-install ruby 2.3
+    $ ruby-install ruby 2.3.0
 
 Install a specific version of Ruby:
 
