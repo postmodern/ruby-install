@@ -19,7 +19,7 @@ elif command -v curl >/dev/null; then downloader="curl"
 fi
 
 #
-# Only use sudo if already root.
+# Don't use sudo if already root.
 #
 if (( UID == 0 )); then sudo=""
 else                    sudo="sudo"
