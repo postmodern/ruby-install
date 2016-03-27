@@ -90,7 +90,7 @@ Install a Ruby from a mirror:
 
 Install a Ruby from a remote tarball:
 
-    $ ruby-install -u http://ci.jruby.org/snapshots/master/jruby-bin-9.1.0.0-SNAPSHOT.tar.gz jruby 9.1.0.0-SNAPSHOT
+    $ ruby-install -u https://s3.amazonaws.com/jruby.org/downloads/9.0.5.0/jruby-bin-9.0.5.0.tar.gz jruby 9.0.5.0
 
 Install a Ruby with a specific patch:
 
