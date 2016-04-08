@@ -17,7 +17,7 @@ SIG=$(PKG_DIR)/$(PKG_NAME).asc
 PREFIX?=/usr/local
 DOC_DIR=$(PREFIX)/share/doc/$(PKG_NAME)
 
-all: build
+all:
 
 pkg:
 	mkdir $(PKG_DIR)
