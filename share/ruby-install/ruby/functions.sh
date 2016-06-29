@@ -23,6 +23,9 @@ function configure_ruby()
 		brew)
 			opt_dir="$(brew --prefix openssl):$(brew --prefix readline):$(brew --prefix libyaml):$(brew --prefix gdbm)"
 			;;
+		fink)
+			opt_dir="/sw"
+			;;
 		port)
 			opt_dir="/opt/local"
 			;;
