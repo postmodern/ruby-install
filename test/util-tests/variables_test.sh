@@ -39,6 +39,13 @@ function test_package_manager_with_homebrew()
 	assertEquals "did not detect homebrew" "brew" "$package_manager" 
 }
 
+function test_package_manager_with_fink()
+{
+	command -v fink >/dev/null || return
+
+	assertEquals "did not detect Fink" "fink" "$package_manager" 
+}
+
 function test_downloader_with_wget()
 {
 	command -v wget >/dev/null || return

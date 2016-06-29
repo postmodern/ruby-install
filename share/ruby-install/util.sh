@@ -3,7 +3,8 @@
 #
 # Auto-detect the package manager.
 #
-if   command -v apt-get >/dev/null; then package_manager="apt"
+if   command -v fink     >/dev/null; then package_manager="fink" # fink uses apt, so check for it before apt
+elif command -v apt-get >/dev/null; then package_manager="apt"
 elif command -v dnf     >/dev/null; then package_manager="dnf"
 elif command -v yum     >/dev/null; then package_manager="yum"
 elif command -v port    >/dev/null; then package_manager="port"
@@ -93,6 +94,7 @@ function install_packages()
 		apt)	$sudo apt-get install -y "$@" || return $? ;;
 		dnf|yum)$sudo $package_manager install -y "$@" || return $?     ;;
 		port)   $sudo port install "$@" || return $?       ;;
+		fink)         fink install "$@" || return $? ;;
 		brew)
 			local brew_owner="$(/usr/bin/stat -f %Su "$(command -v brew)")"
 			sudo -u "$brew_owner" brew install "$@" ||

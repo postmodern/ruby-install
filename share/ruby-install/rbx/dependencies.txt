@@ -3,4 +3,5 @@ dnf: gcc gcc-c++ automake flex bison ruby-devel rubygems llvm-static llvm-devel 
 yum: gcc gcc-c++ automake flex bison ruby-devel rubygems llvm-static llvm-devel libedit-devel zlib-devel libyaml-devel openssl-devel gdbm-devel readline-devel ncurses-devel
 port: openssl readline libyaml gdbm
 brew: openssl readline libyaml gdbm
+fink: openssl readline6 libyaml gdbm4
 pacman: gcc automake flex bison ruby llvm35 libedit zlib libyaml openssl gdbm readline ncurses

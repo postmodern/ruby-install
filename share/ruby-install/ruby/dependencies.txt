@@ -3,4 +3,5 @@ dnf: gcc automake zlib-devel libyaml-devel openssl-devel gdbm-devel readline-dev
 yum: gcc automake zlib-devel libyaml-devel openssl-devel gdbm-devel readline-devel ncurses-devel libffi-devel
 port: openssl readline libyaml gdbm libffi
 brew: openssl readline libyaml gdbm libffi
+fink: openssl readline6 libyaml gdbm4 libffi6
 pacman: gcc make zlib ncurses openssl readline libyaml gdbm libffi
