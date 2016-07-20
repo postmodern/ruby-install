@@ -35,7 +35,7 @@ Installs [Ruby], [JRuby], [Rubinius], [MagLev] or [mruby].
 ## Requirements
 
 * [bash] >= 3.x
-* [wget] or [curl]
+* [wget] > 1.12 or [curl]
 * `md5sum`, `md5` or `openssl md5`.
 * `tar`
 * `bzip2`
