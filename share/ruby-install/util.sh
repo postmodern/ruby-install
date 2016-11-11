@@ -3,11 +3,11 @@
 #
 # Auto-detect the package manager.
 #
-if   command -v apt-get >/dev/null; then package_manager="apt"
+if   command -v brew    >/dev/null; then package_manager="brew"
+elif command -v apt-get >/dev/null; then package_manager="apt"
 elif command -v dnf     >/dev/null; then package_manager="dnf"
 elif command -v yum     >/dev/null; then package_manager="yum"
 elif command -v port    >/dev/null; then package_manager="port"
-elif command -v brew    >/dev/null; then package_manager="brew"
 elif command -v pacman  >/dev/null; then package_manager="pacman"
 fi
 
@@ -94,9 +94,13 @@ function install_packages()
 		dnf|yum)$sudo $package_manager install -y "$@" || return $?     ;;
 		port)   $sudo port install "$@" || return $?       ;;
 		brew)
-			local brew_owner="$(/usr/bin/stat -f %Su "$(command -v brew)")"
-			sudo -u "$brew_owner" brew install "$@" ||
-			sudo -u "$brew_owner" brew upgrade "$@" || return $?
+			if stat -c"%U" /dev/null >/dev/null 2>/dev/null ; then
+				local brew_owner="$(/usr/bin/stat -c %U "$(command -v brew)")"
+			else
+				local brew_owner="$(/usr/bin/stat -f %Su "$(command -v brew)")"
+			fi
+			sudo -u "$brew_owner" -i brew install "$@" ||
+			sudo -u "$brew_owner" -i brew upgrade "$@" || return $?
 			;;
 		pacman)
 			local missing_pkgs=($(pacman -T "$@"))
