@@ -5,7 +5,7 @@
 
 #### ruby
 
-* Added bison to the dependencies for Ripper.
+* Added `bison` to the dependencies for Ripper.
 * Added the `automake` dependency to homebrew's dependencies (@NickLaMuro).
 
 #### rbx
