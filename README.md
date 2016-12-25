@@ -148,6 +148,10 @@ ruby-install is already included in the [AUR]:
 
     yaourt -S ruby-install
 
+### Fedora Linux
+
+ruby-install is available on [Fedora Copr](https://copr.fedorainfracloud.org/coprs/postmodern/ruby-install/).
+
 ### FreeBSD
 
 There is a [FreeBSD port] of ruby-install which can be copied into the local
