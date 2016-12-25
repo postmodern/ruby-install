@@ -10,7 +10,7 @@
 
 #### rbx
 
-* Fixed missing rbx dependencies.
+* Fixed dnf/yum dependencies.
 
 ### 0.6.0 / 2015-12-25
 
