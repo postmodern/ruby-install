@@ -78,11 +78,11 @@ Install a Ruby into a specific `rubies` directory:
 
 Install a Ruby into `/usr/local`:
 
-    $ ruby-install --system ruby 2.3.0
+    $ ruby-install --system ruby 2.4.0
 
 Install a Ruby from an official site with directly download:
 
-    $ ruby-install -M https://ftp.ruby-lang.org/pub/ruby ruby 2.3.0
+    $ ruby-install -M https://ftp.ruby-lang.org/pub/ruby ruby 2.4.0
 
 Install a Ruby from a mirror:
 
@@ -94,25 +94,25 @@ Install a Ruby with a specific patch:
 
 Install a Ruby with a specific C compiler:
 
-    $ ruby-install ruby 2.3.0 -- CC=gcc-4.9
+    $ ruby-install ruby 2.4.0 -- CC=gcc-4.9
 
 Install a Ruby with specific configuration:
 
-    $ ruby-install ruby 2.3.0 -- --enable-shared --enable-dtrace CFLAGS="-O3"
+    $ ruby-install ruby 2.4.0 -- --enable-shared --enable-dtrace CFLAGS="-O3"
 
 Uninstall a Ruby version:
 
-    $ rm -rf ~/.rubies/ruby-2.3.0
+    $ rm -rf ~/.rubies/ruby-2.4.0
 
 ### Integration
 
 Using ruby-install with [RVM]:
 
-    $ ruby-install --rubies-dir ~/.rvm/rubies ruby 2.3.0
+    $ ruby-install --rubies-dir ~/.rvm/rubies ruby 2.4.0
 
 Using ruby-install with [rbenv]:
 
-    $ ruby-install --install-dir ~/.rbenv/versions/2.3.0 ruby 2.3.0
+    $ ruby-install --install-dir ~/.rbenv/versions/2.4.0 ruby 2.4.0
 
 ruby-install can even be used with [Chef].
 
@@ -166,7 +166,7 @@ installed. OS X users can install GCC via [homebrew]:
 
 And run ruby-install again:
 
-    ruby-install ruby 2.3.0 -- CC=gcc-4.9
+    ruby-install ruby 2.4.0 -- CC=gcc-4.9
 
 ### Rubinius
 
