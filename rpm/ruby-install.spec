@@ -14,7 +14,7 @@ License: MIT
 URL: https://github.com/postmodern/ruby-install#readme
 AutoReqProv: no
 BuildArch: noarch
-Requires: bash, wget > 1.12, tar, bzip2
+Requires: bash, wget > 1.12, tar, bzip2, patch
 
 %description
 Installs Ruby, JRuby, Rubinius or MagLev
