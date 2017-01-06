@@ -100,6 +100,14 @@ Install a Ruby with specific configuration:
 
     $ ruby-install ruby 2.4.0 -- --enable-shared --enable-dtrace CFLAGS="-O3"
 
+Download Ruby
+
+    $ ruby-install --download-only ruby 2.4.0
+
+Download and Extract but do not Install Ruby
+
+    $ ruby-install --no-install ruby 2.4.0
+
 Uninstall a Ruby version:
 
     $ rm -rf ~/.rubies/ruby-2.4.0

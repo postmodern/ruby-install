@@ -114,6 +114,17 @@ Do not install build dependencies before installing Ruby\.
 Skip installation if another Ruby is detected in same location\.
 .LP
 .TP
+\fB--no-install\fR
+Skip installation\.
+Assumes: --no-install-deps
+.LP
+.TP
+\fB--download-only\fR
+Skip installation\. 
+Assumes: --no-extract --no-install-deps and --no-install
+Ignores: --patch
+.LP
+.TP
 \fB-L\fR, \fB--latest\fR
 Downloads the latest ruby versions and checksums from the ruby\-versions
 repository (https:\[sl]\[sl]github\.com\[sl]postmodern\[sl]ruby\-versions\[sh]readme)\.

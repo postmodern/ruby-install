@@ -21,7 +21,11 @@ if [[ $no_reinstall -eq 1 ]] && [[ -x "$install_dir/bin/ruby" ]]; then
 	exit
 fi
 
-log "Installing $ruby $ruby_version into $install_dir ..."
+if [[ $no_install -eq 1 ]]; then
+  log "Downloading $ruby $ruby_version ..."
+else
+  log "Installing $ruby $ruby_version into $install_dir ..."
+fi
 
 pre_install || fail "Pre-install tasks failed!"
 
@@ -41,8 +45,16 @@ if [[ ! $no_extract -eq 1 ]]; then
   extract_ruby   || fail "Unpacking of $ruby_archive failed!"
 fi
 
-download_patches || fail "Fetching patches $patches failed!"
-apply_patches  || fail "Patching $ruby $ruby_version failed!"
+if [[ ! $download_only -eq 1 ]]; then
+  download_patches || fail "Fetching patches $patches failed!"
+  apply_patches  || fail "Patching $ruby $ruby_version failed!"
+fi
+
+if [[ $no_install -eq 1 ]];then
+  log "Successfully downloaded and $ruby $ruby_version to $src_dir"
+  exit 0
+fi
+
 cd "$src_dir/$ruby_dir_name"
 configure_ruby || fail "Configuration of $ruby $ruby_version failed!"
 clean_ruby     || fail "Cleaning $ruby $ruby_version failed!"

@@ -51,6 +51,11 @@ Options:
 	--no-extract		Do not re-extract the downloaded Ruby archive
 	--no-install-deps	Do not install build dependencies before installing Ruby
 	--no-reinstall  	Skip installation if another Ruby is detected in same location
+	--no-install	  	Skip installation
+				assumes: --no-install-deps
+	--download-only		Skip installation
+				assumes: --no-extract --no-install-deps and --no-install
+				ignores: --patch
 	-L, --latest		Downloads the latest ruby versions and checksums
 	-V, --version		Prints the version
 	-h, --help		Prints this message
@@ -173,6 +178,18 @@ function parse_options()
 				;;
 			--no-reinstall)
 				no_reinstall=1
+				shift
+				;;
+			--no-install)
+				no_install_deps=1
+				no_install=1
+				shift
+				;;
+			--download-only)
+				no_extract=1
+				no_install=1
+				no_install_deps=1
+				download_only=1
 				shift
 				;;
 			-L|--latest)
