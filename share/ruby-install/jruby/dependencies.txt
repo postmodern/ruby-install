@@ -1,4 +1,4 @@
-apt: openjdk-7-jdk
+apt: openjdk-8-jdk
 dnf: java-openjdk
 yum: java-openjdk
-pacman: jre7-openjdk
+pacman: jre8-openjdk
