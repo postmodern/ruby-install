@@ -52,6 +52,7 @@ Options:
 	--no-install-deps	Do not install build dependencies before installing Ruby
 	--no-reinstall  	Skip installation if another Ruby is detected in same location
 	-L, --latest		Downloads the latest ruby versions and checksums
+	-d, --debug		Show each command being run (set -x)
 	-V, --version		Prints the version
 	-h, --help		Prints this message
 
@@ -177,6 +178,10 @@ function parse_options()
 				;;
 			-L|--latest)
 				force_update=1
+				shift
+				;;
+			-d|--debug)
+				set -x
 				shift
 				;;
 			-V|--version)
