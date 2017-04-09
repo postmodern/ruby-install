@@ -22,6 +22,7 @@ Installs [Ruby], [JRuby], [Rubinius], [MagLev] or [mruby].
   * [dnf]
   * [yum]
   * [pacman]
+  * [zypper]
   * [macports]
   * [brew]
 * Has tests.
@@ -201,6 +202,7 @@ of [rbenv]
 [dnf]: https://fedoraproject.org/wiki/Features/DNF
 [yum]: http://yum.baseurl.org/
 [pacman]: https://wiki.archlinux.org/index.php/Pacman
+[zypper]: https://en.opensuse.org/Portal:Zypper
 [macports]: https://www.macports.org/
 [brew]: http://brew.sh
 

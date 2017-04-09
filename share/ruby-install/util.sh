@@ -3,7 +3,8 @@
 #
 # Auto-detect the package manager.
 #
-if   command -v apt-get >/dev/null; then package_manager="apt"
+if   command -v zypper  >/dev/null; then package_manager="zypper"
+elif command -v apt-get >/dev/null; then package_manager="apt"
 elif command -v dnf     >/dev/null; then package_manager="dnf"
 elif command -v yum     >/dev/null; then package_manager="yum"
 elif command -v port    >/dev/null; then package_manager="port"
@@ -105,6 +106,7 @@ function install_packages()
 				$sudo pacman -S "${missing_pkgs[@]}" || return $?
 			fi
 			;;
+		zypper) $sudo zypper -n in -l $* || return $? ;;
 		"")	warn "Could not determine Package Manager. Proceeding anyway." ;;
 	esac
 }
