@@ -89,6 +89,10 @@ Install a Ruby from a mirror:
 
     $ ruby-install -M http://www.mirrorservice.org/sites/ftp.ruby-lang.org/pub/ruby ruby 2.0.0-p645
 
+Install a Ruby from a remote tarball:
+
+    $ ruby-install -u https://s3.amazonaws.com/jruby.org/downloads/9.0.5.0/jruby-bin-9.0.5.0.tar.gz jruby 9.0.5.0
+
 Install a Ruby with a specific patch:
 
     $ ruby-install -p https://raw.github.com/gist/4136373/falcon-gc.diff ruby 1.9.3-p551
