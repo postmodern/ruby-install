@@ -7,6 +7,7 @@ if   command -v zypper  >/dev/null; then package_manager="zypper"
 elif command -v apt-get >/dev/null; then package_manager="apt"
 elif command -v dnf     >/dev/null; then package_manager="dnf"
 elif command -v yum     >/dev/null; then package_manager="yum"
+elif command -v pkg     >/dev/null; then package_manager="pkg"
 elif command -v port    >/dev/null; then package_manager="port"
 elif command -v brew    >/dev/null; then package_manager="brew"
 elif command -v pacman  >/dev/null; then package_manager="pacman"
@@ -94,6 +95,7 @@ function install_packages()
 		apt)	$sudo apt-get install -y "$@" || return $? ;;
 		dnf|yum)$sudo $package_manager install -y "$@" || return $?     ;;
 		port)   $sudo port install "$@" || return $?       ;;
+		pkg)	$sudo pkg install -y "$@" || return $?     ;;
 		brew)
 			local brew_owner="$(/usr/bin/stat -f %Su "$(command -v brew)")"
 			sudo -u "$brew_owner" brew install "$@" ||
