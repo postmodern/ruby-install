@@ -4,3 +4,4 @@ yum: gcc make bison
 port: bison
 brew: bison
 pacman: gcc make bison
+zypper: gcc make bison

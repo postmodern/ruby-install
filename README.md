@@ -22,6 +22,7 @@ Installs [Ruby], [JRuby], [Rubinius], [MagLev] or [mruby].
   * [dnf]
   * [yum]
   * [pacman]
+  * [zypper]
   * [macports]
   * [brew]
 * Has tests.
@@ -78,11 +79,11 @@ Install a Ruby into a specific `rubies` directory:
 
 Install a Ruby into `/usr/local`:
 
-    $ ruby-install --system ruby 2.3.0
+    $ ruby-install --system ruby 2.4.0
 
 Install a Ruby from an official site with directly download:
 
-    $ ruby-install -M https://ftp.ruby-lang.org/pub/ruby ruby 2.3.0
+    $ ruby-install -M https://ftp.ruby-lang.org/pub/ruby ruby 2.4.0
 
 Install a Ruby from a mirror:
 
@@ -94,33 +95,33 @@ Install a Ruby with a specific patch:
 
 Install a Ruby with a specific C compiler:
 
-    $ ruby-install ruby 2.3.0 -- CC=gcc-4.9
+    $ ruby-install ruby 2.4.0 -- CC=gcc-4.9
 
 Install a Ruby with specific configuration:
 
-    $ ruby-install ruby 2.3.0 -- --enable-shared --enable-dtrace CFLAGS="-O3"
+    $ ruby-install ruby 2.4.0 -- --enable-shared --enable-dtrace CFLAGS="-O3"
 
 Uninstall a Ruby version:
 
-    $ rm -rf ~/.rubies/ruby-2.3.0
+    $ rm -rf ~/.rubies/ruby-2.4.0
 
 ### Integration
 
 Using ruby-install with [RVM]:
 
-    $ ruby-install --rubies-dir ~/.rvm/rubies ruby 2.3.0
+    $ ruby-install --rubies-dir ~/.rvm/rubies ruby 2.4.0
 
 Using ruby-install with [rbenv]:
 
-    $ ruby-install --install-dir ~/.rbenv/versions/2.3.0 ruby 2.3.0
+    $ ruby-install --install-dir ~/.rbenv/versions/2.4.0 ruby 2.4.0
 
 ruby-install can even be used with [Chef].
 
 ## Install
 
-    wget -O ruby-install-0.6.0.tar.gz https://github.com/postmodern/ruby-install/archive/v0.6.0.tar.gz
-    tar -xzvf ruby-install-0.6.0.tar.gz
-    cd ruby-install-0.6.0/
+    wget -O ruby-install-0.6.1.tar.gz https://github.com/postmodern/ruby-install/archive/v0.6.1.tar.gz
+    tar -xzvf ruby-install-0.6.1.tar.gz
+    cd ruby-install-0.6.1/
     sudo make install
 
 ### PGP
@@ -129,8 +130,8 @@ All releases are [PGP] signed for security. Instructions on how to import my
 PGP key can be found on my [blog][1]. To verify that a release was not tampered
 with:
 
-    wget https://raw.github.com/postmodern/ruby-install/master/pkg/ruby-install-0.6.0.tar.gz.asc
-    gpg --verify ruby-install-0.6.0.tar.gz.asc ruby-install-0.6.0.tar.gz
+    wget https://raw.github.com/postmodern/ruby-install/master/pkg/ruby-install-0.6.1.tar.gz.asc
+    gpg --verify ruby-install-0.6.1.tar.gz.asc ruby-install-0.6.1.tar.gz
 
 ### Homebrew
 
@@ -147,6 +148,10 @@ Or the absolute latest ruby-install can be installed from source:
 ruby-install is already included in the [AUR]:
 
     yaourt -S ruby-install
+
+### Fedora Linux
+
+ruby-install is available on [Fedora Copr](https://copr.fedorainfracloud.org/coprs/postmodern/ruby-install/).
 
 ### FreeBSD
 
@@ -166,7 +171,7 @@ installed. OS X users can install GCC via [homebrew]:
 
 And run ruby-install again:
 
-    ruby-install ruby 2.3.0 -- CC=gcc-4.9
+    ruby-install ruby 2.4.0 -- CC=gcc-4.9
 
 ### Rubinius
 
@@ -197,6 +202,7 @@ of [rbenv]
 [dnf]: https://fedoraproject.org/wiki/Features/DNF
 [yum]: http://yum.baseurl.org/
 [pacman]: https://wiki.archlinux.org/index.php/Pacman
+[zypper]: https://en.opensuse.org/Portal:Zypper
 [macports]: https://www.macports.org/
 [brew]: http://brew.sh
 

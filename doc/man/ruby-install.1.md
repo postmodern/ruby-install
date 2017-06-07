@@ -1,4 +1,4 @@
-# ruby-install 1 "Dec 2015" ruby-install "User Manuals"
+# ruby-install 1 "Dec 2016" ruby-install "User Manuals"
 
 ## SYNOPSIS
 
@@ -134,15 +134,15 @@ Install a Ruby into a specific `rubies` directory:
 
 Install a Ruby into `/usr/local`:
 
-    $ ruby-install --system ruby 2.3.0
+    $ ruby-install --system ruby 2.4.0
 
 Install a Ruby from an official site with directly download:
 
-    $ ruby-install -M https://ftp.ruby-lang.org/pub/ruby ruby 2.3.0
+    $ ruby-install -M https://ftp.ruby-lang.org/pub/ruby ruby 2.4.0
 
 Install a Ruby from a mirror:
 
-    $ ruby-install -M http://www.mirrorservice.org/sites/ftp.ruby-lang.org/pub/ruby ruby 2.3.0
+    $ ruby-install -M http://www.mirrorservice.org/sites/ftp.ruby-lang.org/pub/ruby ruby 2.4.0
 
 Install a Ruby with a specific patch:
 
@@ -150,19 +150,19 @@ Install a Ruby with a specific patch:
 
 Install a Ruby with specific configuration:
 
-    $ ruby-install ruby 2.3.0 -- --enable-shared --enable-dtrace CFLAGS="-O3"
+    $ ruby-install ruby 2.4.0 -- --enable-shared --enable-dtrace CFLAGS="-O3"
 
 Using ruby-install with [RVM]:
 
-    $ ruby-install --rubies-dir ~/.rvm/rubies ruby 2.3.0
+    $ ruby-install --rubies-dir ~/.rvm/rubies ruby 2.4.0
 
 Using ruby-install with [rbenv]:
 
-    $ ruby-install -i ~/.rbenv/versions/2.3.0 ruby 2.3.0
+    $ ruby-install -i ~/.rbenv/versions/2.4.0 ruby 2.4.0
 
 Uninstall a Ruby version:
 
-    $ rm -rf ~/.rubies/ruby-2.3.0
+    $ rm -rf ~/.rubies/ruby-2.4.0
 
 ## FILES
 

@@ -1,3 +1,17 @@
+### 0.6.1 / 2016-12-24
+
+* Require `wget` > 1.12.
+* Fixed a bug where the `dnf` package manager was not being used.
+
+#### ruby
+
+* Added `bison` to the dependencies for Ripper.
+* Added the `automake` dependency to homebrew's dependencies (@NickLaMuro).
+
+#### rbx
+
+* Fixed dnf/yum dependencies.
+
 ### 0.6.0 / 2015-12-25
 
 * Support `ruby-install RUBY-X.Y.Z` in addition to `ruby-install RUBY X.Y.Z`.

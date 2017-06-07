@@ -1,6 +1,6 @@
 %define name ruby-install
-%define version 0.6.0
-%define release 2
+%define version 0.6.1
+%define release 1
 
 %define buildroot %{_topdir}/BUILDROOT
 
@@ -14,7 +14,7 @@ License: MIT
 URL: https://github.com/postmodern/ruby-install#readme
 AutoReqProv: no
 BuildArch: noarch
-Requires: bash, wget > 1.12, tar, bzip2
+Requires: bash, wget > 1.12, tar, bzip2, patch
 
 %description
 Installs Ruby, JRuby, Rubinius or MagLev
@@ -36,6 +36,10 @@ make install PREFIX=%{buildroot}/usr
 %{_defaultdocdir}/%{name}-%{version}/*
 
 %changelog
+* Sat Dec 24 2016 Postmodern <postmodern.mod3@gmail.com> - 0.6.1-1
+- Rebuilt for version 0.6.1.
+- Added patch as dependency.
+
 * Fri Dec 25 2015 Postmodern <postmodern.mod3@gmail.com> - 0.6.0-1
 - Rebuilt for version 0.6.0.
 
