@@ -133,4 +133,7 @@ function cleanup_source() {
 
 	log "Removing $src_dir/$ruby_dir_name ..."
 	rm -rf "$src_dir/$ruby_dir_name" || return $?
+
+	log "Removing $src_dir ..."
+	rmdir "$src_dir" || return $?
 }
