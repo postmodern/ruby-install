@@ -23,6 +23,7 @@ Installs [Ruby], [JRuby], [Rubinius], [MagLev] or [mruby].
   * [yum]
   * [pacman]
   * [zypper]
+  * [pkg]
   * [macports]
   * [brew]
 * Has tests.
@@ -207,6 +208,7 @@ of [rbenv]
 [yum]: http://yum.baseurl.org/
 [pacman]: https://wiki.archlinux.org/index.php/Pacman
 [zypper]: https://en.opensuse.org/Portal:Zypper
+[pkg]: https://wiki.freebsd.org/pkgng
 [macports]: https://www.macports.org/
 [brew]: http://brew.sh
 
