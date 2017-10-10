@@ -6,15 +6,13 @@ function oneTimeSetUp()
 {
 	ruby="ruby"
 
-	if are_ruby_versions_missing "$ruby"; then
-		download_ruby_versions "$ruby"
-	fi
+	download_ruby_versions "$ruby"
 }
 
 function setUp()
 {
 	ruby="ruby"
-	ruby_version="2.1"
+	ruby_version="2.4"
 
 	expected_ruby_version="$(latest_version "$ruby_install_cache_dir/$ruby/stable.txt" "$ruby_version")"
 }
