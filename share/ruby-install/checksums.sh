@@ -4,6 +4,7 @@ unset GREP_OPTIONS GREP_COLOR GREP_COLORS
 
 if   command -v md5sum > /dev/null; then md5sum="md5sum"
 elif command -v md5 > /dev/null;    then md5sum="md5 -r"
+elif command -v openssl > /dev/null;    then md5sum="openssl dgst -md5 -r"
 fi
 
 if   command -v sha1sum > /dev/null; then sha1sum="sha1sum"
