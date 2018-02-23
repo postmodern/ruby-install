@@ -72,6 +72,9 @@ https://github.com/postmodern/ruby-install#readme
 `--sha512` *SHA512*
 	Specifies the SHA512 checksum for the Ruby archive.
 
+`--package-manager [apt|dnf|yum|pacman|zypper|brew|pkg|port]`
+  Use an alternative package manager.
+
 `--no-download`
 	Use the previously downloaded Ruby archive.
 

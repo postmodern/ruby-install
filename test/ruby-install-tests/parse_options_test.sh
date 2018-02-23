@@ -177,6 +177,17 @@ function test_parse_options_with_sha512()
 	assertEquals "did not set \$ruby_sha512" "$sha512" "$ruby_sha512"
 }
 
+function test_parse_options_with_package_manager()
+{
+	local new_package_manager="dnf"
+
+	set_package_manager "apt"
+
+	parse_options "--package-manager" "$new_package_manager"
+
+	assertEquals "did not set \$package_manager" "$new_package_manager" "$package_manager"
+}
+
 function test_parse_options_with_no_download()
 {
 	parse_options "--no-download" "ruby"

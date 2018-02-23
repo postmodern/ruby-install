@@ -46,6 +46,8 @@ Options:
 	    --sha1 SHA1		SHA1 checksum of the Ruby archive
 	    --sha256 SHA256	SHA256 checksum of the Ruby archive
 	    --sha512 SHA512	SHA512 checksum of the Ruby archive
+	--package-manager [apt|dnf|yum|pacman|zypper|brew|pkg|port]
+				Use an alternative package manager
 	--no-download		Use the previously downloaded Ruby archive
 	--no-verify		Do not verify the downloaded Ruby archive
 	--no-extract		Do not re-extract the downloaded Ruby archive
@@ -151,6 +153,10 @@ function parse_options()
 				;;
 			--sha512)
 				ruby_sha512="$2"
+				shift 2
+				;;
+			--package-manager)
+				set_package_manager "$2"
 				shift 2
 				;;
 			--no-download)
