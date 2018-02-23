@@ -43,6 +43,7 @@ Options:
 	-M, --mirror URL	Alternate mirror to download the Ruby archive from
 	-u, --url URL		Alternate URL to download the Ruby archive from
 	-m, --md5 MD5		MD5 checksum of the Ruby archive
+	    --packager NAME     Alternate package manager to use instead of default.
 	    --sha1 SHA1		SHA1 checksum of the Ruby archive
 	    --sha256 SHA256	SHA256 checksum of the Ruby archive
 	    --sha512 SHA512	SHA512 checksum of the Ruby archive
@@ -109,6 +110,10 @@ function parse_options()
 				install_dir="$2"
 				shift 2
 				;;
+                        --packager)
+                                package_manager="$2"
+                                shift 2
+                                ;;
 			--system)
 				install_dir="/usr/local"
 				shift 1
