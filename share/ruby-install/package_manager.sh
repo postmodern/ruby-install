@@ -16,6 +16,19 @@ function detect_package_manager()
 	fi
 }
 
+function set_package_manager()
+{
+	case "$1" in
+		zypper|apt|dnf|yum|pkg|port|brew|pacman)
+			package_manager="$1"
+			;;
+		*)
+			error "Unsupported package manager: $1"
+			return 1
+			;;
+	esac
+}
+
 function install_packages()
 {
 	case "$package_manager" in
