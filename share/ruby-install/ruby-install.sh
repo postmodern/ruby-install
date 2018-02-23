@@ -11,8 +11,10 @@ patches=()
 configure_opts=()
 make_opts=()
 
+system_dir="/usr/local"
+
 if (( UID == 0 )); then
-	src_dir="/usr/local/src"
+	src_dir="$system_dir/src"
 	rubies_dir="/opt/rubies"
 else
 	src_dir="$HOME/src"
@@ -35,7 +37,7 @@ Options:
 	-r, --rubies-dir DIR	Directory that contains other installed Rubies
 	-i, --install-dir DIR	Directory to install Ruby into
 	    --prefix DIR        Alias for -i DIR
-	    --system		Alias for -i /usr/local
+	    --system		Alias for -i $system_dir
 	-s, --src-dir DIR	Directory to download source-code into
 	-c, --cleanup		Remove archive and unpacked source-code after installation
 	-j, --jobs JOBS		Number of jobs to run in parallel when compiling
@@ -112,7 +114,7 @@ function parse_options()
 				shift 2
 				;;
 			--system)
-				install_dir="/usr/local"
+				install_dir="$system_dir"
 				shift 1
 				;;
 			-s|--src-dir)
