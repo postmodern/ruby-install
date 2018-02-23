@@ -3,15 +3,18 @@
 #
 # Auto-detect the package manager.
 #
-if   command -v zypper  >/dev/null; then package_manager="zypper"
-elif command -v apt-get >/dev/null; then package_manager="apt"
-elif command -v dnf     >/dev/null; then package_manager="dnf"
-elif command -v yum     >/dev/null; then package_manager="yum"
-elif command -v pkg     >/dev/null; then package_manager="pkg"
-elif command -v port    >/dev/null; then package_manager="port"
-elif command -v brew    >/dev/null; then package_manager="brew"
-elif command -v pacman  >/dev/null; then package_manager="pacman"
-fi
+function detect_package_manager()
+{
+	if   command -v zypper  >/dev/null; then package_manager="zypper"
+	elif command -v apt-get >/dev/null; then package_manager="apt"
+	elif command -v dnf     >/dev/null; then package_manager="dnf"
+	elif command -v yum     >/dev/null; then package_manager="yum"
+	elif command -v pkg     >/dev/null; then package_manager="pkg"
+	elif command -v port    >/dev/null; then package_manager="port"
+	elif command -v brew    >/dev/null; then package_manager="brew"
+	elif command -v pacman  >/dev/null; then package_manager="pacman"
+	fi
+}
 
 function install_packages()
 {
@@ -36,3 +39,5 @@ function install_packages()
 		"")	warn "Could not determine Package Manager. Proceeding anyway." ;;
 	esac
 }
+
+detect_package_manager
