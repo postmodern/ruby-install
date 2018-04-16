@@ -225,7 +225,7 @@ of [rbenv]
 [Chef]: https://github.com/rosstimson/chef-ruby_install#readme
 
 [PGP]: http://en.wikipedia.org/wiki/Pretty_Good_Privacy
-[1]: http://postmodern.github.com/contact.html#pgp
+[1]: http://postmodern.github.io/contact.html#pgp
 
 [homebrew]: http://brew.sh/
 [AUR]: https://aur.archlinux.org/packages/ruby-install/
