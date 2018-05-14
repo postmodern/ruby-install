@@ -9,7 +9,6 @@ function test_list_rubies()
 	assertTrue "did not include ruby" '[[ "$output" == *ruby:* ]]'
 	assertTrue "did not include jruby" '[[ "$output" == *jruby:* ]]'
 	assertTrue "did not include rbx" '[[ "$output" == *rbx:* ]]'
-	assertTrue "did not include maglev" '[[ "$output" == *maglev:* ]]'
 	assertTrue "did not include mruby" '[[ "$output" == *mruby:* ]]'
 }
 
