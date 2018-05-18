@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/postmodern/ruby-install.svg?branch=master)](https://travis-ci.org/postmodern/ruby-install)
 
-Installs [Ruby], [JRuby], [Rubinius] or [mruby].
+Installs [Ruby], [JRuby], [Rubinius], [TruffleRuby] or [mruby].
 
 ## Features
 
@@ -200,6 +200,7 @@ of [rbenv]
 [Ruby]: http://www.ruby-lang.org/
 [JRuby]: http://jruby.org/
 [Rubinius]: http://rubini.us/
+[TruffleRuby]: https://github.com/oracle/truffleruby
 [mruby]: https://github.com/mruby/mruby#readme
 
 [apt]: http://wiki.debian.org/Apt
