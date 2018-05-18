@@ -30,8 +30,8 @@ function test_ruby_install_cache_dir()
 
 function test_rubies()
 {
-	for ruby in ruby jruby rbx mruby; do
-		assertTrue "did not contain ruby" \
+	for ruby in ruby jruby rbx truffleruby mruby; do
+		assertTrue "did not contain $ruby" \
 			   "[[ \" \${rubies[@]} \" == *\" $ruby \"* ]]"
 	done
 }
