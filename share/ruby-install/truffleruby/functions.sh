@@ -1,17 +1,7 @@
 #!/usr/bin/env bash
 
-# Check platform
-case $(uname) in
-	Linux) platform=linux ;;
-	Darwin) platform=macos ;;
-	*) fail "unknown platform $(uname)" ;;
-esac
-
-# Check architecture
-case $(uname -m) in
-	x86_64) arch=amd64 ;;
-	*) fail "unknown architecture $(uname -m)" ;;
-esac
+platform=$(platform) || return $?
+arch=$(architecture) || return $?
 
 ruby_dir_name="truffleruby-$ruby_version-$platform-$arch"
 ruby_archive="$ruby_dir_name.tar.gz"
