@@ -121,3 +121,28 @@ function extract()
 			;;
 	esac
 }
+
+#
+# Returns the executing platform.
+#
+function platform()
+{
+	local uname="$(uname)"
+	case "$uname" in
+		Linux) echo linux ;;
+		Darwin) echo macos ;;
+		*) fail "unknown platform $uname" ;;
+	esac
+}
+
+#
+# Returns the CPU architecture.
+#
+function architecture()
+{
+	local arch="$(uname -m)"
+	case "$arch" in
+		x86_64) echo amd64 ;;
+		*) fail "unknown architecture $arch" ;;
+	esac
+}
