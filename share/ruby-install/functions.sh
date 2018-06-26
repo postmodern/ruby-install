@@ -61,7 +61,7 @@ function verify_ruby()
 function extract_ruby()
 {
 	log "Extracting $ruby_archive to $src_dir/$ruby_dir_name ..."
-	extract "$src_dir/$ruby_archive" "$src_dir" || return $?
+	extract "$src_dir/$ruby_archive" "$src_dir/$ruby_dir_name" || return $?
 }
 
 #

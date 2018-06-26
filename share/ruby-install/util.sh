@@ -105,19 +105,27 @@ function download()
 
 #
 # Extracts an archive.
+# The archive should contain a single directory.
 #
 function extract()
 {
 	local archive="$1"
-	local dest="${2:-${archive%/*}}"
+	local dest="$2"
+	local tmp="${dest}_tmp"
+
+	rm -rf "$tmp" "$dest" || return $?
+	mkdir "$tmp" || return $?
 
 	case "$archive" in
-		*.tgz|*.tar.gz) tar -xzf "$archive" -C "$dest" || return $? ;;
-		*.tbz|*.tbz2|*.tar.bz2)	tar -xjf "$archive" -C "$dest" || return $? ;;
-		*.zip) unzip "$archive" -d "$dest" || return $? ;;
+		*.tgz|*.tar.gz) tar -xzf "$archive" -C "$tmp" || return $? ;;
+		*.tbz|*.tbz2|*.tar.bz2)	tar -xjf "$archive" -C "$tmp" || return $? ;;
+		*.zip) unzip "$archive" -d "$tmp" || return $? ;;
 		*)
 			error "Unknown archive format: $archive"
 			return 1
 			;;
 	esac
+
+	mv "$tmp"/* "$dest" || return $?
+	rmdir "$tmp" || return $?
 }
