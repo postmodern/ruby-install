@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-ruby_archive="jruby-bin-$ruby_version.tar.gz"
+ruby_archive="jruby-dist-$ruby_version-bin.tar.gz"
 ruby_dir_name="jruby-$ruby_version"
-ruby_mirror="${ruby_mirror:-https://s3.amazonaws.com/jruby.org/downloads}"
+ruby_mirror="${ruby_mirror:-https://repo1.maven.org/maven2/org/jruby/jruby-dist}"
 ruby_url="${ruby_url:-$ruby_mirror/$ruby_version/$ruby_archive}"
 
 #
