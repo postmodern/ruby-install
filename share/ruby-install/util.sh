@@ -131,7 +131,10 @@ function platform()
 	case "$uname" in
 		Linux) echo linux ;;
 		Darwin) echo macos ;;
-		*) fail "unknown platform $uname" ;;
+		*)
+			error "unknown platform $uname"
+			return 1
+			;;
 	esac
 }
 
@@ -143,6 +146,9 @@ function architecture()
 	local arch="$(uname -m)"
 	case "$arch" in
 		x86_64) echo amd64 ;;
-		*) fail "unknown architecture $arch" ;;
+		*)
+			error "unknown architecture $arch"
+			return 1
+			;;
 	esac
 }
