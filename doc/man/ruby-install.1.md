@@ -1,4 +1,4 @@
-# ruby-install 1 "Dec 2016" ruby-install "User Manuals"
+# ruby-install 1 "May 2018" ruby-install "User Manuals"
 
 ## SYNOPSIS
 
@@ -6,7 +6,7 @@
 
 ## DESCRIPTION
 
-Installs Ruby, JRuby, Rubinius or MagLev.
+Installs Ruby, JRuby, Rubinius, TruffleRuby or mruby.
 
 https://github.com/postmodern/ruby-install#readme
 

@@ -6,7 +6,7 @@ ruby_install_version="0.6.1"
 ruby_install_dir="${BASH_SOURCE[0]%/*}"
 ruby_install_cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/ruby-install"
 
-rubies=(ruby jruby rbx maglev mruby)
+rubies=(ruby jruby rbx truffleruby mruby)
 patches=()
 configure_opts=()
 make_opts=()
