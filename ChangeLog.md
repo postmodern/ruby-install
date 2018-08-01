@@ -1,3 +1,20 @@
+### 0.7.0 / 2018-08-01
+
+* Added support for [TruffleRuby].
+* Added a `--package-manager` option for explicitly selecting the desired
+  package manager.
+* Added support for FreeBSD's `pkg` package manager.
+* Added support for OpenSUSE's `zypper` package manager.
+* Deprecate [MagLev] support.
+
+#### jruby
+
+* Bump java dependency to Java 8.
+
+#### rbx
+
+* Relax `llvm` dependency to include LLVM >= 3.6.
+
 ### 0.6.1 / 2016-12-24
 
 * Require `wget` > 1.12.
@@ -326,5 +343,6 @@
 [Rubinius]: http://rubini.us/
 [MagLev]: http://maglev.github.io/
 [MRuby]: https://github.com/mruby/mruby#readme
+[TruffleRuby]: https://github.com/oracle/truffleruby#readme
 
 [ruby-versions]: https://github.com/postmodern/ruby-versions#readme
