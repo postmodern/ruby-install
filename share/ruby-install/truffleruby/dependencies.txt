@@ -1,0 +1,8 @@
+apt: zlib1g-dev libssl-dev clang llvm make
+dnf: zlib-devel openssl-devel clang llvm make
+yum: zlib-devel openssl-devel clang llvm make
+port: openssl llvm-4.0
+brew: openssl llvm@4
+pacman: zlib openssl clang llvm make
+zypper: zlib-devel libopenssl-devel llvm-clang llvm make
+pkg: openssl llvm-devel

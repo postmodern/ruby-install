@@ -1,4 +1,4 @@
-# ruby-install 1 "Dec 2016" ruby-install "User Manuals"
+# ruby-install 1 "May 2018" ruby-install "User Manuals"
 
 ## SYNOPSIS
 
@@ -6,7 +6,7 @@
 
 ## DESCRIPTION
 
-Installs Ruby, JRuby, Rubinius or MagLev.
+Installs Ruby, JRuby, Rubinius, TruffleRuby or mruby.
 
 https://github.com/postmodern/ruby-install#readme
 
@@ -71,6 +71,9 @@ https://github.com/postmodern/ruby-install#readme
 
 `--sha512` *SHA512*
 	Specifies the SHA512 checksum for the Ruby archive.
+
+`--package-manager [apt|dnf|yum|pacman|zypper|brew|pkg|port]`
+  Use an alternative package manager.
 
 `--no-download`
 	Use the previously downloaded Ruby archive.
