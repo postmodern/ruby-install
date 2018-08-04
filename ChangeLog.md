@@ -1,4 +1,4 @@
-### 0.7.0 / 2018-08-01
+### 0.7.0 / 2018-08-04
 
 * Added support for [TruffleRuby].
 * Added a `--package-manager` option for explicitly selecting the desired
@@ -10,6 +10,8 @@
 #### jruby
 
 * Bump java dependency to Java 8.
+* Change the mirror URL to use
+  `https://repo1.maven.org/maven2/org/jruby/jruby-dist`.
 
 #### rbx
 
