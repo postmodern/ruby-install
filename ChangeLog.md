@@ -5,7 +5,7 @@
   package manager.
 * Added support for FreeBSD's `pkg` package manager.
 * Added support for OpenSUSE's `zypper` package manager.
-* Deprecate [MagLev] support.
+* Remove [MagLev] support.
 
 #### jruby
 
