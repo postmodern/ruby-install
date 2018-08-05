@@ -1,4 +1,4 @@
-# ruby-install 1 "May 2018" ruby-install "User Manuals"
+# ruby-install 1 "Aug 2018" ruby-install "User Manuals"
 
 ## SYNOPSIS
 
@@ -13,7 +13,8 @@ https://github.com/postmodern/ruby-install#readme
 ## ARGUMENTS
 
 *RUBY*
-	Install Ruby by name.
+	Install Ruby by name. Must be either `ruby`, `jruby`, `rbx`, `truffleruby`, or
+  `mruby`.
 
 *VERSION*
 	Optionally select the version of selected Ruby.
