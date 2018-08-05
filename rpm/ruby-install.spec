@@ -1,5 +1,5 @@
 %define name ruby-install
-%define version 0.6.1
+%define version 0.7.0
 %define release 1
 
 %define buildroot %{_topdir}/BUILDROOT
@@ -36,6 +36,9 @@ make install PREFIX=%{buildroot}/usr
 %{_defaultdocdir}/%{name}-%{version}/*
 
 %changelog
+* Sat Aug 04 2018 Postmodern <postmodern.mod3@gmail.com> - 0.7.0-1
+- Rebuilt for version 0.7.0.
+
 * Sat Dec 24 2016 Postmodern <postmodern.mod3@gmail.com> - 0.6.1-1
 - Rebuilt for version 0.6.1.
 - Added patch as dependency.
