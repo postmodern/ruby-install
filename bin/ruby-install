@@ -38,7 +38,7 @@ if [[ ! $no_verify -eq 1 ]]; then
 fi
 
 if [[ ! $no_extract -eq 1 ]]; then
-  extract_ruby   || fail "Unpacking of $ruby_archive failed!"
+	extract_ruby   || fail "Unpacking of $ruby_archive failed!"
 fi
 
 download_patches || fail "Fetching patches $patches failed!"
