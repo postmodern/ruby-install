@@ -91,9 +91,16 @@ function download()
 
 	mkdir -p "${dest%/*}" || return $?
 
+	if [[ ! -z $proxy ]]; then 
+		case "$downloader" in
+			wget) proxy_options="-e use_proxy=yes -e http_proxy=$proxy";;
+			curl) proxy_options="--socks5 $proxy";;
+		esac
+	fi
+
 	case "$downloader" in
-		wget) wget -c -O "$dest.part" "$url" || return $?         ;;
-		curl) curl -f -L -C - -o "$dest.part" "$url" || return $? ;;
+		wget) wget -c -O "$dest.part" "$proxy_options" "$url" || return $?         ;;
+		curl) curl -f -L -C - -o "$dest.part" "$proxy_options" "$url" || return $? ;;
 		"")
 			error "Could not find wget or curl"
 			return 1

@@ -54,7 +54,8 @@ Options:
 	--no-verify		Do not verify the downloaded Ruby archive
 	--no-extract		Do not re-extract the downloaded Ruby archive
 	--no-install-deps	Do not install build dependencies before installing Ruby
-	--no-reinstall  	Skip installation if another Ruby is detected in same location
+	--no-reinstall  	Skip installation if another Ruby is detected in same 
+	--proxy  PROXY_HOST:PROXY_PORT   Use a proxy server
 	-L, --latest		Downloads the latest ruby versions and checksums
 	-V, --version		Prints the version
 	-h, --help		Prints this message
@@ -116,6 +117,10 @@ function parse_options()
 			--system)
 				install_dir="$system_dir"
 				shift 1
+				;;
+			--proxy)
+				proxy="$2"
+				shift 2
 				;;
 			-s|--src-dir)
 				src_dir="$2"
