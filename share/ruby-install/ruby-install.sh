@@ -77,7 +77,7 @@ USAGE
 #
 function parse_ruby()
 {
-	local arg="$1"
+	local arg=$(echo "$1" | tr '[:upper:]' '[:lower:]')
 
 	case "$arg" in
 		*-*)
