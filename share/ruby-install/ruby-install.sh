@@ -40,7 +40,7 @@ Options:
 	    --system		Alias for -i $system_dir
 	-s, --src-dir DIR	Directory to download source-code into
 	-c, --cleanup		Remove archive and unpacked source-code after installation
-	-j, --jobs JOBS		Number of jobs to run in parallel when compiling
+	-j, --jobs=JOBS		Number of jobs to run in parallel when compiling
 	-p, --patch FILE	Patch to apply to the Ruby source-code
 	-M, --mirror URL	Alternate mirror to download the Ruby archive from
 	-u, --url URL		Alternate URL to download the Ruby archive from
