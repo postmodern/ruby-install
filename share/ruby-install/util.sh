@@ -63,7 +63,7 @@ function fail()
 
 #
 # Searches a file for a key and echos the value.
-# If the key cannot be found, the third argument will be echoed.
+# Nothing is returned if the key cannot be found.
 #
 function fetch()
 {
