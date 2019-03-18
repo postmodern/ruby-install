@@ -38,8 +38,17 @@ function install_packages()
 		pkg)	$sudo pkg install -y "$@" || return $?     ;;
 		brew)
 			local brew_owner="$(/usr/bin/stat -f %Su "$(command -v brew)")"
-			sudo -u "$brew_owner" brew install "$@" ||
-			sudo -u "$brew_owner" brew upgrade "$@" || return $?
+			local installed=$(sudo -u "$brew_owner" brew list -1)
+			local -a missing_pkgs
+
+			for dep in "$@"; do
+				[[ "$installed" =~ [[:space:]]"$dep" ]] || missing_pkgs+=($dep)
+			done
+
+			if (( ${#missing_pkgs[@]} > 0 )); then
+				sudo -u "$brew_owner" brew install "${missing_pkgs[@]}" ||
+				sudo -u "$brew_owner" brew upgrade "${missing_pkgs[@]}" || return $?
+			fi
 			;;
 		pacman)
 			local missing_pkgs=($(pacman -T "$@"))
