@@ -51,6 +51,10 @@ clean:
 check:
 	shellcheck --exclude SC2034 share/$(NAME)/*.sh bin/*
 
+lint:
+	# Check dependencies are consistent for truffleruby and graalvm
+	diff share/ruby-install/graalvm/dependencies.txt share/ruby-install/truffleruby/dependencies.txt
+
 test:
 	./test/runner
 
