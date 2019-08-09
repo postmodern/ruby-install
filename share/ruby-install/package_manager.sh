@@ -3,6 +3,7 @@
 #
 # Auto-detect the package manager.
 #
+
 function detect_package_manager()
 {
 	if   command -v zypper  >/dev/null; then package_manager="zypper"
@@ -32,30 +33,29 @@ function set_package_manager()
 function install_packages()
 {
 	case "$package_manager" in
-		apt)	$sudo apt-get install -y "$@" || return $? ;;
-		dnf|yum)$sudo $package_manager install -y "$@" || return $?     ;;
-		port)   $sudo port install "$@" || return $?       ;;
-		pkg)	$sudo pkg install -y "$@" || return $?     ;;
-		brew)
-			local brew_owner="$(/usr/bin/stat -f %Su "$(command -v brew)")"
-			if [ "$(whoami)" -eq "$brew_owner" ]; then
-				brew install "$@" ||
-				brew upgrade "$@" || return $?
-			else
-				sudo -u "$brew_owner" brew install "$@" ||
-				sudo -u "$brew_owner" brew upgrade "$@" || return $?
-			fi
-			;;
 		pacman)
 			local missing_pkgs=($(pacman -T "$@"))
 
 			if (( ${#missing_pkgs[@]} > 0 )); then
-				$sudo pacman -S "${missing_pkgs[@]}" || return $?
+				installer -S "${missing_pkgs[@]}" || return $?
 			fi
 			;;
-		zypper) $sudo zypper -n in -l $* || return $? ;;
-		"")	warn "Could not determine Package Manager. Proceeding anyway." ;;
+		"")	    warn "Could not determine Package Manager. Proceeding anyway." ;;
+		brew)   installer install "$@" || installer upgrade "$@" || return $? ;;
+		zypper) installer -n in -l $* || return $? ;;
+		*)      installer install -y "$@" || return $?;;
 	esac
+}
+
+function installer() {
+	p="$(command -v $package_manager)"
+	pkg_manager_owner="$((stat -c %U $p || stat -f %Su $p) 2>/dev/null )"
+
+	if [ "$(id -un)" == "$pkg_manager_owner" ]; then
+		$package_manager "$@"
+	else
+		sudo -u "$pkg_manager_owner" $package_manager "$@"
+	fi
 }
 
 detect_package_manager

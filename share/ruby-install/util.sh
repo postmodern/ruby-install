@@ -10,13 +10,6 @@ elif command -v curl >/dev/null; then downloader="curl"
 fi
 
 #
-# Don't use sudo if already root.
-#
-if (( UID == 0 )); then sudo=""
-else                    sudo="sudo"
-fi
-
-#
 # Prints a log message.
 #
 function log()
