@@ -25,7 +25,7 @@ function install_packages()
 			local brew_sudo=""
 
 			if [[ "$brew_owner" != "$(id -un)" ]]; then
-				brew_sudo="sudo -u $brew_owner"
+				brew_sudo="sudo -Eu $brew_owner"
 			fi
 
 			$brew_sudo brew install "$@" ||
