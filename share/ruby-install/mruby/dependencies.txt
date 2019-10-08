@@ -6,3 +6,5 @@ brew: bison
 pacman: gcc make bison
 zypper: gcc make bison
 pkg: gcc automake bison
+centos7: gcc make bison
+centos8: gcc make bison
