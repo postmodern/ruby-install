@@ -3,9 +3,22 @@
 #
 # Auto-detect the package manager.
 #
+function detect_distro()
+{
+	[ "$1" = "centos7" ] && test -f  /etc/redhat-release && \
+		grep -q '^CentOS Linux release 7' /etc/redhat-release && return 0
+
+	[ "$1" = "centos8" ] && test -f  /etc/redhat-release && \
+		grep -q '^CentOS Linux release 8' /etc/redhat-release && return 0
+
+	return 1
+}
+
 function detect_package_manager()
 {
-	if   command -v zypper  >/dev/null; then package_manager="zypper"
+	if   detect_distro centos7        ; then package_manager="centos7"
+	elif detect_distro centos8        ; then package_manager="centos8"
+	elif command -v zypper  >/dev/null; then package_manager="zypper"
 	elif command -v apt-get >/dev/null; then package_manager="apt"
 	elif command -v dnf     >/dev/null; then package_manager="dnf"
 	elif command -v yum     >/dev/null; then package_manager="yum"
@@ -49,6 +62,8 @@ function install_packages()
 			fi
 			;;
 		zypper) $sudo zypper -n in -l $* || return $? ;;
+		centos7)$sudo yum install -y "$@" || return $?     ;;
+		centos8)$sudo dnf install -y "$@" || return $?     ;;
 		"")	warn "Could not determine Package Manager. Proceeding anyway." ;;
 	esac
 }
