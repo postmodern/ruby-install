@@ -63,7 +63,7 @@ function install_packages()
 			;;
 		zypper) $sudo zypper -n in -l $* || return $? ;;
 		centos7)$sudo yum install -y "$@" || return $?     ;;
-		centos8)$sudo dnf install -y "$@" || return $?     ;;
+		centos8)$sudo dnf install -y --enablerepo PowerTools "$@" || return $?     ;;
 		"")	warn "Could not determine Package Manager. Proceeding anyway." ;;
 	esac
 }
