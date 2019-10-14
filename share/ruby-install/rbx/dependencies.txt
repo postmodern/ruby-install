@@ -6,3 +6,5 @@ brew: openssl readline libyaml gdbm
 pacman: gcc automake flex bison ruby llvm libedit zlib libyaml openssl gdbm readline ncurses
 zypper: gcc gcc-c++ make automake flex bison ruby2.2-devel ruby2.2-rubygem-bundler llvm-devel zlib-devel libyaml-devel libopenssl-devel gdbm-devel readline-devel ncurses-devel
 pkg: gmake flex bison ruby devel/ruby-gems llvm-devel openssl readline libyaml gdbm
+centos7: gcc gcc-c++ automake flex bison ruby-devel rubygems llvm-static llvm-devel libedit-devel zlib-devel libyaml-devel openssl-devel gdbm-devel readline-devel ncurses-devel bzip2
+centos8: gcc gcc-c++ automake flex bison ruby-devel rubygems llvm-static llvm-devel libedit-devel zlib-devel libyaml-devel openssl-devel gdbm-devel readline-devel ncurses-devel bzip2

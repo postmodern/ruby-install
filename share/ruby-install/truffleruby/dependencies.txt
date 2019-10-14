@@ -6,3 +6,5 @@ brew: openssl llvm@4
 pacman: zlib openssl clang llvm make
 zypper: zlib-devel libopenssl-devel llvm-clang llvm make
 pkg: openssl llvm-devel
+centos7: zlib-devel openssl-devel clang llvm make
+centos8: zlib-devel openssl-devel clang llvm make
