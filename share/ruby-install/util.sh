@@ -110,10 +110,11 @@ function extract()
 {
 	local archive="$1"
 	local dest="${2:-${archive%/*}}"
+	local extra_args="$3"
 
 	case "$archive" in
-		*.tgz|*.tar.gz) tar -xzf "$archive" -C "$dest" || return $? ;;
-		*.tbz|*.tbz2|*.tar.bz2)	tar -xjf "$archive" -C "$dest" || return $? ;;
+		*.tgz|*.tar.gz) tar -xzf "$archive" -C "$dest" "$extra_args" || return $? ;;
+		*.tbz|*.tbz2|*.tar.bz2)	tar -xjf "$archive" -C "$dest" "$extra_args" || return $? ;;
 		*.zip) unzip "$archive" -d "$dest" || return $? ;;
 		*)
 			error "Unknown archive format: $archive"
