@@ -1,7 +1,7 @@
 SHELL=/usr/bin/env bash
 NAME=ruby-install
-VERSION=0.7.0
-AUTHOR=postmodern
+VERSION=0.7.0.1
+AUTHOR=engineyard
 URL=https://github.com/$(AUTHOR)/$(NAME)
 
 DIRS=bin share
