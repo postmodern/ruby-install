@@ -35,6 +35,7 @@ function download_ruby_versions_file()
 {
 	local ruby="$1"
 	local ruby_name="${ruby/rbx/rubinius}"
+	ruby_name="${ruby_name/rubyjemalloc/ruby}"
 
 	local file="$2"
 	local dir="$ruby_install_cache_dir/$ruby"
