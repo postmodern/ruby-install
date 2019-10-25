@@ -75,6 +75,5 @@ install:
 uninstall:
 	for file in $(INSTALL_FILES); do rm -f $(DESTDIR)$(PREFIX)/$$file; done
 	rm -rf $(DESTDIR)$(PREFIX)/$(DOC_DIR)
-	rmdir $(DESTDIR)$(PREFIX)/$(SHARE_DIR)
 
 .PHONY: build man download sign verify clean check test tag release rpm install uninstall all
