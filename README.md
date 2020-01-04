@@ -156,7 +156,7 @@ ruby-install is already included in the [AUR]:
 
 ### Fedora Linux
 
-ruby-install is available on [Fedora Copr](https://copr.fedorainfracloud.org/coprs/postmodern/ruby-install/).
+ruby-install is available on [Fedora Copr](https://copr.fedorainfracloud.org/coprs/duritong/chruby/).
 
 ### FreeBSD
 
