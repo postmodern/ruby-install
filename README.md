@@ -102,6 +102,11 @@ Install a Ruby with specific configuration:
 
     $ ruby-install ruby 2.4.0 -- --enable-shared --enable-dtrace CFLAGS="-O3"
 
+Install an old Ruby version < 2.4:
+
+    $ brew install rbenv/tap/openssl@1.0
+    $ ruby-install ruby 2.2.0 -- --with-openssl-dir=$(brew --prefix openssl@1.0)
+
 Install a Ruby without installing dependencies first:
 
     $ ruby-install --no-install-deps ruby 2.4.0
