@@ -106,6 +106,7 @@ Install an old Ruby version < 2.4:
 
     $ brew install rbenv/tap/openssl@1.0
     $ ruby-install ruby 2.2.0 -- --with-openssl-dir=$(brew --prefix openssl@1.0)
+    $ gem install bundler -v '~>1'
 
 Install a Ruby without installing dependencies first:
 
