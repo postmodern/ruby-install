@@ -21,4 +21,6 @@ before_script:
   - __rvm_unload
   - export SHUNIT2="$(command -v shunit2 2>/dev/null)"
 
-script: make test
+script:
+  - make lint
+  - make test
