@@ -1,3 +1,14 @@
+### 0.7.1 / 2020-07-22
+
+* `Makefile` corrections:
+  * Make `SHARE_DIR` and `DOC_DIR` respect `PREFIX`.
+  * Do not attempt `rmdir $SHARE_DIR` which will always fail.
+
+#### TruffleRuby
+
+* Remove `llvm` from the dependencies (@eregon).
+  * [TruffleRuby] >= 19.3 now uses an internal LLVM toolchain.
+
 ### 0.7.0 / 2018-08-04
 
 * Added support for [TruffleRuby].
