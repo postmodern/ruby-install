@@ -4,6 +4,10 @@ os:
   - linux
   - osx
 
+jobs:
+  allow_failures:
+    - os: osx
+
 language: c
 
 addons:
