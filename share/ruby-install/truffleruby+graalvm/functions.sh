@@ -15,7 +15,8 @@ ruby_url="${ruby_url:-$ruby_mirror/vm-$ruby_version/$ruby_archive}"
 function install_ruby()
 {
 	log "Installing GraalVM $ruby_version ..."
-	cp -R "$src_dir/$ruby_dir_name" "$install_dir" || return $?
+	mkdir "$install_dir" || return $?
+	cp -R "$src_dir/$ruby_dir_name" "$install_dir/graalvm" || return $?
 }
 
 #
@@ -23,11 +24,23 @@ function install_ruby()
 #
 function post_install()
 {
+	cd "$install_dir/graalvm" || return $?
+	if [[ "$platform" == "macos" ]]; then
+	  cd Contents/Home || return $?
+	fi
+
 	log "Installing the Ruby component ..."
-	"$install_dir/bin/gu" install ruby || return $?
+	bin/gu install ruby || return $?
+
+	local ruby_home
+	ruby_home=$(bin/ruby -e 'print RbConfig::CONFIG["prefix"]') || return $?
+
+	# Make gu available in PATH (useful to install other languages)
+	ln -s "$PWD/bin/gu" "$ruby_home/bin/gu" || return $?
+
+	cd "$install_dir" || return $?
+	ln -s "${ruby_home#"$install_dir/"}/bin" . || return $?
 
 	log "Running truffleruby post-install hook ..."
-	local ruby_home
-	ruby_home=$("$install_dir/bin/ruby" -e 'print RbConfig::CONFIG["prefix"]')
 	"$ruby_home/lib/truffle/post_install_hook.sh" || return $?
 }
