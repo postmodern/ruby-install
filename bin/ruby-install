@@ -21,6 +21,11 @@ if [[ $no_reinstall -eq 1 ]] && [[ -x "$install_dir/bin/ruby" ]]; then
 	exit
 fi
 
+if [[ -d "$install_dir" ]] && [[ $(basename "$install_dir") == "$ruby-$ruby_version" ]]; then
+	log "Removing previously-installed $install_dir"
+	rm -rf "$install_dir"
+fi
+
 log "Installing $ruby $ruby_version into $install_dir ..."
 
 pre_install || fail "Pre-install tasks failed!"
