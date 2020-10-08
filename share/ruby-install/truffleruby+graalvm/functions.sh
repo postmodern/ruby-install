@@ -26,7 +26,7 @@ function post_install()
 {
 	cd "$install_dir/graalvm" || return $?
 	if [[ "$platform" == "macos" ]]; then
-	  cd Contents/Home || return $?
+		cd Contents/Home || return $?
 	fi
 
 	log "Installing the Ruby component ..."
