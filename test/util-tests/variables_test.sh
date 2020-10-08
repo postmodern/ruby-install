@@ -3,6 +3,16 @@
 . ./test/helper.sh
 . ./share/ruby-install/util.sh
 
+function test_os_platform()
+{
+	assertNotEquals "did not set \$os_platform" "" "$os_platform"
+}
+
+function test_os_arch()
+{
+	assertNotEquals "did not set \$os_arch" "" "$os_arch"
+}
+
 function test_downloader_with_wget()
 {
 	command -v wget >/dev/null || return

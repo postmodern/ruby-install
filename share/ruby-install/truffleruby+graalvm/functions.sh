@@ -1,11 +1,18 @@
 #!/usr/bin/env bash
 
-platform=$(platform) || return $?
-graalvm_platform="${platform/macos/darwin}"
-arch=$(architecture) || return $?
+case "$os_platform" in
+	Linux)	graalvm_platform="linux" ;;
+	Darwin)	graalvm_platform="darwin" ;;
+	*)	error "Unsupported platform $os_platform" ;;
+esac
+
+case "$os_arch" in
+	x86_64)	graalvm_arch="amd64" ;;
+	*)	error "Unsupported architecture $os_arch" ;;
+esac
 
 ruby_dir_name="graalvm-ce-java8-$ruby_version"
-ruby_archive="graalvm-ce-java8-$graalvm_platform-$arch-$ruby_version.tar.gz"
+ruby_archive="graalvm-ce-java8-$graalvm_platform-$graalvm_arch-$ruby_version.tar.gz"
 ruby_mirror="${ruby_mirror:-https://github.com/graalvm/graalvm-ce-builds/releases/download}"
 ruby_url="${ruby_url:-$ruby_mirror/vm-$ruby_version/$ruby_archive}"
 
@@ -26,7 +33,7 @@ function post_install()
 {
 	cd "$install_dir/graalvm" || return $?
 
-	if [[ "$platform" == "macos" ]]; then
+	if [[ "$graalvm_platform" == "darwin" ]]; then
 		cd Contents/Home || return $?
 	fi
 

@@ -2,6 +2,9 @@
 
 source "$ruby_install_dir/package_manager.sh"
 
+os_platform="$(uname -s)"
+os_arch="$(uname -m)"
+
 #
 # Auto-detect the downloader.
 #
@@ -117,37 +120,6 @@ function extract()
 		*.zip) unzip "$archive" -d "$dest" || return $? ;;
 		*)
 			error "Unknown archive format: $archive"
-			return 1
-			;;
-	esac
-}
-
-#
-# Returns the executing platform.
-#
-function platform()
-{
-	local uname="$(uname)"
-	case "$uname" in
-		Linux) echo linux ;;
-		Darwin) echo macos ;;
-		*)
-			error "unknown platform $uname"
-			return 1
-			;;
-	esac
-}
-
-#
-# Returns the CPU architecture.
-#
-function architecture()
-{
-	local arch="$(uname -m)"
-	case "$arch" in
-		x86_64) echo amd64 ;;
-		*)
-			error "unknown architecture $arch"
 			return 1
 			;;
 	esac
