@@ -25,6 +25,7 @@ function install_ruby()
 function post_install()
 {
 	cd "$install_dir/graalvm" || return $?
+
 	if [[ "$platform" == "macos" ]]; then
 		cd Contents/Home || return $?
 	fi
@@ -36,10 +37,10 @@ function post_install()
 	ruby_home=$(bin/ruby -e 'print RbConfig::CONFIG["prefix"]') || return $?
 
 	# Make gu available in PATH (useful to install other languages)
-	ln -s "$PWD/bin/gu" "$ruby_home/bin/gu" || return $?
+	ln -fs "$PWD/bin/gu" "$ruby_home/bin/gu" || return $?
 
 	cd "$install_dir" || return $?
-	ln -s "${ruby_home#"$install_dir/"}/bin" . || return $?
+	ln -fs "${ruby_home#"$install_dir/"}/bin" . || return $?
 
 	log "Running truffleruby post-install hook ..."
 	"$ruby_home/lib/truffle/post_install_hook.sh" || return $?
