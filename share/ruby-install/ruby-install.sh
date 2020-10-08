@@ -104,7 +104,7 @@ function parse_options()
 	local argv=()
 
 	while [[ $# -gt 0 ]]; do
-		case $1 in
+		case "$1" in
 			-r|--rubies-dir)
 				rubies_dir="$2"
 				shift 2
