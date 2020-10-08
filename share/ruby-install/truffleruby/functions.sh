@@ -3,12 +3,12 @@
 case "$os_platform" in
 	Linux)	truffleruby_platform="linux" ;;
 	Darwin)	truffleruby_platform="macos" ;;
-	*)	error "Unsupported platform $os_platform" ;;
+	*)	fail "Unsupported platform $os_platform" ;;
 esac
 
 case "$os_arch" in
 	x86_64)	truffleruby_arch="amd64" ;;
-	*)	error "Unsupported platform $os_arch" ;;
+	*)	fail "Unsupported platform $os_arch" ;;
 esac
 
 ruby_dir_name="truffleruby-$ruby_version-$truffleruby_platform-$truffleruby_arch"
