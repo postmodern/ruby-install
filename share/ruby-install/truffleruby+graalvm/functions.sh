@@ -40,8 +40,12 @@ function post_install()
 	log "Installing the Ruby component ..."
 	bin/gu install ruby || return $?
 
-	local ruby_home
-	ruby_home=$(bin/ruby -e 'print RbConfig::CONFIG["prefix"]') || return $?
+	local ruby_home="$(bin/ruby -e 'print RbConfig::CONFIG["prefix"]')"
+
+	if [[ -z "$ruby_home" ]]; then
+		error "Could not determine TruffleRuby home"
+		return 1
+	fi
 
 	# Make gu available in PATH (useful to install other languages)
 	ln -fs "$PWD/bin/gu" "$ruby_home/bin/gu" || return $?
