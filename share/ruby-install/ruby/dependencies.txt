@@ -1,8 +1,8 @@
-apt: build-essential bison zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libreadline-dev libncurses5-dev libffi-dev
-dnf: gcc automake bison zlib-devel libyaml-devel openssl-devel gdbm-devel readline-devel ncurses-devel libffi-devel
-yum: gcc automake bison zlib-devel libyaml-devel openssl-devel gdbm-devel readline-devel ncurses-devel libffi-devel
+apt: xz-utils build-essential bison zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libreadline-dev libncurses5-dev libffi-dev
+dnf: xz gcc automake bison zlib-devel libyaml-devel openssl-devel gdbm-devel readline-devel ncurses-devel libffi-devel
+yum: xz gcc automake bison zlib-devel libyaml-devel openssl-devel gdbm-devel readline-devel ncurses-devel libffi-devel
 port: automake bison openssl readline libyaml gdbm libffi
 brew: automake bison openssl readline libyaml gdbm libffi
-pacman: gcc make bison zlib ncurses openssl readline libyaml gdbm libffi
-zypper: gcc make automake zlib-devel libyaml-devel libopenssl-devel gdbm-devel readline-devel ncurses-devel libffi-devel
+pacman: xz gcc make bison zlib ncurses openssl readline libyaml gdbm libffi
+zypper: xz gcc make automake zlib-devel libyaml-devel libopenssl-devel gdbm-devel readline-devel ncurses-devel libffi-devel
 pkg: openssl readline libyaml gdbm libffi
