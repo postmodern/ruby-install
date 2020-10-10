@@ -97,11 +97,11 @@ function test_parse_options_with_src_dir()
 
 function test_parse_options_with_jobs()
 {
-	local expected="--jobs"
+	local expected=(--jobs 1)
 
 	parse_options "$expected" "ruby"
 
-	assertEquals "did not set \$make_opts" "$expected" "${make_opts[0]}"
+	assertEquals "did not set \$make_opts" "${expected[*]}" "${make_opts[*]}"
 }
 
 function test_parse_options_with_jobs_and_arguments()

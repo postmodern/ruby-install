@@ -125,7 +125,11 @@ function parse_options()
 				cleanup=1
 				shift
 				;;
-			-j|--jobs|-j+([0-9])|--jobs=+([0-9]))
+			-j|--jobs)
+				make_opts+=("$1" "$2")
+				shift 2
+				;;
+			-j+([0-9])|--jobs=+([0-9]))
 				make_opts+=("$1")
 				shift
 				;;
