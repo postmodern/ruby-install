@@ -22,8 +22,8 @@ ruby_url="${ruby_url:-$ruby_mirror/vm-$ruby_version/$ruby_archive}"
 function install_ruby()
 {
 	log "Installing GraalVM $ruby_version ..."
-	mkdir -p "$install_dir" || return $?
-	cp -R "$src_dir/$ruby_dir_name" "$install_dir/graalvm" || return $?
+	mkdir -p "$install_dir/graalvm" || return $?
+	cp -R "$src_dir/$ruby_dir_name"/* "$install_dir/graalvm" || return $?
 }
 
 #
@@ -38,9 +38,9 @@ function post_install()
 	fi
 
 	log "Installing the Ruby component ..."
-	bin/gu install ruby || return $?
+	./bin/gu install ruby || return $?
 
-	local ruby_home="$(bin/ruby -e 'print RbConfig::CONFIG["prefix"]')"
+	local ruby_home="$(./bin/ruby -e 'print RbConfig::CONFIG["prefix"]')"
 
 	if [[ -z "$ruby_home" ]]; then
 		error "Could not determine TruffleRuby home"
