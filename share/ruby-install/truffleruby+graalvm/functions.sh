@@ -23,7 +23,7 @@ function install_ruby()
 {
 	log "Installing GraalVM $ruby_version ..."
 	mkdir -p "$install_dir/graalvm" || return $?
-	cp -R "$src_dir/$ruby_dir_name"/* "$install_dir/graalvm" || return $?
+	cp -R "$src_dir/$ruby_dir_name"/* "$install_dir/graalvm/" || return $?
 }
 
 #
