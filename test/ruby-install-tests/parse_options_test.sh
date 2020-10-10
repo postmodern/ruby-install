@@ -95,7 +95,7 @@ function test_parse_options_with_src_dir()
 	assertEquals "did not set \$src_dir" "$expected" "$src_dir"
 }
 
-function test_parse_options_with_jobs()
+function test_parse_options_with_jobs_with_argument()
 {
 	local expected=(--jobs 1)
 
@@ -104,7 +104,16 @@ function test_parse_options_with_jobs()
 	assertEquals "did not set \$make_opts" "${expected[*]}" "${make_opts[*]}"
 }
 
-function test_parse_options_with_jobs_and_arguments()
+function test_parse_options_with_jobs_as_single_option()
+{
+	local expected="-j4"
+
+	parse_options "$expected" "ruby"
+
+	assertEquals "did not set \$make_opts" "$expected" "${make_opts[0]}"
+}
+
+function test_parse_options_with_jobs_with_equals()
 {
 	local expected="--jobs=4"
 
