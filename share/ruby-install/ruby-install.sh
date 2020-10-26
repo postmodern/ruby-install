@@ -77,23 +77,21 @@ USAGE
 #
 function parse_ruby()
 {
-	local arg="$1"
+	local string="$1"
 
-	case "$arg" in
-		*-*)
-			ruby="${arg%%-*}"
-			ruby_version="${arg#*-}"
+	case "$string" in
+		*-[0-9]*)
+			ruby="${string%-[0-9]*}"
+			ruby_version="${string#$ruby-}"
+			;;
+		[0-9]*)
+			ruby="ruby"
+			ruby_version="$string"
 			;;
 		*)
-			ruby="${arg}"
-			ruby_version=""
+			ruby="$string"
 			;;
 	esac
-
-	if [[ ! "${rubies[@]}" == *"$ruby"* ]]; then
-		error "Unknown ruby: $ruby"
-		return 1
-	fi
 }
 
 #
@@ -250,6 +248,11 @@ function list_rubies()
 #
 function init()
 {
+	if [[ ! "${rubies[*]}" == *"$ruby"* ]]; then
+		error "Unknown ruby: $ruby"
+		return 1
+	fi
+
 	local fully_qualified_version="$(lookup_ruby_version "$ruby" "$ruby_version")"
 
 	if [[ -n "$fully_qualified_version" ]]; then

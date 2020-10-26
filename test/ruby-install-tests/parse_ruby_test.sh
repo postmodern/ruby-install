@@ -18,7 +18,7 @@ function test_parse_ruby_with_a_single_name()
 	assertEquals "did not set \$ruby" "$expected_ruby" "$ruby"
 }
 
-function test_parse_ruby_with_a_name_and_version()
+function test_parse_ruby_with_a_name_dash_version()
 {
 	local expected_ruby="jruby"
 	local expected_version="9.0.0"
@@ -31,11 +31,29 @@ function test_parse_ruby_with_a_name_and_version()
 						  "$ruby_version"
 }
 
-function test_parse_ruby_with_invalid_ruby()
+function test_parse_ruby_with_just_a_version()
 {
-	parse_ruby "foo" 2>/dev/null
+	local expected_version="2.7.0"
 
-	assertEquals "did not return 1" 1 $?
+	parse_ruby "$expected_version"
+
+	assertEquals "did not return successfully" 0 $?
+	assertEquals "did not set \$ruby to ruby" "$ruby" "ruby"
+	assertEquals "did not set \$ruby_version" "$expected_version" \
+	                                          "$ruby_version"
+}
+
+function test_parse_ruby_when_the_ruby_name_contains_multiple_dashes()
+{
+	local expected_ruby="truffleruby-graalvm"
+	local expected_version="1.2.3"
+
+	parse_ruby "$expected_ruby-$expected_version"
+
+	assertEquals "did not return successfully" 0 $?
+	assertEquals "did not match the ruby name" "$expected_ruby" "$ruby"
+	assertEquals "did not match the ruby version" "$expected_version" \
+	                                               "$ruby_version"
 }
 
 SHUNIT_PARENT=$0 . $SHUNIT2
