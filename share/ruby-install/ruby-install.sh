@@ -30,7 +30,7 @@ source "$ruby_install_dir/ruby-versions.sh"
 function usage()
 {
 	cat <<USAGE
-usage: ruby-install [OPTIONS] [RUBY [VERSION] [-- CONFIGURE_OPTS ...]]
+usage: ruby-install [OPTIONS] [[RUBY|VERSION|RUBY-VERSION] [-- CONFIGURE_OPTS ...]]
 
 Options:
 
