@@ -166,23 +166,7 @@ ports tree.
 
 ## Known Issues
 
-### Ruby
-
-Rubies older than 1.9.3-p429 will not compile with [Clang][clang] and require
-[GCC][gcc] >= 4.2. Normally, Linux and BSD systems will already have GCC
-installed. OS X users can install GCC via [homebrew]:
-
-    brew tap homebrew/versions
-    brew install gcc49
-
-And run ruby-install again:
-
-    ruby-install ruby 2.4.0 -- CC=gcc-4.9
-
-### Rubinius
-
-[Rubinius] 1.x and 2.0.x is not supported due to multiple bugs.
-Instead, please use Rubinius >= 2.1.x.
+Please see the [wiki](https://github.com/postmodern/ruby-install/wiki/Known-Issues).
 
 ## Alternatives
 
