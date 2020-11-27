@@ -5,15 +5,33 @@
 #
 function detect_package_manager()
 {
-	if   command -v zypper  >/dev/null; then package_manager="zypper"
-	elif command -v apt-get >/dev/null; then package_manager="apt"
-	elif command -v dnf     >/dev/null; then package_manager="dnf"
-	elif command -v yum     >/dev/null; then package_manager="yum"
-	elif command -v pkg     >/dev/null; then package_manager="pkg"
-	elif command -v port    >/dev/null; then package_manager="port"
-	elif command -v brew    >/dev/null; then package_manager="brew"
-	elif command -v pacman  >/dev/null; then package_manager="pacman"
-	fi
+	case "$os_platform" in
+		Linux)
+			if   command -v zypper  >/dev/null; then
+				package_manager="zypper"
+			elif command -v pacman  >/dev/null; then
+				package_manager="pacman"
+			elif command -v apt-get >/dev/null; then
+				package_manager="apt"
+			elif command -v dnf     >/dev/null; then
+				package_manager="dnf"
+			elif command -v yum     >/dev/null; then
+				package_manager="yum"
+			fi
+			;;
+		Darwin)
+			if   command -v brew >/dev/null; then
+				package_manager="brew"
+			elif command -v port >/dev/null; then
+				package_manager="port"
+			fi
+			;;
+		*BSD)
+			if command -v pkg >/dev/null; then
+				package_manager="pkg"
+			fi
+			;;
+	esac
 }
 
 function set_package_manager()
