@@ -124,3 +124,15 @@ function extract()
 			;;
 	esac
 }
+
+#
+# Copies files from within a source directory into a destination directory.
+#
+function copy_into()
+{
+	local src="$1"
+	local dest="$2"
+
+	mkdir -p "$dest" || return $?
+	cp -R "$src"/* "$dest" || return $?
+}
