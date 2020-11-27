@@ -17,7 +17,8 @@ Installs [Ruby], [JRuby], [Rubinius], [TruffleRuby] (native / GraalVM), or
 * Supports downloading/applying patches.
 * Supports specifying arbitrary `./configure` options.
 * Supports downloading archives using `wget` or `curl`.
-* Supports verifying downloaded archives using `md5sum`, `md5` or `openssl md5`.
+* Supports verifying downloaded archives via MD5, SHA1, SHA256 or SHA512
+  checksums.
 * Supports installing build dependencies via the package manager:
   * [apt]
   * [dnf]
@@ -40,7 +41,10 @@ Installs [Ruby], [JRuby], [Rubinius], [TruffleRuby] (native / GraalVM), or
 
 * [bash] >= 3.x
 * [wget] > 1.12 or [curl]
-* `md5sum`, `md5` or `openssl md5`.
+* `md5sum` or `md5`,
+* `sha1sum` or `sha1`
+* `sha256sum` or `sha256`
+* `sha512sum` or `sha512`
 * `tar`
 * `bzip2`
 * `patch` (if `--patch` is specified)
