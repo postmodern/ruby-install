@@ -2,11 +2,11 @@
 
 shopt -s extglob
 
-ruby_install_version="0.7.1"
+ruby_install_version="0.8.0"
 ruby_install_dir="${BASH_SOURCE[0]%/*}"
 ruby_install_cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/ruby-install"
 
-rubies=(ruby jruby rbx truffleruby mruby)
+rubies=(ruby jruby rbx truffleruby truffleruby-graalvm mruby)
 patches=()
 configure_opts=()
 make_opts=()
@@ -30,7 +30,7 @@ source "$ruby_install_dir/ruby-versions.sh"
 function usage()
 {
 	cat <<USAGE
-usage: ruby-install [OPTIONS] [RUBY [VERSION] [-- CONFIGURE_OPTS ...]]
+usage: ruby-install [OPTIONS] [[RUBY|VERSION|RUBY-VERSION] [-- CONFIGURE_OPTS ...]]
 
 Options:
 
@@ -77,23 +77,21 @@ USAGE
 #
 function parse_ruby()
 {
-	local arg="$1"
+	local string="$1"
 
-	case "$arg" in
-		*-*)
-			ruby="${arg%%-*}"
-			ruby_version="${arg#*-}"
+	case "$string" in
+		*-[0-9]*)
+			ruby="${string%-[0-9]*}"
+			ruby_version="${string#$ruby-}"
+			;;
+		[0-9]*)
+			ruby="ruby"
+			ruby_version="$string"
 			;;
 		*)
-			ruby="${arg}"
-			ruby_version=""
+			ruby="$string"
 			;;
 	esac
-
-	if [[ ! "${rubies[@]}" == *"$ruby"* ]]; then
-		error "Unknown ruby: $ruby"
-		return 1
-	fi
 }
 
 #
@@ -254,6 +252,11 @@ function list_rubies()
 #
 function init()
 {
+	if [[ ! "${rubies[*]}" == *"$ruby"* ]]; then
+		error "Unknown ruby: $ruby"
+		return 1
+	fi
+
 	local fully_qualified_version="$(lookup_ruby_version "$ruby" "$ruby_version")"
 
 	if [[ -n "$fully_qualified_version" ]]; then

@@ -1,6 +1,6 @@
 SHELL=/usr/bin/env bash
 NAME=ruby-install
-VERSION=0.7.1
+VERSION=0.8.0
 AUTHOR=postmodern
 URL=https://github.com/$(AUTHOR)/$(NAME)
 
@@ -50,6 +50,10 @@ clean:
 
 check:
 	shellcheck --exclude SC2034 share/$(NAME)/*.sh bin/*
+
+lint:
+	# Check dependencies are consistent for truffleruby/truffleruby-graalvm
+	diff share/ruby-install/truffleruby-graalvm/dependencies.txt share/ruby-install/truffleruby/dependencies.txt
 
 test:
 	./test/runner

@@ -24,6 +24,15 @@ function test_init()
 	assertEquals "did not return 0" 0 $?
 }
 
+function test_init_when_ruby_is_unknown()
+{
+	ruby="foo"
+
+	init 2>/dev/null
+
+	assertEquals "did not return 1" 1 $?
+}
+
 function test_ruby_version()
 {
 	init

@@ -2,7 +2,8 @@
 
 [![Build Status](https://travis-ci.org/postmodern/ruby-install.svg?branch=master)](https://travis-ci.org/postmodern/ruby-install)
 
-Installs [Ruby], [JRuby], [Rubinius], [TruffleRuby] or [mruby].
+Installs [Ruby], [JRuby], [Rubinius], [TruffleRuby] (native / GraalVM), or
+[mruby].
 
 ## Features
 
@@ -125,9 +126,9 @@ ruby-install can even be used with [Chef].
 
 ## Install
 
-    wget -O ruby-install-0.7.1.tar.gz https://github.com/postmodern/ruby-install/archive/v0.7.1.tar.gz
-    tar -xzvf ruby-install-0.7.1.tar.gz
-    cd ruby-install-0.7.1/
+    wget -O ruby-install-0.8.0.tar.gz https://github.com/postmodern/ruby-install/archive/v0.8.0.tar.gz
+    tar -xzvf ruby-install-0.8.0.tar.gz
+    cd ruby-install-0.8.0/
     sudo make install
 
 ### PGP
@@ -136,8 +137,8 @@ All releases are [PGP] signed for security. Instructions on how to import my
 PGP key can be found on my [blog][1]. To verify that a release was not tampered
 with:
 
-    wget https://raw.github.com/postmodern/ruby-install/master/pkg/ruby-install-0.7.1.tar.gz.asc
-    gpg --verify ruby-install-0.7.1.tar.gz.asc ruby-install-0.7.1.tar.gz
+    wget https://raw.github.com/postmodern/ruby-install/master/pkg/ruby-install-0.8.0.tar.gz.asc
+    gpg --verify ruby-install-0.8.0.tar.gz.asc ruby-install-0.8.0.tar.gz
 
 ### Homebrew
 
