@@ -8,14 +8,14 @@ on:
 
 jobs:
   tests:
-    name: Tests
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os:
           - ubuntu-latest
           - macos-latest
+    name: "Tests [${{ matrix.os }}]"
     steps:
       - uses: actions/checkout@v2
       - name: Install dependencies
