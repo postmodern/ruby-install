@@ -8,54 +8,57 @@ function setUp()
 	detect_package_manager
 }
 
-function test_detect_package_manager_with_apt_get()
+function test_detect_package_manager_on_redhat_based_systems_with_dnf()
 {
-	command -v apt-get >/dev/null || return
+	[[ -f /etc/redhat-release ]] && command -v dnf >/dev/null || return
 
-	assertEquals "did not detect apt-get" "apt" "$package_manager" 
+	assertEquals "did not prefer dnf over yum" "dnf" "$package_manager"
 }
 
-function test_detect_package_manager_with_dnf()
+function test_detect_package_manager_on_redhat_based_systems_with_yum()
 {
-	command -v dnf >/dev/null || return
+	[[ -f /etc/redhat-release ]] &&
+		! command -v dnf >/dev/null || return
+		command -v yum >/dev/null || return
 
-	assertEquals "did not detect dnf" "dnf" "$package_manager"
+	assertEquals "did not fallback to yum" "yum" "$package_manager"
 }
 
-function test_detect_package_manager_with_yum()
+function test_detect_package_manager_on_debian_based_systems_with_apt_get()
 {
-	command -v dnf >/dev/null && return
-	command -v yum >/dev/null || return
+	[[ -f /etc/debian_version ]] && command -v apt-get >/dev/null || return
 
-	assertEquals "did not detect yum" "yum" "$package_manager" 
+	assertEquals "did not detect apt-get" "apt" "$package_manager"
 }
 
-function test_detect_package_manager_with_zypper()
+function test_detect_package_manager_on_open_suse_systems_with_zypper()
 {
-	command -v zypper >/dev/null || return
+	[[ -f /etc/SuSE-release ]] && command -v zypper >/dev/null || return
 
-	assertEquals "did not detect zypper" "zypper" "$package_manager" 
+	assertEquals "did not detect zypper" "zypper" "$package_manager"
 }
 
-function test_detect_package_manager_with_pkg()
+function test_detect_package_manager_on_bsd_systems_with_pkg()
 {
-	command -v pkg >/dev/null || return
+	[[ "$os_platform" == *BSD ]] && command -v pkg >/dev/null || return
 
 	assertEquals "did not detect pkg" "pkg" "$package_manager"
 }
 
-function test_detect_package_manager_with_macports()
+function test_detect_package_manager_on_macos_systems_with_homebrew()
 {
-	command -v port >/dev/null || return
+	[[ "$os_platform" == *Darwin ]] && command -v brew >/dev/null || return
 
-	assertEquals "did not detect macports" "port" "$package_manager" 
+	assertEquals "did not prefer brew over port" "brew" "$package_manager"
 }
 
-function test_detect_package_manager_with_homebrew()
+function test_detect_package_manager_on_macos_systems_with_macports()
 {
-	command -v brew >/dev/null || return
+	[[ "$os_platform" == *Darwin ]] &&
+		! command -v brew >/dev/null &&
+		command -v port >/dev/null || return
 
-	assertEquals "did not detect homebrew" "brew" "$package_manager" 
+	assertEquals "did not fallback to macports" "port" "$package_manager"
 }
 
 SHUNIT_PARENT=$0 . $SHUNIT2
