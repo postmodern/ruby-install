@@ -8,7 +8,7 @@ test_file="$ruby_install_dir/db.txt"
 
 function setUp()
 {
-	mkdir "$ruby_install_dir"
+	mkdir -p "$ruby_install_dir"
 }
 
 function test_fetch()
