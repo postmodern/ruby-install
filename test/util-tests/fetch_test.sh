@@ -2,7 +2,7 @@
 
 . ./test/helper.sh
 
-ruby_install_dir="./test/fixtures"
+ruby_install_dir="$test_fixtures_dir/fetch"
 
 test_file="$ruby_install_dir/db.txt"
 

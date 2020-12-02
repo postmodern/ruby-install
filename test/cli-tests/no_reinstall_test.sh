@@ -2,7 +2,7 @@
 
 . ./test/helper.sh
 
-test_install_dir="./test/fixtures/install_dir"
+test_install_dir="$test_fixtures_dir/install_dir"
 
 function setUp()
 {

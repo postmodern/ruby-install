@@ -3,7 +3,7 @@
 . ./test/helper.sh
 
 test_url="https://raw.github.com/postmodern/ruby-install/master/README.md"
-test_dest="./test/fixtures/download.txt"
+test_dest="$test_fixtures_dir/download.txt"
 
 function test_download()
 {
