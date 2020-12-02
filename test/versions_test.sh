@@ -3,8 +3,8 @@
 . ./test/helper.sh
 . ./share/ruby-install/versions.sh
 
-versions_file="./test/versions.txt"
-stable_file="./test/stable.txt"
+versions_file="$test_fixtures_dir/versions.txt"
+stable_file="$test_fixtures_dir/stable.txt"
 
 function oneTimeSetUp()
 {

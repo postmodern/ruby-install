@@ -3,6 +3,7 @@
 . ./test/helper.sh
 . ./share/ruby-install/functions.sh
 
+src_dir="$test_fixtures_dir/src"
 ruby_dir_name="ruby-1.9.3-p448"
 patches=("$src_dir/$ruby_dir_name/falcon-gc.diff")
 

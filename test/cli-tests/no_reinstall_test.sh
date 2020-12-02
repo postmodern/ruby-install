@@ -2,18 +2,18 @@
 
 . ./test/helper.sh
 
-install_dir="./test/dir"
+test_install_dir="./test/fixtures/install_dir"
 
 function setUp()
 {
-	mkdir -p "$install_dir/bin"
-	touch -m "$install_dir/bin/ruby"
-	chmod +x "$install_dir/bin/ruby"
+	mkdir -p "$test_install_dir/bin"
+	touch -m "$test_install_dir/bin/ruby"
+	chmod +x "$test_install_dir/bin/ruby"
 }
 
 function test_no_reinstall_when_ruby_executable_exists()
 {
-	local output="$(ruby-install --install-dir "$install_dir" --no-reinstall ruby)"
+	local output="$(ruby-install --install-dir "$test_install_dir" --no-reinstall ruby)"
 
 	assertEquals "did not return 0" 0 $?
 	assertTrue "did not print a message to STDOUT" \
@@ -22,7 +22,7 @@ function test_no_reinstall_when_ruby_executable_exists()
 
 function tearDown()
 {
-	rm -r "$install_dir"
+	rm -r "$test_install_dir"
 }
 
 SHUNIT_PARENT=$0 . $SHUNIT2
