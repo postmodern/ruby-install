@@ -1,6 +1,6 @@
 ### 0.8.0 / 2020-12-09
 
-* Added support for [TruffleRuby (GraalVM)][TruffleRuby].
+* Added support for [truffleruby-graalvm][truffleruby].
 * Added support for extracting `.tar.xz` files using `xz-utils`.
 * Improve package-manager detection by making it OS/distro aware.
 * Fixed a bug when parsing `-jJOBS`, `-jobs=JOBS`, and `--jobs JOBS` options.
@@ -35,14 +35,14 @@
   * Make `SHARE_DIR` and `DOC_DIR` respect `PREFIX`.
   * Do not attempt `rmdir $SHARE_DIR` which will always fail.
 
-#### TruffleRuby
+#### truffleruby
 
 * Remove `llvm` from the dependencies (@eregon).
-  * [TruffleRuby] >= 19.3 now uses an internal LLVM toolchain.
+  * [truffleruby] >= 19.3 now uses an internal LLVM toolchain.
 
 ### 0.7.0 / 2018-08-04
 
-* Added support for [TruffleRuby].
+* Added support for [truffleruby].
 * Added a `--package-manager` option for explicitly selecting the desired
   package manager.
 * Added support for FreeBSD's `pkg` package manager.
@@ -387,6 +387,6 @@
 [Rubinius]: http://rubini.us/
 [MagLev]: http://maglev.github.io/
 [MRuby]: https://github.com/mruby/mruby#readme
-[TruffleRuby]: https://github.com/oracle/truffleruby#readme
+[truffleruby]: https://github.com/oracle/truffleruby#readme
 
 [ruby-versions]: https://github.com/postmodern/ruby-versions#readme
