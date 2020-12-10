@@ -6,7 +6,7 @@
 
 ## DESCRIPTION
 
-Installs Ruby, JRuby, Rubinius, TruffleRuby or mruby.
+Installs Ruby, JRuby, Rubinius, TruffleRuby, or mruby.
 
 https://github.com/postmodern/ruby-install#readme
 
