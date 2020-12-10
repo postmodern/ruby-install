@@ -1,3 +1,34 @@
+### 0.8.0 / 2020-12-09
+
+* Added support for [TruffleRuby (GraalVM)][TruffleRuby].
+* Added support for extracting `.tar.xz` files using `xz-utils`.
+* Improve package-manager detection by making it OS/distro aware.
+* Fixed a bug when parsing `-jJOBS`, `-jobs=JOBS`, and `--jobs JOBS` options.
+* Support passing a single `RUBY-VERSION` or `VERSION` argument to
+  `ruby-install`.
+
+      $ ruby-install ruby-3.0.0-preview2
+
+      $ ruby-install 3.0.0-preview2
+
+#### ruby
+
+* Added `xz-utils` as a dependency.
+* Default to downloading the `.tar.xz` release.
+
+#### jruby
+
+* Fixed a bug when reinstalling into a pre-existing installation directory.
+
+#### rbx
+
+* Added `bzip2` as a [yum] dependency for RHEL/CentOS.
+* Updated the [apt] dependencies.
+
+#### truffleruby
+
+* Fixed a bug when reinstalling into a pre-existing installation directory.
+
 ### 0.7.1 / 2020-07-22
 
 * `Makefile` corrections:
