@@ -41,7 +41,7 @@ Installs [Ruby], [JRuby], [Rubinius], [TruffleRuby] (native / GraalVM), or
 
 * [bash] >= 3.x
 * [wget] > 1.12 or [curl]
-* `md5sum` or `md5`,
+* `md5sum` or `md5`
 * `sha1sum` or `sha1`
 * `sha256sum` or `sha256`
 * `sha512sum` or `sha512`
