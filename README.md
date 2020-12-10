@@ -1,7 +1,5 @@
 # ruby-install
 
-[![Build Status](https://travis-ci.org/postmodern/ruby-install.svg?branch=master)](https://travis-ci.org/postmodern/ruby-install)
-
 Installs [Ruby], [JRuby], [Rubinius], [TruffleRuby] (native / GraalVM), or
 [mruby].
 
