@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-source "$ruby_install_dir/package_manager.sh"
-
 os_platform="$(uname -s)"
 os_arch="$(uname -m)"
+
+source "$ruby_install_dir/package_manager.sh"
 
 #
 # Auto-detect the downloader.
