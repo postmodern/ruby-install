@@ -18,7 +18,7 @@ function test_detect_package_manager_on_redhat_based_systems_with_dnf()
 function test_detect_package_manager_on_redhat_based_systems_with_yum()
 {
 	[[ -f /etc/redhat-release ]] &&
-		! command -v dnf >/dev/null || return
+		! command -v dnf >/dev/null &&
 		command -v yum >/dev/null || return
 
 	assertEquals "did not fallback to yum" "yum" "$package_manager"
