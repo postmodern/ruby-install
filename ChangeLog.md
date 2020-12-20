@@ -1,3 +1,8 @@
+### 0.8.1 / 2020-12-19
+
+* Fixed a bug where `detect_package_manager()` was not detecting the package
+  manager because `$os_platform` not yet set.
+
 ### 0.8.0 / 2020-12-09
 
 * Added support for [truffleruby-graalvm][truffleruby].
