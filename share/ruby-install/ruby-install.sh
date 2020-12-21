@@ -23,6 +23,7 @@ fi
 
 source "$ruby_install_dir/logging.sh"
 source "$ruby_install_dir/system.sh"
+source "$ruby_install_dir/package_manager.sh"
 source "$ruby_install_dir/util.sh"
 source "$ruby_install_dir/ruby-versions.sh"
 

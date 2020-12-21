@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 . ./test/helper.sh
+. ./share/ruby-install/system.sh
 
 test_url="https://raw.github.com/postmodern/ruby-install/master/README.md"
 test_dest="$test_fixtures_dir/download.txt"

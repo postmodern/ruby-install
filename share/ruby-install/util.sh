@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-source "$ruby_install_dir/system.sh"
-
 #
 # Searches a file for a key and echos the value.
 # Nothing is returned if the key cannot be found.
