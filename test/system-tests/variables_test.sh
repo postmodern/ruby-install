@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 . ./test/helper.sh
-. ./share/ruby-install/util.sh
+. ./share/ruby-install/system.sh
 
 function test_os_platform()
 {
