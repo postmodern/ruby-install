@@ -1,4 +1,4 @@
-### 0.8.1 / 2020-12-19
+### 0.8.1 / 2020-12-20
 
 * Fixed a bug where `detect_package_manager()` was not detecting the package
   manager because `$os_platform` not yet set.
