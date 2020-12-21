@@ -1,7 +1,7 @@
 . ./test/helper.sh
 . ./share/ruby-install/system.sh
 
-function oneTimeSetup()
+function oneTimeSetUp()
 {
 	detect_sudo
 }
