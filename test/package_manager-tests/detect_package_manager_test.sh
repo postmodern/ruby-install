@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 . ./test/helper.sh
+. ./share/ruby-install/system.sh
 . ./share/ruby-install/package_manager.sh
 
 function setUp()
