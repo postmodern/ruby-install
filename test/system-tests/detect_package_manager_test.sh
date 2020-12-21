@@ -2,9 +2,8 @@
 
 . ./test/helper.sh
 . ./share/ruby-install/system.sh
-. ./share/ruby-install/package_manager.sh
 
-function setUp()
+function oneTimeSetUp()
 {
 	detect_package_manager
 }
