@@ -143,11 +143,13 @@ function test_parse_options_with_mirror()
 
 function test_parse_options_with_url()
 {
-	local url="http://mirror.s3.amazonaws.com/downloads/ruby-1.2.3.tar.gz"
+	local archive="ruby-1.2.3.tar.gz"
+	local url="http://mirror.s3.amazonaws.com/downloads/$archive"
 
 	parse_options "--url" "$url" "ruby"
 
 	assertEquals "did not set \$ruby_url" "$url" "$ruby_url"
+	assertEquals "did not also set \$ruby_archive" "$archive" "$ruby_archive"
 }
 
 function test_parse_options_with_md5()

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-ruby_archive="mruby-$ruby_version.tar.gz"
+ruby_archive="${ruby_archive:-mruby-$ruby_version.tar.gz}"
 ruby_dir_name="mruby-$ruby_version"
 ruby_mirror="${ruby_mirror:-https://github.com/mruby/mruby/archive}"
 ruby_url="${ruby_url:-$ruby_mirror/$ruby_version/$ruby_archive}"

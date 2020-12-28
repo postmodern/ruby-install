@@ -12,7 +12,7 @@ case "$os_arch" in
 esac
 
 ruby_dir_name="truffleruby-$ruby_version-$truffleruby_platform-$truffleruby_arch"
-ruby_archive="$ruby_dir_name.tar.gz"
+ruby_archive="${ruby_archive:-$ruby_dir_name.tar.gz}"
 ruby_mirror="${ruby_mirror:-https://github.com/oracle/truffleruby/releases/download}"
 ruby_url="${ruby_url:-$ruby_mirror/vm-$ruby_version/$ruby_archive}"
 

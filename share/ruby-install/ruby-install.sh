@@ -144,6 +144,7 @@ function parse_options()
 				;;
 			-u|--url)
 				ruby_url="$2"
+				ruby_archive="${ruby_url##*/}"
 				shift 2
 				;;
 			-m|--md5)
