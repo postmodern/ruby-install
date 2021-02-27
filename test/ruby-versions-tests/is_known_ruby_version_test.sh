@@ -12,7 +12,7 @@ function oneTimeSetUp()
 
 function test_is_known_ruby_version()
 {
-	local version="2.2.4"
+	local version="2.7.2"
 
 	is_known_ruby_version "$ruby" "$version"
 

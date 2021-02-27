@@ -12,7 +12,7 @@ function oneTimeSetUp()
 function setUp()
 {
 	ruby="ruby"
-	ruby_version="2.4"
+	ruby_version="2.7"
 
 	expected_ruby_version="$(latest_version "$ruby_install_cache_dir/$ruby/stable.txt" "$ruby_version")"
 }
