@@ -5,13 +5,14 @@ source "$ruby_install_dir/checksums.sh"
 
 ruby_versions_url="https://raw.githubusercontent.com/postmodern/ruby-versions/master"
 ruby_versions_files=({versions,stable}.txt checksums.{md5,sha1,sha256,sha512})
+ruby_versions_dir="$ruby_install_cache_dir/ruby-versions"
 
 #
 # Determines if the ruby-versions files are missing for a ruby.
 #
 function are_ruby_versions_missing()
 {
-	local dir="$ruby_install_cache_dir/$ruby"
+	local dir="$ruby_versions_dir/$ruby"
 
 	if [[ ! -d "$dir" ]]; then
 		return 0
@@ -37,7 +38,7 @@ function download_ruby_versions_file()
 	local ruby_name="${ruby/rbx/rubinius}"
 
 	local file="$2"
-	local dir="$ruby_install_cache_dir/$ruby"
+	local dir="$ruby_versions_dir/$ruby"
 	local dest="$dir/$file"
 
 	local url="$ruby_versions_url/$ruby_name/$file"
@@ -76,7 +77,7 @@ function stable_ruby_versions()
 {
 	local ruby="$1"
 
-	cat "$ruby_install_cache_dir/$ruby/stable.txt"
+	cat "$ruby_versions_dir/$ruby/stable.txt"
 }
 
 #
@@ -87,7 +88,7 @@ function latest_ruby_version()
 	local ruby="$1"
 	local version="$2"
 
-	latest_version "$ruby_install_cache_dir/$ruby/stable.txt" "$version"
+	latest_version "$ruby_versions_dir/$ruby/stable.txt" "$version"
 }
 
 #
@@ -98,7 +99,7 @@ function is_known_ruby_version()
 	local ruby="$1"
 	local version="$2"
 
-	is_known_version "$ruby_install_cache_dir/$ruby/versions.txt" "$version"
+	is_known_version "$ruby_versions_dir/$ruby/versions.txt" "$version"
 }
 
 #
@@ -111,7 +112,7 @@ function ruby_checksum_for()
 	local archive="$3"
 	local checksums="checksums.$algorithm"
 
-	lookup_checksum "$ruby_install_cache_dir/$ruby/$checksums" "$archive"
+	lookup_checksum "$ruby_versions_dir/$ruby/$checksums" "$archive"
 }
 
 #

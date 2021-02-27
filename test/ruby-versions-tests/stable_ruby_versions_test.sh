@@ -12,7 +12,7 @@ function oneTimeSetUp()
 
 function test_stable_ruby_versions()
 {
-	local expected_output="$(cat "$ruby_install_cache_dir/$ruby/stable.txt")"
+	local expected_output="$(cat "$ruby_versions_dir/$ruby/stable.txt")"
 	local output="$(stable_ruby_versions "$ruby")"
 
 	assertEquals "did not read stable.txt" "$expected_output" "$output"

@@ -5,21 +5,21 @@
 
 ruby="ruby"
 file="stable.txt"
-expected_path="$ruby_install_cache_dir/$ruby/$file"
+expected_path="$ruby_versions_dir/$ruby/$file"
 
 function test_download_ruby_versions_file_with_no_parent_dir()
 {
-	rm -rf "$ruby_install_cache_dir/$ruby"
+	rm -rf "$ruby_versions_dir/$ruby"
 
 	download_ruby_versions_file "$ruby" "$file"
 
 	assertTrue "did not create the parent dir" \
-		   '[[ -d "$ruby_install_cache_dir/$ruby" ]]'
+		   '[[ -d "$ruby_versions_dir/$ruby" ]]'
 }
 
 function test_download_ruby_versions_file_first_time()
 {
-	mkdir -p "$ruby_install_cache_dir/$ruby"
+	mkdir -p "$ruby_versions_dir/$ruby"
 
 	download_ruby_versions_file "$ruby" "$file"
 
@@ -31,8 +31,8 @@ function test_download_ruby_versions_file_first_time()
 
 function test_download_ruby_versions_file_with_existing_file()
 {
-	mkdir -p "$ruby_install_cache_dir/$ruby"
-	touch "$ruby_install_cache_dir/$ruby/$file"
+	mkdir -p "$ruby_versions_dir/$ruby"
+	touch "$ruby_versions_dir/$ruby/$file"
 
 	download_ruby_versions_file "$ruby" "$file"
 
@@ -42,7 +42,7 @@ function test_download_ruby_versions_file_with_existing_file()
 
 function tearDown()
 {
-	rm -rf "$ruby_install_cache_dir/$ruby"
+	rm -rf "$ruby_versions_dir/$ruby"
 }
 
 SHUNIT_PARENT=$0 . $SHUNIT2

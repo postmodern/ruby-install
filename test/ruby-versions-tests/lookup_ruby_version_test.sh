@@ -4,7 +4,7 @@
 . ./share/ruby-install/ruby-versions.sh
 
 ruby="ruby"
-stable_file="$ruby_install_cache_dir/$ruby/stable.txt"
+stable_file="$ruby_versions_dir/$ruby/stable.txt"
 
 function oneTimeSetUp()
 {

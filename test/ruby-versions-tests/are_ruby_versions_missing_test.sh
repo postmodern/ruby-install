@@ -7,7 +7,7 @@ ruby="ruby"
 
 function oneTimeSetUp()
 {
-	rm -rf "$ruby_install_cache_dir"
+	rm -rf "$ruby_versions_dir"
 }
 
 function test_are_ruby_versions_missing_with_no_parent_dir()
@@ -19,7 +19,7 @@ function test_are_ruby_versions_missing_with_no_parent_dir()
 
 function test_are_ruby_versions_missing_with_no_ruby_dir()
 {
-	mkdir -p "$ruby_install_cache_dir"
+	mkdir -p "$ruby_versions_dir"
 
 	are_ruby_versions_missing "$ruby"
 
@@ -28,7 +28,7 @@ function test_are_ruby_versions_missing_with_no_ruby_dir()
 
 function test_are_ruby_versions_missing_with_no_files()
 {
-	mkdir -p "$ruby_install_cache_dir/$ruby"
+	mkdir -p "$ruby_versions_dir/$ruby"
 
 	are_ruby_versions_missing "$ruby"
 
@@ -37,8 +37,8 @@ function test_are_ruby_versions_missing_with_no_files()
 
 function test_are_ruby_versions_missing_with_some_files()
 {
-	mkdir -p "$ruby_install_cache_dir/$ruby"
-	touch "$ruby_install_cache_dir/$ruby/stable.txt"
+	mkdir -p "$ruby_versions_dir/$ruby"
+	touch "$ruby_versions_dir/$ruby/stable.txt"
 
 	are_ruby_versions_missing "$ruby"
 
@@ -47,10 +47,10 @@ function test_are_ruby_versions_missing_with_some_files()
 
 function test_are_ruby_versions_missing_with_all_files()
 {
-	mkdir -p "$ruby_install_cache_dir/$ruby"
+	mkdir -p "$ruby_versions_dir/$ruby"
 
 	for file in "${ruby_versions_files[@]}"; do
-		touch "$ruby_install_cache_dir/$ruby/$file"
+		touch "$ruby_versions_dir/$ruby/$file"
 	done
 
 	are_ruby_versions_missing "$ruby"
@@ -60,7 +60,7 @@ function test_are_ruby_versions_missing_with_all_files()
 
 function tearDown()
 {
-	rm -rf "$ruby_install_cache_dir"
+	rm -rf "$ruby_versions_dir"
 }
 
 SHUNIT_PARENT=$0 . $SHUNIT2

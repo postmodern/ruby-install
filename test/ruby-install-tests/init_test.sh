@@ -14,7 +14,7 @@ function setUp()
 	ruby="ruby"
 	ruby_version="2.7"
 
-	expected_ruby_version="$(latest_version "$ruby_install_cache_dir/$ruby/stable.txt" "$ruby_version")"
+	expected_ruby_version="$(latest_ruby_version "$ruby" "$ruby_version")"
 }
 
 function test_init()
