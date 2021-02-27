@@ -7,8 +7,8 @@ Installs [Ruby], [JRuby], [Rubinius], [TruffleRuby] (native / GraalVM), or
 
 * Supports installing arbitrary versions.
 * Supports downloading the latest versions and checksums from [ruby-versions].
-* Supports installing into `/opt/rubies/` for root and `~/.rubies/` for users
-  by default.
+* Supports installing into `/opt/rubies/` for root and `~/.local/share/rubies/`
+  for users by default.
 * Supports installing into arbitrary directories.
 * Supports downloading from arbitrary URLs.
 * Supports downloading from mirrors.
@@ -112,7 +112,7 @@ Install a Ruby without installing dependencies first:
 
 Uninstall a Ruby version:
 
-    $ rm -rf ~/.rubies/ruby-2.4.0
+    $ rm -rf ~/.local/share/rubies/ruby-2.4.0
 
 ### Integration
 

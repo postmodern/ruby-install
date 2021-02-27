@@ -36,13 +36,14 @@ Additional optional configure arguments\.
 \fB-r\fR, \fB--rubies-dir\fR \fIDIR\fP
 Specifies the alternate directory where other Ruby directories are
 installed, such as \fI\[ti]\[sl]\.rvm\[sl]rubies\fP or \fI\[ti]\[sl]\.rbenv\[sl]versions\fP\.
-Defaults to \fI\[sl]opt\[sl]rubies\fP for root and \fI\[ti]\[sl]\.rubies\fP for normal users\.
+Defaults to \fI\[sl]opt\[sl]rubies\fP for root and \fI\[ti]\[sl]\.local\[sl]share\[sl]rubies\fP for normal
+users\.
 .LP
 .TP
 \fB-i\fR, \fB--install-dir\fR \fIDIR\fP
 Specifies the directory where Ruby will be installed\.
 Defaults to \fI\[sl]opt\[sl]rubies\[sl]\[Do]ruby\-\[Do]version\fP for root and
-\fI\[ti]\[sl]\.rubies\[sl]\[Do]ruby\-\[Do]version\fP for normal users\.
+\fI\[ti]\[sl]\.local\[sl]share\[sl]rubies\[sl]\[Do]ruby\-\[Do]version\fP for normal users\.
 .LP
 .TP
 \fB--prefix\fR \fIDIR\fP
@@ -244,7 +245,7 @@ Using ruby\-install with \[lB]rbenv\[rB]:
 Uninstall a Ruby version:
 .LP
 .nf
-\[Do] rm \-rf \[ti]\[sl]\.rubies\[sl]ruby\-2\.4\.0
+\[Do] rm \-rf \[ti]\[sl]\.local\[sl]share\[sl]rubies\[sl]ruby\-2\.4\.0
 .fi
 .LP
 .SH FILES
@@ -254,7 +255,7 @@ Uninstall a Ruby version:
 Default root user source directory\.
 .LP
 .TP
-\fI\[ti]\[sl]src\fP
+\fI\[ti]\[sl]\.cache\[sl]ruby\-install\fP
 Default non\-root user source directory\.
 .LP
 .TP
@@ -262,7 +263,7 @@ Default non\-root user source directory\.
 Default root user installation directory\.
 .LP
 .TP
-\fI\[ti]\[sl]\.rubies\[sl]\[Do]ruby\-\[Do]version\fP
+\fI\[ti]\[sl]\.local\[sl]share\[sl]rubies\[sl]\[Do]ruby\-\[Do]version\fP
 Default non\-root user installation directory\.
 .LP
 .SH AUTHOR

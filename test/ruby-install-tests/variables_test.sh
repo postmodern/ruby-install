@@ -58,7 +58,7 @@ function test_src_dir()
 			     "/usr/local/src" "$src_dir"
 	else
 		assertEquals "did not set \$src_dir correctly" \
-			     "$HOME/src" "$src_dir"
+			     "$HOME/.cache/ruby-install" "$src_dir"
 	fi
 }
 
@@ -69,7 +69,7 @@ function test_rubies_dir()
 			     "/opt/rubies" "$rubies_dir"
 	else
 		assertEquals "did not set \$rubies_dir correctly" \
-			     "$HOME/.rubies" "$rubies_dir"
+			     "$HOME/.local/share/rubies" "$rubies_dir"
 	fi
 }
 

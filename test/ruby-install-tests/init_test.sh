@@ -145,7 +145,7 @@ function test_rubies_dir()
 			     "$rubies_dir"
 	else
 		assertEquals "did not correctly default rubies_dir" \
-			     "$HOME/.rubies" \
+			     "$HOME/.local/share/rubies" \
 			     "$rubies_dir"
 	fi
 }

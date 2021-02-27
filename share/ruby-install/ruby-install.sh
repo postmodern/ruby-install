@@ -17,8 +17,8 @@ if (( UID == 0 )); then
 	src_dir="$system_dir/src"
 	rubies_dir="/opt/rubies"
 else
-	src_dir="$HOME/src"
-	rubies_dir="$HOME/.rubies"
+	src_dir="${XDG_CACHE_HOME:-$HOME/.cache/ruby-install}"
+	rubies_dir="${XDG_DATA_HOME:-$HOME/.local/share}/rubies"
 fi
 
 source "$ruby_install_dir/logging.sh"

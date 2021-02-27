@@ -27,12 +27,13 @@ https://github.com/postmodern/ruby-install#readme
 `-r`, `--rubies-dir` *DIR*
 	Specifies the alternate directory where other Ruby directories are
 	installed, such as *~/.rvm/rubies* or *~/.rbenv/versions*.
-	Defaults to */opt/rubies* for root and *~/.rubies* for normal users.
+	Defaults to */opt/rubies* for root and *~/.local/share/rubies* for normal
+  users.
 
 `-i`, `--install-dir` *DIR*
 	Specifies the directory where Ruby will be installed.
 	Defaults to */opt/rubies/$ruby-$version* for root and
-	*~/.rubies/$ruby-$version* for normal users.
+	*~/.local/share/rubies/$ruby-$version* for normal users.
 
 `--prefix` *DIR*
 	Alias for `-i DIR`.
@@ -166,20 +167,20 @@ Using ruby-install with [rbenv]:
 
 Uninstall a Ruby version:
 
-    $ rm -rf ~/.rubies/ruby-2.4.0
+    $ rm -rf ~/.local/share/rubies/ruby-2.4.0
 
 ## FILES
 
 */usr/local/src*
 	Default root user source directory.
 
-*~/src*
+*~/.cache/ruby-install*
 	Default non-root user source directory.
 
 */opt/rubies/$ruby-$version*
 	Default root user installation directory.
 
-*~/.rubies/$ruby-$version*
+*~/.local/share/rubies/$ruby-$version*
 	Default non-root user installation directory.
 
 ## AUTHOR
