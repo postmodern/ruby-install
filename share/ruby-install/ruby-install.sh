@@ -17,7 +17,7 @@ if (( UID == 0 )); then
 	src_dir="$system_dir/src"
 	rubies_dir="/opt/rubies"
 else
-	src_dir="${XDG_CACHE_HOME:-$HOME/.cache/ruby-install}"
+	src_dir="$ruby_install_cache_dir/rubies"
 	rubies_dir="${XDG_DATA_HOME:-$HOME/.local/share}/rubies"
 fi
 

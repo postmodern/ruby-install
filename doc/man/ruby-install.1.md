@@ -174,7 +174,7 @@ Uninstall a Ruby version:
 */usr/local/src*
 	Default root user source directory.
 
-*~/.cache/ruby-install*
+*~/.cache/ruby-install/rubies*
 	Default non-root user source directory.
 
 */opt/rubies/$ruby-$version*
