@@ -21,6 +21,11 @@ ruby_url="${ruby_url:-$ruby_mirror/vm-$ruby_version/$ruby_archive}"
 #
 function install_ruby()
 {
+	if [[ "$install_dir" == '/usr/local' ]]; then
+		error "Unsupported see https://github.com/oracle/truffleruby/issues/1389"
+		return 1 ;;
+	fi
+
 	log "Installing GraalVM $ruby_version ..."
 	copy_into "$src_dir/$ruby_dir_name" "$install_dir/graalvm" || return $?
 }
