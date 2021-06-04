@@ -11,8 +11,8 @@ case "$os_arch" in
 	*)	fail "Unsupported architecture $os_arch" ;;
 esac
 
-ruby_dir_name="graalvm-ce-java8-$ruby_version"
-ruby_archive="${ruby_archive:-graalvm-ce-java8-$graalvm_platform-$graalvm_arch-$ruby_version.tar.gz}"
+ruby_dir_name="graalvm-ce-java11-$ruby_version"
+ruby_archive="${ruby_archive:-graalvm-ce-java11-$graalvm_platform-$graalvm_arch-$ruby_version.tar.gz}"
 ruby_mirror="${ruby_mirror:-https://github.com/graalvm/graalvm-ce-builds/releases/download}"
 ruby_url="${ruby_url:-$ruby_mirror/vm-$ruby_version/$ruby_archive}"
 
