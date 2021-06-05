@@ -32,7 +32,7 @@ Installs [Ruby], [JRuby], [Rubinius], [TruffleRuby] (native / GraalVM), or
 
 * Does not require updating every time a new Ruby version comes out.
 * Does not require recipes for each individual Ruby version or configuration.
-* Does not support installing trunk/HEAD.
+* Does not support installing trunk/HEAD or nightly rolling releases.
 * Does not support installing unsupported/unmaintained versions of Ruby.
 
 ## Requirements
