@@ -3,8 +3,9 @@
 . ./test/helper.sh
 . ./share/ruby-install/system.sh
 
+test_dir="$test_fixtures_dir/download_test"
 test_url="https://raw.github.com/postmodern/ruby-install/master/README.md"
-test_dest="$test_fixtures_dir/download.txt"
+test_dest="$test_dir/download.txt"
 
 function test_download()
 {
@@ -47,7 +48,7 @@ function test_download_using_curl()
 
 function tearDown()
 {
-	rm -f "$test_dest"
+	rm -rf "$test_dir"
 }
 
 SHUNIT_PARENT=$0 . $SHUNIT2
