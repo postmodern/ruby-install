@@ -29,7 +29,7 @@ function test_download_with_a_directory()
 
 function test_download_using_wget()
 {
-	command -v wget >/dev/null || return
+	command -v wget >/dev/null || return 0
 
 	downloader="wget" download "$test_url" "$test_dest" 2>/dev/null
 
@@ -38,7 +38,7 @@ function test_download_using_wget()
 
 function test_download_using_curl()
 {
-	command -v curl >/dev/null || return
+	command -v curl >/dev/null || return 0
 
 	downloader="curl" download "$test_url" "$test_dest" 2>/dev/null
 
