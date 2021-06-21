@@ -3,8 +3,11 @@
 . ./test/helper.sh
 . ./share/ruby-install/ruby-versions.sh
 
+ruby_install_cache_dir="$test_fixtures_dir/download_ruby_versions_file_test"
+
 ruby="ruby"
 file="stable.txt"
+
 expected_path="$ruby_install_cache_dir/$ruby/$file"
 
 function test_download_ruby_versions_file_with_no_parent_dir()
@@ -42,7 +45,7 @@ function test_download_ruby_versions_file_with_existing_file()
 
 function tearDown()
 {
-	rm -rf "$ruby_install_cache_dir/$ruby"
+	rm -rf "$ruby_install_cache_dir"
 }
 
 SHUNIT_PARENT=$0 . $SHUNIT2

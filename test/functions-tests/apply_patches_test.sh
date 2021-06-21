@@ -3,7 +3,7 @@
 . ./test/helper.sh
 . ./share/ruby-install/functions.sh
 
-src_dir="$test_fixtures_dir/src"
+src_dir="$test_fixtures_dir/apply_patches_test"
 ruby_dir_name="ruby-1.9.3-p448"
 patches=("$src_dir/$ruby_dir_name/falcon-gc.diff")
 
@@ -30,7 +30,7 @@ function test_apply_patches()
 
 function tearDown()
 {
-	rm -r "$src_dir/$ruby_dir_name"
+	rm -rf "$src_dir"
 }
 
 SHUNIT_PARENT=$0 . $SHUNIT2

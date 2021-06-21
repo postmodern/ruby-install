@@ -11,8 +11,8 @@ case "$os_arch" in
 	*)	fail "Unsupported architecture $os_arch" ;;
 esac
 
-ruby_dir_name="graalvm-ce-java8-$ruby_version"
-ruby_archive="${ruby_archive:-graalvm-ce-java8-$graalvm_platform-$graalvm_arch-$ruby_version.tar.gz}"
+ruby_dir_name="graalvm-ce-java11-$ruby_version"
+ruby_archive="${ruby_archive:-graalvm-ce-java11-$graalvm_platform-$graalvm_arch-$ruby_version.tar.gz}"
 ruby_mirror="${ruby_mirror:-https://github.com/graalvm/graalvm-ce-builds/releases/download}"
 ruby_url="${ruby_url:-$ruby_mirror/vm-$ruby_version/$ruby_archive}"
 
@@ -21,6 +21,11 @@ ruby_url="${ruby_url:-$ruby_mirror/vm-$ruby_version/$ruby_archive}"
 #
 function install_ruby()
 {
+	if [[ "$install_dir" == '/usr/local' ]]; then
+		error "Unsupported see https://github.com/oracle/truffleruby/issues/1389"
+		return 1 ;;
+	fi
+
 	log "Installing GraalVM $ruby_version ..."
 	copy_into "$src_dir/$ruby_dir_name" "$install_dir/graalvm" || return $?
 }

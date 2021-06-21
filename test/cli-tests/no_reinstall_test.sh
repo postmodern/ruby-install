@@ -2,7 +2,7 @@
 
 . ./test/helper.sh
 
-test_install_dir="$test_fixtures_dir/install_dir"
+test_install_dir="$test_fixtures_dir/no_reinstall_test"
 
 function setUp()
 {
@@ -22,7 +22,7 @@ function test_no_reinstall_when_ruby_executable_exists()
 
 function tearDown()
 {
-	rm -r "$test_install_dir"
+	rm -rf "$test_install_dir"
 }
 
 SHUNIT_PARENT=$0 . $SHUNIT2

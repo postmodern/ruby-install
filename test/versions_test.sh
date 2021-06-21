@@ -3,11 +3,15 @@
 . ./test/helper.sh
 . ./share/ruby-install/versions.sh
 
-versions_file="$test_fixtures_dir/versions.txt"
-stable_file="$test_fixtures_dir/stable.txt"
+test_dir="$test_fixtures_dir/versions_test"
+
+versions_file="$test_dir/versions.txt"
+stable_file="$test_dir/stable.txt"
 
 function oneTimeSetUp()
 {
+	mkdir -p "$test_dir"
+
 	local commit="08cb86b18210e58fb9f85c0b4403e0a83f64fbf3"
 	local download_url="https://raw.githubusercontent.com/postmodern/ruby-versions/$commit"
 
@@ -82,8 +86,7 @@ function test_latest_version_with_unknown_version()
 
 function oneTimeTearDown()
 {
-	rm "$versions_file"
-	rm "$stable_file"
+	rm -rf "$test_dir"
 }
 
 SHUNIT_PARENT=$0 . $SHUNIT2

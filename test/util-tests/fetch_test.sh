@@ -2,7 +2,7 @@
 
 . ./test/helper.sh
 
-ruby_install_dir="$test_fixtures_dir/fetch"
+ruby_install_dir="$test_fixtures_dir/fetch_test"
 
 test_file="$ruby_install_dir/db.txt"
 
@@ -61,7 +61,7 @@ function test_fetch_with_unknown_key()
 
 function tearDown()
 {
-	rm -r "$ruby_install_dir"
+	rm -rf "$ruby_install_dir"
 }
 
 SHUNIT_PARENT=$0 . $SHUNIT2

@@ -14,7 +14,7 @@ function oneTimeSetUp()
 
 function test_look_ruby_version_with_known_version()
 {
-	local known_version="2.2.4"
+	local known_version="2.6.0"
 	local output="$(lookup_ruby_version "$ruby" "$known_version")"
 
 	assertEquals "did not return the same version" \
@@ -34,8 +34,8 @@ function test_lookup_ruby_version_with_empty_string()
 
 function test_lookup_ruby_version_with_partial_version()
 {
-	local partial_version="2.2"
-	local expected_version="$(grep -E '^2\.2\.' "$stable_file")"
+	local partial_version="2.7"
+	local expected_version="$(grep -E '^2\.7\.' "$stable_file")"
 	local output="$(lookup_ruby_version "$ruby" "$partial_version")"
 
 	assertEquals "did not return the matching version" \
