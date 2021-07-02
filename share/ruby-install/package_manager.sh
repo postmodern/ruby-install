@@ -22,7 +22,7 @@ function install_packages()
 		pkg)	$sudo pkg install -y "$@" || return $?     ;;
 		brew)
 			local brew_owner="$(/usr/bin/stat -f %Su "$(command -v brew)")"
-			if [[ $brew_owner != $(id -un) ]]; then
+			if [[ "$brew_owner" != "$(id -un)" ]]; then
 				local brew_sudo="sudo -u $brew_owner"
 			fi
 			${brew_sudo:-} brew install "$@" ||
