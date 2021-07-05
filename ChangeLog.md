@@ -1,3 +1,19 @@
+### 0.8.2 / 2021-07-04
+
+* Infer the ruby archive name from the URL, when a custom `--url` is given.
+* No longer run homebrew as root, if homebrew was installed by the current user.
+
+#### truffleruby
+
+* Guard against installing into `/usr/local` (`--system`) with an error message,
+  since TruffleRuby currently does not provide FHS compliant packages. When
+  TruffleRuby begins supporting installing into the FHS directory structure,
+  the error message will be removed.
+
+#### truffleruby-graalvm
+
+* Updated to install the TruffleRuby GraalVM (CE) Java 11 releases.
+
 ### 0.8.1 / 2020-12-20
 
 * Fixed a bug where `detect_package_manager()` was not detecting the package
