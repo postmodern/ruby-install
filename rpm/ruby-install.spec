@@ -1,12 +1,12 @@
 %define name ruby-install
-%define version 0.8.1
+%define version 0.8.2
 %define release 1
 
 %define buildroot %{_topdir}/BUILDROOT
 
 BuildRoot: %{buildroot}
 Source0: https://github.com/postmodern/%{name}/archive/v%{version}.tar.gz
-Summary: Installs Ruby, JRuby, Rubinius, TruffleRuby, or mruby
+Summary: Installs Ruby, JRuby, Rubinius, TruffleRuby (native / GraalVM), or mruby
 Name: %{name}
 Version: %{version}
 Release: %{release}
@@ -14,10 +14,10 @@ License: MIT
 URL: https://github.com/postmodern/ruby-install#readme
 AutoReqProv: no
 BuildArch: noarch
-Requires: bash, wget > 1.12, tar, bzip2, patch
+Requires: bash, grep, wget > 1.12, tar, bzip2, patch
 
 %description
-Installs Ruby, JRuby, Rubinius, TruffleRuby or mruby
+Installs Ruby, JRuby, Rubinius, TruffleRuby (native / GraalVM), or mruby
 
 %prep
 %setup -q
@@ -36,6 +36,11 @@ make install PREFIX=%{buildroot}/usr
 %{_defaultdocdir}/%{name}-%{version}/*
 
 %changelog
+* Sun Jul 04 2021 Postmodern <postmodern.mod3@gmail.com> - 0.8.2-1
+- Rebuilt for version 0.8.2.
+- Updated the package summary and description.
+- Added grep as a dependency.
+
 * Sun Dec 20 2020 Postmodern <postmodern.mod3@gmail.com> - 0.8.1-1
 - Rebuilt for version 0.8.1.
 
