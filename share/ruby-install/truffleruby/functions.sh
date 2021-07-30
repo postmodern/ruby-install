@@ -23,7 +23,7 @@ function install_ruby()
 {
 	if [[ "$install_dir" == '/usr/local' ]]; then
 		error "Unsupported see https://github.com/oracle/truffleruby/issues/1389"
-		return 1 ;;
+		return 1
 	fi
 
 	log "Installing truffleruby $ruby_version ..."
