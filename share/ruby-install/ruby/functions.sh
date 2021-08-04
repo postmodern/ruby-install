@@ -2,7 +2,7 @@
 
 ruby_version_family="${ruby_version:0:3}"
 
-if [[ "$ruby_version_family" < 2 ]]; then
+if [[ "$ruby_version_family" < "2.0" ]]; then
 	ruby_archive_ext="tar.bz2"
 else
 	ruby_archive_ext="tar.xz"
