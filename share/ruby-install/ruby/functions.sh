@@ -1,7 +1,14 @@
 #!/usr/bin/env bash
 
 ruby_version_family="${ruby_version:0:3}"
-ruby_archive="${ruby_archive:-ruby-$ruby_version.tar.xz}"
+
+if [[ "$ruby_version_family" < 2 ]]; then
+	ruby_archive_ext="tar.bz2"
+else
+	ruby_archive_ext="tar.xz"
+fi
+
+ruby_archive="${ruby_archive:-ruby-$ruby_version.$ruby_archive_ext}"
 ruby_dir_name="ruby-$ruby_version"
 ruby_mirror="${ruby_mirror:-https://cache.ruby-lang.org/pub/ruby}"
 ruby_url="${ruby_url:-$ruby_mirror/$ruby_version_family/$ruby_archive}"
