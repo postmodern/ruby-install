@@ -16,7 +16,7 @@ function set_package_manager()
 function install_packages()
 {
 	case "$package_manager" in
-		apt)	$sudo apt-get install -y "$@" || return $? ;;
+		apt)	$sudo apt install -y "$@" || return $? ;;
 		dnf|yum)$sudo $package_manager install -y "$@" || return $?     ;;
 		port)   $sudo port install "$@" || return $?       ;;
 		pkg)	$sudo pkg install -y "$@" || return $?     ;;

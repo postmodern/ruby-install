@@ -33,7 +33,7 @@ function detect_package_manager()
 					package_manager="yum"
 				fi
 			elif [[ -f /etc/debian_version ]]; then
-				if command -v apt-get >/dev/null; then
+				if command -v apt >/dev/null; then
 					package_manager="apt"
 				fi
 			elif [[ -f /etc/SuSE-release ]]; then

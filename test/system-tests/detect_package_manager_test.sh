@@ -24,12 +24,12 @@ function test_detect_package_manager_on_redhat_based_systems_with_yum()
 	assertEquals "did not fallback to yum" "yum" "$package_manager"
 }
 
-function test_detect_package_manager_on_debian_based_systems_with_apt_get()
+function test_detect_package_manager_on_debian_based_systems_with_apt()
 {
-	[[ -f /etc/debian_version ]] && command -v apt-get >/dev/null || \
+	[[ -f /etc/debian_version ]] && command -v apt >/dev/null || \
 		return 0
 
-	assertEquals "did not detect apt-get" "apt" "$package_manager"
+	assertEquals "did not detect apt" "apt" "$package_manager"
 }
 
 function test_detect_package_manager_on_open_suse_systems_with_zypper()
