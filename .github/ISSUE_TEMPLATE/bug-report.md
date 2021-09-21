@@ -49,3 +49,9 @@ Steps to reproduce the bug:
     ...
     $ openssl version
     ...
+
+<!-- if the issue is a JRuby issue: 
+
+    $ java --version
+
+-->
