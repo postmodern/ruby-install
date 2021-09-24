@@ -8,6 +8,7 @@ assignees: ''
 ---
 
 <!--
+
 **Double Check**
 
 - Did you update to the latest ruby-install version? (ex: `brew upgrade ruby-install`)
@@ -19,6 +20,22 @@ assignees: ''
   - Can you reproduce the issue by compiling ruby manually?
     - If so, than it is the upstream ruby's issue and should be reported to the ruby's bug tracker.
     - If the issue only occurs with ruby-install, proceed.
+
+**Try to Reproduce _without_ ruby-install**
+
+$ wget https://cache.ruby-lang.org/pub/ruby/3.0/ruby-X.Y.Z.tar.xz
+$ tar -Jvf ruby-X.Y.Z.tar.xz
+$ cd ruby-X.Y.Z/
+# on Linux
+$ ./configure
+# on macOS
+$ ./configure --with-opt-dir="$(brew --prefix openssl):$(brew --prefix readline):$(brew --prefix libyaml):$(brew --prefix gdbm)"
+$ make
+$ make install
+
+If ruby also fails to compile manually, then this is an upstream issue and needs
+to be reported to https://bugs.ruby-lang.org/.
+
 -->
 
 ## Description
