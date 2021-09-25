@@ -1,3 +1,25 @@
+### 0.8.3 / 2021-09-25
+
+#### ruby
+
+* Pin the homebrew openssl dependency to `openssl@1.1` to avoid compiling
+  against OpenSSL 3.0.
+
+#### truffleruby
+
+* Pin the homebrew openssl dependency to `openssl@1.1` to avoid compiling
+  against OpenSSL 3.0.
+
+#### truffleruby-graalvm
+
+* Pin the homebrew openssl dependency to `openssl@1.1` to avoid compiling
+  against OpenSSL 3.0.
+
+#### rbx
+
+* Pin the homebrew openssl dependency to `openssl@1.1` to avoid compiling
+  against OpenSSL 3.0.
+
 ### 0.8.2 / 2021-07-04
 
 * Infer the ruby archive name from the URL, when a custom `--url` is given.
