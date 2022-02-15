@@ -59,6 +59,10 @@ List the latest versions:
 
     $ ruby-install --latest
 
+List installed Rubies:
+
+    $ ruby-install --installed
+
 Install the current stable version of Ruby:
 
     $ ruby-install ruby
