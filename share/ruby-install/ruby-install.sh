@@ -59,6 +59,7 @@ Options:
 	--no-install-deps	Do not install build dependencies before installing Ruby
 	--no-reinstall  	Skip installation if another Ruby is detected in same location
 	-L, --latest		Downloads the latest ruby versions and checksums
+	-I, --installed		List installed ruby versions
 	-V, --version		Prints the version
 	-h, --help		Prints this message
 
@@ -193,6 +194,10 @@ function parse_options()
 				force_update=1
 				shift
 				;;
+      -I|--installed)
+        list_installed_rubies
+        return 1
+        ;;
 			-V|--version)
 				echo "ruby-install: $ruby_install_version"
 				exit
@@ -227,6 +232,14 @@ function parse_options()
 			return 1
 			;;
 	esac
+}
+
+#
+# List installed Rubies
+#
+function list_installed_rubies()
+{
+  ls -1 ${install_dir:-$rubies_dir}
 }
 
 #
