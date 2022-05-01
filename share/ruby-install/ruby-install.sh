@@ -14,11 +14,11 @@ make_opts=()
 system_dir="/usr/local"
 
 if (( UID == 0 )); then
-	src_dir="$system_dir/src"
-	rubies_dir="/opt/rubies"
+	src_dir="${RUBY_INSTALL_SRC_DIR:-$system_dir/src}"
+	rubies_dir="${RUBY_INSTALL_RUBIES_DIR:-/opt/rubies}"
 else
-	src_dir="$HOME/src"
-	rubies_dir="$HOME/.rubies"
+	src_dir="${RUBY_INSTALL_SRC_DIR:-$HOME/src}"
+	rubies_dir="${RUBY_INSTALL_RUBIES_DIR:-$HOME/.rubies}"
 fi
 
 source "$ruby_install_dir/logging.sh"

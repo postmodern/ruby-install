@@ -73,4 +73,26 @@ function test_rubies_dir()
 	fi
 }
 
+function test_src_dir_with_RUBY_INSTALL_SRC_DIR()
+{
+	export RUBY_INSTALL_SRC_DIR="/path/to/src/dir"
+	. ./share/ruby-install/ruby-install.sh
+
+	assertEquals "did not set \$src_dir to \$RUBY_INSTALL_SRC_DIR" \
+		     "$RUBY_INSTALL_SRC_DIR" "$src_dir"
+
+	unset RUBY_INSTALL_SRC_DIR
+}
+
+function test_rubies_dir_with_RUBY_INSTALL_SRC_DIR()
+{
+	export RUBY_INSTALL_RUBIES_DIR="/path/to/rubies/dir"
+	. ./share/ruby-install/ruby-install.sh
+
+	assertEquals "did not set \$rubies_dir to \$RUBY_INSTALL_RUBIES_DIR" \
+		     "$RUBY_INSTALL_RUBIES_DIR" "$rubies_dir"
+
+	unset RUBY_INSTALL_RUBIES_DIR
+}
+
 SHUNIT_PARENT=$0 . $SHUNIT2

@@ -182,6 +182,14 @@ Uninstall a Ruby version:
 *~/.rubies/$ruby-$version*
 	Default non-root user installation directory.
 
+## ENVIRONMENT
+
+*RUBY_INSTALL_SRC_DIR*
+  Overrides the default source directory.
+
+*RUBY_INSTALL_RUBIES_DIR*
+  Overrides the default installation directory.
+
 ## AUTHOR
 
 Postmodern <postmodern.mod3@gmail.com>
