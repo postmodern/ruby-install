@@ -51,11 +51,11 @@ Installs [Ruby], [JRuby], [Rubinius], [TruffleRuby] (native / GraalVM), or
 
 ## Synopsis
 
-List supported Rubies and their major versions:
+List supported Rubies and their current stable versions:
 
     $ ruby-install
 
-List the latest versions:
+Updates then list the supported Rubies and their current stable versions:
 
     $ ruby-install --latest
 
