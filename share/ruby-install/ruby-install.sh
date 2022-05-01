@@ -191,7 +191,7 @@ function parse_options()
 				shift
 				;;
 			-L|--latest)
-				warn "deprecation: -L,--latest is deprecated. Please use -U,--update instead."
+				warn "DEPRECATION: -L,--latest is deprecated. Please use -U,--update instead."
 				force_update=1
 				shift
 				;;

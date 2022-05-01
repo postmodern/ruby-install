@@ -92,7 +92,7 @@ https://github.com/postmodern/ruby-install#readme
 `--no-reinstall`
 	Skip installation if another Ruby is detected in same location.
 
-`-L`, `--latest`
+`-U`, `--update`
 	Downloads the latest ruby versions and checksums from the ruby-versions
 	repository (https://github.com/postmodern/ruby-versions#readme).
 

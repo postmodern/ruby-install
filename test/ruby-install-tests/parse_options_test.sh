@@ -236,6 +236,27 @@ function test_parse_options_with_no_reinstall()
 	assertEquals "did not set to \$no_reinstall" 1 $no_reinstall
 }
 
+function test_parse_options_with_latest()
+{
+	parse_options "--latest" "ruby" 2>/dev/null
+
+	assertEquals "did not set to \$force_update" 1 $force_update
+}
+
+function test_parse_option_with_latest_deprecation_warning()
+{
+	local output="$(parse_options "--latest" "ruby" 2>&1)"
+
+	assertEquals "*** DEPRECATION: -L,--latest is deprecated. Please use -U,--update instead." "$output"
+}
+
+function test_parse_options_with_update()
+{
+	parse_options "--update" "ruby" 2>/dev/null
+
+	assertEquals "did not set to \$force_update" 1 $force_update
+}
+
 function test_parse_options_with_additional_options()
 {
 	local expected=(--enable-shared CFLAGS="-03")
