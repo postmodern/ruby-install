@@ -58,7 +58,8 @@ Options:
 	--no-extract		Do not re-extract the downloaded Ruby archive
 	--no-install-deps	Do not install build dependencies before installing Ruby
 	--no-reinstall  	Skip installation if another Ruby is detected in same location
-	-L, --latest		Downloads the latest ruby versions and checksums
+	-U, --update		Downloads the latest ruby versions and checksums
+	-L, --latest		Deprecated: please use -U,--update instead
 	-V, --version		Prints the version
 	-h, --help		Prints this message
 
@@ -190,6 +191,11 @@ function parse_options()
 				shift
 				;;
 			-L|--latest)
+				warn "deprecation: -L,--latest is deprecated. Please use -U,--update instead."
+				force_update=1
+				shift
+				;;
+			-U|--update)
 				force_update=1
 				shift
 				;;
