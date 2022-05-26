@@ -165,8 +165,9 @@ ruby-install is available on [Fedora Copr](https://copr.fedorainfracloud.org/cop
 
 ### FreeBSD
 
-There is a [FreeBSD port] of ruby-install which can be copied into the local
-ports tree.
+ruby-install is included in the official [FreeBSD ports collection]:
+
+    cd /usr/ports/devel/ruby-install/ && make install clean
 
 ## Known Issues
 
@@ -218,4 +219,4 @@ of [rbenv]
 
 [homebrew]: http://brew.sh/
 [AUR]: https://aur.archlinux.org/packages/ruby-install/
-[FreeBSD port]: https://github.com/steakknife/ruby-install-freebsd#readme
+[FreeBSD ports collection]: https://www.freshports.org/devel/ruby-install/
