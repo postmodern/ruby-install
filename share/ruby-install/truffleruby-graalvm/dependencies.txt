@@ -6,3 +6,4 @@ brew: openssl@1.1
 pacman: zlib openssl make gcc libxml2
 zypper: zlib-devel libopenssl-devel make gcc libxml2
 pkg: openssl gmake gcc libxml2
+xbps: base-devel openssl-devel zlib-devel libxml2

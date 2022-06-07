@@ -3,7 +3,7 @@
 function set_package_manager()
 {
 	case "$1" in
-		zypper|apt|dnf|yum|pkg|port|brew|pacman)
+		zypper|apt|dnf|yum|pkg|port|brew|pacman|xbps)
 			package_manager="$1"
 			;;
 		*)
@@ -39,6 +39,7 @@ function install_packages()
 			fi
 			;;
 		zypper) $sudo zypper -n in -l $* || return $? ;;
+		xbps) $sudo xbps-install -Sy "$@" || return $? ;;
 		"")	warn "Could not determine Package Manager. Proceeding anyway." ;;
 	esac
 }

@@ -23,6 +23,7 @@ Installs [Ruby], [JRuby], [Rubinius], [TruffleRuby] (native / GraalVM), or
   * [yum]
   * [pacman]
   * [zypper]
+  * [xbps]
   * [pkg]
   * [macports]
   * [brew]
@@ -198,6 +199,7 @@ of [rbenv]
 [yum]: http://yum.baseurl.org/
 [pacman]: https://wiki.archlinux.org/index.php/Pacman
 [zypper]: https://en.opensuse.org/Portal:Zypper
+[xbps]: https://docs.voidlinux.org/xbps/index.html
 [pkg]: https://wiki.freebsd.org/pkgng
 [macports]: https://www.macports.org/
 [brew]: http://brew.sh
