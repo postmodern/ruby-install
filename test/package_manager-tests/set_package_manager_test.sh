@@ -84,6 +84,16 @@ function test_set_package_manager_with_macports()
 	assertEquals "did not set package_manager to $arg1" "$arg1" "$package_manager"
 }
 
+function test_set_package_manager_with_xbps()
+{
+	local arg1="xbps"
+
+	set_package_manager "$arg1"
+
+	assertEquals "did not return 0" $? 0
+	assertEquals "did not set package_manager to $arg1" "$arg1" "$package_manager"
+}
+
 function test_set_package_manager_with_unknown_package_manager()
 {
 	set_package_manager "foo" 2>/dev/null

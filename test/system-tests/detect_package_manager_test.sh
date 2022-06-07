@@ -39,6 +39,15 @@ function test_detect_package_manager_on_open_suse_systems_with_zypper()
 	assertEquals "did not detect zypper" "zypper" "$package_manager"
 }
 
+function test_detect_package_manager_on_void_systems_with_xbps()
+{
+	command -v lsb_release >/dev/null &&
+		$(lsb_release -c|grep -q void) &&
+		command -v xbps-install >/dev/null || return 0
+
+	assertEquals "did not detect xbps-install" "xbps" "$package_manager"
+}
+
 function test_detect_package_manager_on_bsd_systems_with_pkg()
 {
 	[[ "$os_platform" == *BSD ]] && command -v pkg >/dev/null || return 0
