@@ -1,14 +1,16 @@
 #!/usr/bin/env bash
 
 case "$os_platform" in
-	Linux)	graalvm_platform="linux" ;;
-	Darwin)	graalvm_platform="darwin" ;;
-	*)	fail "Unsupported platform $os_platform" ;;
+	Linux)   graalvm_platform="linux" ;;
+	Darwin)  graalvm_platform="darwin" ;;
+	*)       fail "Unsupported platform $os_platform" ;;
 esac
 
 case "$os_arch" in
-	x86_64)	graalvm_arch="amd64" ;;
-	*)	fail "Unsupported architecture $os_arch" ;;
+	x86_64)  graalvm_arch="amd64" ;;
+	aarch64) graalvm_arch="aarch64" ;;
+	arm64)   graalvm_arch="aarch64" ;;
+	*)       fail "Unsupported platform $os_arch" ;;
 esac
 
 ruby_dir_name="graalvm-ce-java11-$ruby_version"
