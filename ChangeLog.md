@@ -1,7 +1,7 @@
 ### 0.8.4 / 2022-08-01
 
-* Use `xzcat` instead of the `tar -J` option which is unavailable on OpenBSD
-  7.1.
+* Uncompress `tar.xz` archives by piping `xzcat` into `tar` as a workaround for
+  OpenBSD 7.1's `tar` not supporting the `-J` option.
 
 #### truffleruby
 
