@@ -69,11 +69,11 @@ Install the latest version of Ruby:
 
 Install a stable version of Ruby:
 
-    $ ruby-install ruby 2.3
+    $ ruby-install ruby 3.1
 
 Install a specific version of Ruby:
 
-    $ ruby-install ruby 2.2.4
+    $ ruby-install ruby 3.1.2
 
 Install a Ruby into a specific directory:
 
@@ -85,15 +85,15 @@ Install a Ruby into a specific `rubies` directory:
 
 Install a Ruby into `/usr/local`:
 
-    $ ruby-install --system ruby 2.4.0
+    $ ruby-install --system ruby 3.1.2
 
 Install a Ruby from an official site with directly download:
 
-    $ ruby-install -M https://ftp.ruby-lang.org/pub/ruby ruby 2.4.0
+    $ ruby-install -M https://ftp.ruby-lang.org/pub/ruby ruby 3.1.2
 
 Install a Ruby from a mirror:
 
-    $ ruby-install -M http://www.mirrorservice.org/sites/ftp.ruby-lang.org/pub/ruby ruby 2.0.0-p645
+    $ ruby-install -M http://www.mirrorservice.org/sites/ftp.ruby-lang.org/pub/ruby ruby 3.1.2
 
 Install a Ruby with a specific patch:
 
@@ -101,29 +101,29 @@ Install a Ruby with a specific patch:
 
 Install a Ruby with a specific C compiler:
 
-    $ ruby-install ruby 2.4.0 -- CC=gcc-4.9
+    $ ruby-install ruby 3.1.2 -- CC=clang
 
 Install a Ruby with specific configuration:
 
-    $ ruby-install ruby 2.4.0 -- --enable-shared --enable-dtrace CFLAGS="-O3"
+    $ ruby-install ruby 3.1.2 -- --enable-shared --enable-dtrace CFLAGS="-O3"
 
 Install a Ruby without installing dependencies first:
 
-    $ ruby-install --no-install-deps ruby 2.4.0
+    $ ruby-install --no-install-deps ruby 3.1.2
 
 Uninstall a Ruby version:
 
-    $ rm -rf ~/.rubies/ruby-2.4.0
+    $ rm -rf ~/.rubies/ruby-3.1.2
 
 ### Integration
 
 Using ruby-install with [RVM]:
 
-    $ ruby-install --rubies-dir ~/.rvm/rubies ruby 2.4.0
+    $ ruby-install --rubies-dir ~/.rvm/rubies ruby 3.1.2
 
 Using ruby-install with [rbenv]:
 
-    $ ruby-install --install-dir ~/.rbenv/versions/2.4.0 ruby 2.4.0
+    $ ruby-install --install-dir ~/.rbenv/versions/2.4.0 ruby 3.1.2
 
 ruby-install can even be used with [Chef].
 
