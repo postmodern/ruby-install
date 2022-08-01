@@ -1,3 +1,12 @@
+### 0.8.4 / 2022-08-01
+
+* Use `xzcat` instead of the `tar -J` option which is unavailable on OpenBSD
+  7.1.
+
+#### truffleruby
+
+* Added support for the `aarch64` platform.
+
 ### 0.8.3 / 2021-09-25
 
 #### ruby
