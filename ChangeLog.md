@@ -7,6 +7,10 @@
 
 * Added support for the `aarch64` platform.
 
+#### truffleruby-graalvm
+
+* Added support for the `aarch64` platform.
+
 ### 0.8.3 / 2021-09-25
 
 #### ruby
