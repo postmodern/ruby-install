@@ -46,6 +46,7 @@ Installs [Ruby], [JRuby], [Rubinius], [TruffleRuby] (native / GraalVM), or
 * `sha512sum` or `sha512`
 * `tar`
 * `bzip2`
+* `xz`
 * `patch` (if `--patch` is specified)
 * [gcc] >= 4.2 or [clang]
 
