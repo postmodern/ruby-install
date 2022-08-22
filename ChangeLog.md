@@ -1,3 +1,7 @@
+### 0.8.5 / 2022-08-22
+
+* Added `xz` as a dependency.
+
 ### 0.8.4 / 2022-08-01
 
 * Uncompress `tar.xz` archives by piping `xzcat` into `tar` as a workaround for
