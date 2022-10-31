@@ -12,15 +12,31 @@ function pre_install()
 }
 
 #
-# Install Ruby Dependencies
+# Loads the packages from the file within the ruby's directory for the current
+# package manager and sets $ruby_dependencies.
+#
+function load_dependencies_from()
+{
+	local file="$1"
+
+	ruby_dependencies=($(fetch "$ruby/$file" "$package_manager" || return $?))
+}
+
+#
+# Loads the dependencies from dependencies.txt and sets $ruby_dependencies.
+#
+function load_dependencies() { load_dependencies_from "dependencies"; }
+
+#
+# Install the ruby's dependencies.
 #
 function install_deps()
 {
-	local packages=($(fetch "$ruby/dependencies" "$package_manager" || return $?))
+	load_dependencies
 
-	if (( ${#packages[@]} > 0 )); then
+	if (( ${#ruby_dependencies[@]} > 0 )); then
 		log "Installing dependencies for $ruby $ruby_version ..."
-		install_packages "${packages[@]}" || return $?
+		install_packages "${ruby_dependencies[@]}" || return $?
 	fi
 
 	install_optional_deps || return $?
