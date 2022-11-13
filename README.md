@@ -120,11 +120,11 @@ Uninstall a Ruby version:
 
 Using ruby-install with [RVM]:
 
-    $ ruby-install --rubies-dir ~/.rvm/rubies ruby 3.1.2
+    $ ruby-install --rubies-dir ~/.rvm/rubies ruby-3.2.0-preview3
 
 Using ruby-install with [rbenv]:
 
-    $ ruby-install --install-dir ~/.rbenv/versions/2.4.0 ruby 3.1.2
+    $ ruby-install --install-dir ~/.rbenv/versions/3.2.0-preview3 ruby-3.2.0-preview3
 
 ruby-install can even be used with [Chef].
 
