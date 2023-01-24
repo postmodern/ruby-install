@@ -24,6 +24,11 @@ function detect_sudo()
 #
 function detect_package_manager()
 {
+	if [[ -n "$RUBY_INSTALL_PKG_MANAGER" ]]; then
+		package_manager="$RUBY_INSTALL_PKG_MANAGER"
+		return
+	fi
+
 	case "$os_platform" in
 		Linux)
 			if [[ -f /etc/redhat-release ]]; then
