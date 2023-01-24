@@ -275,11 +275,12 @@ function init()
 		warn "Unknown $ruby version $ruby_version. Proceeding anyways ..."
 	fi
 
-	ruby_cache_dir="$ruby_install_cache_dir/$ruby"
-	install_dir="${install_dir:-$rubies_dir/$ruby-$ruby_version}"
-
 	source "$ruby_install_dir/functions.sh"       || return $?
 	source "$ruby_install_dir/$ruby/functions.sh" || return $?
+
+	ruby_cache_dir="$ruby_install_cache_dir/$ruby"
+	install_dir="${install_dir:-$rubies_dir/$ruby-$ruby_version}"
+	ruby_build_dir="$src_dir/$ruby_dir_name"
 
 	ruby_md5="${ruby_md5:-$(ruby_checksum_for "$ruby" md5 "$ruby_archive")}"
 	ruby_sha1="${ruby_sha1:-$(ruby_checksum_for "$ruby" sha1 "$ruby_archive")}"

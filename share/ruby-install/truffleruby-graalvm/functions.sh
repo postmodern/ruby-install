@@ -29,7 +29,7 @@ function install_ruby()
 	fi
 
 	log "Installing GraalVM $ruby_version ..."
-	copy_into "$src_dir/$ruby_dir_name" "$install_dir/graalvm" || return $?
+	copy_into "$ruby_build_dir" "$install_dir/graalvm" || return $?
 }
 
 #
