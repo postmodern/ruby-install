@@ -34,13 +34,12 @@ function are_ruby_versions_missing()
 function download_ruby_versions_file()
 {
 	local ruby="$1"
-	local ruby_name="${ruby/rbx/rubinius}"
 
 	local file="$2"
 	local dir="$ruby_install_cache_dir/$ruby"
 	local dest="$dir/$file"
 
-	local url="$ruby_versions_url/$ruby_name/$file"
+	local url="$ruby_versions_url/$ruby/$file"
 
 	if [[ -f "$dest" ]]; then rm "$dest"      || return $?
 	else                      mkdir -p "$dir" || return $?

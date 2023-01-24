@@ -6,14 +6,14 @@
 
 ## DESCRIPTION
 
-Installs Ruby, JRuby, Rubinius, TruffleRuby, or mruby.
+Installs Ruby, JRuby, TruffleRuby, or mruby.
 
 https://github.com/postmodern/ruby-install#readme
 
 ## ARGUMENTS
 
 *RUBY*
-	Install Ruby by name. Must be either `ruby`, `jruby`, `rbx`, `truffleruby`, or
+	Install Ruby by name. Must be either `ruby`, `jruby`, `truffleruby`, or
   `mruby`.
 
 *VERSION*

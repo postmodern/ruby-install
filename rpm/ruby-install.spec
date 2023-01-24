@@ -6,7 +6,7 @@
 
 BuildRoot: %{buildroot}
 Source0: https://github.com/postmodern/%{name}/archive/v%{version}.tar.gz
-Summary: Installs Ruby, JRuby, Rubinius, TruffleRuby (native / GraalVM), or mruby
+Summary: Installs Ruby, JRuby, TruffleRuby (native / GraalVM), or mruby
 Name: %{name}
 Version: %{version}
 Release: %{release}
@@ -17,7 +17,7 @@ BuildArch: noarch
 Requires: bash, grep, wget > 1.12, tar, bzip2, xz, patch
 
 %description
-Installs Ruby, JRuby, Rubinius, TruffleRuby (native / GraalVM), or mruby
+Installs Ruby, JRuby, TruffleRuby (native / GraalVM), or mruby
 
 %prep
 %setup -q
