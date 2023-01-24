@@ -9,7 +9,9 @@ if [[ -z "$ruby" ]]; then
 	exit $?
 fi
 
-if [[ $force_update -eq 1 ]] || are_ruby_versions_missing "$ruby"; then
+if [[ $force_update -eq 1 ]] ||
+   are_ruby_versions_missing "$ruby" ||
+   is_unknown_ruby_version "$ruby" "$ruby_version"; then
 	log "Updating $ruby versions ..."
 	download_ruby_versions "$ruby" || fail "Failed to download $ruby versions!"
 fi
