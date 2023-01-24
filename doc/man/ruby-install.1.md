@@ -190,6 +190,9 @@ Uninstall a Ruby version:
 *RUBY_INSTALL_RUBIES_DIR*
   Overrides the default installation directory.
 
+*RUBY_INSTALL_PKG_MANAGER*
+  Explicitly sets the package manager to use.
+
 ## AUTHOR
 
 Postmodern <postmodern.mod3@gmail.com>
