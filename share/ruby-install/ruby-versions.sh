@@ -102,6 +102,14 @@ function is_known_ruby_version()
 }
 
 #
+# Determines if the given version is an unknown version.
+#
+function is_unknown_ruby_version()
+{
+	! is_known_ruby_version "$1" "$2"
+}
+
+#
 # Looks up a checksum for $ruby_archive.
 #
 function ruby_checksum_for()
