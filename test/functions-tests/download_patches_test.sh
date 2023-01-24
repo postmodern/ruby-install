@@ -22,8 +22,6 @@ function test_download_patches()
 
 	assertEquals "did not update \$patches" \
 		     "${patches[0]}" "$src_dir/$ruby_dir_name/ary-queue.diff"
-
-	ls "$src_dir/$ruby_dir_name"
 }
 
 function tearDown()
