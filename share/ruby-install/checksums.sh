@@ -54,6 +54,7 @@ function compute_checksum()
 		return 1
 	fi
 
+	debug "$program $file"
 	local output="$($program "$file")"
 
 	echo -n "${output%% *}"

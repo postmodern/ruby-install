@@ -35,9 +35,9 @@ function configure_ruby()
 			;;
 	esac
 
-	./configure --prefix="$install_dir" \
-		    "${opt_dir:+--with-opt-dir="$opt_dir"}" \
-		    "${configure_opts[@]}" || return $?
+	run ./configure --prefix="$install_dir" \
+			"${opt_dir:+--with-opt-dir="$opt_dir"}" \
+			"${configure_opts[@]}" || return $?
 }
 
 #
@@ -46,7 +46,7 @@ function configure_ruby()
 function clean_ruby()
 {
 	log "Cleaning ruby $ruby_version ..."
-	make clean || return $?
+	run make clean || return $?
 }
 
 #
@@ -55,7 +55,7 @@ function clean_ruby()
 function compile_ruby()
 {
 	log "Compiling ruby $ruby_version ..."
-	make "${make_opts[@]}" || return $?
+	run make "${make_opts[@]}" || return $?
 }
 
 #
@@ -64,5 +64,5 @@ function compile_ruby()
 function install_ruby()
 {
 	log "Installing ruby $ruby_version ..."
-	make install || return $?
+	run make install || return $?
 }

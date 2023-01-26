@@ -11,7 +11,7 @@ ruby_url="${ruby_url:-$ruby_mirror/$ruby_version/$ruby_archive}"
 function clean_ruby()
 {
 	log "Cleaning mruby $ruby_version ..."
-	make clean || return $?
+	run make clean || return $?
 }
 
 #
@@ -20,7 +20,7 @@ function clean_ruby()
 function compile_ruby()
 {
 	log "Compiling mruby $ruby_version ..."
-	make "${make_opts[@]}" || return $?
+	run make "${make_opts[@]}" || return $?
 }
 
 #
@@ -29,7 +29,7 @@ function compile_ruby()
 function install_ruby()
 {
 	log "Installing mruby $ruby_version ..."
-	cp -R "$ruby_build_dir" "$install_dir" || return $?
+	run cp -R "$ruby_build_dir" "$install_dir" || return $?
 }
 
 #
@@ -38,8 +38,8 @@ function install_ruby()
 function post_install()
 {
 	log "Symlinking bin/ruby to bin/mruby ..."
-	ln -fs mruby "$install_dir/bin/ruby" || return $?
+	run ln -fs mruby "$install_dir/bin/ruby" || return $?
 
 	log "Symlinking bin/irb to bin/mirb ..."
-	ln -fs mirb "$install_dir/bin/irb" || return $?
+	run ln -fs mirb "$install_dir/bin/irb" || return $?
 }

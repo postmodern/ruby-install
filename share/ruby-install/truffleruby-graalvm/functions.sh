@@ -40,11 +40,11 @@ function post_install()
 	cd "$install_dir/graalvm" || return $?
 
 	if [[ "$graalvm_platform" == "darwin" ]]; then
-		cd Contents/Home || return $?
+		run cd Contents/Home || return $?
 	fi
 
 	log "Installing the Ruby component ..."
-	./bin/gu install ruby || return $?
+	run ./bin/gu install ruby || return $?
 
 	local ruby_home="$(./bin/ruby -e 'print RbConfig::CONFIG["prefix"]')"
 
@@ -54,11 +54,11 @@ function post_install()
 	fi
 
 	# Make gu available in PATH (useful to install other languages)
-	ln -fs "$PWD/bin/gu" "$ruby_home/bin/gu" || return $?
+	run ln -fs "$PWD/bin/gu" "$ruby_home/bin/gu" || return $?
 
-	cd "$install_dir" || return $?
-	ln -fs "${ruby_home#"$install_dir/"}/bin" . || return $?
+	run cd "$install_dir" || return $?
+	run ln -fs "${ruby_home#"$install_dir/"}/bin" . || return $?
 
 	log "Running truffleruby post-install hook ..."
-	"$ruby_home/lib/truffle/post_install_hook.sh" || return $?
+	run "$ruby_home/lib/truffle/post_install_hook.sh" || return $?
 }

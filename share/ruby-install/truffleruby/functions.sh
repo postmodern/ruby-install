@@ -38,5 +38,5 @@ function install_ruby()
 function post_install()
 {
 	log "Running truffleruby post-install hook ..."
-	"$install_dir/lib/truffle/post_install_hook.sh" || return $?
+	run "$install_dir/lib/truffle/post_install_hook.sh" || return $?
 }

@@ -31,8 +31,8 @@ function download()
 	mkdir -p "${dest%/*}" || return $?
 
 	case "$downloader" in
-		wget) wget -c -O "$dest.part" "$url" || return $?         ;;
-		curl) curl -f -L -C - -o "$dest.part" "$url" || return $? ;;
+		wget) run wget -c -O "$dest.part" "$url" || return $?         ;;
+		curl) run curl -f -L -C - -o "$dest.part" "$url" || return $? ;;
 		"")
 			error "Could not find wget or curl"
 			return 1
@@ -51,10 +51,19 @@ function extract()
 	local dest="${2:-${archive%/*}}"
 
 	case "$archive" in
-		*.tgz|*.tar.gz) tar -xzf "$archive" -C "$dest" || return $? ;;
-		*.tbz|*.tbz2|*.tar.bz2)	tar -xjf "$archive" -C "$dest" || return $? ;;
-		*.txz|*.tar.xz)	xzcat "$archive" | tar -xf - -C "$dest" || return $? ;;
-		*.zip) unzip "$archive" -d "$dest" || return $? ;;
+		*.tgz|*.tar.gz)
+			run tar -xzf "$archive" -C "$dest" || return $?
+			;;
+		*.tbz|*.tbz2|*.tar.bz2)
+			run tar -xjf "$archive" -C "$dest" || return $?
+			;;
+		*.txz|*.tar.xz)
+			debug "xzcat $archive | tar -xf - -C $dest"
+			xzcat "$archive" | tar -xf - -C "$dest" || return $?
+			;;
+		*.zip)
+			run unzip "$archive" -d "$dest" || return $?
+			;;
 		*)
 			error "Unknown archive format: $archive"
 			return 1
@@ -71,5 +80,5 @@ function copy_into()
 	local dest="$2"
 
 	mkdir -p "$dest" || return $?
-	cp -R "$src"/* "$dest" || return $?
+	run cp -R "$src"/* "$dest" || return $?
 }

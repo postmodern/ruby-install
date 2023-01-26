@@ -111,7 +111,7 @@ function apply_patches()
 		name="${patch##*/}"
 
 		log "Applying patch $name ..."
-		patch -p1 -d "$ruby_build_dir" < "$patch" || return $?
+		run patch -p1 -d "$ruby_build_dir" < "$patch" || return $?
 	done
 }
 
@@ -145,8 +145,8 @@ function post_install() { return; }
 #
 function cleanup_source() {
 	log "Removing $src_dir/$ruby_archive ..."
-	rm "$src_dir/$ruby_archive" || return $?
+	run rm "$src_dir/$ruby_archive" || return $?
 
 	log "Removing $ruby_build_dir..."
-	rm -rf "$ruby_build_dir" || return $?
+	run rm -rf "$ruby_build_dir" || return $?
 }
