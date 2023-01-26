@@ -60,6 +60,7 @@ Options:
 	--no-reinstall  	Skip installation if another Ruby is detected in same location
 	-U, --update		Downloads the latest ruby versions and checksums
 	-L, --latest		Deprecated: please use -U,--update instead
+	-D, --debug		Enable debug messages
 	-V, --version		Prints the version
 	-h, --help		Prints this message
 
@@ -197,6 +198,10 @@ function parse_options()
 				;;
 			-U|--update)
 				force_update=1
+				shift
+				;;
+			-D|--debug)
+				enable_debug=1
 				shift
 				;;
 			-V|--version)
