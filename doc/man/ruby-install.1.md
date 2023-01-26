@@ -96,6 +96,9 @@ https://github.com/postmodern/ruby-install#readme
 	Downloads the latest ruby versions and checksums from the ruby-versions
 	repository (https://github.com/postmodern/ruby-versions#readme).
 
+`-D`, `--debug`
+    Enable debugging messages.
+
 `-V`, `--version`
 	Prints the current ruby-install version.
 
