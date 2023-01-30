@@ -47,7 +47,7 @@ function install_packages()
 			fi
 			;;
 		zypper)
-			run $sudo zypper -n in -l $* || return $?
+			run $sudo zypper -n in -l "$@" || return $?
 			;;
 		xbps)
 			run $sudo xbps-install -Sy "$@" || return $?
