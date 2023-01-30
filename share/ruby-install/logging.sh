@@ -68,6 +68,6 @@ function run()
 #
 function fail()
 {
-	error "$@"
+	error "$*"
 	exit -1
 }
