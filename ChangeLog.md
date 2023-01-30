@@ -1,3 +1,32 @@
+### 0.9.0 / 2023-01-30
+
+* Added the `-U`,`--update` option which will eventually replace
+  `-L`,`--latest`.
+* Added the `-D`,`--debug` option for outputting `[DEBUG]` messages and
+  showing which commands are actually ran during installation.
+* Added support for the `RUBY_INSTALL_SRC_DIR` environment variable for
+  controlling the default `src` directory.
+* Added support for the `RUBY_INSTALL_RUBIES_DIR` environment variable for
+  controlling the default installation directory.
+* Added support for the `RUBY_INSTALL_PKG_MANAGER` environment variable for
+  controlling which package manager to use by default.
+* Automatically update the ruby versions and checksums if the given ruby version
+  is not known.
+* Added support for [Void Linux]'s `xbps` package manager.
+
+[Void Linux]: https://voidlinux.org/
+
+#### functions.sh
+
+* Added the `ruby_build_dir` variable.
+* Added the `load_dependencies` and `load_dependencies_from` functions.
+* Added the `is_unknown_ruby_version` function.
+
+#### rbx
+
+* Dropped support for installing Rubinius, since it does not appear to be
+  actively maintained and is not widely used anymore.
+
 ### 0.8.5 / 2022-08-22
 
 * Added `xz` as a dependency.
