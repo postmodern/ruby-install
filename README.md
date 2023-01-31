@@ -54,86 +54,124 @@ Installs [Ruby], [JRuby], [TruffleRuby] (native / GraalVM), or [mruby].
 
 List supported Rubies and their current stable versions:
 
-    $ ruby-install
+```shell
+$ ruby-install
+```
 
 Updates then list the supported Rubies and their current stable versions:
 
-    $ ruby-install --update
+```shell
+$ ruby-install --update
+```
 
 Install the current stable version of Ruby:
 
-    $ ruby-install ruby
+```shell
+$ ruby-install ruby
+```
 
 Install the latest version of Ruby:
 
-    $ ruby-install --update ruby
+```shell
+$ ruby-install --update ruby
+```
 
 Install a stable version of Ruby:
 
-    $ ruby-install ruby 3.1
+```shell
+$ ruby-install ruby 3.1
+```
 
 Install a specific version of Ruby:
 
-    $ ruby-install ruby 3.1.2
+```shell
+$ ruby-install ruby 3.1.2
+```
 
 Install a Ruby into a specific directory:
 
-    $ ruby-install --install-dir /path/to/dir ruby
+```shell
+$ ruby-install --install-dir /path/to/dir ruby
+```
 
 Install a Ruby into a specific `rubies` directory:
 
-    $ ruby-install --rubies-dir /path/to/rubies/ ruby
+```shell
+$ ruby-install --rubies-dir /path/to/rubies/ ruby
+```
 
 Install a Ruby into `/usr/local`:
 
-    $ ruby-install --system ruby 3.1.2
+```shell
+$ ruby-install --system ruby 3.1.2
+```
 
 Install a Ruby from an official site with directly download:
 
-    $ ruby-install -M https://ftp.ruby-lang.org/pub/ruby ruby 3.1.2
+```shell
+$ ruby-install -M https://ftp.ruby-lang.org/pub/ruby ruby 3.1.2
+```
 
 Install a Ruby from a mirror:
 
-    $ ruby-install -M http://www.mirrorservice.org/sites/ftp.ruby-lang.org/pub/ruby ruby 3.1.2
+```shell
+$ ruby-install -M http://www.mirrorservice.org/sites/ftp.ruby-lang.org/pub/ruby ruby 3.1.2
+```
 
 Install a Ruby with a specific patch:
 
-    $ ruby-install -p https://raw.github.com/gist/4136373/falcon-gc.diff ruby 1.9.3-p551
+```shell
+$ ruby-install -p https://raw.github.com/gist/4136373/falcon-gc.diff ruby 1.9.3-p551
+```
 
 Install a Ruby with a specific C compiler:
 
-    $ ruby-install ruby 3.1.2 -- CC=clang
+```shell
+$ ruby-install ruby 3.1.2 -- CC=clang
+```
 
 Install a Ruby with specific configuration:
 
-    $ ruby-install ruby 3.1.2 -- --enable-shared --enable-dtrace CFLAGS="-O3"
+```shell
+$ ruby-install ruby 3.1.2 -- --enable-shared --enable-dtrace CFLAGS="-O3"
+```
 
 Install a Ruby without installing dependencies first:
 
-    $ ruby-install --no-install-deps ruby 3.1.2
+```shell
+$ ruby-install --no-install-deps ruby 3.1.2
+```
 
 Uninstall a Ruby version:
 
-    $ rm -rf ~/.rubies/ruby-3.1.2
+```shell
+$ rm -rf ~/.rubies/ruby-3.1.2
+```
 
 ### Integration
 
 Using ruby-install with [RVM]:
 
-    $ ruby-install --rubies-dir ~/.rvm/rubies ruby-3.2.0-preview3
+```shell
+$ ruby-install --rubies-dir ~/.rvm/rubies ruby-3.2.0-preview3
+```
 
 Using ruby-install with [rbenv]:
 
-    $ ruby-install --install-dir ~/.rbenv/versions/3.2.0-preview3 ruby-3.2.0-preview3
+```shell
+$ ruby-install --install-dir ~/.rbenv/versions/3.2.0-preview3 ruby-3.2.0-preview3
+```
 
 ruby-install can even be used with [Chef].
 
 ## Install
 
-    wget -O ruby-install-0.9.0.tar.gz https://github.com/postmodern/ruby-install/archive/v0.9.0.tar.gz
-    tar -xzvf ruby-install-0.9.0.tar.gz
-    cd ruby-install-0.9.0/
-    sudo make install
+```shell
+wget -O ruby-install-0.9.0.tar.gz https://github.com/postmodern/ruby-install/archive/v0.9.0.tar.gz
+tar -xzvf ruby-install-0.9.0.tar.gz
+cd ruby-install-0.9.0/
+sudo make install
+```
 
 ### PGP
 
@@ -141,24 +179,32 @@ All releases are [PGP] signed for security. Instructions on how to import my
 PGP key can be found on my [blog][1]. To verify that a release was not tampered
 with:
 
-    wget https://raw.github.com/postmodern/ruby-install/master/pkg/ruby-install-0.9.0.tar.gz.asc
-    gpg --verify ruby-install-0.9.0.tar.gz.asc ruby-install-0.9.0.tar.gz
+```shell
+wget https://raw.github.com/postmodern/ruby-install/master/pkg/ruby-install-0.9.0.tar.gz.asc
+gpg --verify ruby-install-0.9.0.tar.gz.asc ruby-install-0.9.0.tar.gz
+```
 
 ### Homebrew
 
 ruby-install can also be installed with [homebrew]:
 
-    brew install ruby-install
+```shell
+brew install ruby-install
+```
 
 Or the absolute latest ruby-install can be installed from source:
 
-    brew install ruby-install --HEAD
+```shell
+brew install ruby-install --HEAD
+```
 
 ### Arch Linux
 
 ruby-install is already included in the [AUR]:
 
-    yaourt -S ruby-install
+```shell
+yaourt -S ruby-install
+```
 
 ### Fedora Linux
 
@@ -168,7 +214,9 @@ ruby-install is available on [Fedora Copr](https://copr.fedorainfracloud.org/cop
 
 ruby-install is included in the official [FreeBSD ports collection]:
 
-    cd /usr/ports/devel/ruby-install/ && make install clean
+```shell
+cd /usr/ports/devel/ruby-install/ && make install clean
+```
 
 ## Known Issues
 
