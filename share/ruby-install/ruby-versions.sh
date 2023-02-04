@@ -47,8 +47,13 @@ function download_ruby_versions_file()
 
 	local ret
 
-	download "$url" "$dest" >/dev/null 2>&1
-	ret=$?
+	if [[ -n "$enable_debug" ]]; then
+		download "$url" "$dest"
+		ret=$?
+	else
+		download "$url" "$dest" >/dev/null 2>&1
+		ret=$?
+	fi
 
 	if (( ret > 0 )); then
 		error "Failed to download $url to $dest!"
