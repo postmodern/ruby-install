@@ -49,7 +49,11 @@ clean:
 	rm -f $(PKG) $(SIG)
 
 check:
-	shellcheck --exclude SC2034 --exclude SC2154 share/$(NAME)/*.sh bin/*
+	shellcheck --exclude SC2034 \
+		   --exclude SC2154 \
+		   --exclude SC1090 \
+		   --exclude SC1091 \
+		   share/$(NAME)/*.sh bin/*
 
 lint:
 	# Check dependencies are consistent for truffleruby/truffleruby-graalvm
