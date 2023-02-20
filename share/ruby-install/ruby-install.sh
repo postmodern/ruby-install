@@ -222,7 +222,7 @@ function parse_options()
 				return 1
 				;;
 			*)
-				argv+=($1)
+				argv+=("$1")
 				shift
 				;;
 		esac
