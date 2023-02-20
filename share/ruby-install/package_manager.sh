@@ -20,7 +20,7 @@ function install_packages()
 			run $sudo apt install -y "$@" || return $?
 			;;
 		dnf|yum)
-			run $sudo $package_manager install -y "$@" || return $?
+			run $sudo "$package_manager" install -y "$@" || return $?
 			;;
 		port)
 			run $sudo port install "$@" || return $?
