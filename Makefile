@@ -53,6 +53,7 @@ check:
 		   --exclude SC2154 \
 		   --exclude SC1090 \
 		   --exclude SC1091 \
+		   --exclude SC2242 \
 		   share/$(NAME)/*.sh bin/*
 
 lint:
