@@ -41,7 +41,10 @@ function install_packages()
 			run $brew_sudo brew upgrade "$@" || return $?
 			;;
 		pacman)
-			local missing_pkgs=($(pacman -T "$@"))
+			local missing_pkgs=()
+			while IFS='' read -r line; do
+				missing_pkgs+=("$line")
+			done < <(pacman -T "$@")
 
 			if (( ${#missing_pkgs[@]} > 0 )); then
 				run $sudo pacman -S "${missing_pkgs[@]}" || return $?
