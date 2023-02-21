@@ -272,7 +272,8 @@ function init()
 		return 1
 	fi
 
-	local fully_qualified_version="$(lookup_ruby_version "$ruby" "$ruby_version")"
+	local fully_qualified_version
+	fully_qualified_version="$(lookup_ruby_version "$ruby" "$ruby_version")"
 
 	if [[ -n "$fully_qualified_version" ]]; then
 		ruby_version="$fully_qualified_version"

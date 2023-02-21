@@ -29,7 +29,8 @@ function install_packages()
 			run $sudo pkg install -y "$@" || return $?
 			;;
 		brew)
-			local brew_owner="$(/usr/bin/stat -f %Su "$(command -v brew)")"
+			local brew_owner=
+			brew_owner="$(/usr/bin/stat -f %Su "$(command -v brew)")"
 			local brew_sudo=""
 
 			if [[ "$brew_owner" != "$(id -un)" ]]; then

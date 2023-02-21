@@ -30,7 +30,8 @@ function lookup_checksum()
 		return 1
 	fi
 
-	local output="$(grep "  $file" "$checksums")"
+	local output
+	output="$(grep "  $file" "$checksums")"
 
 	echo -n "${output%% *}"
 }
@@ -55,7 +56,8 @@ function compute_checksum()
 	fi
 
 	debug "$program $file"
-	local output="$($program "$file")"
+	local output
+	output="$($program "$file")"
 
 	echo -n "${output%% *}"
 }
@@ -71,7 +73,8 @@ function verify_checksum()
 		return
 	fi
 
-	local actual_checksum="$(compute_checksum "$algorithm" "$file")"
+	local actual_checksum
+	actual_checksum="$(compute_checksum "$algorithm" "$file")"
 
 	if [[ "$actual_checksum" != "$expected_checksum" ]]; then
 		error "Invalid $algorithm checksum for $file"
