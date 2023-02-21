@@ -87,7 +87,7 @@ function parse_ruby()
 	case "$string" in
 		*-[0-9]*)
 			ruby="${string%-[0-9]*}"
-			ruby_version="${string#$ruby-}"
+			ruby_version="${string#"$ruby"-}"
 			;;
 		[0-9]*)
 			ruby="ruby"
