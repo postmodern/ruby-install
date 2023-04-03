@@ -75,9 +75,22 @@ function detect_package_manager()
 #
 function detect_downloader()
 {
-	if   command -v wget >/dev/null; then downloader="wget"
-	elif command -v curl >/dev/null; then downloader="curl"
-	fi
+	case "$os_platform" in
+		Darwin)
+			if command -v curl >/dev/null; then
+				downloader="curl"
+			elif   command -v wget >/dev/null; then
+				downloader="wget"
+			fi
+			;;
+		*)
+			if   command -v wget >/dev/null; then
+				downloader="wget"
+			elif command -v curl >/dev/null; then
+				downloader="curl"
+			fi
+			;;
+	esac
 }
 
 detect_os
