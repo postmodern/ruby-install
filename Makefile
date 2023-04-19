@@ -30,9 +30,6 @@ man: doc/man/ruby-install.1.md share/man/man1/ruby-install.1
 	git add doc/man/ruby-install.1.md share/man/man1/ruby-install.1
 	git commit
 
-download: pkg
-	wget -O $(PKG) $(URL)/archive/v$(VERSION).tar.gz
-
 build: pkg
 	git archive --output=$(PKG) --prefix=$(PKG_NAME)/ HEAD
 
@@ -68,7 +65,7 @@ tag:
 	git tag -s -m "Releasing $(VERSION)" v$(VERSION)
 	git push --tags
 
-release: tag download sign
+release: build sign tag
 
 rpm:
 	rpmdev-setuptree
@@ -85,4 +82,4 @@ uninstall:
 	for file in $(INSTALL_FILES); do rm -f $(DESTDIR)$(PREFIX)/$$file; done
 	rm -rf $(DESTDIR)$(PREFIX)/$(DOC_DIR)
 
-.PHONY: build man download sign verify clean check test tag release rpm install uninstall all
+.PHONY: build man sign verify clean check test tag release rpm install uninstall all
