@@ -5,7 +5,7 @@
 %define buildroot %{_topdir}/BUILDROOT
 
 BuildRoot: %{buildroot}
-Source0: https://github.com/postmodern/%{name}/archive/v%{version}.tar.gz
+Source0: https://github.com/postmodern/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Summary: Installs Ruby, JRuby, TruffleRuby (native / GraalVM), or mruby
 Name: %{name}
 Version: %{version}
