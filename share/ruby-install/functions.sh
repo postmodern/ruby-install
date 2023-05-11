@@ -19,7 +19,10 @@ function load_dependencies_from()
 {
 	local file="$1"
 
-	ruby_dependencies=($(fetch "$ruby/$file" "$package_manager" || return $?))
+	ruby_dependencies=()
+	while IFS='' read -r line; do
+		ruby_dependencies+=("$line")
+	done < <(fetch "$ruby/$file" "$package_manager" || return $?)
 }
 
 #

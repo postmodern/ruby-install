@@ -87,7 +87,7 @@ function parse_ruby()
 	case "$string" in
 		*-[0-9]*)
 			ruby="${string%-[0-9]*}"
-			ruby_version="${string#$ruby-}"
+			ruby_version="${string#"$ruby"-}"
 			;;
 		[0-9]*)
 			ruby="ruby"
@@ -272,7 +272,8 @@ function init()
 		return 1
 	fi
 
-	local fully_qualified_version="$(lookup_ruby_version "$ruby" "$ruby_version")"
+	local fully_qualified_version
+	fully_qualified_version="$(lookup_ruby_version "$ruby" "$ruby_version")"
 
 	if [[ -n "$fully_qualified_version" ]]; then
 		ruby_version="$fully_qualified_version"

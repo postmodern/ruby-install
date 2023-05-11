@@ -12,7 +12,7 @@ function fetch()
 
 	while IFS="" read -r line; do
 		if [[ "$line" == "$key:"* ]]; then
-			echo "${line##$key:*([[:space:]])}"
+			echo "${line##"$key":*([[:space:]])}"
 		fi
 	done < "$file"
 }

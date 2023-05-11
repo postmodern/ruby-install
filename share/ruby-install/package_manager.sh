@@ -29,7 +29,8 @@ function install_packages()
 			run $sudo pkg install -y "$@" || return $?
 			;;
 		brew)
-			local brew_owner="$(/usr/bin/stat -f %Su "$(command -v brew)")"
+			local brew_owner=
+			brew_owner="$(/usr/bin/stat -f %Su "$(command -v brew)")"
 			local brew_sudo=""
 
 			if [[ "$brew_owner" != "$(id -un)" ]]; then
@@ -40,7 +41,10 @@ function install_packages()
 			run $brew_sudo brew upgrade "$@" || return $?
 			;;
 		pacman)
-			local missing_pkgs=($(pacman -T "$@"))
+			local missing_pkgs=()
+			while IFS='' read -r line; do
+				missing_pkgs+=("$line")
+			done < <(pacman -T "$@")
 
 			if (( ${#missing_pkgs[@]} > 0 )); then
 				run $sudo pacman -S "${missing_pkgs[@]}" || return $?
