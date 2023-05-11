@@ -60,9 +60,7 @@ function debug()
 function run()
 {
 	debug "$*"
-
-	# shellcheck disable=SC2068
-	$@
+	"$@"
 }
 
 #
