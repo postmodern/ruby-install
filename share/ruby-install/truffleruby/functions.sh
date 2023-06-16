@@ -15,8 +15,24 @@ esac
 
 ruby_dir_name="truffleruby-$ruby_version-$truffleruby_platform-$truffleruby_arch"
 ruby_archive="${ruby_archive:-$ruby_dir_name.tar.gz}"
-ruby_mirror="${ruby_mirror:-https://github.com/oracle/truffleruby/releases/download}"
-ruby_url="${ruby_url:-$ruby_mirror/vm-$ruby_version/$ruby_archive}"
+
+if [ "$ruby_version" = "23.0.0" ]; then
+	log "TruffleRuby 23.0 and later installed by ruby-install use the faster Oracle GraalVM distribution"
+	log "Oracle GraalVM uses the GFTC license, which is free for development and production use, see https://medium.com/graalvm/161527df3d76"
+	ruby_mirror="${ruby_mirror:-https://gds.oracle.com/api/20220101/artifacts}"
+	truffleruby_artifact_id=""
+	case "$truffleruby_platform-$truffleruby_arch" in
+		linux-amd64)    truffleruby_artifact_id="FD4AB182EA4CEDFDE0531518000AF13E" ;;
+		linux-aarch64)  truffleruby_artifact_id="FD40BA2367C226B6E0531518000AE71A" ;;
+		darwin-amd64)   truffleruby_artifact_id="FD4AB182EA51EDFDE0531518000AF13E" ;;
+		darwin-aarch64) truffleruby_artifact_id="FD40BBF6750C366CE0531518000ABEAF" ;;
+		*)              fail "Unsupported platform $truffleruby_platform-$truffleruby_arch" ;;
+	esac
+	ruby_url="${ruby_url:-$ruby_mirror/$truffleruby_artifact_id/content}"
+else
+	ruby_mirror="${ruby_mirror:-https://github.com/oracle/truffleruby/releases/download}"
+	ruby_url="${ruby_url:-$ruby_mirror/vm-$ruby_version/$ruby_archive}"
+fi
 
 #
 # Install TruffleRuby into $install_dir.
