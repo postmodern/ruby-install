@@ -6,6 +6,8 @@
 * Fixed an implicit string splitting bug when passing in compiler env variables
   via the additional configuration options
   (ex: `ruby-install ruby -- CFLAGS="-O3 ..."`).
+* Catch unknown ruby implementation names early before attempting to download
+  version information for them.
 
 #### truffleruby
 

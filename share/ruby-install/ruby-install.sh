@@ -97,6 +97,11 @@ function parse_ruby()
 			ruby="$string"
 			;;
 	esac
+
+	if [[ ! "${rubies[*]}" == *"$ruby"* ]]; then
+		echo "ruby-install: unknown ruby: $ruby" >&2
+		return 1
+	fi
 }
 
 #
@@ -267,11 +272,6 @@ function list_rubies()
 #
 function init()
 {
-	if [[ ! "${rubies[*]}" == *"$ruby"* ]]; then
-		error "Unknown ruby: $ruby"
-		return 1
-	fi
-
 	local fully_qualified_version="$(lookup_ruby_version "$ruby" "$ruby_version")"
 
 	if [[ -n "$fully_qualified_version" ]]; then

@@ -56,4 +56,14 @@ function test_parse_ruby_when_the_ruby_name_contains_multiple_dashes()
 	                                               "$ruby_version"
 }
 
+function test_parse_ruby_with_an_unknown_ruby()
+{
+	local unknown_ruby="foo"
+	local output="$(parse_ruby "$unknown_ruby" 2>&1)"
+
+	assertEquals "did not print an error for an unknwon ruby" \
+		     "ruby-install: unknown ruby: $unknown_ruby" \
+		     "$output"
+}
+
 SHUNIT_PARENT=$0 . $SHUNIT2
