@@ -12,6 +12,15 @@ function test_run_when_enable_debug_is_not_set()
 		     "$expected_output" "$(run "${command[@]}" 2>&1)"
 }
 
+function test_run_with_implicit_string_splitting()
+{
+	local command=(echo "foo   bar   baz")
+	local expected_output="foo   bar   baz"
+
+	assertEquals "did not preserve spaces in the command's arguments" \
+		     "$expected_output" "$(run "${command[@]}" 2>&1)"
+}
+
 function test_run_when_enable_debug_is_set()
 {
 	enable_debug=1
