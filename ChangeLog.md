@@ -1,3 +1,23 @@
+### 0.9.1 / 2023-06-23
+
+* `--debug` will now show the `wget` or `curl` command when downloading
+  ruby version information.
+* Prefer `curl` over `wget` when on macOS, otherwise prefer `wget` over `curl`.
+* Fixed an implicit string splitting bug when passing in compiler env variables
+  via the additional configuration options
+  (ex: `ruby-install ruby -- CFLAGS="-O3 ..."`).
+
+#### truffleruby
+
+* Added support for installing TruffleRuby 23.0.0.
+
+#### truffleruby-graalvm
+
+* Added support for installing TruffleRuby+GraalVM 23.0.0.
+  * This uses the new Oracle GraalVM distribution which uses the GFTC license
+     as it is significantly faster than GraalVM CE and is free for development
+     and production use.
+
 ### 0.9.0 / 2023-01-30
 
 * Added the `-U`,`--update` option which will eventually replace
