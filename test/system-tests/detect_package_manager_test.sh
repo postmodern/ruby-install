@@ -25,7 +25,7 @@ function test_detect_package_manager_on_redhat_based_systems_with_yum()
 
 function test_detect_package_manager_on_debian_based_systems_with_apt()
 {
-	[[ -f /etc/debian_version ]] && command -v apt >/dev/null || \
+	[[ -f /etc/debian_version ]] && command -v apt-get >/dev/null || \
 		return 0
 
 	detect_package_manager

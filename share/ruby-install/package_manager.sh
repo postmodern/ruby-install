@@ -17,7 +17,7 @@ function install_packages()
 {
 	case "$package_manager" in
 		apt)
-			run $sudo apt install -y "$@" || return $?
+			run $sudo apt-get install -y "$@" || return $?
 			;;
 		dnf|yum)
 			run $sudo "$package_manager" install -y "$@" || return $?
