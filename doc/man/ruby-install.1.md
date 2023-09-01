@@ -47,7 +47,7 @@ https://github.com/postmodern/ruby-install#readme
 	Remove the downloaded Ruby archive and unpacked source-code after
 	installation.
 
-`-j[`*JOBS*`]`, `--jobs[=`*JOBS*`]`
+`-j`, `--jobs` *NUM*, `-j`*NUM*, `--jobs=`*NUM*
 	Specifies the number of *make* jobs to run in parallel when compiling
 	Ruby. If the -j option is provided without an argument, *make* will
 	allow an unlimited number of simultaneous jobs.
