@@ -106,6 +106,20 @@ function parse_ruby()
 }
 
 #
+#Called when selecting --system flag                                                     
+#
+function ensure_is_sudo() {                                                                
+	local warn_c="\e[1;33;1m" #set color                                                    
+	local reset_c="\e[0m"     #unset color                                                  
+	if [[ UID != 0 ]]                                                                 
+	then                                                                                    
+		echo -e "${warn_c}you may need permissions before proceeding${reset_c}"               
+		exit                                                                                  
+	fi                                                                                      
+}
+
+
+#
 # Parses command-line options for ruby-install.
 #
 function parse_options()
@@ -123,6 +137,7 @@ function parse_options()
 				shift 2
 				;;
 			--system)
+				ensure_is_sudo
 				install_dir="$system_dir"
 				shift 1
 				;;
