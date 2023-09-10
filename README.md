@@ -163,9 +163,9 @@ ruby-install can even be used with [Chef].
 ## Install
 
 ```shell
-wget https://github.com/postmodern/ruby-install/releases/download/v0.9.4/ruby-install-0.9.4.tar.gz
-tar -xzvf ruby-install-0.9.4.tar.gz
-cd ruby-install-0.9.4/
+wget https://github.com/postmodern/ruby-install/releases/download/v0.10.0/ruby-install-0.10.0.tar.gz
+tar -xzvf ruby-install-0.10.0.tar.gz
+cd ruby-install-0.10.0/
 sudo make install
 ```
 
@@ -176,8 +176,8 @@ PGP key can be found on my [blog][1]. To verify that a release was not tampered
 with:
 
 ```shell
-wget https://github.com/postmodern/ruby-install/releases/download/v0.9.4/ruby-install-0.9.4.tar.gz.asc
-gpg --verify ruby-install-0.9.4.tar.gz.asc ruby-install-0.9.4.tar.gz
+wget https://github.com/postmodern/ruby-install/releases/download/v0.10.0/ruby-install-0.10.0.tar.gz.asc
+gpg --verify ruby-install-0.10.0.tar.gz.asc ruby-install-0.10.0.tar.gz
 ```
 
 ### Homebrew
