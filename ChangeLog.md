@@ -1,3 +1,15 @@
+### 0.9.2 / 2023-09-19
+
+* Corrected the documentation for the `-j`/`--jobs` option.
+
+#### truffleruby
+
+* Added support for TruffleRuby 23.1.0.
+
+#### truffleruby-graalvm
+
+* Added support for TruffleRuby 23.1.0.
+
 ### 0.9.1 / 2023-06-23
 
 * `--debug` will now show the `wget` or `curl` command when downloading
