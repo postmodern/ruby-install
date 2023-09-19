@@ -19,7 +19,7 @@ truffleruby_major="${ruby_version%%.*}"
 truffleruby_without_major="${ruby_version#*.}"
 truffleruby_minor="${truffleruby_without_major%%.*}"
 
-if [ "$ruby_version" = "23.0.0" ]; then
+if [[ "$ruby_version" == "23.0.0" ]]; then
 	log "TruffleRuby 23.0 and later installed by ruby-install use the faster Oracle GraalVM distribution"
 	log "Oracle GraalVM uses the GFTC license, which is free for development and production use, see https://medium.com/graalvm/161527df3d76"
 	ruby_mirror="${ruby_mirror:-https://gds.oracle.com/api/20220101/artifacts}"
