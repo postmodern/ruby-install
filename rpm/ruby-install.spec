@@ -1,5 +1,5 @@
 %define name ruby-install
-%define version 0.9.1
+%define version 0.9.2
 %define release 1
 
 %define buildroot %{_topdir}/BUILDROOT
@@ -36,6 +36,9 @@ make install PREFIX=%{buildroot}/usr
 %{_defaultdocdir}/%{name}-%{version}/*
 
 %changelog
+* Tue Sep 19 2023 Postmodern <postmodern.mod3@gmail.com> - 0.9.2-1
+- Rebuilt for version 0.9.2.
+
 * Fri Jun 23 2023 Postmodern <postmodern.mod3@gmail.com> - 0.9.1-1
 - Rebuilt for version 0.9.1.
 
