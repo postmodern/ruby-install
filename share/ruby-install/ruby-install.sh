@@ -2,7 +2,7 @@
 
 shopt -s extglob
 
-ruby_install_version="0.9.1"
+ruby_install_version="0.9.2"
 ruby_install_dir="${BASH_SOURCE[0]%/*}"
 ruby_install_cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/ruby-install"
 
