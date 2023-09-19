@@ -29,6 +29,9 @@ if [ "$ruby_version" = "23.0.0" ]; then
 		*)              fail "Unsupported platform $truffleruby_platform-$truffleruby_arch" ;;
 	esac
 	ruby_url="${ruby_url:-$ruby_mirror/$truffleruby_artifact_id/content}"
+elif [ "${ruby_version%%.*}" -ge "23" ]; then # 23.1+
+	ruby_mirror="${ruby_mirror:-https://github.com/oracle/truffleruby/releases/download}"
+	ruby_url="${ruby_url:-$ruby_mirror/graal-$ruby_version/$ruby_archive}"
 else
 	ruby_mirror="${ruby_mirror:-https://github.com/oracle/truffleruby/releases/download}"
 	ruby_url="${ruby_url:-$ruby_mirror/vm-$ruby_version/$ruby_archive}"
