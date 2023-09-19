@@ -15,6 +15,7 @@ esac
 
 ruby_dir_name="truffleruby-$ruby_version-$truffleruby_platform-$truffleruby_arch"
 ruby_archive="${ruby_archive:-$ruby_dir_name.tar.gz}"
+truffleruby_major="${ruby_version%%.*}"
 
 if [ "$ruby_version" = "23.0.0" ]; then
 	log "TruffleRuby 23.0 and later installed by ruby-install use the faster Oracle GraalVM distribution"
@@ -29,7 +30,7 @@ if [ "$ruby_version" = "23.0.0" ]; then
 		*)              fail "Unsupported platform $truffleruby_platform-$truffleruby_arch" ;;
 	esac
 	ruby_url="${ruby_url:-$ruby_mirror/$truffleruby_artifact_id/content}"
-elif [ "${ruby_version%%.*}" -ge "23" ]; then # 23.1+
+elif (( truffleruby_major >= 23 )); then # 23.1+
 	ruby_mirror="${ruby_mirror:-https://github.com/oracle/truffleruby/releases/download}"
 	ruby_url="${ruby_url:-$ruby_mirror/graal-$ruby_version/$ruby_archive}"
 else

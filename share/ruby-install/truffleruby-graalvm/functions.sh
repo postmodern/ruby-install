@@ -13,6 +13,8 @@ case "$os_arch" in
 	*)       fail "Unsupported platform $os_arch" ;;
 esac
 
+truffleruby_major="${ruby_version%%.*}"
+
 if [ "$ruby_version" = "23.0.0" ]; then
 	log "TruffleRuby-GraalVM 23.0 and later installed by ruby-install use the faster Oracle GraalVM distribution"
 	log "Oracle GraalVM uses the GFTC license, which is free for development and production use, see https://medium.com/graalvm/161527df3d76"
@@ -20,7 +22,7 @@ if [ "$ruby_version" = "23.0.0" ]; then
 	ruby_archive="${ruby_archive:-graalvm-jdk-17.0.7_${graalvm_platform/darwin/macos}-${graalvm_arch/amd64/x64}_bin.tar.gz}"
 	ruby_mirror="${ruby_mirror:-https://download.oracle.com/graalvm/17/archive}"
 	ruby_url="${ruby_url:-$ruby_mirror/$ruby_archive}"
-elif [ "${ruby_version%%.*}" -ge "23" ]; then # 23.1+
+elif (( truffleruby_major >= 23 )); then # 23.1+
 	ruby_dir_name="truffleruby-$ruby_version-${graalvm_platform/darwin/macos}-$graalvm_arch"
 	ruby_archive="${ruby_archive:-truffleruby-jvm-$ruby_version-${graalvm_platform/darwin/macos}-$graalvm_arch.tar.gz}"
 	ruby_mirror="${ruby_mirror:-https://github.com/oracle/truffleruby/releases/download}"
@@ -43,7 +45,7 @@ function install_ruby()
 	fi
 
 	log "Installing TruffleRuby GraalVM $ruby_version ..."
-	if [ "${ruby_version%%.*}" -ge "23" ]; then # 23.1+
+	if (( truffleruby_major >= 23 )); then # 23.1+
 		copy_into "$ruby_build_dir" "$install_dir" || return $?
 	else
 		copy_into "$ruby_build_dir" "$install_dir/graalvm" || return $?
@@ -55,7 +57,7 @@ function install_ruby()
 #
 function post_install()
 {
-	if [ "${ruby_version%%.*}" -ge "23" ]; then # 23.1+
+	if (( truffleruby_major >= 23 )); then # 23.1+
 		log "Running truffleruby post-install hook ..."
 		run "$install_dir/lib/truffle/post_install_hook.sh" || return $?
 	else
