@@ -24,11 +24,13 @@ function configure_ruby()
 	fi
 
 	local opt_dir
+	local openssl_dir
 
 	log "Configuring ruby $ruby_version ..."
 	case "$package_manager" in
 		brew)
-			opt_dir="$(brew --prefix openssl@1.1):$(brew --prefix readline):$(brew --prefix libyaml):$(brew --prefix gdbm)"
+			opt_dir="$(brew --prefix readline):$(brew --prefix libyaml):$(brew --prefix gdbm)"
+			openssl_dir="$(brew --prefix openssl@1.1)"
 			;;
 		port)
 			opt_dir="/opt/local"
@@ -37,6 +39,7 @@ function configure_ruby()
 
 	run ./configure --prefix="$install_dir" \
 			"${opt_dir:+--with-opt-dir="$opt_dir"}" \
+			"${openssl_dir:+--with-openssl-dir="$openssl_dir"}" \
 			"${configure_opts[@]}" || return $?
 }
 
