@@ -29,11 +29,12 @@ function install_packages()
 			run $sudo pkg install -y "$@" || return $?
 			;;
 		brew)
-			local brew_owner="$(/usr/bin/stat -f %Su "$(command -v brew)")"
 			local brew_sudo=""
 
-			if [[ "$brew_owner" != "$(id -un)" ]]; then
-				brew_sudo="sudo -u $brew_owner"
+			if (( UID == 0 )) && [[ -n "$SUDO_USER" ]]; then
+				# Note: to avoid running homebrew as root,
+				# drop privileges back to the original sudo user
+				brew_sudo="sudo -u \"$SUDO_USER\""
 			fi
 
 			run $brew_sudo brew install "$@" ||
