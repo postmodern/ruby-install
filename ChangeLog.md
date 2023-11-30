@@ -1,3 +1,13 @@
+### 0.9.3 / 2023-11-30
+
+* Run `brew` under the original `$SUDO_USER` if `ruby-install` is being ran
+  under `sudo` to avoid running `brew` as `root`.
+
+#### ruby
+
+* Specify the homebrew `openssl` installation directory using the
+  `--with-openssl-dir` option, in addition to `--with-opt-dir`.
+
 ### 0.9.2 / 2023-09-19
 
 * Corrected the documentation for the `-j`/`--jobs` option.
