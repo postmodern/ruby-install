@@ -13,12 +13,14 @@ ruby_dir_name="ruby-$ruby_version"
 ruby_mirror="${ruby_mirror:-https://cache.ruby-lang.org/pub/ruby}"
 ruby_url="${ruby_url:-$ruby_mirror/$ruby_version_family/$ruby_archive}"
 
-if [[ "$package_manager" == "brew" ]]; then
-	case "$ruby_version_family" in
-		2.*|3.0)	openssl_version="1.1" ;;
-		*)		openssl_version="3" ;;
-	esac
-fi
+case "$package_manager" in
+	brew|port)
+		case "$ruby_version_family" in
+			2.*|3.0)	openssl_version="1.1" ;;
+			*)		openssl_version="3" ;;
+		esac
+		;;
+esac
 
 #
 # Install openssl@1.1 or openssl@3.0 depending on the Ruby version,
@@ -26,9 +28,10 @@ fi
 #
 function install_optional_deps()
 {
-	if [[ "$package_manager" == "brew" ]]; then
-		install_packages "openssl@${openssl_version}"
-	fi
+	case "$package_manager" in
+		brew)	install_packages "openssl@${openssl_version}" ;;
+		port)	install_packages "openssl${openssl_version/./}" ;;
+	esac
 }
 
 #
@@ -52,6 +55,7 @@ function configure_ruby()
 			;;
 		port)
 			opt_dir="/opt/local"
+			openssl_dir="/opt/local"
 			;;
 	esac
 
