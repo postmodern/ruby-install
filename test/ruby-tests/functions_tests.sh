@@ -19,7 +19,7 @@ function test_ruby_version_family()
 	             "$ruby_version_family"
 }
 
-function test_openssl_version_when_package_manager_is_now_brew()
+function test_openssl_version_when_package_manager_is_not_brew()
 {
 	local original_package_manager="$package_manager"
 	package_manager="apt"
