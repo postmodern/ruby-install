@@ -19,6 +19,52 @@ function test_ruby_version_family()
 	             "$ruby_version_family"
 }
 
+function test_openssl_version_when_package_manager_is_now_brew()
+{
+	local original_package_manager="$package_manager"
+	package_manager="apt"
+
+	source "$ruby_install_dir/functions.sh"
+	source "$ruby_install_dir/ruby/functions.sh"
+
+	assertNull "did not correctly set \$openssl_version" \
+	           "$openssl_version"
+
+	package_manager="$original_package_manager"
+}
+
+function test_openssl_version_when_package_manager_is_brew_and_ruby_version_is_less_than_3_1_0()
+{
+	local original_package_manager="$package_manager"
+	package_manager="brew"
+	ruby_version="3.0.0"
+
+	source "$ruby_install_dir/functions.sh"
+	source "$ruby_install_dir/ruby/functions.sh"
+
+	assertEquals "did not correctly set \$openssl_version" \
+	             "1.1" \
+		     "$openssl_version"
+
+	package_manager="$original_package_manager"
+}
+
+function test_openssl_version_when_package_manager_is_brew_and_ruby_version_is_greater_equal_to_3_1_0()
+{
+	local original_package_manager="$package_manager"
+	package_manager="brew"
+	ruby_version="3.1.0"
+
+	source "$ruby_install_dir/functions.sh"
+	source "$ruby_install_dir/ruby/functions.sh"
+
+	assertEquals "did not correctly set \$openssl_version" \
+	             "3" \
+		     "$openssl_version"
+
+	package_manager="$original_package_manager"
+}
+
 function test_ruby_archive_ext()
 {
 	assertEquals "did not set \$ruby_archive_ext to tar.xz" \
