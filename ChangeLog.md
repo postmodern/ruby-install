@@ -9,6 +9,8 @@
   `--with-openssl-dir` option, in addition to `--with-opt-dir`.
 * When the package manager is homebrew, install `openssl@1.1` for Ruby <= 3.0
   and `openssl@3` for Ruby >= 3.1, respectively.
+* When the package manager is MacPorts, install `openssl11` for Ruby <= 3.0
+  and `openssl3` for Ruby >= 3.1, respectively.
 
 ### 0.9.2 / 2023-09-19
 
