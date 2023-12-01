@@ -1,4 +1,4 @@
-### 0.9.3 / 2023-11-30
+### 0.9.3 / 2023-12-01
 
 * Run `brew` under the original `$SUDO_USER` if `ruby-install` is being ran
   under `sudo` to avoid running `brew` as `root`.
@@ -7,6 +7,8 @@
 
 * Specify the homebrew `openssl` installation directory using the
   `--with-openssl-dir` option, in addition to `--with-opt-dir`.
+* When the package manager is homebrew, install `openssl@1.1` for Ruby <= 3.0
+  and `openssl@3` for Ruby >= 3.1, respectively.
 
 ### 0.9.2 / 2023-09-19
 
