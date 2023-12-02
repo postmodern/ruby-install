@@ -36,7 +36,7 @@ make install PREFIX=%{buildroot}/usr
 %{_defaultdocdir}/%{name}-%{version}/*
 
 %changelog
-* Fri Dec 01 2023 Postmodern <postmodern.mod3@gmail.com> - 0.9.1-1
+* Fri Dec 01 2023 Postmodern <postmodern.mod3@gmail.com> - 0.9.3-1
 - Rebuilt for version 0.9.3.
 
 * Tue Sep 19 2023 Postmodern <postmodern.mod3@gmail.com> - 0.9.2-1
