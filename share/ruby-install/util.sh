@@ -1,23 +1,6 @@
 #!/usr/bin/env bash
 
 #
-# Searches a file for a key and echos the value.
-# Nothing is returned if the key cannot be found.
-#
-function fetch()
-{
-	local file="$ruby_install_dir/$1.txt"
-	local key="$2"
-	local line
-
-	while IFS="" read -r line; do
-		if [[ "$line" == "$key:"* ]]; then
-			echo "${line##$key:*([[:space:]])}"
-		fi
-	done < "$file"
-}
-
-#
 # Downloads a URL.
 #
 function download()
