@@ -14,7 +14,7 @@ function test_load_dependencies()
 {
 	load_dependencies
 
-	assertEquals "did not correctly set \$ruby_dependencies from \$ruby/dependencies.txt for \$package_manager" \
+	assertEquals "did not correctly set \$ruby_dependencies from \$ruby/dependencies.sh for \$package_manager" \
 		     "${ruby_dependencies[*]}" "xz gcc automake bison zlib-devel libyaml-devel openssl-devel gdbm-devel readline-devel ncurses-devel libffi-devel"
 }
 
