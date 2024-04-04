@@ -7,30 +7,7 @@ case "$package_manager" in
 			bison
 		)
 		;;
-	dnf)
-		ruby_dependencies=(
-			gcc
-			make
-			bison
-		)
-		;;
-	yum)
-		ruby_dependencies=(
-			gcc
-			make
-			bison
-		)
-		;;
-	port)	ruby_dependencies=(bison) ;;
-	brew)	ruby_dependencies=(bison) ;;
-	pacman)
-		ruby_dependencies=(
-			gcc
-			make
-			bison
-		)
-		;;
-	zypper)
+	dnf|yum|pacman|zypper)
 		ruby_dependencies=(
 			gcc
 			make
@@ -44,5 +21,6 @@ case "$package_manager" in
 			bison
 		)
 		;;
-	xbps)  ruby_dependencies=(base-devel) ;;
+	brew|port)	ruby_dependencies=(bison) ;;
+	xbps)		ruby_dependencies=(base-devel) ;;
 esac
