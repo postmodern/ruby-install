@@ -11,7 +11,7 @@ case "$package_manager" in
 			libyaml-dev
 		)
 		;;
-	dnf)
+	dnf|yum)
 		ruby_dependencies=(
 			make
 			gcc
@@ -19,28 +19,6 @@ case "$package_manager" in
 			openssl-devel
 			libxml2
 			libyaml-devel
-		)
-		;;
-	yum)
-		ruby_dependencies=(
-			make
-			gcc
-			zlib-devel
-			openssl-devel
-			libxml2
-			libyaml-devel
-		)
-		;;
-	port)
-		ruby_dependencies=(
-			openssl
-			libyaml
-		)
-		;;
-	brew)
-		ruby_dependencies=(
-			openssl@3
-			libyaml
 		)
 		;;
 	pacman)
@@ -69,6 +47,18 @@ case "$package_manager" in
 			gcc
 			openssl
 			libxml2
+			libyaml
+		)
+		;;
+	brew)
+		ruby_dependencies=(
+			openssl@3
+			libyaml
+		)
+		;;
+	port)
+		ruby_dependencies=(
+			openssl
 			libyaml
 		)
 		;;
