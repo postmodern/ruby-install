@@ -9,7 +9,6 @@ case "$package_manager" in
 			zlib1g-dev
 			libyaml-dev
 			libssl-dev
-			libgdbm-dev
 			libreadline-dev
 			libncurses-dev
 			libffi-dev
@@ -24,7 +23,6 @@ case "$package_manager" in
 			zlib-devel
 			libyaml-devel
 			openssl-devel
-			gdbm-devel
 			readline-devel
 			ncurses-devel
 			libffi-devel
@@ -41,7 +39,6 @@ case "$package_manager" in
 			openssl
 			readline
 			libyaml
-			gdbm
 			libffi
 		)
 		;;
@@ -54,7 +51,6 @@ case "$package_manager" in
 			zlib-devel
 			libyaml-devel
 			libopenssl-devel
-			gdbm-devel
 			readline-devel
 			ncurses-devel
 			libffi-devel
@@ -67,7 +63,6 @@ case "$package_manager" in
 			bison
 			readline
 			libyaml
-			gdbm
 			libffi
 		)
 		;;
@@ -76,7 +71,6 @@ case "$package_manager" in
 			openssl
 			readline
 			libyaml
-			gdbm
 			libffi
 		)
 		;;
@@ -86,13 +80,20 @@ case "$package_manager" in
 			openssl-devel
 			zlib-devel
 			libyaml-devel
-			gdbm-devel
 			readline-devel
 			ncurses-devel
 			libffi-devel
 		)
 		;;
 esac
+
+if [[ "$ruby_version" < "3.1.0" ]]; then
+	case "$package_manager" in
+		apt)			ruby_dependencies+=(libgdbm-dev) ;;
+		dnf|yum|zypper|xbps)	ruby_dependencies+=(gdbm-devel) ;;
+		*)			ruby_dependencies+=(gdbm) ;;
+	esac
+fi
 
 case "$package_manager" in
 	brew|port)

@@ -20,7 +20,7 @@ function test_when_package_manager_is_apt()
 	           "$openssl_version"
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
-		     "xz-utils build-essential bison zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libreadline-dev libncurses-dev libffi-dev" \
+		     "xz-utils build-essential bison zlib1g-dev libyaml-dev libssl-dev libreadline-dev libncurses-dev libffi-dev" \
 		     "${ruby_dependencies[*]}"
 
 	package_manager="$original_package_manager"
@@ -37,7 +37,7 @@ function test_when_package_manager_is_dnf()
 	           "$openssl_version"
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
-		     "xz gcc automake bison zlib-devel libyaml-devel openssl-devel gdbm-devel readline-devel ncurses-devel libffi-devel" \
+		     "xz gcc automake bison zlib-devel libyaml-devel openssl-devel readline-devel ncurses-devel libffi-devel" \
 		     "${ruby_dependencies[*]}"
 
 	package_manager="$original_package_manager"
@@ -54,7 +54,7 @@ function test_when_package_manager_is_yum()
 	           "$openssl_version"
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
-		     "xz gcc automake bison zlib-devel libyaml-devel openssl-devel gdbm-devel readline-devel ncurses-devel libffi-devel" \
+		     "xz gcc automake bison zlib-devel libyaml-devel openssl-devel readline-devel ncurses-devel libffi-devel" \
 		     "${ruby_dependencies[*]}"
 
 	package_manager="$original_package_manager"
@@ -71,7 +71,7 @@ function test_when_package_manager_is_pacman()
 	           "$openssl_version"
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
-		     "xz gcc make bison zlib ncurses openssl readline libyaml gdbm libffi" \
+		     "xz gcc make bison zlib ncurses openssl readline libyaml libffi" \
 		     "${ruby_dependencies[*]}"
 
 	package_manager="$original_package_manager"
@@ -88,7 +88,7 @@ function test_when_package_manager_is_zypper()
 	           "$openssl_version"
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
-		     "xz gcc make automake zlib-devel libyaml-devel libopenssl-devel gdbm-devel readline-devel ncurses-devel libffi-devel" \
+		     "xz gcc make automake zlib-devel libyaml-devel libopenssl-devel readline-devel ncurses-devel libffi-devel" \
 		     "${ruby_dependencies[*]}"
 
 	package_manager="$original_package_manager"
@@ -105,7 +105,7 @@ function test_when_package_manager_is_pkg()
 	           "$openssl_version"
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
-		     "openssl readline libyaml gdbm libffi" \
+		     "openssl readline libyaml libffi" \
 		     "${ruby_dependencies[*]}"
 
 	package_manager="$original_package_manager"
@@ -122,8 +122,92 @@ function test_when_package_manager_is_xbps()
 	           "$openssl_version"
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
-		     "base-devel openssl-devel zlib-devel libyaml-devel gdbm-devel readline-devel ncurses-devel libffi-devel" \
+		     "base-devel openssl-devel zlib-devel libyaml-devel readline-devel ncurses-devel libffi-devel" \
 		     "${ruby_dependencies[*]}"
+
+	package_manager="$original_package_manager"
+}
+
+function test_when_ruby_version_is_less_than_3_1_0_and_package_manager_is_apt()
+{
+	local original_package_manager="$package_manager"
+	package_manager="apt"
+	ruby_version="3.0.7"
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertTrue "did not add libgdbm-dev to \$ruby_dependencies" \
+	           '[[ " ${ruby_dependencies[*]} " == *" libgdbm-dev "* ]]'
+
+	package_manager="$original_package_manager"
+}
+
+function test_when_ruby_version_is_less_than_3_1_0_and_package_manager_is_dnf()
+{
+	local original_package_manager="$package_manager"
+	package_manager="dnf"
+	ruby_version="3.0.7"
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertTrue "did not add gdbm-devel to \$ruby_dependencies" \
+	           '[[ " ${ruby_dependencies[*]} " == *" gdbm-devel "* ]]'
+
+	package_manager="$original_package_manager"
+}
+
+function test_when_ruby_version_is_less_than_3_1_0_and_package_manager_is_yum()
+{
+	local original_package_manager="$package_manager"
+	package_manager="yum"
+	ruby_version="3.0.7"
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertTrue "did not add gdbm-devel to \$ruby_dependencies" \
+	           '[[ " ${ruby_dependencies[*]} " == *" gdbm-devel "* ]]'
+
+	package_manager="$original_package_manager"
+}
+
+function test_when_ruby_version_is_less_than_3_1_0_and_package_manager_is_zypper()
+{
+	local original_package_manager="$package_manager"
+	package_manager="zypper"
+	ruby_version="3.0.7"
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertTrue "did not add gdbm-devel to \$ruby_dependencies" \
+	           '[[ " ${ruby_dependencies[*]} " == *" gdbm-devel "* ]]'
+
+	package_manager="$original_package_manager"
+}
+
+function test_when_ruby_version_is_less_than_3_1_0_and_package_manager_is_xbps()
+{
+	local original_package_manager="$package_manager"
+	package_manager="xbps"
+	ruby_version="3.0.7"
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertTrue "did not add gdbm-devel to \$ruby_dependencies" \
+	           '[[ " ${ruby_dependencies[*]} " == *" gdbm-devel "* ]]'
+
+	package_manager="$original_package_manager"
+}
+
+function test_when_ruby_version_is_less_than_3_1_0_and_package_manager_is_other()
+{
+	local original_package_manager="$package_manager"
+	package_manager="brew"
+	ruby_version="3.0.7"
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertTrue "did not add gdbm-devel to \$ruby_dependencies" \
+	           '[[ " ${ruby_dependencies[*]} " == *" gdbm "* ]]'
 
 	package_manager="$original_package_manager"
 }
