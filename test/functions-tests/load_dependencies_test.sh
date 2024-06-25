@@ -6,7 +6,7 @@
 function setUp()
 {
 	ruby="ruby"
-	ruby_version="3.0.0"
+	ruby_version="3.3.0"
 	package_manager="dnf"
 }
 
@@ -15,7 +15,8 @@ function test_load_dependencies()
 	load_dependencies
 
 	assertEquals "did not correctly set \$ruby_dependencies from \$ruby/dependencies.sh for \$package_manager" \
-		     "${ruby_dependencies[*]}" "xz gcc automake bison zlib-devel libyaml-devel openssl-devel gdbm-devel readline-devel ncurses-devel libffi-devel"
+		     "xz gcc automake bison zlib-devel libyaml-devel openssl-devel readline-devel ncurses-devel libffi-devel" \
+		     "${ruby_dependencies[*]}"
 }
 
 function tearDown()
