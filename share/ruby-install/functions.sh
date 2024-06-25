@@ -26,14 +26,7 @@ function install_deps()
 		log "Installing dependencies for $ruby $ruby_version ..."
 		install_packages "${ruby_dependencies[@]}" || return $?
 	fi
-
-	install_optional_deps || return $?
 }
-
-#
-# Install any optional dependencies.
-#
-function install_optional_deps() { return; }
 
 #
 # Download the Ruby archive
