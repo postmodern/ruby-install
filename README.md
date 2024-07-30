@@ -236,12 +236,12 @@ of [rbenv]
 
 [ruby-versions]: https://github.com/postmodern/ruby-versions#readme
 
-[Ruby]: http://www.ruby-lang.org/
-[JRuby]: http://jruby.org/
+[Ruby]: https://www.ruby-lang.org/
+[JRuby]: https://jruby.org/
 [TruffleRuby]: https://github.com/oracle/truffleruby
 [mruby]: https://github.com/mruby/mruby#readme
 
-[apt]: http://wiki.debian.org/Apt
+[apt]: https://wiki.debian.org/Apt
 [dnf]: https://fedoraproject.org/wiki/Features/DNF
 [yum]: http://yum.baseurl.org/
 [pacman]: https://wiki.archlinux.org/index.php/Pacman
@@ -249,23 +249,23 @@ of [rbenv]
 [xbps]: https://docs.voidlinux.org/xbps/index.html
 [pkg]: https://wiki.freebsd.org/pkgng
 [macports]: https://www.macports.org/
-[brew]: http://brew.sh
+[brew]: https://brew.sh
 
-[bash]: http://www.gnu.org/software/bash/
-[wget]: http://www.gnu.org/software/wget/
-[curl]: http://curl.haxx.se/
+[bash]: https://www.gnu.org/software/bash/
+[wget]: https://www.gnu.org/software/wget/
+[curl]: https://curl.haxx.se/
 
-[gcc]: http://gcc.gnu.org/
-[clang]: http://clang.llvm.org/
+[gcc]: https://gcc.gnu.org/
+[clang]: https://clang.llvm.org/
 
 [RVM]: https://rvm.io/
 [rbenv]: https://github.com/sstephenson/rbenv#readme
 [ruby-build]: https://github.com/sstephenson/ruby-build#readme
 [Chef]: https://github.com/rosstimson/chef-ruby_install#readme
 
-[PGP]: http://en.wikipedia.org/wiki/Pretty_Good_Privacy
-[1]: http://postmodern.github.io/pgp/
+[PGP]: https://en.wikipedia.org/wiki/Pretty_Good_Privacy
+[1]: https://postmodern.github.io/pgp/
 
-[homebrew]: http://brew.sh/
+[homebrew]: https://brew.sh/
 [AUR]: https://aur.archlinux.org/packages/ruby-install/
 [FreeBSD ports collection]: https://www.freshports.org/devel/ruby-install/
