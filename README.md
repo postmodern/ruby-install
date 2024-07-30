@@ -253,7 +253,7 @@ of [rbenv]
 
 [bash]: https://www.gnu.org/software/bash/
 [wget]: https://www.gnu.org/software/wget/
-[curl]: https://curl.haxx.se/
+[curl]: https://curl.se/
 
 [gcc]: https://gcc.gnu.org/
 [clang]: https://clang.llvm.org/
