@@ -7,8 +7,22 @@ source "$ruby_install_dir/checksums.sh"
 #
 function pre_install()
 {
+
+	local status
+	local exisiting_part_dir="${install_dir%/*}"
+
 	mkdir -p "$src_dir" || return $?
-	mkdir -p "${install_dir%/*}" || return $?
+
+	while [ ! -d "$exisiting_part_dir" ]; do
+		exisiting_part_dir="${exisiting_part_dir%/*}"
+	done
+
+	if [ ! -w "$exisiting_part_dir" ]; then
+		fail "Installation directory is not writable by the user : ${exisiting_part_dir}"
+		status=$?
+	fi
+
+	mkdir -p "${install_dir%/*}" || return $status
 }
 
 #
