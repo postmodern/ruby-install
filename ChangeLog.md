@@ -1,3 +1,19 @@
+### 0.9.4 / 2024-12-13
+
+#### ruby
+
+* Changed the [apt] ncurses dependency from `libncurses5-dev` to
+  `libncurses-dev`.
+* Added `xz` as a homebrew dependency.
+
+#### truffleruby
+
+* Update the homebrew openssl dependency to `openssl@3`.
+
+#### truffleruby-graalvm
+
+* Update the homebrew openssl dependency to `openssl@3`.
+
 ### 0.9.3 / 2023-12-01
 
 * Run `brew` under the original `$SUDO_USER` if `ruby-install` is being ran
