@@ -4,15 +4,15 @@
 
 * Changed the [apt] ncurses dependency from `libncurses5-dev` to
   `libncurses-dev`.
-* Added `xz` as a homebrew dependency.
+* Added `xz` as a [homebrew] dependency.
 
 #### truffleruby
 
-* Update the homebrew openssl dependency to `openssl@3`.
+* Update the [homebrew] openssl dependency to `openssl@3`.
 
 #### truffleruby-graalvm
 
-* Update the homebrew openssl dependency to `openssl@3`.
+* Update the [homebrew] openssl dependency to `openssl@3`.
 
 ### 0.9.3 / 2023-12-01
 
@@ -21,7 +21,7 @@
 
 #### ruby
 
-* Specify the homebrew `openssl` installation directory using the
+* Specify the [homebrew] `openssl` installation directory using the
   `--with-openssl-dir` option, in addition to `--with-opt-dir`.
 * When the package manager is `brew`, install `openssl@1.1` for Ruby <= 3.0
   and `openssl@3` for Ruby >= 3.1, respectively.
@@ -112,28 +112,28 @@
 
 #### ruby
 
-* Pin the homebrew openssl dependency to `openssl@1.1` to avoid compiling
+* Pin the [homebrew] openssl dependency to `openssl@1.1` to avoid compiling
   against OpenSSL 3.0.
 
 #### truffleruby
 
-* Pin the homebrew openssl dependency to `openssl@1.1` to avoid compiling
+* Pin the [homebrew] openssl dependency to `openssl@1.1` to avoid compiling
   against OpenSSL 3.0.
 
 #### truffleruby-graalvm
 
-* Pin the homebrew openssl dependency to `openssl@1.1` to avoid compiling
+* Pin the [homebrew] openssl dependency to `openssl@1.1` to avoid compiling
   against OpenSSL 3.0.
 
 #### rbx
 
-* Pin the homebrew openssl dependency to `openssl@1.1` to avoid compiling
+* Pin the [homebrew] openssl dependency to `openssl@1.1` to avoid compiling
   against OpenSSL 3.0.
 
 ### 0.8.2 / 2021-07-04
 
 * Infer the ruby archive name from the URL, when a custom `--url` is given.
-* No longer run homebrew as root, if homebrew was installed by the current user.
+* No longer run `brew` as root, if [homebrew] was installed by the current user.
 
 #### truffleruby
 
@@ -220,11 +220,11 @@
 #### ruby
 
 * Added `bison` to the dependencies for Ripper.
-* Added the `automake` dependency to homebrew's dependencies (@NickLaMuro).
+* Added the `automake` dependency to [homebrew]'s dependencies (@NickLaMuro).
 
 #### rbx
 
-* Fixed dnf/yum dependencies.
+* Fixed [dnf]/[yum] dependencies.
 
 ### 0.6.0 / 2015-12-25
 
@@ -272,7 +272,7 @@
 #### rbx
 
 * Remove duplicate `gem install bundler` command.
-* Added `llvm-static` as a yum dependency.
+* Added `llvm-static` as a [yum] dependency.
 
 ### 0.4.3 / 2014-05-08
 
@@ -339,7 +339,7 @@
   (@cscorley).
 * Improved error handling by explicitly returning error codes instead of
   relying on `set -e` (@havenwood).
-* Attempt to upgrade previously installed homebrew dependencies.
+* Attempt to upgrade previously installed [homebrew] dependencies.
 * Renamed rubinius to rbx for consistency.
 
 #### ruby
@@ -402,7 +402,7 @@
 ### 0.3.1 / 2013-09-23
 
 * Always use the system's `stat` command on OSX (@paul).
-* Do not assume homebrew is installed at `/usr/local/bin/brew`.
+* Do not assume [homebrew] is installed at `/usr/local/bin/brew`.
 * Properly quote/expand `$CONFIGURE_OPTS` to prevent incorrect word-splitting
   (@pbrisbin).
 * Style changes.
@@ -469,24 +469,24 @@
 
 #### rubinius
 
-* Fixed homebrew dependencies (thanks Jack Nagel).
+* Fixed [homebrew] dependencies (thanks Jack Nagel).
 * No longer install libffi, since Rubinius vendors their own version.
 
 ### 0.1.4 / 2013-05-31
 
 #### ruby/functions.sh
 
-* Pass the paths to homebrew packages to `./configure` using the
+* Pass the paths to [homebrew] packages to `./configure` using the
   `--with-opt-dir` option.
 
 #### rubinius/functions.sh
 
-* Pass the paths to homebrew packages to `./configure` using the
+* Pass the paths to [homebrew] packages to `./configure` using the
   `--with-opt-dir` option.
 
 ### 0.1.3 / 2013-05-30
 
-* Fixed typo in auto-detection of homebrew (Jack Nagel).
+* Fixed typo in auto-detection of [homebrew] \(Jack Nagel\).
 
 #### functions.sh
 
@@ -510,7 +510,7 @@
 
 #### rubinius/functions.sh
 
-* Added `pacman` dependencies for building Rubinius on Arch Linux.
+* Added [pacman] dependencies for building Rubinius on Arch Linux.
 
 ### 0.1.0 / 2013-05-28
 
@@ -527,13 +527,13 @@
     * [apt]
     * [yum]
     * [pacman]
-    * [brew]
+    * [brew][homebrew]
 
 [apt]: http://wiki.debian.org/Apt
 [dnf]: https://fedoraproject.org/wiki/Features/DNF
 [yum]: http://yum.baseurl.org/
 [pacman]: https://wiki.archlinux.org/index.php/Pacman
-[brew]: http://mxcl.github.com/homebrew/
+[homebrew]: http://mxcl.github.com/homebrew/
 
 [Ruby]: http://www.ruby-lang.org/
 [JRuby]: http://jruby.org/
