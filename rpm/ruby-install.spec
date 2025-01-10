@@ -14,6 +14,7 @@ License: MIT
 URL: https://github.com/postmodern/ruby-install#readme
 AutoReqProv: no
 BuildArch: noarch
+BuildRequires: make
 Requires: bash, grep, wget > 1.12, tar, bzip2, xz, patch
 
 %description
