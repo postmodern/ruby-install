@@ -11,6 +11,8 @@ assignees: ''
 
 **Double Check**
 
+- If you just need to ask a question, please ask it in the Q&A Discussion
+  forum: https://github.com/postmodern/ruby-install/discussions/categories/q-a
 - Did you update to the latest ruby-install version? (ex: `brew upgrade ruby-install`)
 - Are attempting to install an older unmaintained version of Ruby?
   - ruby-install makes no guarantees that older unmaintained versions ruby versions will still compile or work with the current versions of `gcc`/`clang`, `libopenssl`, etc.
