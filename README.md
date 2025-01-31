@@ -132,6 +132,12 @@ Install a Ruby with specific configuration:
 $ ruby-install ruby 3.1.2 -- --enable-shared --enable-dtrace CFLAGS="-O3"
 ```
 
+Install CRuby with jemalloc support:
+
+```shell
+$ ruby-install ruby 3.1.2 -- --with-jemalloc
+```
+
 Install a Ruby without installing dependencies first:
 
 ```shell

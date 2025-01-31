@@ -284,6 +284,125 @@ function test_package_manager_is_port_and_ruby_version_is_greater_equal_to_3_1_0
 	package_manager="$original_package_manager"
 }
 
+function test_ruby_dependencies_when_with_jemalloc_is_given_and_package_manager_is_apt()
+{
+	local original_package_manager="$package_manager"
+	local original_configure_opts=("${configure_opts[@]}")
+
+	package_manager="apt"
+	configure_opts=(--with-jemalloc)
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertTrue "did not contain libjemalloc-dev" \
+		   '[[ " ${ruby_dependencies[*]} " == *" libjemalloc-dev "* ]]'
+
+	package_manager="$original_package_manager"
+	configure_opts=("${original_configure_opts[@]}")
+}
+
+function test_ruby_dependencies_when_with_jemalloc_is_given_and_package_manager_is_dnf()
+{
+	local original_package_manager="$package_manager"
+	local original_configure_opts=("${configure_opts[@]}")
+
+	package_manager="dnf"
+	configure_opts=(--with-jemalloc)
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertTrue "did not contain jemalloc-devel" \
+		   '[[ " ${ruby_dependencies[*]} " == *" jemalloc-devel "* ]]'
+
+	package_manager="$original_package_manager"
+	configure_opts=("${original_configure_opts[@]}")
+}
+
+function test_ruby_dependencies_when_with_jemalloc_is_given_and_package_manager_is_yum()
+{
+	local original_package_manager="$package_manager"
+	local original_configure_opts=("${configure_opts[@]}")
+
+	package_manager="yum"
+	configure_opts=(--with-jemalloc)
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertTrue "did not contain jemalloc-devel" \
+		   '[[ " ${ruby_dependencies[*]} " == *" jemalloc-devel "* ]]'
+
+	package_manager="$original_package_manager"
+	configure_opts=("${original_configure_opts[@]}")
+}
+
+function test_ruby_dependencies_when_with_jemalloc_is_given_and_package_manager_is_port()
+{
+	local original_package_manager="$package_manager"
+	local original_configure_opts=("${configure_opts[@]}")
+
+	package_manager="port"
+	configure_opts=(--with-jemalloc)
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertTrue "did not contain jemalloc-devel" \
+		   '[[ " ${ruby_dependencies[*]} " == *" jemalloc-devel "* ]]'
+
+	package_manager="$original_package_manager"
+	configure_opts=("${original_configure_opts[@]}")
+}
+
+function test_ruby_dependencies_when_with_jemalloc_is_given_and_package_manager_is_xbps()
+{
+	local original_package_manager="$package_manager"
+	local original_configure_opts=("${configure_opts[@]}")
+
+	package_manager="xbps"
+	configure_opts=(--with-jemalloc)
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertTrue "did not contain jemalloc-devel" \
+		   '[[ " ${ruby_dependencies[*]} " == *" jemalloc-devel "* ]]'
+
+	package_manager="$original_package_manager"
+	configure_opts=("${original_configure_opts[@]}")
+}
+
+function test_ruby_dependencies_when_with_jemalloc_is_given_and_package_manager_is_zypper()
+{
+	local original_package_manager="$package_manager"
+	local original_configure_opts=("${configure_opts[@]}")
+
+	package_manager="zypper"
+	configure_opts=(--with-jemalloc)
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertTrue "did not contain libjemalloc2" \
+		   '[[ " ${ruby_dependencies[*]} " == *" libjemalloc2"* ]]'
+
+	package_manager="$original_package_manager"
+	configure_opts=("${original_configure_opts[@]}")
+}
+
+function test_ruby_dependencies_when_with_jemalloc_is_given()
+{
+	local original_package_manager="$package_manager"
+	local original_configure_opts=("${configure_opts[@]}")
+
+	package_manager="pkg"
+	configure_opts=(--with-jemalloc)
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertTrue "did not contain jemalloc" \
+		   '[[ " ${ruby_dependencies[*]} " == *" jemalloc"* ]]'
+
+	package_manager="$original_package_manager"
+	configure_opts=("${original_configure_opts[@]}")
+}
+
 function tearDown()
 {
 	unset ruby ruby_version ruby_dependencies openssl_version
