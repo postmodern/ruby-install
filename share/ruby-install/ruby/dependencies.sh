@@ -112,3 +112,23 @@ case "$package_manager" in
 	brew)	ruby_dependencies+=("openssl@${openssl_version}") ;;
 	port)	ruby_dependencies+=("openssl${openssl_version/./}") ;;
 esac
+
+#
+# Install libjemalloc and C header files for --with-jemalloc support.
+#
+if [[ " ${configure_opts[*]} " == *" --with-jemalloc "* ]]; then
+	case "$package_manager" in
+		apt)
+			ruby_dependencies+=(libjemalloc-dev)
+			;;
+		dnf|yum|port|xbps)
+			ruby_dependencies+=(jemalloc-devel)
+			;;
+		zypper)
+			ruby_dependencies+=(libjemalloc2)
+			;;
+		*)
+			ruby_dependencies+=(jemalloc)
+			;;
+	esac
+fi
