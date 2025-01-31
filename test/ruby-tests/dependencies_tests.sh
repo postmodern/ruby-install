@@ -403,6 +403,63 @@ function test_ruby_dependencies_when_with_jemalloc_is_given()
 	configure_opts=("${original_configure_opts[@]}")
 }
 
+function test_ruby_dependencies_when_enable_yjit_is_given_and_rustc_is_not_installed_and_the_package_manager_is_apt()
+{
+	command -v rustc && return
+
+	local original_package_manager="$package_manager"
+	local original_configure_opts=("${configure_opts[@]}")
+
+	package_manager="apt"
+	configure_opts=(--enable-yjit)
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertTrue "did not contain rustc to the dependencies" \
+		   '[[ " ${ruby_dependencies[*]} " == *" rustc "* ]]'
+
+	package_manager="$original_package_manager"
+	configure_opts=("${original_configure_opts[@]}")
+}
+
+function test_ruby_dependencies_when_enable_yjit_is_given_and_rustc_is_not_installed_and_the_package_manager_is_not_apt()
+{
+	command -v rustc >/dev/null && return
+
+	local original_package_manager="$package_manager"
+	local original_configure_opts=("${configure_opts[@]}")
+
+	package_manager="dnf"
+	configure_opts=(--enable-yjit)
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertTrue "did not contain rust to the dependencies" \
+		   '[[ " ${ruby_dependencies[*]} " == *" rust "* ]]'
+
+	package_manager="$original_package_manager"
+	configure_opts=("${original_configure_opts[@]}")
+}
+
+function test_ruby_dependencies_when_enable_yjit_is_given_but_rustc_is_installed()
+{
+	command -v rustc >/dev/null || return
+
+	local original_configure_opts=("${configure_opts[@]}")
+
+	configure_opts=(--enable-yjit)
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertTrue "did accidentally add rustc to the dependencies" \
+		   '[[ ! " ${ruby_dependencies[*]} " == *" rustc "* ]]'
+
+	assertTrue "did accidentally add rust to the dependencies" \
+		   '[[ ! " ${ruby_dependencies[*]} " == *" rust "* ]]'
+
+	configure_opts=("${original_configure_opts[@]}")
+}
+
 function tearDown()
 {
 	unset ruby ruby_version ruby_dependencies openssl_version

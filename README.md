@@ -138,6 +138,12 @@ Install CRuby with jemalloc support:
 $ ruby-install ruby 3.1.2 -- --with-jemalloc
 ```
 
+Install CRuby with YJIT support:
+
+```shell
+$ ruby-install ruby 3.2.0 -- --enable-yjit
+```
+
 Install a Ruby without installing dependencies first:
 
 ```shell
