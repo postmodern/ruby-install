@@ -21,9 +21,4 @@ function post_install()
 {
 	log "Symlinking bin/ruby to bin/jruby ..."
 	run ln -fs jruby "$install_dir/bin/ruby" || return $?
-
-	if ! command -v java >/dev/null; then
-		warn "In order to use JRuby you must install OracleJDK:"
-		warn "  http://www.oracle.com/technetwork/java/javase/downloads/index.html"
-	fi
 }
