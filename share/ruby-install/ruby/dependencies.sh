@@ -132,3 +132,16 @@ if [[ " ${configure_opts[*]} " == *" --with-jemalloc "* ]]; then
 			;;
 	esac
 fi
+
+#
+# Install Rust if YJIT support is explicitly enabled.
+#
+if [[ " ${configure_opts[*]} " == *" --enable-yjit "* ]]; then
+	# NOTE: YJIT is written in Rust, thus requires rustc
+	if ! command -v rustc >/dev/null; then
+		case "$package_manager" in
+			apt) ruby_dependencies+=(rustc) ;;
+			*)   ruby_dependencies+=(rust) ;;
+		esac
+	fi
+fi
