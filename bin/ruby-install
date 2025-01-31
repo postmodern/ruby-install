@@ -44,8 +44,10 @@ if [[ ! $no_extract -eq 1 ]]; then
 fi
 
 download_patches || fail "Fetching patches $patches failed!"
-apply_patches  || fail "Patching $ruby $ruby_version failed!"
+apply_patches    || fail "Patching $ruby $ruby_version failed!"
+
 cd "$ruby_build_dir" || fail "ruby build directory is missing: $ruby_build_dir"
+
 configure_ruby || fail "Configuration of $ruby $ruby_version failed!"
 clean_ruby     || fail "Cleaning $ruby $ruby_version failed!"
 compile_ruby   || fail "Compiling $ruby $ruby_version failed!"
