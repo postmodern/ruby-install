@@ -106,12 +106,6 @@ Install a Ruby into `/usr/local`:
 $ ruby-install --system ruby 3.1.2
 ```
 
-Install a Ruby from an official site with directly download:
-
-```shell
-$ ruby-install -M https://ftp.ruby-lang.org/pub/ruby ruby 3.1.2
-```
-
 Install a Ruby from a mirror:
 
 ```shell
