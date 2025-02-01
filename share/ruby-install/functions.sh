@@ -7,7 +7,6 @@ source "$ruby_install_dir/checksums.sh"
 #
 function pre_install()
 {
-	mkdir -p "$src_dir" || return $?
 	mkdir -p "${install_dir%/*}" || return $?
 }
 
