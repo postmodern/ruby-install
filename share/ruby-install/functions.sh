@@ -3,12 +3,9 @@
 source "$ruby_install_dir/checksums.sh"
 
 #
-# Pre-install tasks
+# Place holder for pre-install tasks
 #
-function pre_install()
-{
-	mkdir -p "${install_dir%/*}" || return $?
-}
+function pre_install() { return; }
 
 #
 # Loads the packages from the file within the ruby's directory for the current
