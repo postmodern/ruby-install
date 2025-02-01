@@ -20,7 +20,7 @@ function test_when_java_is_not_installed_and_package_manager_is_apt()
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
 		     "${ruby_dependencies[*]}" \
-		     "openjdk-21-jre"
+		     "default-jre"
 
 	package_manager="$original_package_manager"
 }
@@ -36,7 +36,7 @@ function test_when_java_is_not_installed_and_package_manager_is_dnf()
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
 		     "${ruby_dependencies[*]}" \
-		     "java-21-openjdk"
+		     "java-latest-openjdk"
 
 	package_manager="$original_package_manager"
 }
@@ -52,7 +52,7 @@ function test_when_java_is_not_installed_and_package_manager_is_yum()
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
 		     "${ruby_dependencies[*]}" \
-		     "java-21-openjdk"
+		     "java-latest-openjdk"
 
 	package_manager="$original_package_manager"
 }
