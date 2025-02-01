@@ -50,6 +50,8 @@ function extract()
 	local archive="$1"
 	local dest="${2:-${archive%/*}}"
 
+	mkdir -p "$dest" || return $?
+
 	case "$archive" in
 		*.tgz|*.tar.gz)
 			run tar -xzf "$archive" -C "$dest" || return $?
