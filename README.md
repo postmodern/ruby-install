@@ -103,7 +103,7 @@ $ ruby-install --rubies-dir /path/to/rubies/ ruby
 Install a Ruby into `/usr/local`:
 
 ```shell
-$ ruby-install --system ruby 3.1.2
+$ sudo ruby-install --system ruby 3.1.2
 ```
 
 Install a Ruby from a mirror:
