@@ -533,7 +533,7 @@
 [dnf]: https://fedoraproject.org/wiki/Features/DNF
 [yum]: http://yum.baseurl.org/
 [pacman]: https://wiki.archlinux.org/index.php/Pacman
-[homebrew]: http://mxcl.github.com/homebrew/
+[homebrew]: https://brew.sh/
 
 [Ruby]: http://www.ruby-lang.org/
 [JRuby]: http://jruby.org/
