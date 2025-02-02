@@ -11,6 +11,7 @@ if ! command -v java >/dev/null; then
 		zypper) ruby_dependencies+=(java-21-openjdk) ;;
 		xbps) 	ruby_dependencies+=(openjdk-jre) ;;
 		brew)	ruby_dependencies+=(openjdk) ;;
+		port)	ruby_dependencies+=(openjdk21) ;;
 		pkg) 	ruby_dependencies+=(openjdk21-jre) ;;
 	esac
 fi

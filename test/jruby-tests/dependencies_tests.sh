@@ -121,6 +121,22 @@ function test_when_java_is_not_installed_and_package_manager_is_brew()
 	package_manager="$original_package_manager"
 }
 
+function test_when_java_is_not_installed_and_package_manager_is_port()
+{
+	command -v java >/dev/null && return
+
+	local original_package_manager="$package_manager"
+	package_manager="port"
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertEquals "did not correctly set \$ruby_dependencies" \
+		     "${ruby_dependencies[*]}" \
+		     "openjdk21"
+
+	package_manager="$original_package_manager"
+}
+
 function test_when_java_is_not_installed_and_package_manager_is_pkg()
 {
 	command -v java >/dev/null && return
