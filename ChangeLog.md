@@ -529,16 +529,16 @@
     * [pacman]
     * [brew][homebrew]
 
-[apt]: http://wiki.debian.org/Apt
+[apt]: https://wiki.debian.org/Apt
 [dnf]: https://fedoraproject.org/wiki/Features/DNF
 [yum]: http://yum.baseurl.org/
 [pacman]: https://wiki.archlinux.org/index.php/Pacman
 [homebrew]: https://brew.sh/
 
-[Ruby]: http://www.ruby-lang.org/
-[JRuby]: http://jruby.org/
+[Ruby]: https://www.ruby-lang.org/
+[JRuby]: https://jruby.org/
 [Rubinius]: http://rubini.us/
-[MagLev]: http://maglev.github.io/
+[MagLev]: https://maglev.github.io/
 [MRuby]: https://github.com/mruby/mruby#readme
 [truffleruby]: https://github.com/oracle/truffleruby#readme
 
