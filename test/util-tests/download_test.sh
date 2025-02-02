@@ -37,6 +37,15 @@ function test_download_using_wget()
 	assertTrue "did not download the file" '[[ -f "$test_dest" ]]'
 }
 
+function test_download_using_wget_when_stdout_is_not_a_tty()
+{
+	command -v wget >/dev/null || return 0
+
+	local output="$(downloader="wget" download "$test_url" "$test_dest")"
+
+	assertEquals "did not silence wget output" "" "$output"
+}
+
 function test_download_using_curl()
 {
 	command -v curl >/dev/null || return 0
@@ -44,6 +53,15 @@ function test_download_using_curl()
 	downloader="curl" download "$test_url" "$test_dest" 2>/dev/null
 
 	assertTrue "did not download the file" '[[ -f "$test_dest" ]]'
+}
+
+function test_download_using_curl_when_stdout_is_not_a_tty()
+{
+	command -v curl >/dev/null || return 0
+
+	local output="$(downloader="curl" download "$test_url" "$test_dest")"
+
+	assertEquals "did not silence curl output" "" "$output"
 }
 
 function tearDown()
