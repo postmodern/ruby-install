@@ -115,11 +115,11 @@ function parse_options()
 	while [[ $# -gt 0 ]]; do
 		case "$1" in
 			-r|--rubies-dir)
-				rubies_dir="$2"
+				rubies_dir="$(absolute_path "$2")"
 				shift 2
 				;;
 			-i|--install-dir|--prefix)
-				install_dir="$2"
+				install_dir="$(absolute_path "$2")"
 				shift 2
 				;;
 			--system)
@@ -127,7 +127,7 @@ function parse_options()
 				shift 1
 				;;
 			-s|--src-dir)
-				src_dir="$2"
+				src_dir="$(absolute_path "$2")"
 				shift 2
 				;;
 			-c|--cleanup)
@@ -143,7 +143,11 @@ function parse_options()
 				shift
 				;;
 			-p|--patch)
-				patches+=("$2")
+				if [[ "$2" == "http://"* || "$2" == "https://"* ]]; then
+					patches+=("$2")
+				else
+					patches+=("$(absolute_path "$2")")
+				fi
 				shift 2
 				;;
 			-M|--mirror)

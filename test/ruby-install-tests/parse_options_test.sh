@@ -88,7 +88,7 @@ function test_parse_options_with_system()
 
 function test_parse_options_with_src_dir()
 {
-	local expected="~/src/"
+	local expected="/tmp"
 
 	parse_options "--src-dir" "$expected" "ruby"
 
@@ -124,12 +124,14 @@ function test_parse_options_with_jobs_with_equals()
 
 function test_parse_options_with_patches()
 {
-	local expected=(patch1.diff patch2.diff)
+	local patch1=patch1.diff
+	local patch2=patch2.diff
+	local expected=("$PWD/$patch1" "$PWD/$patch2")
 
-	parse_options "--patch" "${expected[0]}" \
-		      "--patch" "${expected[1]}" "ruby"
+	parse_options "--patch" "$patch1" \
+		      "--patch" "$patch2" "ruby"
 
-	assertEquals "did not set \$patches" $expected $patches
+	assertEquals "did not set \$patches" "${expected[*]}" "${patches[*]}"
 }
 
 function test_parse_options_with_mirror()
