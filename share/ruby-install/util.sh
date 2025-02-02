@@ -1,6 +1,20 @@
 #!/usr/bin/env bash
 
 #
+# Convert a path to an absolute path.
+#
+function absolute_path()
+{
+	local path="$1"
+
+	if [[ "$path" == "/"* ]]; then
+		echo -n "$path"
+	else
+		echo -n "${PWD}/${path}"
+	fi
+}
+
+#
 # Downloads a URL.
 #
 function download()
