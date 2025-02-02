@@ -89,22 +89,6 @@ function test_when_java_is_not_installed_and_package_manager_is_zypper()
 	package_manager="$original_package_manager"
 }
 
-function test_when_java_is_not_installed_and_package_manager_is_pkg()
-{
-	command -v java >/dev/null && return
-
-	local original_package_manager="$package_manager"
-	package_manager="pkg"
-
-	source "$ruby_install_dir/$ruby/dependencies.sh"
-
-	assertEquals "did not correctly set \$ruby_dependencies" \
-		     "${ruby_dependencies[*]}" \
-		     "openjdk21-jre"
-
-	package_manager="$original_package_manager"
-}
-
 function test_when_java_is_not_installed_and_package_manager_is_xbps()
 {
 	command -v java >/dev/null && return
@@ -117,6 +101,38 @@ function test_when_java_is_not_installed_and_package_manager_is_xbps()
 	assertEquals "did not correctly set \$ruby_dependencies" \
 		     "${ruby_dependencies[*]}" \
 		     "openjdk-jre"
+
+	package_manager="$original_package_manager"
+}
+
+function test_when_java_is_not_installed_and_package_manager_is_brew()
+{
+	command -v java >/dev/null && return
+
+	local original_package_manager="$package_manager"
+	package_manager="brew"
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertEquals "did not correctly set \$ruby_dependencies" \
+		     "${ruby_dependencies[*]}" \
+		     "openjdk"
+
+	package_manager="$original_package_manager"
+}
+
+function test_when_java_is_not_installed_and_package_manager_is_pkg()
+{
+	command -v java >/dev/null && return
+
+	local original_package_manager="$package_manager"
+	package_manager="pkg"
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertEquals "did not correctly set \$ruby_dependencies" \
+		     "${ruby_dependencies[*]}" \
+		     "openjdk21-jre"
 
 	package_manager="$original_package_manager"
 }
