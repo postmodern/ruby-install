@@ -40,17 +40,28 @@ function download()
 	local url="$1"
 	local dest="$2"
 
+	if [[ -z "$downloader" ]]; then
+		error "Could not find wget or curl"
+		return 1
+	fi
+
+	local quiet
+
+	if [[ ! -t 1 ]]; then
+		quiet=1
+	fi
+
 	[[ -d "$dest" ]] && dest="$dest/${url##*/}"
 	[[ -f "$dest" ]] && return
 
 	mkdir -p "${dest%/*}" || return $?
 
 	case "$downloader" in
-		wget) run wget -c -O "$dest.part" "$url" || return $?         ;;
-		curl) run curl -f -L -C - -o "$dest.part" "$url" || return $? ;;
-		"")
-			error "Could not find wget or curl"
-			return 1
+		wget)
+			run wget ${quiet:+-q} -c -O "$dest.part" "$url" || return $?
+			;;
+		curl)
+			run curl ${quiet:+-s -S} -f -L -C - -o "$dest.part" "$url" || return $?
 			;;
 	esac
 
