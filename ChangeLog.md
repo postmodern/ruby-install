@@ -537,7 +537,6 @@
 
 [Ruby]: https://www.ruby-lang.org/
 [JRuby]: https://jruby.org/
-[Rubinius]: http://rubini.us/
 [MagLev]: https://maglev.github.io/
 [MRuby]: https://github.com/mruby/mruby#readme
 [truffleruby]: https://github.com/oracle/truffleruby#readme
