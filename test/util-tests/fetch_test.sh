@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 . ./test/helper.sh
+. ./share/ruby-install/util.sh
 
 ruby_install_dir="$test_fixtures_dir/fetch_test"
 
