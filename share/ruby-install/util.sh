@@ -15,6 +15,24 @@ function absolute_path()
 }
 
 #
+# Checks if a path is "writable".
+#
+function check_write_permissions()
+{
+	local path="$1"
+
+	while [[ -n "$path" ]]; do
+		if [[ -e "$path" ]] && [[ -w "$path" ]]; then
+			return
+		fi
+
+		path="${path%/*}"
+	done
+
+	return 1
+}
+
+#
 # Downloads a URL.
 #
 function download()
