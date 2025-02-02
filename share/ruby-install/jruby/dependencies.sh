@@ -9,7 +9,8 @@ if ! command -v java >/dev/null; then
 		dnf|yum)ruby_dependencies+=(java-latest-openjdk) ;;
 		pacman) ruby_dependencies+=(jre21-openjdk) ;;
 		zypper) ruby_dependencies+=(java-21-openjdk) ;;
-		pkg) 	ruby_dependencies+=(openjdk21-jre) ;;
 		xbps) 	ruby_dependencies+=(openjdk-jre) ;;
+		brew)	ruby_dependencies+=(openjdk) ;;
+		pkg) 	ruby_dependencies+=(openjdk21-jre) ;;
 	esac
 fi
