@@ -23,6 +23,10 @@ if [[ $no_reinstall -eq 1 ]] && [[ -x "$install_dir/bin/ruby" ]]; then
 	exit
 fi
 
+if ! check_write_permissions "$install_dir"; then
+	fail "Cannot write to the installation directory: $install_dir"
+fi
+
 log "Installing $ruby $ruby_version into $install_dir ..."
 
 pre_install || fail "Pre-install tasks failed!"
