@@ -26,3 +26,20 @@ jobs:
         run: echo "SHUNIT2=$(command -v shunit2 2>/dev/null)" >> $GITHUB_ENV
       - name: Run tests
         run: make test
+
+  freebsd:
+    runs-on: ubuntu-latest
+    name: "Run tests on FreeBSD"
+    steps:
+    - uses: actions/checkout@v4
+    - name: Run tests
+      id: freebsd
+      uses: vmactions/freebsd-vm@v1
+      with:
+        usesh: true
+        copyback: false
+        prepare: |
+          pkg install -y wget curl shunit2
+        run: |
+          export SHUNIT2="$(command -v shunit2 2>/dev/null)"
+          make test
