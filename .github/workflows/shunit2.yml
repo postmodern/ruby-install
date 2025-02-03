@@ -28,6 +28,19 @@ jobs:
       - name: Run tests
         run: make test
 
+  opensuse:
+    runs-on: ubuntu-latest
+    container: opensuse/tumbleweed:latest
+    name: "Run tests on OpenSUSE"
+    steps:
+      - name: Install dependencies
+        run: zypper ref && zypper --non-interactive in tar gzip findutils make patch wget shunit2
+      - uses: actions/checkout@v4
+      - name: Configure env
+        run: echo "SHUNIT2=$(command -v shunit2 2>/dev/null)" >> $GITHUB_ENV
+      - name: Run tests
+        run: make test
+
   macos:
     runs-on: macos-latest
     name: "Run tests on macOS"
