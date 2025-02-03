@@ -15,6 +15,19 @@ jobs:
       - name: Run tests
         run: make test
 
+  fedora:
+    runs-on: ubuntu-latest
+    container: fedora:latest
+    name: "Run tests on Fedora"
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: dnf update -q -y && dnf install -q -y make patch wget curl shunit2
+      - name: Configure env
+        run: echo "SHUNIT2=$(command -v shunit2 2>/dev/null)" >> $GITHUB_ENV
+      - name: Run tests
+        run: make test
+
   macos:
     runs-on: macos-latest
     name: "Run tests on macOS"
