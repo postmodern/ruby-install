@@ -41,6 +41,27 @@ jobs:
       - name: Run tests
         run: make test
 
+  archlinux:
+    runs-on: ubuntu-latest
+    container: archlinux:latest
+    name: "Run tests on ArchLinux"
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: |
+          pacman-key --init && \
+          pacman -Syu --noconfirm && \
+          pacman -Sy --noconfirm git base base-devel make patch wget curl && \
+          useradd -d /home/makepkg makepkg && \
+          mkdir -p /home/makepkg/{.config/pacman,.gnupg,out} && \
+          chown -R makepkg:users /home/makepkg && \
+          sudo -u makepkg /bin/bash -c "cd /home/makepkg && git clone --quiet --depth 1 https://aur.archlinux.org/shunit2.git && cd shunit2/ && makepkg" && \
+          pacman -U --noconfirm /home/makepkg/shunit2/shunit2-*.pkg.tar.zst
+      - name: Configure env
+        run: echo "SHUNIT2=$(command -v shunit2 2>/dev/null)" >> $GITHUB_ENV
+      - name: Run tests
+        run: make test
+
   macos:
     runs-on: macos-latest
     name: "Run tests on macOS"
