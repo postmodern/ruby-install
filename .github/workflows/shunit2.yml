@@ -22,7 +22,10 @@ jobs:
       - name: Install dependencies
         run: dnf update -q -y && dnf install -q -y make patch wget curl shunit2
       - name: Run tests
-        run: make test
+        run: |
+          useradd user
+          chown -R user:user .
+          sudo -u user make test
 
   opensuse:
     runs-on: ubuntu-latest
@@ -30,10 +33,13 @@ jobs:
     name: "Run tests on OpenSUSE"
     steps:
       - name: Install dependencies
-        run: zypper ref && zypper --non-interactive in tar gzip findutils make patch wget shunit2
+        run: zypper ref && zypper --non-interactive in sudo tar gzip findutils make patch wget shunit2
       - uses: actions/checkout@v4
       - name: Run tests
-        run: make test
+        run: |
+          useradd user
+          chown -R user:user .
+          sudo -u user make test
 
   archlinux:
     runs-on: ubuntu-latest
@@ -52,7 +58,10 @@ jobs:
           sudo -u makepkg /bin/bash -c "cd /home/makepkg && git clone --quiet --depth 1 https://aur.archlinux.org/shunit2.git && cd shunit2/ && makepkg" && \
           pacman -U --noconfirm /home/makepkg/shunit2/shunit2-*.pkg.tar.zst
       - name: Run tests
-        run: make test
+        run: |
+          useradd user
+          chown -R user:user .
+          sudo -u user make test
 
   macos:
     runs-on: macos-latest
@@ -77,4 +86,7 @@ jobs:
         copyback: false
         prepare: |
           pkg install -y wget curl shunit2
-        run: make test
+        run: |
+          pw useradd user
+          chown -R user:user .
+          su -m user -c "make test"
