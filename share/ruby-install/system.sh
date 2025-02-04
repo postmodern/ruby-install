@@ -93,6 +93,25 @@ function detect_downloader()
 	esac
 }
 
+#
+# Gets the number of CPU cores.
+#
+function cpu_count()
+{
+	local count
+
+	case "$os_platform" in
+		Darwin|*BSD)
+			count="$(sysctl -n hw.ncpu)"
+			;;
+		*)
+			count="$(getconf _NPROCESSORS_ONLN || grep -c ^processor /proc/cpuinfo)"
+			;;
+	esac
+
+	echo -n "$count"
+}
+
 detect_os
 detect_sudo
 detect_package_manager
