@@ -52,7 +52,7 @@ https://github.com/postmodern/ruby-install#readme
 	Ruby. If the -j option is provided without an argument, *make* will
 	allow an unlimited number of simultaneous jobs.
 
-`-p`, `--patch` *FILE*
+`-p`, `--patch` {*FILE* \| *URL*}
 	Specifies any additional patches to apply.
 
 `-M`, `--mirror` *URL*

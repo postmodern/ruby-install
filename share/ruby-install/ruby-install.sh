@@ -45,7 +45,7 @@ Options:
 	-c, --cleanup		Remove archive and unpacked source-code after installation
 	-j, --jobs NUM, -jNUM, --jobs=NUM
 				Number of jobs to run in parallel when compiling
-	-p, --patch FILE	Patch to apply to the Ruby source-code
+	-p, --patch {FILE|URL}	Patch to apply to the Ruby source-code
 	-M, --mirror URL	Alternate mirror to download the Ruby archive from
 	-u, --url URL		Alternate URL to download the Ruby archive from
 	-m, --md5 MD5		MD5 checksum of the Ruby archive
