@@ -59,7 +59,7 @@ function clean_ruby()
 function compile_ruby()
 {
 	log "Compiling ruby $ruby_version ..."
-	run make ${make_jobs:+-j $make_jobs} || return $?
+	run make -j "${make_jobs:-$(cpu_count)}" || return $?
 }
 
 #
