@@ -26,7 +26,7 @@ Installs [Ruby], [JRuby], [TruffleRuby] (native / GraalVM), or [mruby].
   * [pkg]
   * [macports]
   * [brew]
-* Has tests.
+* Has unit tests.
 
 ## Anti-Features
 
