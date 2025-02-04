@@ -6,7 +6,7 @@
 ronin\-install \- Installs Ruby, JRuby, TruffleRuby, or mruby
 .SH SYNOPSIS
 .PP
-\fBruby\-install\fR \[lB]OPTIONS\[rB] \[lB]\[lB]RUBY \[or] VERSION \[or] RUBY\-VERSION\[rB] \[lB]\-\- CONFIGURE\[ru]OPTS\.\.\.\[rB]\[rB]
+\fBruby\-install\fR \[lB]\fIoptions\fP\[rB] \[lB]\[lB]\fIRUBY\fP \[or] \fIVERSION\fP \[or] \fIRUBY\-VERSION\fP\[rB] \[lB]\-\- \fICONFIGURE\[ru]OPTS\fP \.\.\.\[rB]\[rB]
 .SH DESCRIPTION
 .PP
 Installs a version of Ruby, JRuby, TruffleRuby, or mruby\.
@@ -50,7 +50,7 @@ installation\.
 .TP
 \fB\-j\fR, \fB\-\-jobs\fR \fINUM\fP, \fB\-j\fR\fINUM\fP, \fB\-\-jobs\[eq]\fR\fINUM\fP
 Specifies the number of \fImake\fP jobs to run in parallel when compiling
-Ruby\. If the \-j option is provided without an argument, \fImake\fP will
+Ruby\. If the \fB\-j\fR option is provided without an argument, \fImake\fP will
 allow an unlimited number of simultaneous jobs\.
 .TP
 \fB\-p\fR, \fB\-\-patch\fR \[lC]\fIFILE\fP \[or] \fIURL\fP\[rC]
@@ -74,7 +74,7 @@ Specifies the SHA256 checksum for the Ruby archive\.
 \fB\-\-sha512\fR \fISHA512\fP
 Specifies the SHA512 checksum for the Ruby archive\.
 .TP
-\fB\-\-package\-manager \[lB]apt\[or]dnf\[or]yum\[or]pacman\[or]zypper\[or]brew\[or]pkg\[or]port\[rB]\fR
+\fB\-\-package\-manager\fR \[lB]\fBapt\fR\[or]\fBdnf\fR\[or]\fByum\fR\[or]\fBpacman\fR\[or]\fBzypper\fR\[or]\fBbrew\fR\[or]\fBpkg\fR\[or]\fBport\fR\[rB]
 Use an alternative package manager\.
 .TP
 \fB\-\-no\-download\fR

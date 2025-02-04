@@ -6,7 +6,7 @@ ronin-install - Installs Ruby, JRuby, TruffleRuby, or mruby
 
 ## SYNOPSIS
 
-`ruby-install` [OPTIONS] [[RUBY \| VERSION \| RUBY-VERSION] [-- CONFIGURE_OPTS...]]
+`ruby-install` [*options*] [[*RUBY* \| *VERSION* \| *RUBY-VERSION*] [-- *CONFIGURE_OPTS* ...]]
 
 ## DESCRIPTION
 
@@ -53,7 +53,7 @@ https://github.com/postmodern/ruby-install#readme
 
 `-j`, `--jobs` *NUM*, `-j`*NUM*, `--jobs=`*NUM*
 : Specifies the number of *make* jobs to run in parallel when compiling
-  Ruby. If the -j option is provided without an argument, *make* will
+  Ruby. If the `-j` option is provided without an argument, *make* will
   allow an unlimited number of simultaneous jobs.
 
 `-p`, `--patch` {*FILE* \| *URL*}
@@ -77,7 +77,7 @@ https://github.com/postmodern/ruby-install#readme
 `--sha512` *SHA512*
 : Specifies the SHA512 checksum for the Ruby archive.
 
-`--package-manager [apt|dnf|yum|pacman|zypper|brew|pkg|port]`
+`--package-manager` [`apt`\|`dnf`\|`yum`\|`pacman`\|`zypper`\|`brew`\|`pkg`\|`port`]
 : Use an alternative package manager.
 
 `--no-download`
