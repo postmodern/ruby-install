@@ -145,7 +145,7 @@ Install a Ruby into a specific `rubies` directory:
 
 Install a Ruby into `/usr/local`:
 
-    $ ruby-install --system ruby 3.1.2
+    $ sudo ruby-install --system ruby 3.1.2
 
 Install a Ruby from a mirror:
 
