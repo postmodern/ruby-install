@@ -10,8 +10,6 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install dependencies
         run: sudo apt-get update -qq -y && sudo apt-get install -qq -y wget curl shunit2
-      - name: Configure env
-        run: echo "SHUNIT2=$(command -v shunit2 2>/dev/null)" >> $GITHUB_ENV
       - name: Run tests
         run: make test
 
@@ -23,8 +21,6 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install dependencies
         run: dnf update -q -y && dnf install -q -y make patch wget curl shunit2
-      - name: Configure env
-        run: echo "SHUNIT2=$(command -v shunit2 2>/dev/null)" >> $GITHUB_ENV
       - name: Run tests
         run: make test
 
@@ -36,8 +32,6 @@ jobs:
       - name: Install dependencies
         run: zypper ref && zypper --non-interactive in tar gzip findutils make patch wget shunit2
       - uses: actions/checkout@v4
-      - name: Configure env
-        run: echo "SHUNIT2=$(command -v shunit2 2>/dev/null)" >> $GITHUB_ENV
       - name: Run tests
         run: make test
 
@@ -57,8 +51,6 @@ jobs:
           chown -R makepkg:users /home/makepkg && \
           sudo -u makepkg /bin/bash -c "cd /home/makepkg && git clone --quiet --depth 1 https://aur.archlinux.org/shunit2.git && cd shunit2/ && makepkg" && \
           pacman -U --noconfirm /home/makepkg/shunit2/shunit2-*.pkg.tar.zst
-      - name: Configure env
-        run: echo "SHUNIT2=$(command -v shunit2 2>/dev/null)" >> $GITHUB_ENV
       - name: Run tests
         run: make test
 
@@ -69,8 +61,6 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install dependencies
         run: brew install wget shunit2
-      - name: Configure env
-        run: echo "SHUNIT2=$(command -v shunit2 2>/dev/null)" >> $GITHUB_ENV
       - name: Run tests
         run: make test
 
@@ -87,6 +77,4 @@ jobs:
         copyback: false
         prepare: |
           pkg install -y wget curl shunit2
-        run: |
-          export SHUNIT2="$(command -v shunit2 2>/dev/null)"
-          make test
+        run: make test
