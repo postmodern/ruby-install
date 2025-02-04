@@ -9,7 +9,6 @@ ruby_install_cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/ruby-install"
 rubies=(ruby jruby truffleruby truffleruby-graalvm mruby)
 patches=()
 configure_opts=()
-make_opts=()
 
 system_dir="/usr/local"
 
@@ -135,11 +134,15 @@ function parse_options()
 				shift
 				;;
 			-j|--jobs)
-				make_opts+=("$1" "$2")
+				make_jobs="$2"
 				shift 2
 				;;
-			-j+([0-9])|--jobs=+([0-9]))
-				make_opts+=("$1")
+			-j+([0-9]))
+				make_jobs="${1#-j}"
+				shift
+				;;
+			--jobs=+([0-9]))
+				make_jobs="${1#--jobs=}"
 				shift
 				;;
 			-p|--patch)

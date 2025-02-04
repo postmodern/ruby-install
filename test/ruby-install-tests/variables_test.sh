@@ -46,11 +46,6 @@ function test_configure_opts()
 	assertEquals "\$configure_opts was not empty" 0 "${#configure_opts[@]}"
 }
 
-function test_make_opts()
-{
-	assertEquals "\$make_opts was not empty" 0 "${#make_opts[@]}"
-}
-
 function test_src_dir()
 {
 	if (( UID == 0 )); then
