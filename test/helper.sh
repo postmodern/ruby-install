@@ -1,7 +1,7 @@
 if [[ -z "$SHUNIT2" ]]; then
 	if [[ -f /usr/share/shunit2/shunit2 ]]; then
 		SHUNIT2=/usr/share/shunit2/shunit2
-	elif shunit2="$(command -v shunit2)"
+	elif shunit2="$(command -v shunit2)"; then
 		SHUNIT2="$shunit2"
 	else
 		echo "$0: shunit2 is not installed." >&2
