@@ -159,6 +159,14 @@ Install a Ruby with specific configuration:
 
     $ ruby-install ruby 3.1.2 -- --enable-shared --enable-dtrace CFLAGS="-O3"
 
+Install CRuby with jemalloc support:
+
+    $ ruby-install ruby 3.1.2 -- --with-jemalloc
+
+Install CRuby with YJIT support:
+
+    $ ruby-install ruby 3.2.0 -- --enable-yjit
+
 Using ruby-install with [RVM]:
 
     $ ruby-install --rubies-dir ~/.rvm/rubies ruby 3.1.2
