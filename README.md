@@ -4,7 +4,6 @@ Installs [Ruby], [JRuby], [TruffleRuby] (native / GraalVM), or [mruby].
 
 ## Features
 
-* Supports installing arbitrary versions.
 * Supports downloading the latest versions and checksums from [ruby-versions].
 * Supports installing into `/opt/rubies/` for root and `~/.rubies/` for users
   by default.
@@ -12,25 +11,28 @@ Installs [Ruby], [JRuby], [TruffleRuby] (native / GraalVM), or [mruby].
 * Supports downloading from arbitrary URLs.
 * Supports downloading from mirrors.
 * Supports downloading/applying patches.
-* Supports specifying arbitrary `./configure` options.
+* Supports passing in arbitrary `./configure` options.
 * Supports downloading archives using `wget` or `curl`.
 * Supports verifying downloaded archives via MD5, SHA1, SHA256 or SHA512
   checksums.
-* Supports installing build dependencies via the package manager:
-  * [apt]
-  * [dnf]
-  * [yum]
-  * [pacman]
-  * [zypper]
-  * [xbps]
-  * [pkg]
-  * [macports]
-  * [brew]
+* Supports installing build dependencies from the package manager
+  ([apt], [dnf], [yum], [pacman], [zypper], [xbps], [brew], [macports], and
+  [pkg]).
+* Supports many different OSes:
+  * Linux
+    * [Ubuntu]
+    * [Debian]
+    * [Fedora]
+    * [OpenSUSE]
+    * [Arch Linux]
+    * [Void Linux]
+  * [macOS]
+  * [FreeBSD]
 * Has unit tests.
 
 ## Anti-Features
 
-* Does not require updating every time a new Ruby version comes out.
+* Does not require upgrading every time a new Ruby version comes out.
 * Does not require recipes for each individual Ruby version or configuration.
 * Does not support installing trunk/HEAD or nightly rolling releases.
 * Does not support installing unsupported/unmaintained versions of Ruby.
@@ -234,6 +236,15 @@ of [rbenv]
 [JRuby]: https://jruby.org/
 [TruffleRuby]: https://github.com/oracle/truffleruby
 [mruby]: https://github.com/mruby/mruby#readme
+
+[Ubuntu]: https://ubuntu.com/
+[Debian]: https://www.debian.org/
+[Fedora]: https://fedoraproject.org/
+[OpenSUSE]: https://www.opensuse.org/
+[Arch Linux]: https://archlinux.org/
+[Void Linux]: https://voidlinux.org/
+[macOS]: https://www.apple.com/macos/
+[FreeBSD]: https://www.freebsd.org/
 
 [apt]: https://wiki.debian.org/Apt
 [dnf]: https://fedoraproject.org/wiki/Features/DNF
