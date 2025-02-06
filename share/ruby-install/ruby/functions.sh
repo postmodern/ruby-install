@@ -31,6 +31,10 @@ function configure_ruby()
 		brew)
 			opt_dir="$(brew --prefix readline):$(brew --prefix libyaml):$(brew --prefix gdbm)"
 			openssl_dir="$(brew --prefix "openssl@${openssl_version}")"
+
+			if [[ "${ruby_dependencies[*]}" == *"jemalloc"* ]]; then
+				opt_dir="${opt_dir}:$(brew --prefix jemalloc)"
+			fi
 			;;
 		port)
 			opt_dir="/opt/local"
