@@ -1,8 +1,8 @@
 class RubyInstall < Formula
   desc "Install Ruby, JRuby, TruffleRuby, or mruby"
   homepage "https://github.com/postmodern/ruby-install#readme"
-  url "https://github.com/postmodern/ruby-install/releases/download/v0.10.0/ruby-install-0.10.0.tar.gz"
-  sha256 "8aee2224b33d661a7db777b094adb10390b8962ff9b5a76765dd4f3e9ef16176"
+  url "https://github.com/postmodern/ruby-install/releases/download/v0.10.1/ruby-install-0.10.1.tar.gz"
+  sha256 "7f563af2bae257c006a5dba0b1976e0885d3814332cc4391eeaa88d702753289"
   license "MIT"
   head "https://github.com/postmodern/ruby-install.git", branch: "master"
 
