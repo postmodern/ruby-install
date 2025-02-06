@@ -29,8 +29,12 @@ function configure_ruby()
 	log "Configuring ruby $ruby_version ..."
 	case "$package_manager" in
 		brew)
-			opt_dir="$(brew --prefix readline):$(brew --prefix libyaml):$(brew --prefix gdbm)"
+			opt_dir="$(brew --prefix readline):$(brew --prefix libyaml)"
 			openssl_dir="$(brew --prefix "openssl@${openssl_version}")"
+
+			if [[ "${ruby_dependencies[*]}" == *"gdbm"* ]]; then
+				opt_dir="${opt_dir}:$(brew --prefix gdbm)"
+			fi
 
 			if [[ "${ruby_dependencies[*]}" == *"jemalloc"* ]]; then
 				opt_dir="${opt_dir}:$(brew --prefix jemalloc)"
