@@ -29,7 +29,7 @@ function configure_ruby()
 	log "Configuring ruby $ruby_version ..."
 	case "$package_manager" in
 		brew)
-			opt_dir="$(brew --prefix readline):$(brew --prefix libyaml)"
+			opt_dir="$(brew --prefix readline):$(brew --prefix libyaml):$(brew --prefix libffi)"
 			openssl_dir="$(brew --prefix "openssl@${openssl_version}")"
 
 			if [[ "${ruby_dependencies[*]}" == *"gdbm"* ]]; then
