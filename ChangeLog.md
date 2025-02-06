@@ -1,3 +1,10 @@
+### 0.10.1 / 2025-02-06
+
+#### ruby
+
+* Pass in the path of [homebrew]'s `jemalloc` to `./configure` via
+  `--with-opt-dir`.
+
 ### 0.10.0 / 2025-02-05
 
 * If the installation directory or one of it's parent directories cannot
