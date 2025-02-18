@@ -98,6 +98,7 @@ fi
 case "$package_manager" in
 	brew|port)
 		case "$ruby_version" in
+			1.8|2.[0-3])	openssl_version="1.0" ;;
 			2.*|3.0.*)	openssl_version="1.1" ;;
 			*)		openssl_version="3" ;;
 		esac
@@ -109,7 +110,11 @@ esac
 # only for homebrew.
 #
 case "$package_manager" in
-	brew)	ruby_dependencies+=("openssl@${openssl_version}") ;;
+	brew)
+		openssl_package="openssl@${openssl_version}"
+		[[ "${openssl_version}" == 1.* ]] && openssl_package="rbenv/tap/${openssl_package}"
+		ruby_dependencies+=("${openssl_package}")
+		;;
 	port)	ruby_dependencies+=("openssl${openssl_version/./}") ;;
 esac
 
