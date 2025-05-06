@@ -23,32 +23,54 @@ function configure_ruby()
 		autoreconf || return $?
 	fi
 
-	local opt_dir
-	local openssl_dir
+	local dependency_opts=()
 
 	log "Configuring ruby $ruby_version ..."
 	case "$package_manager" in
 		brew)
-			opt_dir="$(brew --prefix readline):$(brew --prefix libyaml):$(brew --prefix libffi)"
-			openssl_dir="$(brew --prefix "openssl@${openssl_version}")"
+			dependency_opts+=(
+				"--with-readline-dir=$(brew --prefix readline)"
+				"--with-libyaml-dir=$(brew --prefix libyaml)"
+				"--with-libffi-dir=$(brew --prefix libffi)"
+				"--with-openssl-dir=$(brew --prefix "openssl@${openssl_version}")"
+			)
 
 			if [[ "${ruby_dependencies[*]}" == *"gdbm"* ]]; then
-				opt_dir="${opt_dir}:$(brew --prefix gdbm)"
+				dependency_opts+=(
+					"--with-gdbm-dir=$(brew --prefix gdbm)"
+				)
 			fi
 
 			if [[ "${ruby_dependencies[*]}" == *"jemalloc"* ]]; then
-				opt_dir="${opt_dir}:$(brew --prefix jemalloc)"
+				dependency_opts+=(
+					"--with-jemalloc-dir=$(brew --prefix jemalloc)"
+				)
 			fi
 			;;
 		port)
-			opt_dir="/opt/local"
-			openssl_dir="/opt/local"
+			dependency_opts+=(
+				"--with-readline-dir=/usr/local"
+				"--with-libyaml-dir=/usr/local"
+				"--with-libffi-dir=/usr/local"
+				"--with-openssl-dir=/usr/local"
+			)
+
+			if [[ "${ruby_dependencies[*]}" == *"gdbm"* ]]; then
+				dependency_opts+=(
+					"--with-gdbm-dir=/usr/local"
+				)
+			fi
+
+			if [[ "${ruby_dependencies[*]}" == *"jemalloc"* ]]; then
+				dependency_opts+=(
+					"--with-jemalloc-dir=/usr/local"
+				)
+			fi
 			;;
 	esac
 
 	run ./configure --prefix="$install_dir" \
-			"${opt_dir:+--with-opt-dir="$opt_dir"}" \
-			"${openssl_dir:+--with-openssl-dir="$openssl_dir"}" \
+			"${dependency_opts[@]}" \
 			"${configure_opts[@]}" || return $?
 }
 
