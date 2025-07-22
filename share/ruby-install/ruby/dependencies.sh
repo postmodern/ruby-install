@@ -87,6 +87,9 @@ case "$package_manager" in
 		;;
 esac
 
+#
+# Add gdbm as a dependency for ruby < 3.1.0.
+#
 if [[ "$ruby_version" < "3.1.0" ]]; then
 	case "$package_manager" in
 		apt)			ruby_dependencies+=(libgdbm-dev) ;;
@@ -95,6 +98,13 @@ if [[ "$ruby_version" < "3.1.0" ]]; then
 	esac
 fi
 
+#
+# Determine which openssl version family to use for homebrew and macports
+# based on the ruby version:
+#
+# * ruby <= 3.0.0 - openssl 1.1
+# * ruby > 3.0.0 - openssl 3.x
+#
 case "$package_manager" in
 	brew|port)
 		case "$ruby_version" in
