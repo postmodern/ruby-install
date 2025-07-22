@@ -5,7 +5,6 @@ case "$package_manager" in
 		ruby_dependencies=(
 			xz-utils
 			build-essential
-			bison
 			zlib1g-dev
 			libyaml-dev
 			libssl-dev
@@ -19,7 +18,6 @@ case "$package_manager" in
 			xz
 			gcc
 			automake
-			bison
 			zlib-devel
 			libyaml-devel
 			openssl-devel
@@ -33,7 +31,6 @@ case "$package_manager" in
 			xz
 			gcc
 			make
-			bison
 			zlib
 			ncurses
 			openssl
@@ -60,7 +57,6 @@ case "$package_manager" in
 		ruby_dependencies=(
 			xz
 			automake
-			bison
 			readline
 			libyaml
 			libffi
@@ -86,6 +82,17 @@ case "$package_manager" in
 		)
 		;;
 esac
+
+#
+# Add bison as a build dependency for ruby < 3.3.0.
+#
+if [[ "$ruby_version" < "3.3.0" ]]; then
+	case "$package_manager" in
+		apt|dnf|yum|pacman|brew|port)
+			ruby_dependencies+=(bison)
+			;;
+	esac
+fi
 
 #
 # Add gdbm as a dependency for ruby < 3.1.0.

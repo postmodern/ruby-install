@@ -6,7 +6,7 @@
 function setUp()
 {
 	ruby="ruby"
-	ruby_version="3.2.0"
+	ruby_version="3.4.0"
 }
 
 function test_when_package_manager_is_apt()
@@ -20,7 +20,7 @@ function test_when_package_manager_is_apt()
 	           "$openssl_version"
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
-		     "xz-utils build-essential bison zlib1g-dev libyaml-dev libssl-dev libreadline-dev libncurses-dev libffi-dev" \
+		     "xz-utils build-essential zlib1g-dev libyaml-dev libssl-dev libreadline-dev libncurses-dev libffi-dev" \
 		     "${ruby_dependencies[*]}"
 
 	package_manager="$original_package_manager"
@@ -37,7 +37,7 @@ function test_when_package_manager_is_dnf()
 	           "$openssl_version"
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
-		     "xz gcc automake bison zlib-devel libyaml-devel openssl-devel readline-devel ncurses-devel libffi-devel" \
+		     "xz gcc automake zlib-devel libyaml-devel openssl-devel readline-devel ncurses-devel libffi-devel" \
 		     "${ruby_dependencies[*]}"
 
 	package_manager="$original_package_manager"
@@ -54,7 +54,7 @@ function test_when_package_manager_is_yum()
 	           "$openssl_version"
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
-		     "xz gcc automake bison zlib-devel libyaml-devel openssl-devel readline-devel ncurses-devel libffi-devel" \
+		     "xz gcc automake zlib-devel libyaml-devel openssl-devel readline-devel ncurses-devel libffi-devel" \
 		     "${ruby_dependencies[*]}"
 
 	package_manager="$original_package_manager"
@@ -71,7 +71,7 @@ function test_when_package_manager_is_pacman()
 	           "$openssl_version"
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
-		     "xz gcc make bison zlib ncurses openssl readline libyaml libffi" \
+		     "xz gcc make zlib ncurses openssl readline libyaml libffi" \
 		     "${ruby_dependencies[*]}"
 
 	package_manager="$original_package_manager"
@@ -124,6 +124,90 @@ function test_when_package_manager_is_xbps()
 	assertEquals "did not correctly set \$ruby_dependencies" \
 		     "base-devel openssl-devel zlib-devel libyaml-devel readline-devel ncurses-devel libffi-devel" \
 		     "${ruby_dependencies[*]}"
+
+	package_manager="$original_package_manager"
+}
+
+function test_when_ruby_version_is_less_than_3_3_0_and_package_manager_is_apt()
+{
+	local original_package_manager="$package_manager"
+	package_manager="apt"
+	ruby_version="3.2.0"
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertTrue "did not add bison to \$ruby_dependencies" \
+	           '[[ " ${ruby_dependencies[*]} " == *" bison "* ]]'
+
+	package_manager="$original_package_manager"
+}
+
+function test_when_ruby_version_is_less_than_3_3_0_and_package_manager_is_dnf()
+{
+	local original_package_manager="$package_manager"
+	package_manager="dnf"
+	ruby_version="3.2.0"
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertTrue "did not add bison to \$ruby_dependencies" \
+	           '[[ " ${ruby_dependencies[*]} " == *" bison "* ]]'
+
+	package_manager="$original_package_manager"
+}
+
+function test_when_ruby_version_is_less_than_3_3_0_and_package_manager_is_yum()
+{
+	local original_package_manager="$package_manager"
+	package_manager="yum"
+	ruby_version="3.2.0"
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertTrue "did not add bison to \$ruby_dependencies" \
+	           '[[ " ${ruby_dependencies[*]} " == *" bison "* ]]'
+
+	package_manager="$original_package_manager"
+}
+
+function test_when_ruby_version_is_less_than_3_3_0_and_package_manager_is_pacman()
+{
+	local original_package_manager="$package_manager"
+	package_manager="pacman"
+	ruby_version="3.2.0"
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertTrue "did not add bison to \$ruby_dependencies" \
+	           '[[ " ${ruby_dependencies[*]} " == *" bison "* ]]'
+
+	package_manager="$original_package_manager"
+}
+
+function test_when_ruby_version_is_less_than_3_3_0_and_package_manager_is_brew()
+{
+	local original_package_manager="$package_manager"
+	package_manager="brew"
+	ruby_version="3.2.0"
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertTrue "did not add bison to \$ruby_dependencies" \
+	           '[[ " ${ruby_dependencies[*]} " == *" bison "* ]]'
+
+	package_manager="$original_package_manager"
+}
+
+function test_when_ruby_version_is_less_than_3_3_0_and_package_manager_is_port()
+{
+	local original_package_manager="$package_manager"
+	package_manager="port"
+	ruby_version="3.2.0"
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertTrue "did not add bison to \$ruby_dependencies" \
+	           '[[ " ${ruby_dependencies[*]} " == *" bison "* ]]'
 
 	package_manager="$original_package_manager"
 }
