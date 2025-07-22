@@ -20,7 +20,7 @@ function test_when_package_manager_is_apt()
 	           "$openssl_version"
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
-		     "xz-utils build-essential zlib1g-dev libyaml-dev libssl-dev libreadline-dev libncurses-dev libffi-dev" \
+		     "xz-utils build-essential zlib1g-dev libyaml-dev libssl-dev libncurses-dev libffi-dev" \
 		     "${ruby_dependencies[*]}"
 
 	package_manager="$original_package_manager"
@@ -37,7 +37,7 @@ function test_when_package_manager_is_dnf()
 	           "$openssl_version"
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
-		     "xz gcc automake zlib-devel libyaml-devel openssl-devel readline-devel ncurses-devel libffi-devel" \
+		     "xz gcc automake zlib-devel libyaml-devel openssl-devel ncurses-devel libffi-devel" \
 		     "${ruby_dependencies[*]}"
 
 	package_manager="$original_package_manager"
@@ -54,7 +54,7 @@ function test_when_package_manager_is_yum()
 	           "$openssl_version"
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
-		     "xz gcc automake zlib-devel libyaml-devel openssl-devel readline-devel ncurses-devel libffi-devel" \
+		     "xz gcc automake zlib-devel libyaml-devel openssl-devel ncurses-devel libffi-devel" \
 		     "${ruby_dependencies[*]}"
 
 	package_manager="$original_package_manager"
@@ -71,7 +71,7 @@ function test_when_package_manager_is_pacman()
 	           "$openssl_version"
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
-		     "xz gcc make zlib ncurses openssl readline libyaml libffi" \
+		     "xz gcc make zlib ncurses openssl libyaml libffi" \
 		     "${ruby_dependencies[*]}"
 
 	package_manager="$original_package_manager"
@@ -88,7 +88,7 @@ function test_when_package_manager_is_zypper()
 	           "$openssl_version"
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
-		     "xz gcc make automake zlib-devel libyaml-devel libopenssl-devel readline-devel ncurses-devel libffi-devel" \
+		     "xz gcc make automake zlib-devel libyaml-devel libopenssl-devel ncurses-devel libffi-devel" \
 		     "${ruby_dependencies[*]}"
 
 	package_manager="$original_package_manager"
@@ -105,7 +105,7 @@ function test_when_package_manager_is_pkg()
 	           "$openssl_version"
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
-		     "openssl readline libyaml libffi" \
+		     "openssl libyaml libffi" \
 		     "${ruby_dependencies[*]}"
 
 	package_manager="$original_package_manager"
@@ -122,7 +122,7 @@ function test_when_package_manager_is_xbps()
 	           "$openssl_version"
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
-		     "base-devel openssl-devel zlib-devel libyaml-devel readline-devel ncurses-devel libffi-devel" \
+		     "base-devel openssl-devel zlib-devel libyaml-devel ncurses-devel libffi-devel" \
 		     "${ruby_dependencies[*]}"
 
 	package_manager="$original_package_manager"
@@ -139,6 +139,9 @@ function test_when_ruby_version_is_less_than_3_3_0_and_package_manager_is_apt()
 	assertTrue "did not add bison to \$ruby_dependencies" \
 	           '[[ " ${ruby_dependencies[*]} " == *" bison "* ]]'
 
+	assertTrue "did not add libreadline-dev to \$ruby_dependencies" \
+	           '[[ " ${ruby_dependencies[*]} " == *" libreadline-dev "* ]]'
+
 	package_manager="$original_package_manager"
 }
 
@@ -152,6 +155,9 @@ function test_when_ruby_version_is_less_than_3_3_0_and_package_manager_is_dnf()
 
 	assertTrue "did not add bison to \$ruby_dependencies" \
 	           '[[ " ${ruby_dependencies[*]} " == *" bison "* ]]'
+
+	assertTrue "did not add readline-devel to \$ruby_dependencies" \
+	           '[[ " ${ruby_dependencies[*]} " == *" readline-devel "* ]]'
 
 	package_manager="$original_package_manager"
 }
@@ -167,6 +173,37 @@ function test_when_ruby_version_is_less_than_3_3_0_and_package_manager_is_yum()
 	assertTrue "did not add bison to \$ruby_dependencies" \
 	           '[[ " ${ruby_dependencies[*]} " == *" bison "* ]]'
 
+	assertTrue "did not add readline-devel to \$ruby_dependencies" \
+	           '[[ " ${ruby_dependencies[*]} " == *" readline-devel "* ]]'
+
+	package_manager="$original_package_manager"
+}
+
+function test_when_ruby_version_is_less_than_3_3_0_and_package_manager_is_zypper()
+{
+	local original_package_manager="$package_manager"
+	package_manager="zypper"
+	ruby_version="3.2.0"
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertTrue "did not add readline-devel to \$ruby_dependencies" \
+	           '[[ " ${ruby_dependencies[*]} " == *" readline-devel "* ]]'
+
+	package_manager="$original_package_manager"
+}
+
+function test_when_ruby_version_is_less_than_3_3_0_and_package_manager_is_xbps()
+{
+	local original_package_manager="$package_manager"
+	package_manager="xbps"
+	ruby_version="3.2.0"
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertTrue "did not add readline-devel to \$ruby_dependencies" \
+	           '[[ " ${ruby_dependencies[*]} " == *" readline-devel "* ]]'
+
 	package_manager="$original_package_manager"
 }
 
@@ -180,6 +217,9 @@ function test_when_ruby_version_is_less_than_3_3_0_and_package_manager_is_pacman
 
 	assertTrue "did not add bison to \$ruby_dependencies" \
 	           '[[ " ${ruby_dependencies[*]} " == *" bison "* ]]'
+
+	assertTrue "did not add readline to \$ruby_dependencies" \
+	           '[[ " ${ruby_dependencies[*]} " == *" readline "* ]]'
 
 	package_manager="$original_package_manager"
 }
@@ -195,6 +235,9 @@ function test_when_ruby_version_is_less_than_3_3_0_and_package_manager_is_brew()
 	assertTrue "did not add bison to \$ruby_dependencies" \
 	           '[[ " ${ruby_dependencies[*]} " == *" bison "* ]]'
 
+	assertTrue "did not add readline to \$ruby_dependencies" \
+	           '[[ " ${ruby_dependencies[*]} " == *" readline "* ]]'
+
 	package_manager="$original_package_manager"
 }
 
@@ -208,6 +251,23 @@ function test_when_ruby_version_is_less_than_3_3_0_and_package_manager_is_port()
 
 	assertTrue "did not add bison to \$ruby_dependencies" \
 	           '[[ " ${ruby_dependencies[*]} " == *" bison "* ]]'
+
+	assertTrue "did not add readline to \$ruby_dependencies" \
+	           '[[ " ${ruby_dependencies[*]} " == *" readline "* ]]'
+
+	package_manager="$original_package_manager"
+}
+
+function test_when_ruby_version_is_less_than_3_3_0_and_package_manager_is_pkg()
+{
+	local original_package_manager="$package_manager"
+	package_manager="pkg"
+	ruby_version="3.2.0"
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertTrue "did not add readline to \$ruby_dependencies" \
+	           '[[ " ${ruby_dependencies[*]} " == *" readline "* ]]'
 
 	package_manager="$original_package_manager"
 }

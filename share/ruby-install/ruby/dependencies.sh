@@ -8,7 +8,6 @@ case "$package_manager" in
 			zlib1g-dev
 			libyaml-dev
 			libssl-dev
-			libreadline-dev
 			libncurses-dev
 			libffi-dev
 		)
@@ -21,7 +20,6 @@ case "$package_manager" in
 			zlib-devel
 			libyaml-devel
 			openssl-devel
-			readline-devel
 			ncurses-devel
 			libffi-devel
 		)
@@ -34,7 +32,6 @@ case "$package_manager" in
 			zlib
 			ncurses
 			openssl
-			readline
 			libyaml
 			libffi
 		)
@@ -48,7 +45,6 @@ case "$package_manager" in
 			zlib-devel
 			libyaml-devel
 			libopenssl-devel
-			readline-devel
 			ncurses-devel
 			libffi-devel
 		)
@@ -57,7 +53,6 @@ case "$package_manager" in
 		ruby_dependencies=(
 			xz
 			automake
-			readline
 			libyaml
 			libffi
 		)
@@ -65,7 +60,6 @@ case "$package_manager" in
 	pkg)
 		ruby_dependencies=(
 			openssl
-			readline
 			libyaml
 			libffi
 		)
@@ -76,7 +70,6 @@ case "$package_manager" in
 			openssl-devel
 			zlib-devel
 			libyaml-devel
-			readline-devel
 			ncurses-devel
 			libffi-devel
 		)
@@ -84,12 +77,24 @@ case "$package_manager" in
 esac
 
 #
-# Add bison as a build dependency for ruby < 3.3.0.
+# Add bison and readline as a dependencies for ruby < 3.3.0.
 #
 if [[ "$ruby_version" < "3.3.0" ]]; then
 	case "$package_manager" in
 		apt|dnf|yum|pacman|brew|port)
 			ruby_dependencies+=(bison)
+			;;
+	esac
+
+	case "$package_manager" in
+		apt)
+			ruby_dependencies+=(libreadline-dev)
+			;;
+		dnf|yum|zypper|xbps)
+			ruby_dependencies+=(readline-devel)
+			;;
+		pacman|brew|port|pkg)
+			ruby_dependencies+=(readline)
 			;;
 	esac
 fi

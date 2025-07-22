@@ -15,7 +15,7 @@ function test_load_dependencies()
 	load_dependencies
 
 	assertEquals "did not correctly set \$ruby_dependencies from \$ruby/dependencies.sh for \$package_manager" \
-		     "xz gcc automake zlib-devel libyaml-devel openssl-devel readline-devel ncurses-devel libffi-devel" \
+		     "xz gcc automake zlib-devel libyaml-devel openssl-devel ncurses-devel libffi-devel" \
 		     "${ruby_dependencies[*]}"
 }
 
