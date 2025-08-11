@@ -46,6 +46,11 @@ function verify_ruby()
 
 	local file="$src_dir/$ruby_archive"
 
+	if [[ -z "${ruby_md5}${ruby_sha1}${ruby_sha256}${ruby_sha512}" ]]; then
+		error "No checksums for $ruby_archive"
+		return 1
+	fi
+
 	verify_checksum "$file" md5 "$ruby_md5"       || return $?
 	verify_checksum "$file" sha1 "$ruby_sha1"     || return $?
 	verify_checksum "$file" sha256 "$ruby_sha256" || return $?
