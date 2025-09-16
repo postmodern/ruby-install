@@ -35,7 +35,8 @@ function test_detect_package_manager_on_debian_based_systems_with_apt()
 
 function test_detect_package_manager_on_open_suse_systems_with_zypper()
 {
-	[[ -f /etc/SuSE-release ]] && command -v zypper >/dev/null || return 0
+	[[ "$(lsb_release -i 2>/dev/null)" == *openSUSE* ]] &&
+		command -v zypper >/dev/null || return 0
 
 	detect_package_manager
 

@@ -51,6 +51,9 @@ function detect_package_manager()
 				fi
 			elif command -v lsb_release 2>/dev/null; then
 				case "$(lsb_release -i)" in
+					*openSUSE*)
+						package_manager="zypper"
+						;;
 					*VoidLinux*)
 						package_manager="xbps"
 						;;
