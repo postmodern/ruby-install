@@ -67,6 +67,14 @@ function test_init_with_ruby_url()
 	assertEquals "did not preserve ruby_url" "$url" "$ruby_url"
 }
 
+function test_init_ruby_dependencies()
+{
+	init
+
+	assertTrue "did not set \$ruby_dependencies" \
+		   '(( ${#ruby_dependencies[@]} > 0 ))'
+}
+
 function test_init_ruby_md5()
 {
 	init
@@ -171,7 +179,7 @@ function test_install_dir()
 function tearDown()
 {
 	unset install_dir ruby_cache_dir
-	unset ruby ruby_version ruby_md5 ruby_archive ruby_url
+	unset ruby ruby_version ruby_md5 ruby_archive ruby_url ruby_dependencies
 }
 
 SHUNIT_PARENT=$0 . $SHUNIT2

@@ -8,20 +8,10 @@ source "$ruby_install_dir/checksums.sh"
 function pre_install() { return; }
 
 #
-# Loads the dependencies.sh file for the ruby and sets $ruby_dependencies.
-#
-function load_dependencies()
-{
-	source "$ruby_install_dir/$ruby/dependencies.sh"
-}
-
-#
 # Install the ruby's dependencies.
 #
 function install_deps()
 {
-	load_dependencies
-
 	if (( ${#ruby_dependencies[@]} > 0 )); then
 		log "Installing dependencies for $ruby $ruby_version ..."
 		install_packages "${ruby_dependencies[@]}" || return $?

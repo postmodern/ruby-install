@@ -288,8 +288,9 @@ function init()
 		warn "Unknown $ruby version $ruby_version. Proceeding anyways ..."
 	fi
 
-	source "$ruby_install_dir/functions.sh"       || return $?
-	source "$ruby_install_dir/$ruby/functions.sh" || return $?
+	source "$ruby_install_dir/functions.sh"          || return $?
+	source "$ruby_install_dir/$ruby/dependencies.sh" || return $?
+	source "$ruby_install_dir/$ruby/functions.sh"    || return $?
 
 	ruby_cache_dir="$ruby_install_cache_dir/$ruby"
 	install_dir="${install_dir:-$rubies_dir/$ruby-$ruby_version}"
