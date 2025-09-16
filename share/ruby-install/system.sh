@@ -49,10 +49,12 @@ function detect_package_manager()
 				if command -v pacman >/dev/null; then
 					package_manager="pacman"
 				fi
-			elif [[ -x /bin/lsb_release ]] && lsb_release -c|grep -q void; then
-				if command -v xbps-install >/dev/null; then
-					package_manager="xbps"
-				fi
+			elif command -v lsb_release 2>/dev/null; then
+				case "$(lsb_release -i)" in
+					*VoidLinux*)
+						package_manager="xbps"
+						;;
+				esac
 			fi
 			;;
 		Darwin)

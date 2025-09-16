@@ -44,7 +44,7 @@ function test_detect_package_manager_on_open_suse_systems_with_zypper()
 
 function test_detect_package_manager_on_void_systems_with_xbps()
 {
-	command -v lsb_release >/dev/null &&
+	[[ "$(lsb_release -i 2>/dev/null)" == *VoidLinux* ]] &&
 		command -v xbps-install >/dev/null || return 0
 
 	assertEquals "did not detect xbps-install" "xbps" "$package_manager"
