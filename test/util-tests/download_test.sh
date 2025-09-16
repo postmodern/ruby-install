@@ -4,7 +4,7 @@
 . ./share/ruby-install/util.sh
 
 test_dir="$test_fixtures_dir/download_test"
-test_url="https://raw.github.com/postmodern/ruby-install/master/README.md"
+test_url="https://raw.githubusercontent.com/postmodern/ruby-install/master/README.md"
 test_dest="$test_dir/download.txt"
 
 function test_download()
