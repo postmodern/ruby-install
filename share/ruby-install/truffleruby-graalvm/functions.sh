@@ -28,7 +28,7 @@ if [[ "$ruby_version" == "23.0.0" ]]; then
 elif (( truffleruby_major > 23 || (truffleruby_major == 23 && truffleruby_minor >= 1) )); then # 23.1+
 	ruby_dir_name="truffleruby-$ruby_version-${graalvm_platform/darwin/macos}-$graalvm_arch"
 	ruby_archive="${ruby_archive:-truffleruby-jvm-$ruby_version-${graalvm_platform/darwin/macos}-$graalvm_arch.tar.gz}"
-	ruby_mirror="${ruby_mirror:-https://github.com/oracle/truffleruby/releases/download}"
+	ruby_mirror="${ruby_mirror:-https://github.com/truffleruby/truffleruby/releases/download}"
 	ruby_url="${ruby_url:-$ruby_mirror/graal-$ruby_version/$ruby_archive}"
 else
 	ruby_dir_name="graalvm-ce-java11-$ruby_version"
@@ -43,7 +43,7 @@ fi
 function install_ruby()
 {
 	if [[ "$install_dir" == '/usr/local' ]]; then
-		error "Unsupported see https://github.com/oracle/truffleruby/issues/1389"
+		error "Unsupported see https://github.com/truffleruby/truffleruby/issues/1389"
 		return 1
 	fi
 

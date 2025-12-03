@@ -307,7 +307,7 @@ function test_ruby_mirror_default_value_when_ruby_version_is_greater_or_equal_to
 	source "$ruby_install_dir/truffleruby/functions.sh"
 
 	assertEquals "did not correctly set \$ruby_mirror" \
-	             "https://github.com/oracle/truffleruby/releases/download" \
+	             "https://github.com/truffleruby/truffleruby/releases/download" \
 	             "$ruby_mirror"
 }
 
@@ -320,7 +320,7 @@ function test_ruby_mirror_default_value_when_ruby_version_is_less_than_23_0_0()
 	source "$ruby_install_dir/truffleruby/functions.sh"
 
 	assertEquals "did not correctly set \$ruby_mirror" \
-	             "https://github.com/oracle/truffleruby/releases/download" \
+	             "https://github.com/truffleruby/truffleruby/releases/download" \
 	             "$ruby_mirror"
 }
 
@@ -385,7 +385,7 @@ function test_ruby_url_default_value_when_ruby_version_is_greater_or_equal_to_23
 	source "$ruby_install_dir/truffleruby/functions.sh"
 
 	assertEquals "did not correctly set \$ruby_url" \
-	             "https://github.com/oracle/truffleruby/releases/download/graal-$ruby_version/$ruby_archive" \
+	             "https://github.com/truffleruby/truffleruby/releases/download/graal-$ruby_version/$ruby_archive" \
 	             "$ruby_url"
 }
 
@@ -398,7 +398,7 @@ function test_ruby_url_default_value_when_ruby_version_is_less_than_23_0_0()
 	source "$ruby_install_dir/truffleruby/functions.sh"
 
 	assertEquals "did not correctly set \$ruby_url" \
-	             "https://github.com/oracle/truffleruby/releases/download/vm-$ruby_version/$ruby_archive" \
+	             "https://github.com/truffleruby/truffleruby/releases/download/vm-$ruby_version/$ruby_archive" \
 	             "$ruby_url"
 }
 

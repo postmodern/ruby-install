@@ -36,10 +36,10 @@ if [[ "$ruby_version" == "23.0.0" ]]; then
 
 	ruby_url="${ruby_url:-$ruby_mirror/$truffleruby_artifact_id/content}"
 elif (( truffleruby_major > 23 || (truffleruby_major == 23 && truffleruby_minor >= 1) )); then # 23.1+
-	ruby_mirror="${ruby_mirror:-https://github.com/oracle/truffleruby/releases/download}"
+	ruby_mirror="${ruby_mirror:-https://github.com/truffleruby/truffleruby/releases/download}"
 	ruby_url="${ruby_url:-$ruby_mirror/graal-$ruby_version/$ruby_archive}"
 else
-	ruby_mirror="${ruby_mirror:-https://github.com/oracle/truffleruby/releases/download}"
+	ruby_mirror="${ruby_mirror:-https://github.com/truffleruby/truffleruby/releases/download}"
 	ruby_url="${ruby_url:-$ruby_mirror/vm-$ruby_version/$ruby_archive}"
 fi
 
@@ -49,7 +49,7 @@ fi
 function install_ruby()
 {
 	if [[ "$install_dir" == '/usr/local' ]]; then
-		error "Unsupported see https://github.com/oracle/truffleruby/issues/1389"
+		error "Unsupported see https://github.com/truffleruby/truffleruby/issues/1389"
 		return 1
 	fi
 

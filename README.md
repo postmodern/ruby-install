@@ -246,7 +246,7 @@ of [rbenv]
 
 [Ruby]: https://www.ruby-lang.org/
 [JRuby]: https://jruby.org/
-[TruffleRuby]: https://github.com/oracle/truffleruby
+[TruffleRuby]: https://github.com/truffleruby/truffleruby
 [mruby]: https://github.com/mruby/mruby#readme
 
 [Ubuntu]: https://ubuntu.com/
