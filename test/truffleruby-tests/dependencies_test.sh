@@ -17,8 +17,8 @@ function test_when_package_manager_is_apt()
 	source "$ruby_install_dir/$ruby/dependencies.sh"
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
-		     "${ruby_dependencies[*]}" \
-		     "make gcc zlib1g-dev libssl-dev libxml2 libyaml-dev"
+		     "make gcc zlib1g-dev ca-certificates libssl-dev libyaml-dev" \
+		     "${ruby_dependencies[*]}"
 
 	package_manager="$original_package_manager"
 }
@@ -31,8 +31,8 @@ function test_when_package_manager_is_dnf()
 	source "$ruby_install_dir/$ruby/dependencies.sh"
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
-		     "${ruby_dependencies[*]}" \
-		     "make gcc zlib-devel openssl-devel libxml2 libyaml-devel"
+		     "make gcc zlib-devel ca-certificates openssl-devel libyaml-devel" \
+		     "${ruby_dependencies[*]}"
 
 	package_manager="$original_package_manager"
 }
@@ -45,8 +45,8 @@ function test_when_package_manager_is_yum()
 	source "$ruby_install_dir/$ruby/dependencies.sh"
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
-		     "${ruby_dependencies[*]}" \
-		     "make gcc zlib-devel openssl-devel libxml2 libyaml-devel"
+		     "make gcc zlib-devel ca-certificates openssl-devel libyaml-devel" \
+		     "${ruby_dependencies[*]}"
 
 	package_manager="$original_package_manager"
 }
@@ -59,8 +59,8 @@ function test_when_package_manager_is_port()
 	source "$ruby_install_dir/$ruby/dependencies.sh"
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
-		     "${ruby_dependencies[*]}" \
-		     "openssl libyaml"
+		     "curl-ca-bundle openssl libyaml" \
+		     "${ruby_dependencies[*]}"
 
 	package_manager="$original_package_manager"
 }
@@ -73,8 +73,8 @@ function test_when_package_manager_is_brew()
 	source "$ruby_install_dir/$ruby/dependencies.sh"
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
-		     "${ruby_dependencies[*]}" \
-		     "openssl@3 libyaml"
+		     "ca-certificates openssl@3 libyaml" \
+		     "${ruby_dependencies[*]}"
 
 	package_manager="$original_package_manager"
 }
@@ -87,8 +87,8 @@ function test_when_package_manager_is_pacman()
 	source "$ruby_install_dir/$ruby/dependencies.sh"
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
-		     "${ruby_dependencies[*]}" \
-		     "make gcc zlib openssl libxml2 libyaml"
+		     "make gcc zlib ca-certificates openssl libyaml" \
+		     "${ruby_dependencies[*]}"
 
 	package_manager="$original_package_manager"
 }
@@ -101,8 +101,8 @@ function test_when_package_manager_is_zypper()
 	source "$ruby_install_dir/$ruby/dependencies.sh"
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
-		     "${ruby_dependencies[*]}" \
-		     "make gcc zlib-devel libopenssl-devel libxml2 libyaml-devel"
+		     "make gcc zlib-devel ca-certificates libopenssl-devel libyaml-devel" \
+		     "${ruby_dependencies[*]}"
 
 	package_manager="$original_package_manager"
 }
@@ -115,8 +115,8 @@ function test_when_package_manager_is_pkg()
 	source "$ruby_install_dir/$ruby/dependencies.sh"
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
-		     "${ruby_dependencies[*]}" \
-		     "gmake gcc openssl libxml2 libyaml"
+		     "gmake gcc ca-certificates openssl libyaml" \
+		     "${ruby_dependencies[*]}"
 
 	package_manager="$original_package_manager"
 }
@@ -129,8 +129,98 @@ function test_when_package_manager_is_xbps()
 	source "$ruby_install_dir/$ruby/dependencies.sh"
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
-		     "${ruby_dependencies[*]}" \
-		     "base-devel openssl-devel zlib-devel libxml2 libyaml-devel"
+		     "base-devel zlib-devel ca-certificates openssl-devel libyaml-devel" \
+		     "${ruby_dependencies[*]}"
+
+	package_manager="$original_package_manager"
+}
+
+function test_when_ruby_version_is_at_least_33_and_package_manager_is_apt()
+{
+	local original_package_manager="$package_manager"
+	package_manager="apt"
+	ruby_version="33.0.0"
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertEquals "did not correctly set \$ruby_dependencies" \
+		     "make gcc zlib1g-dev ca-certificates" \
+		     "${ruby_dependencies[*]}"
+
+	package_manager="$original_package_manager"
+}
+
+function test_when_ruby_version_is_at_least_33_and_package_manager_is_dnf()
+{
+	local original_package_manager="$package_manager"
+	package_manager="dnf"
+	ruby_version="33.0.0"
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertEquals "did not correctly set \$ruby_dependencies" \
+		     "make gcc zlib-devel ca-certificates" \
+		     "${ruby_dependencies[*]}"
+
+	package_manager="$original_package_manager"
+}
+
+function test_when_ruby_version_is_at_least_33_and_package_manager_is_pacman()
+{
+	local original_package_manager="$package_manager"
+	package_manager="pacman"
+	ruby_version="33.0.0"
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertEquals "did not correctly set \$ruby_dependencies" \
+		     "make gcc zlib ca-certificates" \
+		     "${ruby_dependencies[*]}"
+
+	package_manager="$original_package_manager"
+}
+
+function test_when_ruby_version_is_at_least_33_and_package_manager_is_port()
+{
+	local original_package_manager="$package_manager"
+	package_manager="port"
+	ruby_version="33.0.0"
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertEquals "did not correctly set \$ruby_dependencies" \
+		     "curl-ca-bundle" \
+		     "${ruby_dependencies[*]}"
+
+	package_manager="$original_package_manager"
+}
+
+function test_when_ruby_version_is_at_least_33_and_package_manager_is_brew()
+{
+	local original_package_manager="$package_manager"
+	package_manager="brew"
+	ruby_version="33.0.0"
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertEquals "did not correctly set \$ruby_dependencies" \
+		     "ca-certificates" \
+		     "${ruby_dependencies[*]}"
+
+	package_manager="$original_package_manager"
+}
+
+function test_when_ruby_version_is_at_least_33_and_package_manager_is_xbps()
+{
+	local original_package_manager="$package_manager"
+	package_manager="xbps"
+	ruby_version="33.0.0"
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertEquals "did not correctly set \$ruby_dependencies" \
+		     "base-devel zlib-devel ca-certificates" \
+		     "${ruby_dependencies[*]}"
 
 	package_manager="$original_package_manager"
 }
