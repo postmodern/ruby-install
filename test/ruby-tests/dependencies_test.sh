@@ -549,7 +549,7 @@ function test_ruby_dependencies_when_with_jemalloc_is_given()
 
 function test_ruby_dependencies_when_enable_yjit_is_given_and_rustc_is_not_installed_and_the_package_manager_is_apt()
 {
-	command -v rustc && return
+	! command -v rustc >/dev/null || return 0
 
 	local original_package_manager="$package_manager"
 	local original_configure_opts=("${configure_opts[@]}")
@@ -568,7 +568,7 @@ function test_ruby_dependencies_when_enable_yjit_is_given_and_rustc_is_not_insta
 
 function test_ruby_dependencies_when_enable_yjit_is_given_and_rustc_is_not_installed_and_the_package_manager_is_not_apt()
 {
-	command -v rustc >/dev/null && return
+	! command -v rustc >/dev/null || return 0
 
 	local original_package_manager="$package_manager"
 	local original_configure_opts=("${configure_opts[@]}")
@@ -587,7 +587,7 @@ function test_ruby_dependencies_when_enable_yjit_is_given_and_rustc_is_not_insta
 
 function test_ruby_dependencies_when_enable_yjit_is_given_but_rustc_is_installed()
 {
-	command -v rustc >/dev/null || return
+	command -v rustc >/dev/null || return 0
 
 	local original_configure_opts=("${configure_opts[@]}")
 

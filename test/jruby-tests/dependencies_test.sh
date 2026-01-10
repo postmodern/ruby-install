@@ -11,7 +11,7 @@ function setUp()
 
 function test_when_java_is_not_installed_and_package_manager_is_apt()
 {
-	command -v java >/dev/null && return
+	! command -v java >/dev/null || return 0
 
 	local original_package_manager="$package_manager"
 	package_manager="apt"
@@ -27,7 +27,7 @@ function test_when_java_is_not_installed_and_package_manager_is_apt()
 
 function test_when_java_is_not_installed_and_package_manager_is_dnf()
 {
-	command -v java >/dev/null && return
+	! command -v java >/dev/null || return 0
 
 	local original_package_manager="$package_manager"
 	package_manager="dnf"
@@ -43,7 +43,7 @@ function test_when_java_is_not_installed_and_package_manager_is_dnf()
 
 function test_when_java_is_not_installed_and_package_manager_is_yum()
 {
-	command -v java >/dev/null && return
+	! command -v java >/dev/null || return 0
 
 	local original_package_manager="$package_manager"
 	package_manager="yum"
@@ -59,7 +59,7 @@ function test_when_java_is_not_installed_and_package_manager_is_yum()
 
 function test_when_java_is_not_installed_and_package_manager_is_pacman()
 {
-	command -v java >/dev/null && return
+	! command -v java >/dev/null || return 0
 
 	local original_package_manager="$package_manager"
 	package_manager="pacman"
@@ -75,7 +75,7 @@ function test_when_java_is_not_installed_and_package_manager_is_pacman()
 
 function test_when_java_is_not_installed_and_package_manager_is_zypper()
 {
-	command -v java >/dev/null && return
+	! command -v java >/dev/null || return 0
 
 	local original_package_manager="$package_manager"
 	package_manager="zypper"
@@ -91,7 +91,7 @@ function test_when_java_is_not_installed_and_package_manager_is_zypper()
 
 function test_when_java_is_not_installed_and_package_manager_is_xbps()
 {
-	command -v java >/dev/null && return
+	! command -v java >/dev/null || return 0
 
 	local original_package_manager="$package_manager"
 	package_manager="xbps"
@@ -107,7 +107,7 @@ function test_when_java_is_not_installed_and_package_manager_is_xbps()
 
 function test_when_java_is_not_installed_and_package_manager_is_brew()
 {
-	command -v java >/dev/null && return
+	! command -v java >/dev/null || return 0
 
 	local original_package_manager="$package_manager"
 	package_manager="brew"
@@ -123,7 +123,7 @@ function test_when_java_is_not_installed_and_package_manager_is_brew()
 
 function test_when_java_is_not_installed_and_package_manager_is_port()
 {
-	command -v java >/dev/null && return
+	! command -v java >/dev/null || return 0
 
 	local original_package_manager="$package_manager"
 	package_manager="port"
@@ -139,7 +139,7 @@ function test_when_java_is_not_installed_and_package_manager_is_port()
 
 function test_when_java_is_not_installed_and_package_manager_is_pkg()
 {
-	command -v java >/dev/null && return
+	! command -v java >/dev/null || return 0
 
 	local original_package_manager="$package_manager"
 	package_manager="pkg"
@@ -155,7 +155,7 @@ function test_when_java_is_not_installed_and_package_manager_is_pkg()
 
 function test_when_java_is_installed()
 {
-	command -v java >/dev/null || return
+	command -v java >/dev/null || return 0
 
 	source "$ruby_install_dir/$ruby/dependencies.sh"
 
