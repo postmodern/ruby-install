@@ -5,6 +5,10 @@
 
 function setUp()
 {
+	if [[ "$os_platform" == *BSD ]]; then
+		startSkipping
+	fi
+
 	ruby="truffleruby-graalvm"
 	ruby_version="23.1.0"
 
