@@ -74,7 +74,7 @@ function test_when_package_manager_is_brew()
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
 		     "${ruby_dependencies[*]}" \
-		     "openssl@1.1 libyaml"
+		     "openssl@3 libyaml"
 
 	package_manager="$original_package_manager"
 }
