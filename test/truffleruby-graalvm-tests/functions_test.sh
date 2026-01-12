@@ -5,6 +5,7 @@
 
 function setUp()
 {
+	# NOTE: truffleruby does not currently support FreeBSD
 	if [[ "$os_platform" == *BSD ]]; then
 		startSkipping
 	fi
