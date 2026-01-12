@@ -590,6 +590,6 @@
 [JRuby]: https://jruby.org/
 [MagLev]: https://maglev.github.io/
 [MRuby]: https://github.com/mruby/mruby#readme
-[truffleruby]: https://github.com/oracle/truffleruby#readme
+[truffleruby]: https://github.com/truffleruby/truffleruby#readme
 
 [ruby-versions]: https://github.com/postmodern/ruby-versions#readme
