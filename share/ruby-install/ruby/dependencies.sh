@@ -10,6 +10,7 @@ case "$package_manager" in
 			libssl-dev
 			libncurses-dev
 			libffi-dev
+			libgmp-dev
 		)
 		;;
 	dnf|yum)
@@ -22,6 +23,7 @@ case "$package_manager" in
 			openssl-devel
 			ncurses-devel
 			libffi-devel
+			gmp-devel
 		)
 		;;
 	pacman)
@@ -34,6 +36,7 @@ case "$package_manager" in
 			openssl
 			libyaml
 			libffi
+			gmp
 		)
 		;;
 	zypper)
@@ -47,6 +50,7 @@ case "$package_manager" in
 			libopenssl-devel
 			ncurses-devel
 			libffi-devel
+			gmp-devel
 		)
 		;;
 	brew|port)
@@ -55,6 +59,7 @@ case "$package_manager" in
 			automake
 			libyaml
 			libffi
+			gmp
 		)
 		;;
 	pkg)
@@ -62,6 +67,7 @@ case "$package_manager" in
 			openssl
 			libyaml
 			libffi
+			gmp
 		)
 		;;
 	xbps)
@@ -72,6 +78,7 @@ case "$package_manager" in
 			libyaml-devel
 			ncurses-devel
 			libffi-devel
+			gmp-devel
 		)
 		;;
 esac

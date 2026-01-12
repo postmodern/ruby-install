@@ -20,7 +20,7 @@ function test_when_package_manager_is_apt()
 	           "$openssl_version"
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
-		     "xz-utils build-essential zlib1g-dev libyaml-dev libssl-dev libncurses-dev libffi-dev" \
+		     "xz-utils build-essential zlib1g-dev libyaml-dev libssl-dev libncurses-dev libffi-dev libgmp-dev" \
 		     "${ruby_dependencies[*]}"
 
 	package_manager="$original_package_manager"
@@ -37,7 +37,7 @@ function test_when_package_manager_is_dnf()
 	           "$openssl_version"
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
-		     "xz gcc automake zlib-devel libyaml-devel openssl-devel ncurses-devel libffi-devel" \
+		     "xz gcc automake zlib-devel libyaml-devel openssl-devel ncurses-devel libffi-devel gmp-devel" \
 		     "${ruby_dependencies[*]}"
 
 	package_manager="$original_package_manager"
@@ -54,7 +54,7 @@ function test_when_package_manager_is_yum()
 	           "$openssl_version"
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
-		     "xz gcc automake zlib-devel libyaml-devel openssl-devel ncurses-devel libffi-devel" \
+		     "xz gcc automake zlib-devel libyaml-devel openssl-devel ncurses-devel libffi-devel gmp-devel" \
 		     "${ruby_dependencies[*]}"
 
 	package_manager="$original_package_manager"
@@ -71,7 +71,7 @@ function test_when_package_manager_is_pacman()
 	           "$openssl_version"
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
-		     "xz gcc make zlib ncurses openssl libyaml libffi" \
+		     "xz gcc make zlib ncurses openssl libyaml libffi gmp" \
 		     "${ruby_dependencies[*]}"
 
 	package_manager="$original_package_manager"
@@ -88,7 +88,7 @@ function test_when_package_manager_is_zypper()
 	           "$openssl_version"
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
-		     "xz gcc make automake zlib-devel libyaml-devel libopenssl-devel ncurses-devel libffi-devel" \
+		     "xz gcc make automake zlib-devel libyaml-devel libopenssl-devel ncurses-devel libffi-devel gmp-devel" \
 		     "${ruby_dependencies[*]}"
 
 	package_manager="$original_package_manager"
@@ -105,7 +105,7 @@ function test_when_package_manager_is_pkg()
 	           "$openssl_version"
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
-		     "openssl libyaml libffi" \
+		     "openssl libyaml libffi gmp" \
 		     "${ruby_dependencies[*]}"
 
 	package_manager="$original_package_manager"
@@ -122,7 +122,7 @@ function test_when_package_manager_is_xbps()
 	           "$openssl_version"
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
-		     "base-devel openssl-devel zlib-devel libyaml-devel ncurses-devel libffi-devel" \
+		     "base-devel openssl-devel zlib-devel libyaml-devel ncurses-devel libffi-devel gmp-devel" \
 		     "${ruby_dependencies[*]}"
 
 	package_manager="$original_package_manager"
