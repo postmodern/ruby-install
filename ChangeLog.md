@@ -397,7 +397,7 @@
 
 * Add version aliases for 1.9.1 and 1.9.2.
 * Remove 1.8.x specific workarounds/patches.
-* Pass in `--with-opt-dir=/opt/local` when macports is detected.
+* Pass in `--with-opt-dir=/opt/local` when [macports] is detected.
 
 #### jruby
 
@@ -585,6 +585,7 @@
 [yum]: http://yum.baseurl.org/
 [pacman]: https://wiki.archlinux.org/index.php/Pacman
 [homebrew]: https://brew.sh/
+[macports]: https://www.macports.org/
 
 [Ruby]: https://www.ruby-lang.org/
 [JRuby]: https://jruby.org/
