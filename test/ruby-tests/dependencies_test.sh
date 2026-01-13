@@ -128,6 +128,104 @@ function test_when_package_manager_is_xbps()
 	package_manager="$original_package_manager"
 }
 
+function test_ruby_version_is_less_than_2_1_0_and_when_package_manager_is_apt()
+{
+	local original_package_manager="$package_manager"
+	package_manager="apt"
+	ruby_version="2.0.0"
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertFalse "did not omit libgmp-dev from \$ruby_dependencies" \
+	            '[[ "${ruby_dependencies[*]}" == *libgmp-dev" ]]'
+
+	package_manager="$original_package_manager"
+}
+
+function test_ruby_version_is_less_than_2_1_0_and_when_package_manager_is_dnf()
+{
+	local original_package_manager="$package_manager"
+	package_manager="dnf"
+	ruby_version="2.0.0"
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertFalse "did not omit gmp-devel from \$ruby_dependencies" \
+	            '[[ "${ruby_dependencies[*]}" == *gmp-devel" ]]'
+
+	package_manager="$original_package_manager"
+}
+
+function test_ruby_version_is_less_than_2_1_0_and_when_package_manager_is_yum()
+{
+	local original_package_manager="$package_manager"
+	package_manager="yum"
+	ruby_version="2.0.0"
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertFalse "did not omit gmp-devel from \$ruby_dependencies" \
+	            '[[ "${ruby_dependencies[*]}" == *gmp-devel" ]]'
+
+	package_manager="$original_package_manager"
+}
+
+function test_ruby_version_is_less_than_2_1_0_and_when_package_manager_is_pacman()
+{
+	local original_package_manager="$package_manager"
+	package_manager="pacman"
+	ruby_version="2.0.0"
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertFalse "did not omit gmp from \$ruby_dependencies" \
+	            '[[ "${ruby_dependencies[*]}" == *gmp" ]]'
+
+	package_manager="$original_package_manager"
+}
+
+function test_ruby_version_is_less_than_2_1_0_and_when_package_manager_is_zypper()
+{
+	local original_package_manager="$package_manager"
+	package_manager="zypper"
+	ruby_version="2.0.0"
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertFalse "did not omit gmp-devel from \$ruby_dependencies" \
+	            '[[ "${ruby_dependencies[*]}" == *gmp-devel" ]]'
+
+	package_manager="$original_package_manager"
+}
+
+function test_ruby_version_is_less_than_2_1_0_and_when_package_manager_is_pkg()
+{
+	local original_package_manager="$package_manager"
+	package_manager="pkg"
+	ruby_version="2.0.0"
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertFalse "did not omit gmp from \$ruby_dependencies" \
+	            '[[ "${ruby_dependencies[*]}" == *gmp" ]]'
+
+	package_manager="$original_package_manager"
+}
+
+function test_ruby_version_is_less_than_2_1_0_and_when_package_manager_is_xbps()
+{
+	local original_package_manager="$package_manager"
+	package_manager="xbps"
+	ruby_version="2.0.0"
+
+	source "$ruby_install_dir/$ruby/dependencies.sh"
+
+	assertFalse "did not omit gmp-devel from \$ruby_dependencies" \
+	            '[[ "${ruby_dependencies[*]}" == *gmp-devel" ]]'
+
+	package_manager="$original_package_manager"
+}
+
 function test_when_ruby_version_is_less_than_3_3_0_and_package_manager_is_apt()
 {
 	local original_package_manager="$package_manager"

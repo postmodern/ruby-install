@@ -10,7 +10,6 @@ case "$package_manager" in
 			libssl-dev
 			libncurses-dev
 			libffi-dev
-			libgmp-dev
 		)
 		;;
 	dnf|yum)
@@ -23,7 +22,6 @@ case "$package_manager" in
 			openssl-devel
 			ncurses-devel
 			libffi-devel
-			gmp-devel
 		)
 		;;
 	pacman)
@@ -36,7 +34,6 @@ case "$package_manager" in
 			openssl
 			libyaml
 			libffi
-			gmp
 		)
 		;;
 	zypper)
@@ -50,7 +47,6 @@ case "$package_manager" in
 			libopenssl-devel
 			ncurses-devel
 			libffi-devel
-			gmp-devel
 		)
 		;;
 	brew|port)
@@ -59,7 +55,6 @@ case "$package_manager" in
 			automake
 			libyaml
 			libffi
-			gmp
 		)
 		;;
 	pkg)
@@ -67,7 +62,6 @@ case "$package_manager" in
 			openssl
 			libyaml
 			libffi
-			gmp
 		)
 		;;
 	xbps)
@@ -78,10 +72,20 @@ case "$package_manager" in
 			libyaml-devel
 			ncurses-devel
 			libffi-devel
-			gmp-devel
 		)
 		;;
 esac
+
+#
+# Add the gmp library for ruby >= 2.1.0 to accelrate the Bignum class.
+#
+if [[ "$ruby_version" > "2.1.0" ]] || [[ "$ruby_version" == "2.1.0" ]]; then
+	case "$package_manager" in
+		apt)			ruby_dependencies+=(libgmp-dev) ;;
+		dnf|yum|zypper|xbps)	ruby_dependencies+=(gmp-devel) ;;
+		brew|port|pacman|pkg)	ruby_dependencies+=(gmp) ;;
+	esac
+fi
 
 #
 # Add bison and readline as a dependencies for ruby < 3.3.0.
