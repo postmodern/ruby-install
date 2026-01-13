@@ -1,3 +1,31 @@
+### 0.10.2 / 2026-01-13
+
+* Improve detection of specific Linux distributions.
+* Fix detection of OpenSUSE.
+* Fixed loading of ruby dependencies when `--no-install-deps` is specified.
+
+#### ruby
+
+* Pass the paths to [homebrew] and [macports] dependencies to `./configure`
+  using individual `--with-*-dir` options, instead of a single
+  `--with-opt-dir` option. In Ruby < 3.4.0 the `--with-opt-dir` option was not
+  treated the same as individual `--with-*-dir` options.
+* Omit the `bison` and `readline` dependencies for Ruby >= 3.3.0.
+* Added the `gmp` library as a dependency to accelerate the `Bignum` class.
+  * Ruby has supported optionally using the GMP library to accelerate the
+    `Bignum` class since version 2.1.0.
+    https://bugs.ruby-lang.org/issues/8796
+
+#### truffleruby / truffleruby-graalvm
+
+* Updated the download URLs to use https://github.com/truffleruby/truffleruby.
+* TruffleRuby >= 33 no longer requires the `openssl` and `libyaml` dependencies.
+  * See
+    https://github.com/truffleruby/truffleruby/blob/master/doc/user/installing-libssl.md
+    and https://github.com/truffleruby/truffleruby/blob/master/doc/user/inst
+alling-libyaml.md.
+* TruffleRuby >= 20.0 no longer requires the `libxml2` dependency.
+
 ### 0.10.1 / 2025-02-06
 
 #### ruby
