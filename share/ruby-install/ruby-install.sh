@@ -95,6 +95,7 @@ function parse_ruby()
 			;;
 		*)
 			ruby="$string"
+			ruby_version=""
 			;;
 	esac
 
