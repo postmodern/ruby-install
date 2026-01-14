@@ -2,11 +2,11 @@
 
 source "${0%/*}/../share/ruby-install/ruby-install.sh"
 
-parse_options "$@" || exit $?
-
-if [[ -z "$ruby" ]]; then
+if (( $# == 0 )); then
 	list_rubies
 	exit $?
+else
+	parse_options "$@" || exit $?
 fi
 
 if [[ $force_update -eq 1 ]] ||
