@@ -29,7 +29,7 @@ function compile_ruby()
 function install_ruby()
 {
 	log "Installing mruby $ruby_version ..."
-	run cp -R "$ruby_build_dir" "$install_dir" || return $?
+	copy_into "$ruby_build_dir" "$install_dir" || return $?
 }
 
 #
