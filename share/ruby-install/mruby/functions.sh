@@ -11,7 +11,7 @@ ruby_url="${ruby_url:-$ruby_mirror/$ruby_version/$ruby_archive}"
 function clean_ruby()
 {
 	log "Cleaning mruby $ruby_version ..."
-	run make clean || return $?
+	run rake clean || return $?
 }
 
 #
@@ -20,7 +20,7 @@ function clean_ruby()
 function compile_ruby()
 {
 	log "Compiling mruby $ruby_version ..."
-	run make -j "${make_jobs:-$(cpu_count)}" || return $?
+	run rake -j "${make_jobs:-$(cpu_count)}" || return $?
 }
 
 #
