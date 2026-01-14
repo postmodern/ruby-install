@@ -4,13 +4,24 @@ case "$package_manager" in
 	apt)
 		ruby_dependencies=(
 			ruby
+			rake
 			build-essential
 			bison
 		)
 		;;
-	dnf|yum|pacman|zypper)
+	dnf|yum|zypper)
 		ruby_dependencies=(
 			ruby
+			rubygem-rake
+			gcc
+			make
+			bison
+		)
+		;;
+	pacman)
+		ruby_dependencies=(
+			ruby
+			ruby-rake
 			gcc
 			make
 			bison
@@ -19,6 +30,7 @@ case "$package_manager" in
 	pkg)
 		ruby_dependencies=(
 			ruby
+			rubygem-rake
 			gcc
 			automake
 			bison
