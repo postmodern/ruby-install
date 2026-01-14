@@ -18,7 +18,7 @@ function test_when_package_manager_is_apt()
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
 		     "${ruby_dependencies[*]}" \
-		     "build-essential bison"
+		     "ruby build-essential bison"
 
 	package_manager="$original_package_manager"
 }
@@ -32,7 +32,7 @@ function test_when_package_manager_is_dnf()
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
 		     "${ruby_dependencies[*]}" \
-		     "gcc make bison"
+		     "ruby gcc make bison"
 
 	package_manager="$original_package_manager"
 }
@@ -46,7 +46,7 @@ function test_when_package_manager_is_yum()
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
 		     "${ruby_dependencies[*]}" \
-		     "gcc make bison"
+		     "ruby gcc make bison"
 
 	package_manager="$original_package_manager"
 }
@@ -88,7 +88,7 @@ function test_when_package_manager_is_pacman()
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
 		     "${ruby_dependencies[*]}" \
-		     "gcc make bison"
+		     "ruby gcc make bison"
 
 	package_manager="$original_package_manager"
 }
@@ -102,7 +102,7 @@ function test_when_package_manager_is_zypper()
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
 		     "${ruby_dependencies[*]}" \
-		     "gcc make bison"
+		     "ruby gcc make bison"
 
 	package_manager="$original_package_manager"
 }
@@ -116,7 +116,7 @@ function test_when_package_manager_is_pkg()
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
 		     "${ruby_dependencies[*]}" \
-		     "gcc automake bison"
+		     "ruby gcc automake bison"
 
 	package_manager="$original_package_manager"
 }
@@ -130,7 +130,7 @@ function test_when_package_manager_is_xbps()
 
 	assertEquals "did not correctly set \$ruby_dependencies" \
 		     "${ruby_dependencies[*]}" \
-		     "base-devel"
+		     "ruby base-devel"
 
 	package_manager="$original_package_manager"
 }
