@@ -8,7 +8,7 @@ function setUp()
 	unset ruby_cache_dir
 }
 
-function test_parse_ruby_with_a_single_name()
+function test_parse_ruby_with_a_single_ruby_name()
 {
 	local expected_ruby="jruby"
 
@@ -18,7 +18,7 @@ function test_parse_ruby_with_a_single_name()
 	assertEquals "did not set \$ruby" "$expected_ruby" "$ruby"
 }
 
-function test_parse_ruby_with_a_name_dash_version()
+function test_parse_ruby_with_a_ruby_name_dash_version()
 {
 	local expected_ruby="jruby"
 	local expected_version="9.0.0"
@@ -43,10 +43,48 @@ function test_parse_ruby_with_just_a_version()
 	                                          "$ruby_version"
 }
 
-function test_parse_ruby_when_the_ruby_name_contains_multiple_dashes()
+function test_parse_ruby_with_just_a_version_that_contains_a_dash()
+{
+	local expected_version="4.0.0-rc1"
+
+	parse_ruby "$expected_version"
+
+	assertEquals "did not return successfully" 0 $?
+	assertEquals "did not set \$ruby to ruby" "$ruby" "ruby"
+	assertEquals "did not set \$ruby_version" "$expected_version" \
+	                                          "$ruby_version"
+}
+
+function test_parse_ruby_with_just_a_ruby_name_that_contains_a_dash()
+{
+	local expected_ruby="truffleruby-graalvm"
+	local expected_version=""
+
+	parse_ruby "$expected_ruby"
+
+	assertEquals "did not return successfully" 0 $?
+	assertEquals "did not set \$ruby" "$ruby" "$expected_ruby"
+	assertEquals "did not set \$ruby_version" "$expected_version" \
+	                                          "$ruby_version"
+}
+
+function test_parse_ruby_with_a_ruby_name_and_version_but_the_ruby_name_contains_a_dash()
 {
 	local expected_ruby="truffleruby-graalvm"
 	local expected_version="1.2.3"
+
+	parse_ruby "$expected_ruby-$expected_version"
+
+	assertEquals "did not return successfully" 0 $?
+	assertEquals "did not match the ruby name" "$expected_ruby" "$ruby"
+	assertEquals "did not match the ruby version" "$expected_version" \
+	                                               "$ruby_version"
+}
+
+function test_parse_ruby_when_the_ruby_name_and_version_both_contain_dashes()
+{
+	local expected_ruby="truffleruby-graalvm"
+	local expected_version="1.2.3-preview1"
 
 	parse_ruby "$expected_ruby-$expected_version"
 
