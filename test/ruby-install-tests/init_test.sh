@@ -71,6 +71,10 @@ function test_init_ruby_dependencies()
 {
 	init
 
+	if [[ -z "$package_manager" ]]; then
+		startSkipping
+	fi
+
 	assertTrue "did not set \$ruby_dependencies" \
 		   '(( ${#ruby_dependencies[@]} > 0 ))'
 }
