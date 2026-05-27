@@ -295,7 +295,7 @@ function init()
 
 	ruby_cache_dir="$ruby_install_cache_dir/$ruby"
 	install_dir="${install_dir:-$rubies_dir/$ruby-$ruby_version}"
-	ruby_build_dir="$src_dir/$ruby_dir_name"
+	ruby_build_dir="$src_dir/$ruby-$ruby_version"
 
 	ruby_md5="${ruby_md5:-$(ruby_checksum_for "$ruby" md5 "$ruby_archive")}"
 	ruby_sha1="${ruby_sha1:-$(ruby_checksum_for "$ruby" sha1 "$ruby_archive")}"

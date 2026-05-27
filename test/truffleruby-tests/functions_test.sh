@@ -131,13 +131,6 @@ function test_ruby_archive_when_its_already_set_and_when_ruby_version_is_less_th
 	             "$ruby_archive"
 }
 
-function test_ruby_dir_name()
-{
-	assertEquals "did not correctly set \$ruby_dir_name" \
-	             "truffleruby-$ruby_version-$truffleruby_platform-$truffleruby_arch" \
-	             "$ruby_dir_name"
-}
-
 function test_ruby_mirror_default_value_when_ruby_version_is_greater_or_equal_to_23_0_0()
 {
 	ruby_version="23.0.0"
@@ -244,7 +237,7 @@ function test_ruby_url_when_its_already_set_and_ruby_version_is_less_than_23_0_0
 
 function tearDown()
 {
-	unset ruby ruby_version ruby_version_family ruby_archive ruby_dir_name \
+	unset ruby ruby_version ruby_version_family ruby_archive \
 	      ruby_mirror ruby_url
 }
 

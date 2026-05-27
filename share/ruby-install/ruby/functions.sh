@@ -9,7 +9,6 @@ else
 fi
 
 ruby_archive="${ruby_archive:-ruby-$ruby_version.$ruby_archive_ext}"
-ruby_dir_name="ruby-$ruby_version"
 ruby_mirror="${ruby_mirror:-https://cache.ruby-lang.org/pub/ruby}"
 ruby_url="${ruby_url:-$ruby_mirror/$ruby_version_family/$ruby_archive}"
 

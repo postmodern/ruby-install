@@ -21,17 +21,14 @@ if [[ "$ruby_version" == "23.0.0" ]]; then
 	log "TruffleRuby-GraalVM 23.0 and later installed by ruby-install use the faster Oracle GraalVM distribution"
 	log "Oracle GraalVM uses the GFTC license, which is free for development and production use, see https://medium.com/graalvm/161527df3d76"
 
-	ruby_dir_name="graalvm-jdk-17.0.7+8.1"
 	ruby_archive="${ruby_archive:-graalvm-jdk-17.0.7_${graalvm_platform/darwin/macos}-${graalvm_arch/amd64/x64}_bin.tar.gz}"
 	ruby_mirror="${ruby_mirror:-https://download.oracle.com/graalvm/17/archive}"
 	ruby_url="${ruby_url:-$ruby_mirror/$ruby_archive}"
 elif (( truffleruby_major > 23 || (truffleruby_major == 23 && truffleruby_minor >= 1) )); then # 23.1+
-	ruby_dir_name="truffleruby-$ruby_version-${graalvm_platform/darwin/macos}-$graalvm_arch"
 	ruby_archive="${ruby_archive:-truffleruby-jvm-$ruby_version-${graalvm_platform/darwin/macos}-$graalvm_arch.tar.gz}"
 	ruby_mirror="${ruby_mirror:-https://github.com/truffleruby/truffleruby/releases/download}"
 	ruby_url="${ruby_url:-$ruby_mirror/graal-$ruby_version/$ruby_archive}"
 else
-	ruby_dir_name="graalvm-ce-java11-$ruby_version"
 	ruby_archive="${ruby_archive:-graalvm-ce-java11-$graalvm_platform-$graalvm_arch-$ruby_version.tar.gz}"
 	ruby_mirror="${ruby_mirror:-https://github.com/graalvm/graalvm-ce-builds/releases/download}"
 	ruby_url="${ruby_url:-$ruby_mirror/vm-$ruby_version/$ruby_archive}"

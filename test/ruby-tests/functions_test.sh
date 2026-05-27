@@ -57,13 +57,6 @@ function test_ruby_archive_when_its_already_set()
 	             "$ruby_archive"
 }
 
-function test_ruby_dir_name()
-{
-	assertEquals "did not correctly set \$ruby_dir_name" \
-	             "ruby-$ruby_version" \
-	             "$ruby_dir_name"
-}
-
 function test_ruby_mirror_default_value()
 {
 	assertEquals "did not correctly set \$ruby_mirror" \
@@ -104,7 +97,7 @@ function test_ruby_url_when_its_already_set()
 
 function tearDown()
 {
-	unset ruby ruby_version ruby_version_family ruby_archive ruby_dir_name \
+	unset ruby ruby_version ruby_version_family ruby_archive \
 	      ruby_mirror ruby_url
 }
 

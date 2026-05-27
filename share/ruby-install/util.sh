@@ -74,29 +74,39 @@ function download()
 function extract()
 {
 	local archive="$1"
-	local dest="${2:-${archive%/*}}"
+	local dest="$2"
+	local tmp="$dest.tmp"
 
-	mkdir -p "$dest" || return $?
+	rm -rf "$dest" "$tmp" || return $?
+	mkdir -p "$tmp" || return $?
 
 	case "$archive" in
 		*.tgz|*.tar.gz)
-			run tar -xzf "$archive" -C "$dest" || return $?
+			run tar -xzf "$archive" -C "$tmp" || return $?
 			;;
 		*.tbz|*.tbz2|*.tar.bz2)
-			run tar -xjf "$archive" -C "$dest" || return $?
+			run tar -xjf "$archive" -C "$tmp" || return $?
 			;;
 		*.txz|*.tar.xz)
-			debug "xzcat $archive | tar -xf - -C $dest"
-			xzcat "$archive" | tar -xf - -C "$dest" || return $?
+			debug "xzcat $archive | tar -xf - -C $tmp"
+			xzcat "$archive" | tar -xf - -C "$tmp" || return $?
 			;;
 		*.zip)
-			run unzip "$archive" -d "$dest" || return $?
+			run unzip "$archive" -d "$tmp" || return $?
 			;;
 		*)
 			error "Unknown archive format: $archive"
 			return 1
 			;;
 	esac
+
+	local extracted=("$tmp"/*)
+	if (( ${#extracted[@]} != 1 )); then
+		error "Multiple extracted directories under $tmp"
+		return 1
+	fi
+	mv "${extracted[0]}" "$dest" || return $?
+	rm -rf "$tmp"
 }
 
 #

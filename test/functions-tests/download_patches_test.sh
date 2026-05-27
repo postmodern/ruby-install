@@ -4,8 +4,8 @@
 . ./share/ruby-install/functions.sh
 
 src_dir="$test_fixtures_dir/download_patches_test"
-ruby_dir_name="ruby-1.9.3-p448"
-ruby_build_dir="$src_dir/$ruby_dir_name"
+ruby_and_version="ruby-1.9.3-p448"
+ruby_build_dir="$src_dir/$ruby_and_version"
 
 patches=("https://gist.github.com/funny-falcon/2981959/raw/ary-queue.diff" "local.patch")
 
@@ -18,7 +18,7 @@ function test_download_patches()
 {
 	download_patches 2>/dev/null
 
-	assertTrue "did not download patches to \$src_dir/\$ruby_dir_name" \
+	assertTrue "did not download patches to \$src_dir/\$ruby_and_version" \
 		   '[[ -f "${ruby_build_dir}/ary-queue.diff" ]]'
 
 	assertEquals "did not update \$patches" \

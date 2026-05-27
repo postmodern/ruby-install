@@ -4,17 +4,17 @@
 . ./share/ruby-install/functions.sh
 
 src_dir="$test_fixtures_dir/apply_patches_test"
-ruby_dir_name="ruby-1.9.3-p448"
-ruby_build_dir="$src_dir/$ruby_dir_name"
+ruby_and_version="ruby-1.9.3-p448"
+ruby_build_dir="$src_dir/$ruby_and_version"
 
 patches=("$ruby_build_dir/falcon-gc.diff")
 
 function setUp()
 {
 	mkdir -p "$ruby_build_dir"
-	echo "diff -Naur $ruby_dir_name.orig/test $ruby_dir_name/test
---- $ruby_dir_name.orig/test 1970-01-01 01:00:00.000000000 +0100
-+++ $ruby_dir_name/test  2013-08-02 20:57:08.055843749 +0200
+	echo "diff -Naur $ruby_and_version.orig/test $ruby_and_version/test
+--- $ruby_and_version.orig/test 1970-01-01 01:00:00.000000000 +0100
++++ $ruby_and_version/test  2013-08-02 20:57:08.055843749 +0200
 @@ -0,0 +1 @@
 +patch
 " > "${patches[0]}"

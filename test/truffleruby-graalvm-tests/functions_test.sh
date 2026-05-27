@@ -113,42 +113,6 @@ function test_truffleruby_minor()
 	             "$truffleruby_minor"
 }
 
-function test_ruby_dir_name_when_ruby_version_is_23_0_0()
-{
-	ruby_version="23.0.0"
-
-	source "$ruby_install_dir/functions.sh"
-	source "$ruby_install_dir/truffleruby-graalvm/functions.sh" >/dev/null
-
-	assertEquals "did not correctly set \$ruby_dir_name" \
-	             "graalvm-jdk-17.0.7+8.1" \
-	             "$ruby_dir_name"
-}
-
-function test_ruby_dir_name_when_ruby_version_is_greater_or_equal_to_23_1_0()
-{
-	ruby_version="23.1.0"
-
-	source "$ruby_install_dir/functions.sh"
-	source "$ruby_install_dir/truffleruby-graalvm/functions.sh"
-
-	assertEquals "did not correctly set \$ruby_dir_name" \
-	             "truffleruby-$ruby_version-${graalvm_platform/darwin/macos}-$graalvm_arch" \
-	             "$ruby_dir_name"
-}
-
-function test_ruby_dir_name_when_ruby_version_is_less_than_23_0_0()
-{
-	ruby_version="22.1.0"
-
-	source "$ruby_install_dir/functions.sh"
-	source "$ruby_install_dir/truffleruby-graalvm/functions.sh"
-
-	assertEquals "did not correctly set \$ruby_dir_name" \
-	             "graalvm-ce-java11-$ruby_version" \
-	             "$ruby_dir_name"
-}
-
 function test_ruby_archive_default_value_when_ruby_version_is_23_0_0()
 {
 	ruby_version="23.0.0"
@@ -372,7 +336,7 @@ function test_ruby_url_when_its_already_set_and_when_ruby_version_is_less_than_2
 
 function tearDown()
 {
-	unset ruby ruby_version ruby_version_family ruby_archive ruby_dir_name \
+	unset ruby ruby_version ruby_version_family ruby_archive \
 	      ruby_mirror ruby_url
 }
 

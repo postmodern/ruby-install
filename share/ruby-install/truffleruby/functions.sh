@@ -13,8 +13,7 @@ case "$os_arch" in
 	*)       fail "Unsupported platform $os_arch" ;;
 esac
 
-ruby_dir_name="truffleruby-$ruby_version-$truffleruby_platform-$truffleruby_arch"
-ruby_archive="${ruby_archive:-$ruby_dir_name.tar.gz}"
+ruby_archive="${ruby_archive:-truffleruby-$ruby_version-$truffleruby_platform-$truffleruby_arch.tar.gz}"
 truffleruby_major="${ruby_version%%.*}"
 
 if [[ "$ruby_version" == "23.0.0" ]]; then
