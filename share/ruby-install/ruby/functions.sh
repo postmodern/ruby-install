@@ -49,21 +49,21 @@ function configure_ruby()
 			;;
 		port)
 			dependency_opts+=(
-				"--with-readline-dir=/usr/local"
-				"--with-libyaml-dir=/usr/local"
-				"--with-libffi-dir=/usr/local"
-				"--with-openssl-dir=/usr/local"
+				"--with-readline-dir=/opt/local"
+				"--with-libyaml-dir=/opt/local"
+				"--with-libffi-dir=/opt/local"
+				"--with-openssl-dir=/opt/local"
 			)
 
 			if [[ "${ruby_dependencies[*]}" == *"gdbm"* ]]; then
 				dependency_opts+=(
-					"--with-gdbm-dir=/usr/local"
+					"--with-gdbm-dir=/opt/local"
 				)
 			fi
 
 			if [[ "${ruby_dependencies[*]}" == *"jemalloc"* ]]; then
 				dependency_opts+=(
-					"--with-jemalloc-dir=/usr/local"
+					"--with-jemalloc-dir=/opt/local"
 				)
 			fi
 			;;
