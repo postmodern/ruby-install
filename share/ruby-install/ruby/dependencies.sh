@@ -59,7 +59,6 @@ case "$package_manager" in
 		;;
 	pkg)
 		ruby_dependencies=(
-			openssl
 			libyaml
 			libffi
 		)
